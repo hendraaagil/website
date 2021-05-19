@@ -3,13 +3,16 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import SEO from '../next-seo.config';
 import { theme } from '../styles/theme';
+import { GlobalStyle } from '../styles/GlobalStyle';
 
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider resetCSS theme={theme}>
       <DefaultSeo {...SEO} />
 
-      <Component {...pageProps} />
+      <GlobalStyle>
+        <Component {...pageProps} />
+      </GlobalStyle>
     </ChakraProvider>
   );
 }
