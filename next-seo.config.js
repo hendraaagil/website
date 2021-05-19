@@ -17,7 +17,7 @@ const SEO = {
     description,
     images: [
       {
-        url: `/favicon/android-chrome-512x512.png`,
+        url: `${siteUrl}/favicon/android-chrome-512x512.png`,
         alt: title,
         width: 512,
         height: 512,
@@ -26,12 +26,15 @@ const SEO = {
   },
   twitter: {
     cardType: 'summary',
+    handle: '@hendraaagil',
+    site: '@hendraaagil',
   },
   additionalMetaTags: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
     { name: 'apple-mobile-web-app-title', content: 'Hendra Agil' },
     { name: 'application-name', content: 'Hendra Agil' },
     { name: 'msapplication-TileColor', content: '#da532c' },
+    { name: 'msapplication-config', content: '/favicon/browserconfig.xml' },
     { name: 'theme-color', content: '#ffffff' },
   ],
   additionalLinkTags: [
