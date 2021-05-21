@@ -16,11 +16,11 @@ export default class MyDocument extends NextDocument {
 
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Commissioner:wght@600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Commissioner:wght@600;700"
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700"
             rel="stylesheet"
           />
         </Head>

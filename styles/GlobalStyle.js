@@ -15,6 +15,7 @@ export const GlobalStyle = ({ children }) => {
           }
           html {
             scoll-behavior: smooth;
+            cursor: default;
           }
           #__next {
             display: flex;
