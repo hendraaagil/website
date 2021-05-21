@@ -3,7 +3,7 @@ import { Heading } from '@chakra-ui/react';
 const Blog = () => {
   return (
     <>
-      <Heading>Ini Halaman Blog</Heading>
+      <Heading py={40}>Ini Halaman Blog</Heading>
     </>
   );
 };

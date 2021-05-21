@@ -10,6 +10,7 @@ import { GlobalStyle } from '../styles/GlobalStyle';
 import '../styles/css/nprogress.css';
 
 import Navbar from '../components/nav/Navbar';
+import Footer from '../components/footer';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -34,14 +35,15 @@ function MyApp({ Component, pageProps, router }) {
               flexGrow={1}
               initial="initial"
               variants={{
-                initial: { opacity: 0, y: -25 },
+                initial: { opacity: 0, y: -10 },
                 enter: { opacity: 1, y: 0 },
-                exit: { opacity: 0, y: 25 },
+                exit: { opacity: 0, y: 10 },
               }}
             >
               <Component {...pageProps} />
             </MotionBox>
           </AnimatePresence>
+          <Footer />
         </Container>
       </GlobalStyle>
     </ChakraProvider>

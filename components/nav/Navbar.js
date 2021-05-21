@@ -7,6 +7,7 @@ import NavLink from './NavLink';
 const Navbar = () => {
   return (
     <HStack
+      as="nav"
       justify="space-between"
       py={6}
       mx="auto"
