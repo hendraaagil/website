@@ -2,7 +2,7 @@ import { Link, Text, VStack } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <VStack pb={5} fontWeight="500">
+    <VStack py={8} fontWeight="600" fontSize="sm">
       <Text>
         Created by{' '}
         <Link
@@ -17,6 +17,16 @@ const Footer = () => {
       </Text>
       <Text>
         With{' '}
+        <Link
+          href="http://contentful.com"
+          isExternal
+          color="brand.blue"
+          fontWeight="700"
+          textDecor="underline"
+        >
+          Contentful
+        </Link>
+        ,{' '}
         <Link
           href="https://nextjs.org"
           isExternal
@@ -34,7 +44,7 @@ const Footer = () => {
           fontWeight="700"
           textDecor="underline"
         >
-          Chakra
+          Chakra UI
         </Link>
       </Text>
     </VStack>

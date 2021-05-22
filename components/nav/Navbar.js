@@ -12,7 +12,6 @@ const Navbar = () => {
       py={6}
       mx="auto"
       w="full"
-      fontFamily="heading"
       fontWeight="600"
       borderBottom="1px"
       borderBottomColor="gray.200"
