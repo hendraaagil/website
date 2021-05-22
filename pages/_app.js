@@ -10,7 +10,7 @@ import { GlobalStyle } from '../styles/GlobalStyle';
 import '../styles/css/nprogress.css';
 
 import Navbar from '../components/nav/Navbar';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());

@@ -25,8 +25,8 @@ const Footer = () => {
           textDecor="underline"
         >
           Next.js
-        </Link>
-        ,{' '}
+        </Link>{' '}
+        and{' '}
         <Link
           href="https://chakra-ui.com"
           isExternal
@@ -35,16 +35,6 @@ const Footer = () => {
           textDecor="underline"
         >
           Chakra
-        </Link>{' '}
-        and{' '}
-        <Link
-          href="http://mdxjs.com"
-          isExternal
-          color="brand.blue"
-          fontWeight="700"
-          textDecor="underline"
-        >
-          MDX
         </Link>
       </Text>
     </VStack>
