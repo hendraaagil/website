@@ -1,4 +1,4 @@
-import { getAge } from './utils/age';
+import { getAge } from './lib/age';
 
 const age = getAge(new Date('2003, 09, 26'));
 const title = 'Hendra Agil';

@@ -21,6 +21,7 @@ export const GlobalStyle = ({ children }) => {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            font-weight: 500;
             background: #eff4f6;
             color: #1d1f28;
           }
