@@ -33,6 +33,7 @@ function MyApp({ Component, pageProps, router }) {
               as="main"
               exit="exit"
               flexGrow={1}
+              pt="72px"
               initial="initial"
               variants={{
                 initial: { opacity: 0, y: -10 },

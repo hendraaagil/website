@@ -1,5 +1,6 @@
+import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
-import { Heading, VStack } from '@chakra-ui/react';
+import { Divider, Heading, Text, VStack } from '@chakra-ui/react';
 import Card from '../../components/blog/Card';
 
 export const getStaticProps = async () => {
@@ -13,11 +14,20 @@ export const getStaticProps = async () => {
 };
 
 const Blog = ({ blogs }) => {
+  const title = 'Blog';
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog`;
+
   return (
     <>
-      <Heading as="h1" my={8} textAlign="center">
+      <NextSeo title={title} canonical={url} openGraph={{ url, title }} />
+
+      <Heading as="h1" mt={8} textAlign="center">
         Blog
       </Heading>
+      <Text my={5} fontWeight="600" textAlign="center">
+        Sharing by Writing
+      </Text>
+      <Divider mb={8} />
       <VStack spacing={6}>
         {blogs.map((blog) => {
           const { slug, summary, title } = blog.fields;

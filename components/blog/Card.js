@@ -21,7 +21,7 @@ const Card = (props) => {
           transition: 'all 0.2s ease-in-out',
         }}
       >
-        <Text fontWeight="700">
+        <Text fontWeight="600">
           {format(new Date(createdAt), 'EEEE, MMMM do, yyyy')}
         </Text>
         <Heading size="lg" my={2} _hover={{ textDecor: 'underline' }}>

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Badge, Box, Divider, Heading, HStack, Text } from '@chakra-ui/react';
@@ -33,20 +34,44 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const DetailBlog = ({ blog }) => {
-  const { content, summary, thumbnail, title } = blog.fields;
+  const { content, slug, summary, thumbnail, title } = blog.fields;
   const { tags } = blog.metadata;
-  const { createdAt } = blog.sys;
-
-  console.log(thumbnail);
+  const { createdAt, updatedAt } = blog.sys;
+  const { width, height } = thumbnail.fields.file.details.image;
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
 
   return (
     <>
+      <NextSeo
+        title={title}
+        canonical={url}
+        openGraph={{
+          title: title,
+          description: summary,
+          url,
+          type: 'article',
+          article: {
+            publishedTime: createdAt,
+            modifiedTime: updatedAt,
+            authors: ['Hendra Agil'],
+            tags: tags.map((tag) => tag.sys.id),
+          },
+          images: [
+            {
+              url: `https:${thumbnail.fields.file.url}`,
+              width,
+              height,
+              alt: title,
+            },
+          ],
+        }}
+      />
       <Box my={2}>
         <Image
           src={`https:${thumbnail.fields.file.url}`}
           alt={thumbnail.fields.title}
-          width={thumbnail.fields.file.details.image.width}
-          height={thumbnail.fields.file.details.image.height}
+          width={width}
+          height={height}
         />
       </Box>
       <Text pt={1} fontWeight="600">
