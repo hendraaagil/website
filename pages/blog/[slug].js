@@ -77,7 +77,9 @@ const DetailBlog = ({ blog }) => {
       <Text pt={1} fontWeight="600">
         Published on {format(new Date(createdAt), 'EEEE, MMMM do, yyyy')}
       </Text>
-      <Heading my={3}>{title}</Heading>
+      <Heading as="h1" my={3}>
+        {title}
+      </Heading>
       <Text py={2} lineHeight="tall">
         {summary}
       </Text>
@@ -100,7 +102,7 @@ const DetailBlog = ({ blog }) => {
         ))}
       </HStack>
       <Divider mt={4} mb={2} />
-      <Box lineHeight="tall">
+      <Box lineHeight="tall" as="article">
         {documentToReactComponents(content, renderOptions)}
       </Box>
     </>

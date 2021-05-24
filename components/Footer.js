@@ -2,7 +2,7 @@ import { Link, Text, VStack } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <VStack py={8} fontWeight="600" fontSize="sm">
+    <VStack as="footer" py={8} fontWeight="600" fontSize="sm">
       <Text>
         Created by{' '}
         <Link

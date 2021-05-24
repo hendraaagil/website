@@ -19,7 +19,7 @@ const Projects = () => {
         Learning by Doing
       </Text>
       <Divider mb={8} />
-      <Grid templateColumns="1fr 1fr" gap={6}>
+      <Grid templateColumns={['1fr', '1fr', '1fr 1fr']} gap={6}>
         {projects.map((project, index) => (
           <Card
             key={index}

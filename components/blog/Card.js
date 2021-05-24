@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 const Card = ({ createdAt, slug, summary, tags, title }) => (
   <Link href={`/blog/${slug}`} passHref>
     <VStack
+      as="article"
       spacing={4}
       p={6}
       w="full"
