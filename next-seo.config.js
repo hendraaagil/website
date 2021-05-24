@@ -1,8 +1,7 @@
 import { getAge } from './lib/age';
 
-const age = getAge(new Date('2003, 09, 26'));
 const title = 'Hendra Agil';
-const description = `Hello, my name is Hendra Agil. I'm ${age} years old, currently learning about web development.`;
+const description = `Hello, my name is Hendra Agil. I'm ${getAge()} years old, currently learning about web development.`;
 const siteUrl = 'https://hendraaagil.vercel.app';
 
 const SEO = {

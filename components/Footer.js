@@ -18,7 +18,7 @@ const Footer = () => {
       <Text>
         With{' '}
         <Link
-          href="http://contentful.com"
+          href="https://contentful.com"
           isExternal
           color="brand.blue"
           fontWeight="700"

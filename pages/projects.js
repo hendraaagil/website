@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import { Divider, Grid, Heading, Text } from '@chakra-ui/react';
+import { Divider, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 import Card from '../components/projects/Card';
 
 import projects from '../data/projects.json';
@@ -19,7 +19,7 @@ const Projects = () => {
         Learning by Doing
       </Text>
       <Divider mb={8} />
-      <Grid templateColumns={['1fr', '1fr', '1fr 1fr']} gap={6}>
+      <SimpleGrid columns={[1, 1, 2]} gap={6}>
         {projects.map((project, index) => (
           <Card
             key={index}
@@ -30,7 +30,7 @@ const Projects = () => {
             demo={project.demo}
           />
         ))}
-      </Grid>
+      </SimpleGrid>
     </>
   );
 };
