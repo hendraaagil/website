@@ -1,10 +1,17 @@
 import Link from 'next/link';
 import { Text } from '@chakra-ui/react';
 
-const NavLink = ({ link, name }) => (
+const NavLink = ({ hasBg, link, name, onClose }) => (
   <Link href={link}>
     <Text
       as="a"
+      onClick={onClose}
+      py={hasBg && '2'}
+      px={hasBg && '6'}
+      w={hasBg && 'full'}
+      bg={hasBg && 'gray.200'}
+      rounded={hasBg && 'md'}
+      textAlign="center"
       _hover={{
         cursor: 'pointer',
         textDecor: 'underline',
