@@ -14,7 +14,7 @@ const Socials = () => {
             hendraaagil@gmail.com
           </CustomLink>
         }
-        , or via socials below :
+        , or via socials below:
       </Text>
       <Stack
         pt={2}
