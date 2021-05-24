@@ -17,6 +17,9 @@ export const GlobalStyle = ({ children }) => {
             scoll-behavior: smooth;
             cursor: default;
           }
+          b {
+            font-weight: 600;
+          }
           #__next {
             display: flex;
             flex-direction: column;

@@ -13,7 +13,7 @@ const Card = ({ title, skills }) => (
       transition: 'all 0.2s ease-in-out',
     }}
   >
-    <Heading as="h3" size="md" mb={2}>
+    <Heading as="h3" size="md" mb={2} fontWeight="600">
       {title}
     </Heading>
     {skills.map((skill, index) => (
