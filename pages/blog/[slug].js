@@ -2,10 +2,20 @@ import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Badge, Box, Divider, Heading, HStack, Text } from '@chakra-ui/react';
+import {
+  Badge,
+  Box,
+  Button,
+  Divider,
+  Heading,
+  HStack,
+  Text,
+} from '@chakra-ui/react';
+import { FaTwitter } from 'react-icons/fa';
 import { format } from 'date-fns';
 
 import { renderOptions } from '../../lib/renderOptions';
+import Disqus from '../../components/blog/Disqus';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -36,7 +46,7 @@ export const getStaticProps = async ({ params }) => {
 const DetailBlog = ({ blog }) => {
   const { content, slug, summary, thumbnail, title } = blog.fields;
   const { tags } = blog.metadata;
-  const { createdAt, updatedAt } = blog.sys;
+  const { createdAt, id, updatedAt } = blog.sys;
   const { width, height } = thumbnail.fields.file.details.image;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
 
@@ -105,6 +115,8 @@ const DetailBlog = ({ blog }) => {
       <Box lineHeight="tall" as="article">
         {documentToReactComponents(content, renderOptions)}
       </Box>
+      <Divider my={4} />
+      <Disqus url={url} identifier={id} title={title} />
     </>
   );
 };
