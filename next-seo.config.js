@@ -16,15 +16,15 @@ const SEO = {
     description,
     images: [
       {
-        url: `${siteUrl}/favicon/android-chrome-512x512.png`,
+        url: `${siteUrl}/og-image.png`,
         alt: title,
-        width: 512,
-        height: 512,
+        width: 1280,
+        height: 720,
       },
     ],
   },
   twitter: {
-    cardType: 'summary',
+    cardType: 'summary_large_image',
     handle: '@hendraaagil',
     site: '@hendraaagil',
   },
