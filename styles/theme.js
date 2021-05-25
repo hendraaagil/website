@@ -2,7 +2,7 @@ import { theme as defaultTheme, extendTheme } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 const breakpoints = createBreakpoints({
-  sm: '426px',
+  sm: '425px',
   md: '768px',
   lg: '960px',
   xl: '1280px',
@@ -11,8 +11,8 @@ const breakpoints = createBreakpoints({
 
 export const theme = extendTheme({
   fonts: {
-    heading: `'Commissioner', ${defaultTheme.fonts.heading}`,
-    body: `'Alegreya Sans', ${defaultTheme.fonts.body}`,
+    heading: `'Lexend', ${defaultTheme.fonts.heading}`,
+    body: `'Lexend', ${defaultTheme.fonts.body}`,
   },
   colors: {
     brand: {

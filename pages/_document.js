@@ -14,13 +14,13 @@ export default class MyDocument extends NextDocument {
           <meta charSet="UTF-8" />
           <meta content="ie=edge" httpEquiv="X-UA-Compatible" />
 
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Commissioner:wght@600;700&display=swap"
-            rel="stylesheet"
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700"
             rel="stylesheet"
           />
         </Head>

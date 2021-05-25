@@ -1,8 +1,7 @@
-import { getAge } from './utils/age';
+import { getAge } from './lib/age';
 
-const age = getAge(new Date('2003, 09, 26'));
 const title = 'Hendra Agil';
-const description = `Hello, my name is Hendra Agil. I'm ${age} years old, currently learning about web development.`;
+const description = `Hello, my name is Hendra Agil. I'm ${getAge()} years old, currently learning about web development.`;
 const siteUrl = 'https://hendraaagil.vercel.app';
 
 const SEO = {
@@ -17,15 +16,15 @@ const SEO = {
     description,
     images: [
       {
-        url: `${siteUrl}/favicon/android-chrome-512x512.png`,
+        url: `${siteUrl}/og-image.png`,
         alt: title,
-        width: 512,
-        height: 512,
+        width: 1280,
+        height: 720,
       },
     ],
   },
   twitter: {
-    cardType: 'summary',
+    cardType: 'summary_large_image',
     handle: '@hendraaagil',
     site: '@hendraaagil',
   },

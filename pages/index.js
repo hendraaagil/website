@@ -1,12 +1,16 @@
-import { Container, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
+
+import { getAge } from '../lib/age';
 
 export default function Home() {
   return (
-    <Container my={20}>
-      <Heading as="h1">Hello, I'm Hendra Agil 👋</Heading>
-      <Text my={10} fontWeight="medium" fontSize="xl">
-        Coming Soon ...
+    <Box py={40} textAlign="center">
+      <Heading as="h1" mb={4}>
+        Hello, I'm Hendra Agil 👋
+      </Heading>
+      <Text fontSize="2xl" fontWeight="600">
+        Student. {getAge()} years old.
       </Text>
-    </Container>
+    </Box>
   );
 }
