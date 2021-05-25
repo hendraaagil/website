@@ -1,4 +1,4 @@
-import { Box, Link, Text } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 
 import { getAge } from '../../lib/age';
 import CustomLink from './CustomLink';

@@ -11,6 +11,7 @@ const NavLink = ({ hasBg, link, name, onClose }) => (
       w={hasBg && 'full'}
       bg={hasBg && 'gray.200'}
       rounded={hasBg && 'md'}
+      fontWeight="600"
       textAlign="center"
       _hover={{
         cursor: 'pointer',

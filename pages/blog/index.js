@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
 import { Divider, Heading, Text, VStack } from '@chakra-ui/react';
+
 import Card from '../../components/blog/Card';
 
 export const getStaticProps = async () => {

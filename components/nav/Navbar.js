@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {
+  Box,
   Container,
   Heading,
   HStack,
@@ -18,15 +19,13 @@ const Navbar = () => {
 
   return (
     <>
-      <HStack
+      <Box
         as="nav"
         pos="fixed"
-        justify="space-between"
         py={6}
         mx="auto"
         w="full"
         left={0}
-        fontWeight="600"
         shadow="sm"
         zIndex="docked"
         sx={{
@@ -59,7 +58,7 @@ const Navbar = () => {
             )}
           </HStack>
         </Container>
-      </HStack>
+      </Box>
       {!isLargerThan425 && (
         <>
           <MenuButton onOpen={onOpen} />

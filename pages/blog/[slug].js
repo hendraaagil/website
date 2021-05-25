@@ -2,16 +2,7 @@ import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import {
-  Badge,
-  Box,
-  Button,
-  Divider,
-  Heading,
-  HStack,
-  Text,
-} from '@chakra-ui/react';
-import { FaTwitter } from 'react-icons/fa';
+import { Badge, Box, Divider, Heading, HStack, Text } from '@chakra-ui/react';
 import { format } from 'date-fns';
 
 import { renderOptions } from '../../lib/renderOptions';
