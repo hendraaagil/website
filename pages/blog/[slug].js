@@ -67,7 +67,7 @@ const DetailBlog = ({ blog }) => {
           ],
         }}
       />
-      <Box my={2}>
+      <Box my={2} textAlign="center">
         <Image
           src={`https:${thumbnail.fields.file.url}`}
           alt={thumbnail.fields.title}
