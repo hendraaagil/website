@@ -29,7 +29,7 @@ const Card = ({ name, thumbnail, desc, github, demo }) => (
           leftIcon={<AiFillGithub />}
           bg="brand.blue"
           color="brand.light"
-          _hover={{ bg: 'brand.light', color: 'brand.blue' }}
+          _hover={{ bg: 'gray.200', color: 'brand.blue' }}
         >
           GitHub
         </Button>
@@ -38,7 +38,7 @@ const Card = ({ name, thumbnail, desc, github, demo }) => (
           leftIcon={<AiOutlineLink />}
           bg="brand.blue"
           color="brand.light"
-          _hover={{ bg: 'brand.light', color: 'brand.blue' }}
+          _hover={{ bg: 'gray.200', color: 'brand.blue' }}
         >
           Demo
         </Button>

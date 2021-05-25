@@ -9,7 +9,6 @@ import {
 } from 'react-icons/fa';
 
 const SocialButton = ({ name, url }) => {
-  console.log(name);
   let icon = null;
   let color = 'brand.blue';
 
@@ -43,10 +42,11 @@ const SocialButton = ({ name, url }) => {
   return (
     <Button
       leftIcon={icon}
+      onClick={() => window.open(url, '_blank', 'noopener, noreferrer')}
       py={{ base: 6, lg: 4 }}
       bg={color}
       color="brand.light"
-      onClick={() => window.open(url, '_blank', 'noopener, noreferrer')}
+      _hover={{ bg: 'brand.light', color }}
     >
       {name}
     </Button>

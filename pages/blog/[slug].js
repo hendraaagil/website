@@ -97,10 +97,9 @@ const DetailBlog = ({ blog }) => {
         {tags.map((tag) => (
           <Badge
             key={tag.sys.id}
-            variant="solid"
-            colorScheme="whiteAlpha"
             py={1}
             px={2}
+            bg="brand.light"
             color="brand.dark"
             fontWeight="500"
             textTransform="capitalize"
