@@ -81,7 +81,7 @@ const DetailBlog = ({ blog }) => {
       <Heading as="h1" my={3}>
         {title}
       </Heading>
-      <Text py={2} lineHeight="tall">
+      <Text pb={2} lineHeight="tall">
         {summary}
       </Text>
       <HStack>
@@ -102,7 +102,7 @@ const DetailBlog = ({ blog }) => {
         ))}
       </HStack>
       <Divider mt={4} mb={2} />
-      <Box lineHeight="tall" as="article">
+      <Box as="article" lineHeight="tall">
         {documentToReactComponents(content, renderOptions)}
       </Box>
       <Divider my={4} />

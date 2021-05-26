@@ -17,7 +17,7 @@ const Description = () => (
       . Graduated from{' '}
       {
         <CustomLink link="https://smkn2kra.sch.id">
-          SMKN 2 Karanganyar
+          VHS 2 Karanganyar
         </CustomLink>
       }{' '}
       at 2021 as Software Engineering student.
