@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Badge, Box, Divider, Heading, HStack, Text } from '@chakra-ui/react';
 import { format } from 'date-fns';
 
-import { renderOptions } from '../../lib/renderOptions';
+import MarkdownComponent from '../../components/blog/MarkdownComponent';
 import Disqus from '../../components/blog/Disqus';
 
 const client = createClient({
@@ -35,7 +34,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const DetailBlog = ({ blog }) => {
-  const { content, slug, summary, thumbnail, title } = blog.fields;
+  const { markdownContent, slug, summary, thumbnail, title } = blog.fields;
   const { tags } = blog.metadata;
   const { createdAt, id, updatedAt } = blog.sys;
   const { width, height } = thumbnail.fields.file.details.image;
@@ -103,7 +102,7 @@ const DetailBlog = ({ blog }) => {
       </HStack>
       <Divider mt={4} mb={2} />
       <Box as="article" lineHeight="tall">
-        {documentToReactComponents(content, renderOptions)}
+        <MarkdownComponent markdownContent={markdownContent} />
       </Box>
       <Divider my={4} />
       <Disqus url={url} identifier={id} title={title} />

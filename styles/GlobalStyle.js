@@ -27,7 +27,8 @@ export const GlobalStyle = ({ children }) => (
           scoll-behavior: smooth;
           cursor: default;
         }
-        b {
+        b,
+        strong {
           font-weight: 600;
         }
         #__next {

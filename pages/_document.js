@@ -23,6 +23,10 @@ export default class MyDocument extends NextDocument {
             href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500"
+            rel="stylesheet"
+          />
         </Head>
 
         <body>
