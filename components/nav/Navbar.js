@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import {
   Box,
   Container,
@@ -15,7 +16,12 @@ import MenuDrawer from './menu/MenuDrawer';
 
 const Navbar = () => {
   const [isLargerThan425] = useMediaQuery('(min-width: 425px)');
+  const [larger, setLarger] = useState(true);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  useEffect(() => {
+    setLarger(isLargerThan425);
+  }, [isLargerThan425]);
 
   return (
     <>
@@ -49,7 +55,7 @@ const Navbar = () => {
                 hendraaagil
               </Heading>
             </Link>
-            {isLargerThan425 && (
+            {larger && (
               <HStack spacing={10}>
                 {links.map((link, index) => (
                   <NavLink key={index} link={link.url} name={link.name} />
@@ -59,7 +65,7 @@ const Navbar = () => {
           </HStack>
         </Container>
       </Box>
-      {!isLargerThan425 && (
+      {!larger && (
         <>
           <MenuButton onOpen={onOpen} />
           <MenuDrawer isOpen={isOpen} onClose={onClose} links={links} />
