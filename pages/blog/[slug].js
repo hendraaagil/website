@@ -37,7 +37,8 @@ const DetailBlog = ({ blog }) => {
   const { markdownContent, slug, summary, thumbnail, title } = blog.fields;
   const { tags } = blog.metadata;
   const { createdAt, id, updatedAt } = blog.sys;
-  const { width, height } = thumbnail.fields.file.details.image;
+  const { description, file } = thumbnail.fields;
+  const { width, height } = file.details.image;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
 
   return (
@@ -46,7 +47,7 @@ const DetailBlog = ({ blog }) => {
         title={title}
         canonical={url}
         openGraph={{
-          title: title,
+          title,
           description: summary,
           url,
           type: 'article',
@@ -66,13 +67,26 @@ const DetailBlog = ({ blog }) => {
           ],
         }}
       />
-      <Box my={2} textAlign="center">
+      <Box
+        as="figure"
+        mt={0.5}
+        mb={2}
+        mx="auto"
+        w="fit-content"
+        bg="gray.200"
+        textAlign="center"
+        rounded="md"
+        overflow="hidden"
+      >
         <Image
-          src={`https:${thumbnail.fields.file.url}`}
+          src={`https:${file.url}`}
           alt={thumbnail.fields.title}
           width={width}
           height={height}
         />
+        <Text as="figcaption" mt={0.5} mb={2} fontSize="sm">
+          {description}
+        </Text>
       </Box>
       <Text pt={1} fontWeight="600">
         Published on {format(new Date(createdAt), 'EEEE, MMMM do, yyyy')}

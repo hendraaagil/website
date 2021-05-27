@@ -35,7 +35,7 @@ const Navbar = () => {
         shadow="sm"
         zIndex="docked"
         sx={{
-          background: 'rgba(239, 244, 246, 0.85)',
+          background: 'rgba(239, 244, 246, 0.75)',
           backdropFilter: 'saturate(180%) blur(20px)',
         }}
       >

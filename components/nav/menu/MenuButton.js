@@ -16,7 +16,7 @@ const MenuButton = ({ onOpen }) => (
     border="2px"
     borderColor="gray.200"
     sx={{
-      background: 'rgba(239, 244, 246, 0.85)',
+      background: 'rgba(239, 244, 246, 0.75)',
       backdropFilter: 'saturate(180%) blur(20px)',
     }}
   />

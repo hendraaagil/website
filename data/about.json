@@ -8,8 +8,11 @@
       "name": "Frontend",
       "items": ["Chakra UI", "Emotion", "Next.js", "React", "Tailwind CSS"]
     },
-    { "name": "Backend", "items": ["Firebase", "Node.js", "MySQL", "MongoDB"] },
-    { "name": "Tools", "items": ["Figma", "Postman", "Visual Studio Code"] }
+    { "name": "Backend", "items": ["Firebase", "Node.js", "MongoDB", "MySQL"] },
+    {
+      "name": "Tools",
+      "items": ["Git", "Figma", "Postman", "Visual Studio Code"]
+    }
   ],
   "socials": [
     { "name": "Facebook", "url": "https://facebook.com/hendraaagil" },
