@@ -2,7 +2,7 @@ import { getAge } from './lib/age';
 
 const title = 'Hendra Agil';
 const description = `Hello, my name is Hendra Agil. I'm ${getAge()} years old, currently learning about web development.`;
-const siteUrl = 'https://hendraaagil.vercel.app';
+const siteUrl = 'https://hendraaagil.space';
 
 const SEO = {
   titleTemplate: `%s | ${title}`,
