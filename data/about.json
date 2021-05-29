@@ -8,7 +8,7 @@
       "name": "Frontend",
       "items": ["Chakra UI", "Emotion", "Next.js", "React", "Tailwind CSS"]
     },
-    { "name": "Backend", "items": ["Firebase", "Node.js", "MongoDB", "MySQL"] },
+    { "name": "Backend", "items": ["Firebase", "MongoDB", "MySQL", "Node.js"] },
     {
       "name": "Tools",
       "items": ["Git", "Figma", "Postman", "Visual Studio Code"]

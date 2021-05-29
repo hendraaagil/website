@@ -24,7 +24,7 @@ const Card = ({ createdAt, slug, summary, tags, title }) => (
       <Heading size="lg" _hover={{ textDecor: 'underline' }}>
         {title}
       </Heading>
-      <Text fontWeight="500" lineHeight="tall" noOfLines={3}>
+      <Text fontWeight="500" textAlign="center" lineHeight="tall" noOfLines={3}>
         {summary}
       </Text>
       <HStack>
