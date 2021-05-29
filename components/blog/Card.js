@@ -9,6 +9,7 @@ const Card = ({ createdAt, slug, summary, tags, title }) => (
       spacing={4}
       p={6}
       w="full"
+      textAlign="center"
       rounded="md"
       shadow="md"
       _hover={{
@@ -24,7 +25,7 @@ const Card = ({ createdAt, slug, summary, tags, title }) => (
       <Heading size="lg" _hover={{ textDecor: 'underline' }}>
         {title}
       </Heading>
-      <Text fontWeight="500" textAlign="center" lineHeight="tall" noOfLines={3}>
+      <Text fontWeight="500" lineHeight="tall" noOfLines={[4, 3]}>
         {summary}
       </Text>
       <HStack>
