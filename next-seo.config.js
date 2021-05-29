@@ -32,6 +32,10 @@ const SEO = {
     { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
     { name: 'apple-mobile-web-app-title', content: 'Hendra Agil' },
     { name: 'application-name', content: 'Hendra Agil' },
+    {
+      name: 'google-site-verification',
+      content: '6SMuBaTGbq2BCsaQE1DRyNo948FcJpqt9iwGibpE4e0',
+    },
     { name: 'msapplication-TileColor', content: '#da532c' },
     { name: 'msapplication-config', content: '/favicon/browserconfig.xml' },
     { name: 'theme-color', content: '#ffffff' },
