@@ -1,5 +1,12 @@
 [
   {
+    "name": "Next.js Chakra Starter",
+    "desc": "An opinionated simple starter / template project with Next.js and Chakra UI.",
+    "thumbnail": "/projects/next-chakra-starter.png",
+    "github": "https://github.com/hendraaagil/next-chakra-starter",
+    "demo": "https://nextjs-chakra-hendraaagil.vercel.app"
+  },
+  {
     "name": "Pengaduan Sekolah",
     "desc": "Pengaduan sekolah app to sent complaint to your school. Made with React & Chakra UI.",
     "thumbnail": "/projects/pengaduan-sekolah.png",
