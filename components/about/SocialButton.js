@@ -46,15 +46,14 @@ const SocialButton = ({ name, url }) => {
       py={{ base: 6, lg: 4 }}
       bg={color}
       color="brand.light"
+      transition="all 0.2s ease-in-out"
       _focus={{
         bg: 'brand.light',
         color,
         transform: 'translateY(-3px);',
-        transition: 'all 0.2s ease-in-out',
       }}
       _hover={{
         transform: 'translateY(-3px);',
-        transition: 'all 0.2s ease-in-out',
       }}
     >
       {name}

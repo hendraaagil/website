@@ -13,11 +13,11 @@ const NavLink = ({ hasBg, link, name, onClose }) => (
       rounded={hasBg && 'md'}
       fontWeight="600"
       textAlign="center"
+      transition="all 0.2s ease-in-out"
       _hover={{
         cursor: 'pointer',
         textDecor: 'underline',
         color: 'brand.blue',
-        transition: 'all 0.2s ease-in-out',
       }}
     >
       {name}

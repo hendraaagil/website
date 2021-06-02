@@ -12,11 +12,11 @@ const Card = ({ createdAt, slug, summary, tags, title }) => (
       textAlign="center"
       rounded="md"
       shadow="md"
+      transition="all 0.2s ease-in-out"
       _hover={{
         bg: 'gray.200',
         cursor: 'pointer',
         transform: 'translateY(-3px);',
-        transition: 'all 0.2s ease-in-out',
       }}
     >
       <Text fontWeight="600">

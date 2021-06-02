@@ -7,10 +7,10 @@ const Card = ({ title, skills }) => (
     lineHeight="tall"
     rounded="md"
     shadow="md"
+    transition="all 0.2s ease-in-out"
     _hover={{
       bg: 'gray.200',
       transform: 'translateY(-3px);',
-      transition: 'all 0.2s ease-in-out',
     }}
   >
     <Heading as="h3" size="md" mb={2} fontWeight="600">

@@ -45,11 +45,11 @@ const Navbar = () => {
               <Heading
                 as="h1"
                 size="md"
+                transition="all 0.2s ease-in-out"
                 _hover={{
                   cursor: 'pointer',
                   textDecor: 'underline',
                   color: 'brand.blue',
-                  transition: 'all 0.2s ease-in-out',
                 }}
               >
                 hendraaagil

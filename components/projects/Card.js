@@ -8,10 +8,10 @@ const Card = ({ name, thumbnail, desc, github, demo }) => (
     w="full"
     rounded="md"
     shadow="md"
+    transition="all 0.2s ease-in-out"
     _hover={{
       bg: 'gray.200',
       transform: 'translateY(-3px);',
-      transition: 'all 0.2s ease-in-out',
     }}
   >
     <Image src={thumbnail} alt={name} width={1280} height={720} />
