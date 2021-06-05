@@ -1,5 +1,6 @@
 import { Button } from '@chakra-ui/react';
 import {
+  FaDiscord,
   FaFacebookF,
   FaGithub,
   FaInstagram,
@@ -13,6 +14,10 @@ const SocialButton = ({ name, url }) => {
   let color = 'brand.blue';
 
   switch (name) {
+    case 'Discord':
+      icon = <FaDiscord />;
+      color = '#5865F2';
+      break;
     case 'Facebook':
       icon = <FaFacebookF />;
       color = '#385898';
