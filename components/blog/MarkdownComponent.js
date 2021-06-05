@@ -21,6 +21,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 const MarkdownComponent = ({ markdownContent }) => {
+  const toLowerDashed = (string) => {
+    const result = string.toString().toLowerCase().replace(/\s/g, '-');
+    return result;
+  };
+
   return (
     <ReactMarkdown
       remarkPlugins={[gfm]}
@@ -67,72 +72,114 @@ const MarkdownComponent = ({ markdownContent }) => {
             />
           );
         },
-        h1: ({ children }) => (
-          <Heading
-            as="h1"
-            fontSize="4xl"
-            my={3}
-            fontWeight="600"
-            lineHeight="tall"
-          >
-            {children}
-          </Heading>
-        ),
-        h2: ({ children }) => (
-          <Heading
-            as="h2"
-            fontSize="3xl"
-            my={3}
-            fontWeight="600"
-            lineHeight="tall"
-          >
-            {children}
-          </Heading>
-        ),
-        h3: ({ children }) => (
-          <Heading
-            as="h3"
-            fontSize="2xl"
-            my={3}
-            fontWeight="600"
-            lineHeight="tall"
-          >
-            {children}
-          </Heading>
-        ),
-        h4: ({ children }) => (
-          <Heading
-            as="h4"
-            fontSize="xl"
-            my={3}
-            fontWeight="600"
-            lineHeight="tall"
-          >
-            {children}
-          </Heading>
-        ),
-        h5: ({ children }) => (
-          <Heading
-            as="h5"
-            fontSize="lg"
-            my={3}
-            fontWeight="600"
-            lineHeight="tall"
-          >
-            {children}
-          </Heading>
-        ),
-        h6: ({ children }) => (
-          <Heading
-            as="h6"
-            fontSize="md"
-            my={3}
-            fontWeight="600"
-            lineHeight="tall"
-          >
-            {children}
-          </Heading>
-        ),
+        h1: ({ children }) => {
+          const id = toLowerDashed(children);
+          return (
+            <a href={`#${id}`}>
+              <Heading
+                as="h1"
+                id={id}
+                fontSize="4xl"
+                my={3}
+                fontWeight="600"
+                lineHeight="tall"
+                _hover={{ textDecor: 'underline' }}
+              >
+                {children}
+              </Heading>
+            </a>
+          );
+        },
+        h2: ({ children }) => {
+          const id = toLowerDashed(children);
+          return (
+            <a href={`#${id}`}>
+              <Heading
+                as="h2"
+                id={id}
+                fontSize="3xl"
+                my={3}
+                fontWeight="600"
+                lineHeight="tall"
+                _hover={{ textDecor: 'underline' }}
+              >
+                {children}
+              </Heading>
+            </a>
+          );
+        },
+        h3: ({ children }) => {
+          const id = toLowerDashed(children);
+          return (
+            <a href={`#${id}`}>
+              <Heading
+                as="h3"
+                id={id}
+                fontSize="2xl"
+                my={3}
+                fontWeight="600"
+                lineHeight="tall"
+                _hover={{ textDecor: 'underline' }}
+              >
+                {children}
+              </Heading>
+            </a>
+          );
+        },
+        h4: ({ children }) => {
+          const id = toLowerDashed(children);
+          return (
+            <a href={`#${id}`}>
+              <Heading
+                as="h4"
+                id={id}
+                fontSize="xl"
+                my={3}
+                fontWeight="600"
+                lineHeight="tall"
+                _hover={{ textDecor: 'underline' }}
+              >
+                {children}
+              </Heading>
+            </a>
+          );
+        },
+        h5: ({ children }) => {
+          const id = toLowerDashed(children);
+          return (
+            <a href={`#${id}`}>
+              <Heading
+                as="h5"
+                id={id}
+                fontSize="lg"
+                my={3}
+                fontWeight="600"
+                lineHeight="tall"
+                _hover={{ textDecor: 'underline' }}
+              >
+                {children}
+              </Heading>
+            </a>
+          );
+        },
+        h6: ({ children }) => {
+          const id = toLowerDashed(children);
+          return (
+            <a href={`#${id}`}>
+              <Heading
+                as="h6"
+                id={id}
+                fontSize="md"
+                my={3}
+                fontWeight="600"
+                lineHeight="tall"
+                _hover={{ textDecor: 'underline' }}
+              >
+                {children}
+              </Heading>
+            </a>
+          );
+        },
         hr: () => <Divider my={3} />,
         img: ({ alt, src }) => (
           <>
