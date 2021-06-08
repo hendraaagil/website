@@ -1,7 +1,17 @@
+import { useEffect, useState } from 'react';
 import { ReactCusdis } from 'react-cusdis';
 
-const Disqus = ({ pageUrl, pageId, pageTitle }) => {
+const Comments = ({ pageUrl, pageId, pageTitle }) => {
   const appId = process.env.NEXT_PUBLIC_CUSDIS_APPID;
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(true);
+  }, []);
+
+  if (!show) {
+    return null;
+  }
 
   return (
     <ReactCusdis
@@ -16,4 +26,4 @@ const Disqus = ({ pageUrl, pageId, pageTitle }) => {
   );
 };
 
-export default Disqus;
+export default Comments;
