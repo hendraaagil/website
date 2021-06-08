@@ -9,7 +9,7 @@ First, copy `.env.example` and paste as `.env.local`, fill all field:
 ```bash
 CONTENTFUL_SPACE_ID = ''
 CONTENTFUL_ACCESS_KEY = ''
-NEXT_PUBLIC_DISQUS_SHORTNAME = ''
+NEXT_PUBLIC_CUSDIS_APPID = ''
 NEXT_PUBLIC_SITE_URL = ''
 ```
 
@@ -23,7 +23,7 @@ Last, open [http://localhost:3000](http://localhost:3000) with your browser to s
 
 ## Credits
 
-Built with [Chakra UI](https://chakra-ui.com), [Contentful](https://contentful.com) and [Next.js](https://nextjs.org).
+Built with [Chakra UI](https://chakra-ui.com), [Contentful](https://contentful.com), [Cusdis](https://cusdis.com) and [Next.js](https://nextjs.org).
 
 ## License
 

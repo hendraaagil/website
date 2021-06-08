@@ -5,7 +5,7 @@ import { Badge, Box, Divider, Heading, HStack, Text } from '@chakra-ui/react';
 import { format } from 'date-fns';
 
 import MarkdownComponent from '../../components/blog/MarkdownComponent';
-import Disqus from '../../components/blog/Disqus';
+import Comments from '../../components/blog/Comments';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -119,7 +119,7 @@ const DetailBlog = ({ blog }) => {
         <MarkdownComponent markdownContent={markdownContent} />
       </Box>
       <Divider my={4} />
-      <Disqus url={url} identifier={id} title={title} />
+      <Comments pageUrl={url} pageId={id} pageTitle={title} />
     </>
   );
 };
