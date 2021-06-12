@@ -16,10 +16,10 @@ const MenuDrawer = ({ isOpen, onClose, links }) => (
         <VStack spacing={4}>
           {links.map((link, index) => (
             <NavLink
-              key={index}
+              key={String(index)}
               link={link.url}
               name={link.name}
-              hasBg={true}
+              hasBg
               onClose={onClose}
             />
           ))}

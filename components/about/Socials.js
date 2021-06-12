@@ -8,11 +8,9 @@ const Socials = () => (
   <VStack pt={2} pb={4} align="start" w="full">
     <Text>
       You can reach me out via email at{' '}
-      {
-        <CustomLink link="mailto:hendraaagil@gmail.com">
-          hendraaagil@gmail.com
-        </CustomLink>
-      }
+      <CustomLink link="mailto:hendraaagil@gmail.com">
+        hendraaagil@gmail.com
+      </CustomLink>
       , or via socials below:
     </Text>
     <Stack
@@ -22,7 +20,7 @@ const Socials = () => (
       spacing={{ base: 3, lg: 6 }}
     >
       {about.socials.map((social, index) => (
-        <SocialButton key={index} name={social.name} url={social.url} />
+        <SocialButton key={String(index)} name={social.name} url={social.url} />
       ))}
     </Stack>
   </VStack>

@@ -29,7 +29,6 @@ const MarkdownComponent = ({ markdownContent }) => {
   return (
     <ReactMarkdown
       remarkPlugins={[gfm]}
-      children={markdownContent}
       components={{
         a: ({ children, href }) => (
           <Link href={href} isExternal color="brand.blue" textDecor="underline">
@@ -64,12 +63,9 @@ const MarkdownComponent = ({ markdownContent }) => {
               {children}
             </Code>
           ) : (
-            <SyntaxHighlighter
-              style={nord}
-              language={match[1]}
-              children={String(children).replace(/\n$/, '')}
-              showLineNumbers
-            />
+            <SyntaxHighlighter style={nord} language={match[1]} showLineNumbers>
+              {String(children).replace(/\n$/, '')}
+            </SyntaxHighlighter>
           );
         },
         h1: ({ children }) => {
@@ -237,7 +233,9 @@ const MarkdownComponent = ({ markdownContent }) => {
         thead: ({ children }) => <Thead>{children}</Thead>,
         tr: ({ children }) => <Tr>{children}</Tr>,
       }}
-    />
+    >
+      {markdownContent}
+    </ReactMarkdown>
   );
 };
 

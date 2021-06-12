@@ -22,7 +22,7 @@ const Projects = () => {
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
         {projects.map((project, index) => (
           <Card
-            key={index}
+            key={String(index)}
             name={project.name}
             thumbnail={project.thumbnail}
             desc={project.desc}

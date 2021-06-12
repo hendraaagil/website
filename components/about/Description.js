@@ -7,19 +7,13 @@ const Description = () => (
   <Box py={4} lineHeight="tall">
     <Text py={2}>
       Hello, my name is <b>Hendra Agil Syaputra</b>. Usually called{' '}
-      <b>Hendra</b> / <b>Agil</b>. I'm currently {getAge()} years old. Born and
-      live in{' '}
-      {
-        <CustomLink link="https://karanganyarkab.go.id">
-          Karanganyar, Central Java, Indonesia
-        </CustomLink>
-      }
+      <b>Hendra</b> / <b>Agil</b>. I&apos;m currently {getAge()} years old. Born
+      and live in{' '}
+      <CustomLink link="https://karanganyarkab.go.id">
+        Karanganyar, Central Java, Indonesia
+      </CustomLink>
       . Graduated from{' '}
-      {
-        <CustomLink link="https://smkn2kra.sch.id">
-          VHS 2 Karanganyar
-        </CustomLink>
-      }{' '}
+      <CustomLink link="https://smkn2kra.sch.id">VHS 2 Karanganyar</CustomLink>{' '}
       at 2021 as Software Engineering student.
     </Text>
     <Text py={2}>

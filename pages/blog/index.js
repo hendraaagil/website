@@ -31,7 +31,7 @@ const Blog = ({ blogs }) => {
       <Divider mb={8} />
       <VStack spacing={6}>
         {blogs.map((blog) => {
-          const { slug, summary, title } = blog.fields;
+          const { slug, summary } = blog.fields;
           const { tags } = blog.metadata;
           const { createdAt, id } = blog.sys;
 
@@ -40,7 +40,7 @@ const Blog = ({ blogs }) => {
               key={id}
               slug={slug}
               summary={summary}
-              title={title}
+              title={blog.fields.title}
               tags={tags}
               createdAt={createdAt}
             />
