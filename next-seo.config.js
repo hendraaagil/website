@@ -18,8 +18,8 @@ const SEO = {
       {
         url: `${siteUrl}/og-image.png`,
         alt: title,
-        width: 1280,
-        height: 720,
+        width: 1200,
+        height: 630,
       },
     ],
   },
