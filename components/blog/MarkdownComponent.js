@@ -31,7 +31,13 @@ const MarkdownComponent = ({ markdownContent }) => {
       remarkPlugins={[gfm]}
       components={{
         a: ({ children, href }) => (
-          <Link href={href} isExternal color="brand.blue" textDecor="underline">
+          <Link
+            href={href}
+            isExternal
+            color="brand.blue"
+            fontWeight="600"
+            textDecor="underline"
+          >
             {children}
           </Link>
         ),
@@ -77,7 +83,6 @@ const MarkdownComponent = ({ markdownContent }) => {
                 id={id}
                 fontSize="4xl"
                 my={3}
-                fontWeight="600"
                 lineHeight="tall"
                 _hover={{ textDecor: 'underline' }}
               >
@@ -95,7 +100,6 @@ const MarkdownComponent = ({ markdownContent }) => {
                 id={id}
                 fontSize="3xl"
                 my={3}
-                fontWeight="600"
                 lineHeight="tall"
                 _hover={{ textDecor: 'underline' }}
               >
@@ -113,7 +117,6 @@ const MarkdownComponent = ({ markdownContent }) => {
                 id={id}
                 fontSize="2xl"
                 my={3}
-                fontWeight="600"
                 lineHeight="tall"
                 _hover={{ textDecor: 'underline' }}
               >
@@ -131,7 +134,6 @@ const MarkdownComponent = ({ markdownContent }) => {
                 id={id}
                 fontSize="xl"
                 my={3}
-                fontWeight="600"
                 lineHeight="tall"
                 _hover={{ textDecor: 'underline' }}
               >
@@ -149,7 +151,6 @@ const MarkdownComponent = ({ markdownContent }) => {
                 id={id}
                 fontSize="lg"
                 my={3}
-                fontWeight="600"
                 lineHeight="tall"
                 _hover={{ textDecor: 'underline' }}
               >
@@ -167,7 +168,6 @@ const MarkdownComponent = ({ markdownContent }) => {
                 id={id}
                 fontSize="md"
                 my={3}
-                fontWeight="600"
                 lineHeight="tall"
                 _hover={{ textDecor: 'underline' }}
               >

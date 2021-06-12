@@ -1,6 +1,6 @@
 import { Global, css } from '@emotion/react';
 
-export const GlobalStyle = ({ children }) => (
+const GlobalStyle = ({ children }) => (
   <>
     <Global
       styles={css`
@@ -27,10 +27,6 @@ export const GlobalStyle = ({ children }) => (
           scoll-behavior: smooth;
           cursor: default;
         }
-        b,
-        strong {
-          font-weight: 600;
-        }
         #__next {
           display: flex;
           flex-direction: column;
@@ -44,3 +40,5 @@ export const GlobalStyle = ({ children }) => (
     {children}
   </>
 );
+
+export default GlobalStyle;

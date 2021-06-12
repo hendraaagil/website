@@ -30,7 +30,7 @@ export default class MyDocument extends NextDocument {
         </Head>
 
         <body>
-          <ColorModeScript />
+          <ColorModeScript initialColorMode="light" />
           <Main />
           <NextScript />
         </body>

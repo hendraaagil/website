@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 
-import { getAge } from '../lib/age';
+import getAge from '../lib/age';
 
 export default function Home() {
   return (

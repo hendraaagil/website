@@ -5,8 +5,8 @@ import { Box, ChakraProvider, Container } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import SEO from '../next-seo.config';
-import { theme } from '../styles/theme';
-import { GlobalStyle } from '../styles/GlobalStyle';
+import theme from '../styles/theme';
+import GlobalStyle from '../styles/GlobalStyle';
 import '../styles/css/nprogress.css';
 
 import Navbar from '../components/nav/Navbar';

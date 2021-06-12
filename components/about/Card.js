@@ -13,7 +13,7 @@ const Card = ({ title, skills }) => (
       transform: 'translateY(-3px);',
     }}
   >
-    <Heading as="h3" size="md" mb={2} fontWeight="600">
+    <Heading as="h3" size="md" mb={2}>
       {title}
     </Heading>
     {skills.map((skill, index) => (

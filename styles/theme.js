@@ -9,7 +9,7 @@ const breakpoints = createBreakpoints({
   '2xl': '1440px',
 });
 
-export const theme = extendTheme({
+const theme = extendTheme({
   fonts: {
     heading: `'Lexend', ${defaultTheme.fonts.heading}`,
     body: `'Lexend', ${defaultTheme.fonts.body}`,
@@ -23,3 +23,5 @@ export const theme = extendTheme({
   },
   breakpoints,
 });
+
+export default theme;

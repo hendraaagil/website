@@ -1,4 +1,4 @@
-import { getAge } from './lib/age';
+import getAge from './lib/age';
 
 const title = 'Hendra Agil';
 const description = `Hello, my name is Hendra Agil Syaputra. Usually called Hendra / Agil. I'm currently ${getAge()} years old. Born and live in Karanganyar, Central Java, Indonesia.`;
