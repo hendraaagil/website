@@ -27,12 +27,6 @@ export default class MyDocument extends NextDocument {
             href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500"
             rel="stylesheet"
           />
-
-          <script
-            data-ad-client="ca-pub-1459746136887469"
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          />
         </Head>
 
         <body>
