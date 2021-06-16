@@ -83,6 +83,7 @@ const DetailBlog = ({ blog }) => {
           alt={thumbnail.fields.title}
           width={width}
           height={height}
+          placeholder="blur"
         />
         <Text as="figcaption" mt={0.5} mb={2} fontSize="sm">
           {description}

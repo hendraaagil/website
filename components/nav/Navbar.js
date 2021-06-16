@@ -41,7 +41,7 @@ const Navbar = () => {
       >
         <Container maxW="container.lg">
           <HStack justify="space-between">
-            <Link href="/">
+            <Link href="/" passHref>
               <Heading
                 as="h1"
                 size="md"

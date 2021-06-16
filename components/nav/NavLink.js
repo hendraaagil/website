@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Text } from '@chakra-ui/react';
 
 const NavLink = ({ hasBg, link, name, onClose }) => (
-  <Link href={link}>
+  <Link href={link} passHref>
     <Text
       as="a"
       onClick={onClose}

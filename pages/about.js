@@ -24,6 +24,7 @@ const About = () => {
           alt="Hendra Agil's Logo"
           width={128}
           height={128}
+          placeholder="blur"
         />
         <Description />
         <Divider />

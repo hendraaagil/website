@@ -14,7 +14,13 @@ const Card = ({ name, thumbnail, desc, github, demo }) => (
       transform: 'translateY(-3px);',
     }}
   >
-    <Image src={thumbnail} alt={name} width={1280} height={720} />
+    <Image
+      src={thumbnail}
+      alt={name}
+      width={1280}
+      height={720}
+      placeholder="blur"
+    />
     <VStack p={4} lineHeight="tall">
       <Heading fontSize="2xl" mt={2}>
         {name}
