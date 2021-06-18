@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    {
+      "source": "/me",
+      "destination": "/about"
+    },
+    {
+      "source": "/github",
+      "destination": "https://github.com/hendraaagil"
+    },
+    {
+      "source": "/view-source",
+      "destination": "https://github.com/hendraaagil/website"
+    }
+  ]
+}
