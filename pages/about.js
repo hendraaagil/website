@@ -5,6 +5,7 @@ import { Divider, Heading, VStack } from '@chakra-ui/react';
 import Description from '../components/about/Description';
 import Skills from '../components/about/Skills';
 import Socials from '../components/about/Socials';
+import logo from '../public/ha-logo.png';
 
 const About = () => {
   const title = 'About';
@@ -20,7 +21,7 @@ const About = () => {
       <Divider my={8} />
       <VStack>
         <Image
-          src="/ha-logo.png"
+          src={logo}
           alt="Hendra Agil's Logo"
           width={128}
           height={128}
