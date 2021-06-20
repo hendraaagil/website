@@ -1,14 +1,17 @@
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
 import { Divider, Heading, Text, VStack } from '@chakra-ui/react';
 
 import Card from '../../components/blog/Card';
 
+const client = createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
+});
+
 export const getStaticProps = async () => {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  });
   const res = await client.getEntries({ content_type: 'blog' });
 
   return { props: { blogs: res.items } };
@@ -17,6 +20,24 @@ export const getStaticProps = async () => {
 const Blog = ({ blogs }) => {
   const title = 'Blog';
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog`;
+
+  const router = useRouter();
+  const { query } = router;
+  const [blogLists, setBlogLists] = useState(blogs);
+
+  useEffect(() => {
+    if (!query) return;
+
+    const fetchBlogByTag = async () => {
+      const res = await client.getEntries({
+        content_type: 'blog',
+        'metadata.tags.sys.id[in]': query.tag,
+      });
+      setBlogLists(res.items);
+    };
+
+    fetchBlogByTag();
+  }, [query]);
 
   return (
     <>
@@ -30,7 +51,7 @@ const Blog = ({ blogs }) => {
       </Text>
       <Divider mb={8} />
       <VStack spacing={6}>
-        {blogs.map((blog) => {
+        {blogLists.map((blog) => {
           const { slug, summary } = blog.fields;
           const { tags } = blog.metadata;
           const { createdAt, id } = blog.sys;
@@ -43,6 +64,7 @@ const Blog = ({ blogs }) => {
               title={blog.fields.title}
               tags={tags}
               createdAt={createdAt}
+              router={router}
             />
           );
         })}

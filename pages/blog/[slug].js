@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
 import { Badge, Box, Divider, Heading, HStack, Text } from '@chakra-ui/react';
@@ -8,8 +9,8 @@ import MarkdownComponent from '../../components/blog/MarkdownComponent';
 import Comments from '../../components/blog/Comments';
 
 const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
 });
 
 export const getStaticPaths = async () => {
@@ -40,6 +41,7 @@ const DetailBlog = ({ blog }) => {
   const { description, file } = thumbnail.fields;
   const { width, height } = file.details.image;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
+  const router = useRouter();
 
   return (
     <>
@@ -101,6 +103,7 @@ const DetailBlog = ({ blog }) => {
         {tags.map((tag) => (
           <Badge
             key={tag.sys.id}
+            onClick={() => router.push(`/blog?tag=${tag.sys.id}`)}
             py={1}
             px={2}
             bg="brand.light"
@@ -109,6 +112,12 @@ const DetailBlog = ({ blog }) => {
             textTransform="capitalize"
             rounded="md"
             shadow="inner"
+            transition="all 0.2s ease-in-out"
+            _hover={{
+              bg: 'gray.200',
+              textDecor: 'underline',
+              cursor: 'pointer',
+            }}
           >
             {tag.sys.id}
           </Badge>

@@ -7,8 +7,8 @@
 First, copy `.env.example` and paste as `.env.local`, fill all field:
 
 ```bash
-CONTENTFUL_SPACE_ID = ''
-CONTENTFUL_ACCESS_KEY = ''
+NEXT_PUBLIC_CONTENTFUL_SPACE_ID = ''
+NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY = ''
 NEXT_PUBLIC_CUSDIS_APPID = ''
 NEXT_PUBLIC_SITE_URL = ''
 ```
