@@ -1,10 +1,21 @@
 import { NextSeo } from 'next-seo';
+import { createClient } from 'contentful';
 import { Divider, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+
 import Card from '../components/projects/Card';
 
-import projects from '../data/projects.json';
+const client = createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
+});
 
-const Projects = () => {
+export const getStaticProps = async () => {
+  const res = await client.getEntries({ content_type: 'project' });
+
+  return { props: { projects: res.items } };
+};
+
+const Projects = ({ projects }) => {
   const title = 'Projects';
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/projects`;
 
@@ -20,16 +31,28 @@ const Projects = () => {
       </Text>
       <Divider mb={8} />
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
-        {projects.map((project, index) => (
-          <Card
-            key={String(index)}
-            name={project.name}
-            thumbnail={project.thumbnail}
-            desc={project.desc}
-            github={project.github}
-            demo={project.demo}
-          />
-        ))}
+        {projects.map((project) => {
+          const {
+            demo,
+            description,
+            github,
+            thumbnail,
+            title: projectName,
+          } = project.fields;
+          const { url: imgUrl } = thumbnail.fields.file;
+          const { id } = project.sys;
+
+          return (
+            <Card
+              key={id}
+              name={projectName}
+              thumbnail={`https:${imgUrl}`}
+              desc={description}
+              github={github}
+              demo={demo}
+            />
+          );
+        })}
       </SimpleGrid>
     </>
   );
