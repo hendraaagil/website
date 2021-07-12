@@ -57,12 +57,8 @@ const Navbar = () => {
             </Link>
             {larger && (
               <HStack spacing={10}>
-                {links.map((link, index) => (
-                  <NavLink
-                    key={String(index)}
-                    link={link.url}
-                    name={link.name}
-                  />
+                {links.map((link) => (
+                  <NavLink key={link.name} link={link.url} name={link.name} />
                 ))}
               </HStack>
             )}

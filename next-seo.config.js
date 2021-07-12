@@ -5,7 +5,7 @@ const description = `Hello, my name is Hendra Agil Syaputra. Usually called Hend
 const siteUrl = 'https://hendraaagil.space';
 
 const SEO = {
-  titleTemplate: `%s | ${title}`,
+  titleTemplate: `${title} ▸ %s`,
   defaultTitle: title,
   description,
   canonical: siteUrl,

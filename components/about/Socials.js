@@ -19,8 +19,8 @@ const Socials = () => (
       w="full"
       spacing={{ base: 3, lg: 6 }}
     >
-      {about.socials.map((social, index) => (
-        <SocialButton key={String(index)} name={social.name} url={social.url} />
+      {about.socials.map((social) => (
+        <SocialButton key={social.name} name={social.name} url={social.url} />
       ))}
     </Stack>
   </VStack>

@@ -14,9 +14,9 @@ const MenuDrawer = ({ isOpen, onClose, links }) => (
     <DrawerContent roundedTop="xl" overflow="hidden">
       <DrawerBody py={6} bg="brand.light">
         <VStack spacing={4}>
-          {links.map((link, index) => (
+          {links.map((link) => (
             <NavLink
-              key={String(index)}
+              key={link.name}
               link={link.url}
               name={link.name}
               hasBg
