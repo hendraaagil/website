@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import { Button, useColorModeValue } from '@chakra-ui/react';
 import {
   FaDiscord,
   FaDonate,
@@ -58,7 +58,7 @@ const SocialButton = ({ name, isLinktree, url }) => {
       color="brand.light"
       transition="all 0.2s ease-in-out"
       _focus={{
-        bg: 'brand.light',
+        bg: useColorModeValue('brand.light', 'brand.dark'),
         color,
         transform: 'translateY(-3px);',
       }}

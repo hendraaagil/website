@@ -10,6 +10,7 @@ import GlobalStyle from '../styles/GlobalStyle';
 import '../styles/css/nprogress.css';
 
 import Navbar from '../components/nav/Navbar';
+import ToggleMode from '../components/nav/ToggleMode';
 import Footer from '../components/Footer';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps, router }) {
       <GlobalStyle>
         <Container maxW="container.lg">
           <Navbar />
+          <ToggleMode />
           <AnimatePresence exitBeforeEnter>
             <MotionBox
               key={router.route}

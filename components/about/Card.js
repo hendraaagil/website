@@ -1,4 +1,4 @@
-import { Heading, Text, VStack } from '@chakra-ui/react';
+import { Heading, Text, useColorModeValue, VStack } from '@chakra-ui/react';
 
 const Card = ({ title, skills }) => (
   <VStack
@@ -9,7 +9,7 @@ const Card = ({ title, skills }) => (
     shadow="md"
     transition="all 0.2s ease-in-out"
     _hover={{
-      bg: 'gray.200',
+      bg: useColorModeValue('gray.200', 'gray.700'),
       transform: 'translateY(-3px);',
     }}
   >

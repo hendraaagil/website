@@ -16,11 +16,14 @@ import {
   Thead,
   Tr,
   UnorderedList,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 const MarkdownComponent = ({ markdownContent }) => {
+  const bgColor = useColorModeValue('gray.200', 'gray.700');
+
   const toLowerDashed = (string) => {
     const result = string.toString().toLowerCase().replace(/\s/g, '-');
     return result;
@@ -47,7 +50,7 @@ const MarkdownComponent = ({ markdownContent }) => {
             my={3}
             pl={3}
             py={0.5}
-            bg="gray.200"
+            bg={bgColor}
             borderLeftWidth="4px"
             borderColor="brand.blue"
             rounded="sm"
@@ -61,7 +64,7 @@ const MarkdownComponent = ({ markdownContent }) => {
             <Code
               py={0.5}
               px={1.5}
-              bg="gray.200"
+              bg={bgColor}
               fontFamily="Fira Code"
               fontWeight="500"
               rounded="sm"
@@ -194,7 +197,7 @@ const MarkdownComponent = ({ markdownContent }) => {
                 my={3}
                 mx="auto"
                 w="fit-content"
-                bg="gray.200"
+                bg={bgColor}
                 textAlign="center"
                 rounded="md"
                 overflow="hidden"
@@ -207,7 +210,7 @@ const MarkdownComponent = ({ markdownContent }) => {
         },
         ul: ({ children }) => <UnorderedList pl={4}>{children}</UnorderedList>,
         table: ({ children }) => (
-          <Table bg="gray.200" rounded="md" overflow="hidden">
+          <Table bg={bgColor} rounded="md" overflow="hidden">
             {children}
           </Table>
         ),

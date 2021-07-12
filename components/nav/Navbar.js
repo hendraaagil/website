@@ -5,6 +5,7 @@ import {
   Container,
   Heading,
   HStack,
+  useColorModeValue,
   useDisclosure,
   useMediaQuery,
 } from '@chakra-ui/react';
@@ -35,7 +36,10 @@ const Navbar = () => {
         shadow="sm"
         zIndex="docked"
         sx={{
-          background: 'rgba(239, 244, 246, 0.75)',
+          background: useColorModeValue(
+            'rgba(239, 244, 246, 0.75)',
+            'rgba(29, 31, 37, 0.75)'
+          ),
           backdropFilter: 'saturate(180%) blur(20px)',
         }}
       >

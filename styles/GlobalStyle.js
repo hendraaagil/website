@@ -1,4 +1,5 @@
 import { Global, css } from '@emotion/react';
+import { useColorModeValue } from '@chakra-ui/react';
 
 const GlobalStyle = ({ children }) => (
   <>
@@ -16,12 +17,12 @@ const GlobalStyle = ({ children }) => (
           width: 12px;
         }
         ::-webkit-scrollbar-track {
-          background: #eff4f6;
+          background: ${useColorModeValue('#eff4f6', '#1d1f28')};
         }
         ::-webkit-scrollbar-thumb {
           background-color: #2a61cc;
           border-radius: 4px;
-          border: 2px solid #eff4f6;
+          border: 2px solid ${useColorModeValue('#eff4f6', '#1d1f28')};
         }
         html {
           scoll-behavior: smooth;
@@ -32,8 +33,8 @@ const GlobalStyle = ({ children }) => (
           flex-direction: column;
           min-height: 100vh;
           font-weight: 500;
-          background: #eff4f6;
-          color: #1d1f28;
+          background: ${useColorModeValue('#eff4f6', '#1d1f28')};
+          color: ${useColorModeValue('#1d1f28', '#eff4f6')};
         }
       `}
     />

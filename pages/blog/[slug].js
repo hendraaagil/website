@@ -2,7 +2,15 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
-import { Badge, Box, Divider, Heading, HStack, Text } from '@chakra-ui/react';
+import {
+  Badge,
+  Box,
+  Divider,
+  Heading,
+  HStack,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { format } from 'date-fns';
 
 import MarkdownComponent from '../../components/blog/MarkdownComponent';
@@ -43,13 +51,16 @@ const DetailBlog = ({ blog }) => {
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
   const router = useRouter();
 
+  const tagBg = useColorModeValue('brand.light', 'brand.dark');
+  const tagColor = useColorModeValue('brand.dark', 'brand.light');
+
   return (
     <>
       <NextSeo
-        title={title}
+        title={`Blog ▸ ${title}`}
         canonical={url}
         openGraph={{
-          title,
+          title: `Blog ▸ ${title}`,
           description: summary,
           url,
           type: 'article',
@@ -75,7 +86,7 @@ const DetailBlog = ({ blog }) => {
         mb={2}
         mx="auto"
         w="fit-content"
-        bg="gray.200"
+        bg={useColorModeValue('gray.200', 'gray.700')}
         textAlign="center"
         rounded="md"
         overflow="hidden"
@@ -106,15 +117,14 @@ const DetailBlog = ({ blog }) => {
             onClick={() => router.push(`/blog?tag=${tag.sys.id}`)}
             py={1}
             px={2}
-            bg="brand.light"
-            color="brand.dark"
+            bg={tagBg}
+            color={tagColor}
             fontWeight="500"
             textTransform="capitalize"
             rounded="md"
             shadow="inner"
             transition="all 0.2s ease-in-out"
             _hover={{
-              bg: 'gray.200',
               textDecor: 'underline',
               cursor: 'pointer',
             }}

@@ -1,4 +1,4 @@
-import { IconButton } from '@chakra-ui/react';
+import { IconButton, useColorModeValue } from '@chakra-ui/react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 const MenuButton = ({ onOpen }) => (
@@ -14,9 +14,12 @@ const MenuButton = ({ onOpen }) => (
     zIndex="sticky"
     rounded="md"
     border="2px"
-    borderColor="gray.200"
+    borderColor={useColorModeValue('gray.200', 'gray.700')}
     sx={{
-      background: 'rgba(239, 244, 246, 0.75)',
+      background: useColorModeValue(
+        'rgba(239, 244, 246, 0.75)',
+        'rgba(29, 31, 37, 0.75)'
+      ),
       backdropFilter: 'saturate(180%) blur(20px)',
     }}
   />

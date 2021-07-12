@@ -3,6 +3,7 @@ import {
   DrawerBody,
   DrawerOverlay,
   DrawerContent,
+  useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
 
@@ -12,7 +13,7 @@ const MenuDrawer = ({ isOpen, onClose, links }) => (
   <Drawer isOpen={isOpen} placement="bottom" onClose={onClose}>
     <DrawerOverlay />
     <DrawerContent roundedTop="xl" overflow="hidden">
-      <DrawerBody py={6} bg="brand.light">
+      <DrawerBody py={6} bg={useColorModeValue('brand.light', 'brand.dark')}>
         <VStack spacing={4}>
           {links.map((link) => (
             <NavLink

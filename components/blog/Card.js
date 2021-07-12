@@ -1,5 +1,12 @@
 import Link from 'next/link';
-import { Badge, Heading, HStack, Text, VStack } from '@chakra-ui/react';
+import {
+  Badge,
+  Heading,
+  HStack,
+  Text,
+  useColorModeValue,
+  VStack,
+} from '@chakra-ui/react';
 import { format } from 'date-fns';
 
 const Card = ({ createdAt, router, slug, summary, tags, title }) => (
@@ -13,7 +20,7 @@ const Card = ({ createdAt, router, slug, summary, tags, title }) => (
     shadow="md"
     transition="all 0.2s ease-in-out"
     _hover={{
-      bg: 'gray.200',
+      bg: useColorModeValue('gray.200', 'gray.700'),
       transform: 'translateY(-3px);',
     }}
   >
