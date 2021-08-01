@@ -3,6 +3,7 @@ import { createClient } from 'contentful';
 import { Divider, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 
 import Card from '../components/projects/Card';
+import PageContainer from '../components/PageContainer';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
@@ -23,37 +24,39 @@ const Projects = ({ projects }) => {
     <>
       <NextSeo title={title} canonical={url} openGraph={{ url, title }} />
 
-      <Heading as="h1" mt={8} textAlign="center">
-        Projects
-      </Heading>
-      <Text my={5} fontWeight="600" textAlign="center">
-        Learning by Doing
-      </Text>
-      <Divider mb={8} />
-      <SimpleGrid columns={[1, 1, 2]} gap={6}>
-        {projects.map((project) => {
-          const {
-            demo,
-            description,
-            github,
-            thumbnail,
-            title: projectName,
-          } = project.fields;
-          const { url: imgUrl } = thumbnail.fields.file;
-          const { id } = project.sys;
+      <PageContainer>
+        <Heading as="h1" mt={8} textAlign="center">
+          Projects
+        </Heading>
+        <Text my={5} fontWeight="600" textAlign="center">
+          Learning by Doing
+        </Text>
+        <Divider mb={8} />
+        <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          {projects.map((project) => {
+            const {
+              demo,
+              description,
+              github,
+              thumbnail,
+              title: projectName,
+            } = project.fields;
+            const { url: imgUrl } = thumbnail.fields.file;
+            const { id } = project.sys;
 
-          return (
-            <Card
-              key={id}
-              name={projectName}
-              thumbnail={`https:${imgUrl}`}
-              desc={description}
-              github={github}
-              demo={demo}
-            />
-          );
-        })}
-      </SimpleGrid>
+            return (
+              <Card
+                key={id}
+                name={projectName}
+                thumbnail={`https:${imgUrl}`}
+                desc={description}
+                github={github}
+                demo={demo}
+              />
+            );
+          })}
+        </SimpleGrid>
+      </PageContainer>
     </>
   );
 };

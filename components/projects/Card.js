@@ -25,13 +25,11 @@ const Card = ({ name, thumbnail, desc, github, demo }) => {
       }}
     >
       <Image src={thumbnail} alt={name} width={1280} height={720} />
-      <VStack p={4} lineHeight="tall">
+      <VStack p={4} textAlign="center" lineHeight="tall">
         <Heading fontSize="2xl" mt={2}>
           {name}
         </Heading>
-        <Text pt={2} textAlign="center">
-          {desc}
-        </Text>
+        <Text pt={2}>{desc}</Text>
         <HStack py={2}>
           <Button
             onClick={() =>

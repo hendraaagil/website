@@ -5,6 +5,7 @@ import { createClient } from 'contentful';
 import { Divider, Heading, Text, VStack } from '@chakra-ui/react';
 
 import Card from '../../components/blog/Card';
+import PageContainer from '../../components/PageContainer';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
@@ -43,32 +44,34 @@ const Blog = ({ blogs }) => {
     <>
       <NextSeo title={title} canonical={url} openGraph={{ url, title }} />
 
-      <Heading as="h1" mt={8} textAlign="center">
-        Blog
-      </Heading>
-      <Text my={5} fontWeight="600" textAlign="center">
-        Sharing by Writing
-      </Text>
-      <Divider mb={8} />
-      <VStack spacing={6}>
-        {blogLists.map((blog) => {
-          const { slug, summary } = blog.fields;
-          const { tags } = blog.metadata;
-          const { createdAt, id } = blog.sys;
+      <PageContainer>
+        <Heading as="h1" mt={8} textAlign="center">
+          Blog
+        </Heading>
+        <Text my={5} fontWeight="600" textAlign="center">
+          Sharing by Writing
+        </Text>
+        <Divider mb={8} />
+        <VStack spacing={6}>
+          {blogLists.map((blog) => {
+            const { slug, summary } = blog.fields;
+            const { tags } = blog.metadata;
+            const { createdAt, id } = blog.sys;
 
-          return (
-            <Card
-              key={id}
-              slug={slug}
-              summary={summary}
-              title={blog.fields.title}
-              tags={tags}
-              createdAt={createdAt}
-              router={router}
-            />
-          );
-        })}
-      </VStack>
+            return (
+              <Card
+                key={id}
+                slug={slug}
+                summary={summary}
+                title={blog.fields.title}
+                tags={tags}
+                createdAt={createdAt}
+                router={router}
+              />
+            );
+          })}
+        </VStack>
+      </PageContainer>
     </>
   );
 };
