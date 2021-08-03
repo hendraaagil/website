@@ -21,6 +21,10 @@ const Description = () => (
       for now I spend more time to explore about frontend development especially
       using JavaScript and React.
     </Text>
+    <Text py={2}>
+      You can visit my linktree page at{' '}
+      <CustomLink link="/linktree">here</CustomLink>. Thank you.
+    </Text>
   </Box>
 );
 

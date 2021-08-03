@@ -34,6 +34,7 @@ const Navbar = () => {
         w="full"
         left={0}
         shadow="sm"
+        transition="background 100ms ease"
         zIndex="docked"
         sx={{
           background: useColorModeValue(

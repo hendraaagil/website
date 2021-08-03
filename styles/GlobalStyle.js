@@ -35,6 +35,7 @@ const GlobalStyle = ({ children }) => (
           font-weight: 500;
           background: ${useColorModeValue('#eff4f6', '#1d1f28')};
           color: ${useColorModeValue('#1d1f28', '#eff4f6')};
+          transition: background 100ms ease;
         }
       `}
     />
