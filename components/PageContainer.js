@@ -5,7 +5,9 @@ const PageContainer = (props) => {
 
   return (
     <Flex align="center" justify="center" minH="100vh">
-      <Box {...props}>{children}</Box>
+      <Box w="full" {...props}>
+        {children}
+      </Box>
     </Flex>
   );
 };
