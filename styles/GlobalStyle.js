@@ -7,11 +7,11 @@ const GlobalStyle = ({ children }) => (
       styles={css`
         ::selection {
           background-color: #2a61cc;
-          color: #eff4f6;
+          color: ${useColorModeValue('#eff4f6', '#1d1f28')};
         }
         ::-moz-selection {
           background-color: #2a61cc;
-          color: #eff4f6;
+          color: ${useColorModeValue('#eff4f6', '#1d1f28')};
         }
         ::-webkit-scrollbar {
           width: 12px;
