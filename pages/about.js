@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
+import { createClient } from 'contentful';
 import { Divider, Heading, VStack } from '@chakra-ui/react';
 
 import Description from '../components/about/Description';
@@ -8,7 +9,24 @@ import Skills from '../components/about/Skills';
 import Socials from '../components/about/Socials';
 import logo from '../public/ha-logo.png';
 
-const About = () => {
+const client = createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
+});
+
+export const getStaticProps = async () => {
+  const res = await client.getEntries({ content_type: 'about' });
+  const socials = await res.items.filter(
+    (item) => item.fields.title === 'socials'
+  )[0].fields.items;
+  const skills = await res.items.filter(
+    (item) => item.fields.title === 'skills'
+  )[0].fields.items;
+
+  return { props: { socials, skills } };
+};
+
+const About = ({ socials, skills }) => {
   const title = 'About';
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/about`;
 
@@ -31,9 +49,9 @@ const About = () => {
           />
           <Description />
           <Divider />
-          <Skills />
+          <Skills skills={skills} />
           <Divider />
-          <Socials />
+          <Socials socials={socials} />
         </VStack>
       </PageContainer>
     </>

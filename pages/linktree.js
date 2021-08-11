@@ -1,11 +1,31 @@
 import { NextSeo } from 'next-seo';
+import { createClient } from 'contentful';
 import { Divider, Heading, Stack, Text } from '@chakra-ui/react';
 
-import about from '../data/about.json';
 import PageContainer from '../components/PageContainer';
 import SocialButton from '../components/about/SocialButton';
 
-const Linktree = () => {
+const client = createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
+});
+
+export const getStaticProps = async () => {
+  const res = await client.getEntries({ content_type: 'about' });
+  const discussions = await res.items.filter(
+    (item) => item.fields.title === 'discussions'
+  )[0].fields.items;
+  const socials = await res.items.filter(
+    (item) => item.fields.title === 'socials'
+  )[0].fields.items;
+  const supports = await res.items.filter(
+    (item) => item.fields.title === 'supports'
+  )[0].fields.items;
+
+  return { props: { discussions, socials, supports } };
+};
+
+const Linktree = ({ discussions, socials, supports }) => {
   const title = 'Linktree';
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/linktree`;
 
@@ -23,7 +43,7 @@ const Linktree = () => {
             Socials
           </Heading>
           <Text>If you want to contact me.</Text>
-          {about.socials.map((social) => (
+          {socials.map((social) => (
             <SocialButton
               key={social.name}
               name={social.name}
@@ -36,7 +56,7 @@ const Linktree = () => {
             Discussions
           </Heading>
           <Text>If you want to discuss with me.</Text>
-          {about.discussions.map((discussion) => (
+          {discussions.map((discussion) => (
             <SocialButton
               key={discussion.name}
               name={discussion.name}
@@ -49,7 +69,7 @@ const Linktree = () => {
             Supports
           </Heading>
           <Text>If you want to support me.</Text>
-          {about.supports.map((support) => (
+          {supports.map((support) => (
             <SocialButton
               key={support.name}
               name={support.name}

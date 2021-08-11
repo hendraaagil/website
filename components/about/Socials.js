@@ -1,10 +1,9 @@
 import { Stack, Text, VStack } from '@chakra-ui/react';
 
-import about from '../../data/about.json';
 import CustomLink from './CustomLink';
 import SocialButton from './SocialButton';
 
-const Socials = () => (
+const Socials = ({ socials }) => (
   <VStack pt={2} pb={4} align="start" w="full">
     <Text>
       You can reach me out via email at{' '}
@@ -19,7 +18,7 @@ const Socials = () => (
       w="full"
       spacing={{ base: 3, lg: 6 }}
     >
-      {about.socials.map((social) => (
+      {socials.map((social) => (
         <SocialButton key={social.name} name={social.name} url={social.url} />
       ))}
     </Stack>
