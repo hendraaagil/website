@@ -23,6 +23,12 @@ Last, open [http://localhost:3000](http://localhost:3000) with your browser to s
 
 ## Credits
 
+Thanks to my inspiration.
+
+- [leerob.io](https://leerob.io/)
+- [griko.id](https://griko.id/)
+- [joshuanatanielm.space](https://joshuanatanielm.space/)
+
 Built with [Chakra UI](https://chakra-ui.com), [Contentful](https://contentful.com), [Cusdis](https://cusdis.com) and [Next.js](https://nextjs.org).
 
 ## License
