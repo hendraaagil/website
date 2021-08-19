@@ -23,6 +23,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-props-no-spreading': 'off',
+    'react/no-danger': 'off',
     '@next/next/no-page-custom-font': 'off',
     'no-plusplus': 'off',
   },

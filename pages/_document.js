@@ -1,10 +1,26 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import { ColorModeScript } from '@chakra-ui/react';
+import createEmotionServer from '@emotion/server/create-instance';
+
+import emotionCache from '../lib/emotion-cache';
+
+const { extractCritical } = createEmotionServer(emotionCache);
 
 export default class MyDocument extends NextDocument {
   static async getInitialProps(ctx) {
     const initialProps = await NextDocument.getInitialProps(ctx);
-    return { ...initialProps };
+    const styles = extractCritical(initialProps.html);
+    return {
+      ...initialProps,
+      styles: [
+        initialProps.styles,
+        <style
+          key="emotion-css"
+          dangerouslySetInnerHTML={{ __html: styles.css }}
+          data-emotion-css={styles.ids.join(' ')}
+        />,
+      ],
+    };
   }
 
   render() {
