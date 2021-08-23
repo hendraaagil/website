@@ -1,16 +1,17 @@
 import getAge from './lib/age';
 
 const title = 'Hendra Agil';
-const description = `Hello, my name is Hendra Agil Syaputra. Usually called Hendra / Agil. I'm currently ${getAge()} years old. Born and live in Karanganyar, Central Java, Indonesia.`;
+const description = `Hi, my name is Hendra Agil Syaputra. Usually called Hendra / Agil. I'm currently ${getAge()} years old. Born and live in Karanganyar, Central Java, Indonesia.`;
 const siteUrl = 'https://hendraaagil.space';
 
 const SEO = {
-  titleTemplate: `${title} ▸ %s`,
+  titleTemplate: `%s | ${title}`,
   defaultTitle: title,
   description,
   canonical: siteUrl,
   openGraph: {
     type: 'website',
+    site_name: title,
     url: siteUrl,
     title,
     description,
@@ -38,7 +39,7 @@ const SEO = {
     },
     { name: 'msapplication-TileColor', content: '#da532c' },
     { name: 'msapplication-config', content: '/favicon/browserconfig.xml' },
-    { name: 'theme-color', content: '#ffffff' },
+    { name: 'theme-color', content: '#2a61cc' },
   ],
   additionalLinkTags: [
     {

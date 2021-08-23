@@ -17,7 +17,7 @@ const Description = () => (
       at 2021 as Software Engineering student.
     </Text>
     <Text py={2}>
-      I started learn about web development since 2020 with PHP language. But
+      I started learn about web development since 2019 with PHP language. But
       for now I spend more time to explore about frontend development especially
       using JavaScript and React.
     </Text>

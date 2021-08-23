@@ -57,10 +57,10 @@ const DetailBlog = ({ blog }) => {
   return (
     <>
       <NextSeo
-        title={`Blog ▸ ${title}`}
+        title={title}
         canonical={url}
         openGraph={{
-          title: `Blog ▸ ${title}`,
+          title,
           description: summary,
           url,
           type: 'article',
