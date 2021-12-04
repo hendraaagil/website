@@ -45,7 +45,7 @@ export const getStaticProps = async ({ params }) => {
 const DetailBlog = ({ blog }) => {
   const { markdownContent, slug, summary, thumbnail, title } = blog.fields;
   const { tags } = blog.metadata;
-  const { createdAt, id, updatedAt } = blog.sys;
+  const { createdAt, updatedAt } = blog.sys;
   const { description, file } = thumbnail.fields;
   const { width, height } = file.details.image;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
@@ -138,7 +138,7 @@ const DetailBlog = ({ blog }) => {
         <MarkdownComponent markdownContent={markdownContent} />
       </Box>
       <Divider my={4} />
-      <Comments pageUrl={url} pageId={id} pageTitle={title} />
+      <Comments />
     </>
   );
 };
