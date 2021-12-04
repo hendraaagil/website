@@ -1,7 +1,7 @@
 import getAge from './lib/age';
 
 const title = 'Hendra Agil';
-const description = `Hi, my name is Hendra Agil Syaputra. Usually called Hendra / Agil. I'm currently ${getAge()} years old. Born and live in Karanganyar, Central Java, Indonesia.`;
+const description = `Hi! I'm a software developer. Born and live in Karanganyar, Central Java, Indonesia.`;
 const siteUrl = 'https://hendraaagil.space';
 
 const SEO = {

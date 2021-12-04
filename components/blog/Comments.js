@@ -1,27 +1,19 @@
-import { useEffect, useState } from 'react';
-import { ReactCusdis } from 'react-cusdis';
+import { useColorModeValue } from '@chakra-ui/react';
+import { Giscus } from '@giscus/react';
 
-const Comments = ({ pageUrl, pageId, pageTitle }) => {
-  const appId = process.env.NEXT_PUBLIC_CUSDIS_APPID;
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    setShow(true);
-  }, []);
-
-  if (!show) {
-    return null;
-  }
+const Comments = () => {
+  const theme = useColorModeValue('light', 'dark_dimmed');
 
   return (
-    <ReactCusdis
-      attrs={{
-        host: 'https://cusdis.com',
-        appId,
-        pageId,
-        pageTitle,
-        pageUrl,
-      }}
+    <Giscus
+      repo="hendraaagil/website"
+      repoId="MDEwOlJlcG9zaXRvcnkzNjg4MDQwNDI="
+      category="General"
+      categoryId="DIC_kwDOFfuAys4CAJMi"
+      mapping="title"
+      reactionsEnabled="1"
+      emitMetadata="0"
+      theme={theme}
     />
   );
 };
