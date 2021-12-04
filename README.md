@@ -28,7 +28,7 @@ Thanks to my inspiration.
 - [griko.id](https://griko.id/)
 - [joshuanatanielm.space](https://joshuanatanielm.space/)
 
-Built with [Chakra UI](https://chakra-ui.com), [Contentful](https://contentful.com), [Cusdis](https://cusdis.com), [Giscus](https://giscus.app/) and [Next.js](https://nextjs.org).
+Built with [Chakra UI](https://chakra-ui.com), [Contentful](https://contentful.com), [Giscus](https://giscus.app/) and [Next.js](https://nextjs.org).
 
 ## License
 
