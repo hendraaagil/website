@@ -18,8 +18,8 @@ const Description = () => (
     </Text>
     <Text py={2}>
       I started learn about web development since 2019 with PHP language. But
-      for now I spend more time to explore about frontend development especially
-      using JavaScript and React.
+      for now I spend more time to explore about web development using
+      JavaScript, Node.js and React.
     </Text>
     <Text py={2}>
       You can visit my linktree page at{' '}
