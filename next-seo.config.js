@@ -35,7 +35,7 @@ const SEO = {
     { name: 'application-name', content: 'Hendra Agil' },
     {
       name: 'google-site-verification',
-      content: '6SMuBaTGbq2BCsaQE1DRyNo948FcJpqt9iwGibpE4e0',
+      content: 'w0K-2LpCNTZjm0SAM9nJJ9S-tS4BZW8oB8-UwkMsrQ4',
     },
     { name: 'msapplication-TileColor', content: '#da532c' },
     { name: 'msapplication-config', content: '/favicon/browserconfig.xml' },
