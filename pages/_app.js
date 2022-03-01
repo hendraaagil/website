@@ -19,38 +19,36 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 const MotionBox = motion(Box);
 
-function MyApp({ Component, pageProps, router }) {
-  return (
-    <ChakraProvider resetCSS theme={theme}>
-      <DefaultSeo {...SEO} />
+const MyApp = ({ Component, pageProps, router }) => (
+  <ChakraProvider resetCSS theme={theme}>
+    <DefaultSeo {...SEO} />
 
-      <GlobalStyle>
-        <Container maxW="container.lg">
-          <Navbar />
-          <ToggleMode />
-          <AnimatePresence exitBeforeEnter>
-            <MotionBox
-              key={router.route}
-              animate="enter"
-              as="main"
-              exit="exit"
-              flexGrow={1}
-              pt="72px"
-              initial="initial"
-              variants={{
-                initial: { opacity: 0, y: -10 },
-                enter: { opacity: 1, y: 0 },
-                exit: { opacity: 0, y: 10 },
-              }}
-            >
-              <Component {...pageProps} />
-            </MotionBox>
-          </AnimatePresence>
-          <Footer />
-        </Container>
-      </GlobalStyle>
-    </ChakraProvider>
-  );
-}
+    <GlobalStyle>
+      <Container maxW="container.lg">
+        <Navbar />
+        <ToggleMode />
+        <AnimatePresence exitBeforeEnter>
+          <MotionBox
+            key={router.route}
+            animate="enter"
+            as="main"
+            exit="exit"
+            flexGrow={1}
+            pt="72px"
+            initial="initial"
+            variants={{
+              initial: { opacity: 0, y: -10 },
+              enter: { opacity: 1, y: 0 },
+              exit: { opacity: 0, y: 10 },
+            }}
+          >
+            <Component {...pageProps} />
+          </MotionBox>
+        </AnimatePresence>
+        <Footer />
+      </Container>
+    </GlobalStyle>
+  </ChakraProvider>
+);
 
 export default MyApp;
