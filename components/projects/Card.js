@@ -43,16 +43,20 @@ const Card = ({ name, thumbnail, desc, github, demo }) => {
           >
             GitHub
           </Button>
-          <Button
-            onClick={() => window.open(demo, '_blank', 'noopener, noreferrer')}
-            leftIcon={<AiOutlineLink />}
-            bg="brand.blue"
-            color="brand.light"
-            _focus={{ bg: bgColor, color: 'brand.blue' }}
-            _hover={{ bg: bgColor, color: 'brand.blue' }}
-          >
-            Demo
-          </Button>
+          {demo !== '-' && (
+            <Button
+              onClick={() =>
+                window.open(demo, '_blank', 'noopener, noreferrer')
+              }
+              leftIcon={<AiOutlineLink />}
+              bg="brand.blue"
+              color="brand.light"
+              _focus={{ bg: bgColor, color: 'brand.blue' }}
+              _hover={{ bg: bgColor, color: 'brand.blue' }}
+            >
+              Demo
+            </Button>
+          )}
         </HStack>
       </VStack>
     </VStack>
