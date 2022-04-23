@@ -10,9 +10,11 @@ const Comments = () => {
       repoId="MDEwOlJlcG9zaXRvcnkzNjg4MDQwNDI="
       category="General"
       categoryId="DIC_kwDOFfuAys4CAJMi"
-      mapping="title"
+      mapping="pathname"
       reactionsEnabled="1"
       emitMetadata="0"
+      inputPosition="top"
+      loading="lazy"
       theme={theme}
     />
   );
