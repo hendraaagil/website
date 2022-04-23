@@ -1,5 +1,3 @@
-import getAge from './lib/age';
-
 const title = 'Hendra Agil';
 const description = `Hi! I'm a software developer. Born and live in Karanganyar, Central Java, Indonesia.`;
 const siteUrl = 'https://hendraaagil.id';

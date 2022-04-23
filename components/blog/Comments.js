@@ -1,5 +1,5 @@
 import { useColorModeValue } from '@chakra-ui/react';
-import { Giscus } from '@giscus/react';
+import Giscus from '@giscus/react';
 
 const Comments = () => {
   const theme = useColorModeValue('light', 'dark_dimmed');
