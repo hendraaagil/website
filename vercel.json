@@ -9,6 +9,10 @@
       "destination": "https://github.com/hendraaagil"
     },
     {
+      "source": "/linkedin",
+      "destination": "https://linkedin.com/in/hendraaagil"
+    },
+    {
       "source": "/view-source",
       "destination": "https://github.com/hendraaagil/website"
     }
