@@ -13,8 +13,8 @@ import {
 } from '@chakra-ui/react';
 import { format } from 'date-fns';
 
-import MarkdownComponent from '../../components/blog/MarkdownComponent';
-import Comments from '../../components/blog/Comments';
+import MarkdownComponent from '@/components/blog/MarkdownComponent';
+import Comments from '@/components/blog/Comments';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,

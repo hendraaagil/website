@@ -2,8 +2,8 @@ import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
 import { Divider, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 
-import Card from '../components/projects/Card';
-import PageContainer from '../components/PageContainer';
+import Card from '@/components/projects/Card';
+import PageContainer from '@/components/PageContainer';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,

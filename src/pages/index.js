@@ -1,7 +1,7 @@
 import { Heading, Text } from '@chakra-ui/react';
 
-import getAge from '../lib/age';
-import PageContainer from '../components/PageContainer';
+import getAge from '@/lib/age';
+import PageContainer from '@/components/PageContainer';
 
 const Home = () => (
   <PageContainer pb="72px" textAlign="center">
