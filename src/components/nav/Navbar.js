@@ -10,7 +10,7 @@ import {
   useMediaQuery,
 } from '@chakra-ui/react';
 
-import links from '../../data/navlinks.json';
+import links from '@/data/navlinks.json';
 import NavLink from './NavLink';
 import MenuButton from './menu/MenuButton';
 import MenuDrawer from './menu/MenuDrawer';

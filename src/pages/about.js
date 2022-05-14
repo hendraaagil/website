@@ -3,11 +3,11 @@ import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
 import { Divider, Heading, VStack } from '@chakra-ui/react';
 
-import Description from '../components/about/Description';
-import PageContainer from '../components/PageContainer';
-import Skills from '../components/about/Skills';
-import Socials from '../components/about/Socials';
-import logo from '../public/ha-logo.png';
+import Description from '@/components/about/Description';
+import PageContainer from '@/components/PageContainer';
+import Skills from '@/components/about/Skills';
+import Socials from '@/components/about/Socials';
+import logo from '@/public/ha-logo.png';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,

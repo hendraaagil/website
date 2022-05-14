@@ -1,6 +1,6 @@
 import { Box, Text } from '@chakra-ui/react';
 
-import getAge from '../../lib/age';
+import getAge from '@/lib/age';
 import CustomLink from './CustomLink';
 
 const Description = () => (

@@ -4,14 +4,14 @@ import { DefaultSeo } from 'next-seo';
 import { Box, ChakraProvider, Container } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import SEO from '../next-seo.config';
-import theme from '../styles/theme';
-import GlobalStyle from '../styles/GlobalStyle';
-import '../styles/css/nprogress.css';
+import SEO from 'next-seo.config';
+import theme from '@/styles/theme';
+import GlobalStyle from '@/styles/style';
+import '@/styles/css/nprogress.css';
 
-import Navbar from '../components/nav/Navbar';
-import ToggleMode from '../components/nav/ToggleMode';
-import Footer from '../components/Footer';
+import Navbar from '@/components/nav/Navbar';
+import ToggleMode from '@/components/nav/ToggleMode';
+import Footer from '@/components/Footer';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());

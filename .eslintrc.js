@@ -19,6 +19,8 @@ module.exports = {
   extends: ['plugin:react/recommended', 'next', 'airbnb', 'prettier'],
   plugins: ['react', 'prettier'],
   rules: {
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
     'no-plusplus': 'off',
     'react/function-component-definition': [
       2,

@@ -2,7 +2,7 @@ import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import { ColorModeScript } from '@chakra-ui/react';
 import createEmotionServer from '@emotion/server/create-instance';
 
-import emotionCache from '../lib/emotion-cache';
+import emotionCache from '@/lib/emotion-cache';
 
 const { extractCritical } = createEmotionServer(emotionCache);
 
