@@ -6,9 +6,8 @@ import CustomLink from './CustomLink';
 const Description = () => (
   <Box py={4} lineHeight="tall">
     <Text py={2}>
-      Hello, my name is <b>Hendra Agil Syaputra</b>. Usually called{' '}
-      <b>Hendra</b> / <b>Agil</b>. I&apos;m currently {getAge()} years old. Born
-      and live in{' '}
+      Hello, my name is <b>Hendra Agil</b>. Usually called <b>Hendra</b> /{' '}
+      <b>Agil</b>. I&apos;m currently {getAge()} years old. Born and live in{' '}
       <CustomLink link="https://karanganyarkab.go.id">
         Karanganyar, Central Java, Indonesia
       </CustomLink>
