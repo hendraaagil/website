@@ -13,7 +13,10 @@ const client = createClient({
 });
 
 export const getStaticProps = async () => {
-  const res = await client.getEntries({ content_type: 'blog' });
+  const res = await client.getEntries({
+    content_type: 'blog',
+    order: '-sys.createdAt',
+  });
 
   return { props: { blogs: res.items } };
 };
@@ -33,6 +36,7 @@ const Blog = ({ blogs }) => {
       const res = await client.getEntries({
         content_type: 'blog',
         'metadata.tags.sys.id[in]': query.tag,
+        order: '-sys.createdAt',
       });
       setBlogLists(res.items);
     };
