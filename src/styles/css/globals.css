@@ -1,0 +1,5 @@
+.article-container > p > code {
+  font-family: 'Fira Code', SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  font-weight: 500;
+}

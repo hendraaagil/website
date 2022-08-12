@@ -31,6 +31,7 @@ const MarkdownComponent = ({ markdownContent }) => {
     <ReactMarkdown
       remarkPlugins={[gfm]}
       rehypePlugins={[rehypePrism]}
+      className="article-container"
       components={{
         a: ({ children, href }) => (
           <Link

@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import SEO from 'next-seo.config';
 import theme from '@/styles/theme';
 import GlobalStyle from '@/styles/style';
+import '@/styles/css/globals.css';
 import '@/styles/css/nprogress.css';
 import '@/styles/css/prism-one-dark.css';
 
