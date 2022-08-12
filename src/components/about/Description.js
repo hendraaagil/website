@@ -4,7 +4,7 @@ import getAge from '@/lib/age';
 import CustomLink from './CustomLink';
 
 const Description = () => (
-  <Box py={4} lineHeight="tall">
+  <Box py={4} lineHeight="tall" fontWeight="400">
     <Text py={2}>
       Hello, my name is <b>Hendra Agil</b>. Usually called <b>Hendra</b> /{' '}
       <b>Agil</b>. I&apos;m currently {getAge()} years old. Born and live in{' '}

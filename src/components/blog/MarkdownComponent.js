@@ -1,8 +1,8 @@
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
+import rehypePrism from 'rehype-prism-plus';
 import {
   Box,
-  Code,
   Divider,
   Heading,
   Image,
@@ -18,8 +18,6 @@ import {
   UnorderedList,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 const MarkdownComponent = ({ markdownContent }) => {
   const bgColor = useColorModeValue('gray.200', 'gray.700');
@@ -32,6 +30,7 @@ const MarkdownComponent = ({ markdownContent }) => {
   return (
     <ReactMarkdown
       remarkPlugins={[gfm]}
+      rehypePlugins={[rehypePrism]}
       components={{
         a: ({ children, href }) => (
           <Link
@@ -58,25 +57,6 @@ const MarkdownComponent = ({ markdownContent }) => {
             {children}
           </Box>
         ),
-        code: ({ inline, className, children }) => {
-          const match = /language-(\w+)/.exec(className || '');
-          return inline ? (
-            <Code
-              py={0.5}
-              px={1.5}
-              bg={bgColor}
-              fontFamily="Fira Code"
-              fontWeight="500"
-              rounded="sm"
-            >
-              {children}
-            </Code>
-          ) : (
-            <SyntaxHighlighter style={nord} language={match[1]} showLineNumbers>
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
-          );
-        },
         h1: ({ children }) => {
           const id = toLowerDashed(children);
           return (
@@ -206,7 +186,11 @@ const MarkdownComponent = ({ markdownContent }) => {
               </Box>
             );
           }
-          return <Text my={3}>{children}</Text>;
+          return (
+            <Text my={3} fontWeight="400">
+              {children}
+            </Text>
+          );
         },
         ul: ({ children }) => <UnorderedList pl={4}>{children}</UnorderedList>,
         table: ({ children }) => (

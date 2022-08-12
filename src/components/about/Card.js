@@ -17,7 +17,9 @@ const Card = ({ title, skills }) => (
       {title}
     </Heading>
     {skills.map((skill) => (
-      <Text key={skill}>{skill}</Text>
+      <Text key={skill} fontWeight="400">
+        {skill}
+      </Text>
     ))}
   </VStack>
 );

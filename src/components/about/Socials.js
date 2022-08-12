@@ -5,7 +5,7 @@ import SocialButton from './SocialButton';
 
 const Socials = ({ socials }) => (
   <VStack pt={2} pb={4} align="start" w="full">
-    <Text>
+    <Text fontWeight="400">
       You can reach me out via email at{' '}
       <CustomLink link="mailto:hendraaagil@gmail.com">
         hendraaagil@gmail.com

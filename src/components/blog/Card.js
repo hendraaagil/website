@@ -32,7 +32,7 @@ const Card = ({ createdAt, router, slug, summary, tags, title }) => (
         {title}
       </Heading>
     </Link>
-    <Text fontWeight="500" lineHeight="tall" noOfLines={[4, 3]}>
+    <Text fontWeight="400" lineHeight="tall" noOfLines={[4, 3]}>
       {summary}
     </Text>
     <HStack>

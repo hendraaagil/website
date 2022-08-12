@@ -8,6 +8,7 @@ import SEO from 'next-seo.config';
 import theme from '@/styles/theme';
 import GlobalStyle from '@/styles/style';
 import '@/styles/css/nprogress.css';
+import '@/styles/css/prism-one-dark.css';
 
 import Navbar from '@/components/nav/Navbar';
 import ToggleMode from '@/components/nav/ToggleMode';

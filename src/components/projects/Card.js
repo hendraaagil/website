@@ -29,7 +29,9 @@ const Card = ({ name, thumbnail, desc, github, demo }) => {
         <Heading fontSize="2xl" mt={2}>
           {name}
         </Heading>
-        <Text pt={2}>{desc}</Text>
+        <Text pt={2} fontWeight="400">
+          {desc}
+        </Text>
         <HStack py={2}>
           <Button
             onClick={() =>
