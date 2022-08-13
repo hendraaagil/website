@@ -38,8 +38,8 @@ const Card = ({ createdAt, router, slug, summary, tags, title }) => (
     <HStack>
       {tags.map((tag) => (
         <Badge
-          key={tag.sys.id}
-          onClick={() => router.replace(`/blog?tag=${tag.sys.id}`)}
+          key={tag}
+          onClick={() => router.replace(`/blog?tag=${tag}`)}
           variant="solid"
           py={1}
           px={2}
@@ -50,7 +50,7 @@ const Card = ({ createdAt, router, slug, summary, tags, title }) => (
           shadow="inner"
           _hover={{ textDecor: 'underline', cursor: 'pointer' }}
         >
-          {tag.sys.id}
+          {tag}
         </Badge>
       ))}
     </HStack>

@@ -6,6 +6,7 @@ import { Divider, Heading, Text, VStack } from '@chakra-ui/react';
 
 import Card from '@/components/blog/Card';
 import PageContainer from '@/components/PageContainer';
+import { getBlogs } from '@/libs/blog';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
@@ -13,12 +14,14 @@ const client = createClient({
 });
 
 export const getStaticProps = async () => {
-  const res = await client.getEntries({
-    content_type: 'blog',
-    order: '-sys.createdAt',
-  });
+  // const res = await client.getEntries({
+  //   content_type: 'blog',
+  //   order: '-sys.createdAt',
+  // });
+  const blogs = await getBlogs();
+  console.dir(blogs, { depth: null });
 
-  return { props: { blogs: res.items } };
+  return { props: { blogs: blogs.map((blog) => blog.frontmatter) } };
 };
 
 const Blog = ({ blogs }) => {
@@ -29,20 +32,20 @@ const Blog = ({ blogs }) => {
   const { query } = router;
   const [blogLists, setBlogLists] = useState(blogs);
 
-  useEffect(() => {
-    if (!query) return;
+  // useEffect(() => {
+  //   if (!query) return;
 
-    const fetchBlogByTag = async () => {
-      const res = await client.getEntries({
-        content_type: 'blog',
-        'metadata.tags.sys.id[in]': query.tag,
-        order: '-sys.createdAt',
-      });
-      setBlogLists(res.items);
-    };
+  //   const fetchBlogByTag = async () => {
+  //     const res = await client.getEntries({
+  //       content_type: 'blog',
+  //       'metadata.tags.sys.id[in]': query.tag,
+  //       order: '-sys.createdAt',
+  //     });
+  //     setBlogLists(res.items);
+  //   };
 
-    fetchBlogByTag();
-  }, [query]);
+  //   fetchBlogByTag();
+  // }, [query]);
 
   return (
     <>
@@ -58,16 +61,14 @@ const Blog = ({ blogs }) => {
         <Divider mb={8} />
         <VStack spacing={6}>
           {blogLists.map((blog) => {
-            const { slug, summary } = blog.fields;
-            const { tags } = blog.metadata;
-            const { createdAt, id } = blog.sys;
+            const { createdAt, slug, summary, tags } = blog;
 
             return (
               <Card
-                key={id}
+                key={slug}
                 slug={slug}
                 summary={summary}
-                title={blog.fields.title}
+                title={blog.title}
                 tags={tags}
                 createdAt={createdAt}
                 router={router}
