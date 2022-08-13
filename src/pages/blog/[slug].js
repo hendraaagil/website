@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import { createClient } from 'contentful';
+import { MDXRemote } from 'next-mdx-remote';
 import {
   Badge,
   Box,
@@ -13,18 +14,16 @@ import {
 } from '@chakra-ui/react';
 import { format } from 'date-fns';
 
-import MarkdownComponent from '@/components/blog/MarkdownComponent';
 import Comments from '@/components/blog/Comments';
-
-const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-});
+import { getBlogBySlug, getBlogs } from '@/libs/blog';
+import markdownComponents from '@/components/blog/contents';
 
 export const getStaticPaths = async () => {
-  const res = await client.getEntries({ content_type: 'blog' });
-  const paths = res.items.map((item) => ({
-    params: { slug: item.fields.slug },
+  const blogs = (await getBlogs())
+    .map((blog) => blog.frontmatter)
+    .sort((first, second) => second.createdAt.localeCompare(first.createdAt));
+  const paths = blogs.map((blog) => ({
+    params: { slug: blog.slug },
   }));
 
   return {
@@ -34,20 +33,25 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { items } = await client.getEntries({
-    content_type: 'blog',
-    'fields.slug': params.slug,
-  });
-
-  return { props: { blog: items[0] } };
+  const blog = await getBlogBySlug(params.slug);
+  return { props: { blog } };
 };
 
 const DetailBlog = ({ blog }) => {
-  const { markdownContent, slug, summary, thumbnail, title } = blog.fields;
-  const { tags } = blog.metadata;
-  const { createdAt, updatedAt } = blog.sys;
-  const { description, file } = thumbnail.fields;
-  const { width, height } = file.details.image;
+  console.log('Blog >>', blog);
+  const {
+    author,
+    slug,
+    summary,
+    tags,
+    thumbnail,
+    thumbnailCredit,
+    title,
+    createdAt,
+    updatedAt,
+  } = blog.frontmatter;
+  // const { description, file } = thumbnail.fields;
+  // const { width, height } = file.details.image;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
   const router = useRouter();
 
@@ -67,14 +71,14 @@ const DetailBlog = ({ blog }) => {
           article: {
             publishedTime: createdAt,
             modifiedTime: updatedAt,
-            authors: ['Hendra Agil'],
-            tags: tags.map((tag) => tag.sys.id),
+            authors: [author],
+            tags,
           },
           images: [
             {
-              url: `https:${thumbnail.fields.file.url}`,
-              width,
-              height,
+              url: `${process.env.NEXT_PUBLIC_SITE_URL}${thumbnail}`,
+              width: 1200,
+              height: 630,
               alt: title,
             },
           ],
@@ -91,14 +95,9 @@ const DetailBlog = ({ blog }) => {
         rounded="md"
         overflow="hidden"
       >
-        <Image
-          src={`https:${file.url}`}
-          alt={thumbnail.fields.title}
-          width={width}
-          height={height}
-        />
+        <Image src={thumbnail} alt={title} width={1200} height={630} />
         <Text as="figcaption" mt={0.5} mb={2} fontSize="sm">
-          {description}
+          {thumbnailCredit}
         </Text>
       </Box>
       <Text pt={1} fontWeight="600">
@@ -113,8 +112,8 @@ const DetailBlog = ({ blog }) => {
       <HStack>
         {tags.map((tag) => (
           <Badge
-            key={tag.sys.id}
-            onClick={() => router.push(`/blog?tag=${tag.sys.id}`)}
+            key={tag}
+            onClick={() => router.push(`/blog?tag=${tag}`)}
             py={1}
             px={2}
             bg={tagBg}
@@ -129,13 +128,13 @@ const DetailBlog = ({ blog }) => {
               cursor: 'pointer',
             }}
           >
-            {tag.sys.id}
+            {tag}
           </Badge>
         ))}
       </HStack>
       <Divider mt={4} mb={2} />
       <Box as="article" lineHeight="tall">
-        <MarkdownComponent markdownContent={markdownContent} />
+        <MDXRemote {...blog} components={markdownComponents} />
       </Box>
       <Divider my={4} />
       <Comments />

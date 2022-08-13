@@ -1,4 +1,5 @@
-.article-container > p > code {
+article > p > code,
+article > table code {
   font-family: 'Fira Code', SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
   font-weight: 500;
