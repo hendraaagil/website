@@ -3,7 +3,12 @@ import { Box, Text, useColorModeValue } from '@chakra-ui/react';
 const Paragraph = ({ children }) => {
   const bgColor = useColorModeValue('gray.200', 'gray.700');
 
-  if (children.type && children.type.name === 'Image') {
+  if (
+    children.type &&
+    (children.type.name === 'Image' ||
+      children.type.name === 'P' ||
+      children.type.name === 'H')
+  ) {
     return (
       <Box
         as="figure"
