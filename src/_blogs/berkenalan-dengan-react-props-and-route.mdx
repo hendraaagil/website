@@ -1,0 +1,242 @@
+---
+title: 'Berkenalan Dengan React: Props & Route'
+thumbnail: /assets/blog/berkenalan-dengan-react-props-and-route/thumbnail.png
+thumbnailCredit: Photo by Madina Sidarto on Unsplash
+summary: Kita akan lanjut berkenalan dengan React, yaitu tentang props dan route di blog ini.
+tags: [development, react]
+author: Hendra Agil
+createdAt: '2021-07-01T22:16:50+07:00'
+updatedAt: '2021-12-18T12:48:32+07:00'
+---
+
+## Props
+
+Props biasanya kita gunakan untuk melempar data antar komponen. Sebagai contoh, pada project di blog [ini](https://hendraaagil.id/blog/berkenalan-dengan-react) kemarin. Kita akan coba pisahkan komponen nama dari `App`, sehingga isi file `App.js` akan seperti berikut:
+
+```js showLineNumbers
+import { useState } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+const Name = () => <p>Hi, my name is {name}</p>;
+
+function App() {
+  const [count, setCount] = useState(0);
+  const name = 'Hendra Agil';
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <Name />
+        <p>You clicked the button {count} times</p>
+        <button onClick={() => setCount(count + 1)}>Click Me!</button>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Jika kita pisah komponennya seperti diatas, lalu coba kita jalankan maka akan tertulis error seperti berikut:
+
+```bash
+src\App.js
+  Line 5:39:  Unexpected use of 'name'  no-restricted-globals
+```
+
+Itu terjadi karena di komponen Name mencoba mengakses variabel `name` yang hanya terdapat di komponen App. Solusinya adalah kita kirimkan variabel `name` sebagai props ke komponen Name. Jadi, penulisan komponen `<Name />` kita ubah menjadi `<Name propsName={name} />`. Di mana `propsName` adalah sebagai nama props yang akan kita akses di komponen Name dan `{name}` adalah mengambil variabel `name` yang ada di komponen App.
+
+Kita coba tangkap `props`nya dan tampilkan di console pada komponen `Name`:
+
+```js
+const Name = (props) => {
+  console.log(props);
+
+  return <p>Hi, my name is {name}</p>;
+};
+```
+
+Dia akan tetap error, tetapi props yang kita kirimkan berhasil tampil di console:
+
+![Console Props](/assets/blog/berkenalan-dengan-react-props-and-route/console-props.png)
+
+Untuk mengakses `propsName` kita bisa destructure terlebih dahulu `props`nya, lalu kita tampilkan:
+
+```js
+const Name = (props) => {
+  const { propsName } = props;
+
+  return <p>Hi, my name is {propsName}</p>;
+};
+```
+
+Maka, nama kita berhasil tampil:
+
+![Show Props](/assets/blog/berkenalan-dengan-react-props-and-route/show-props.png)
+
+## Route
+
+Pada website SPA (Single Page Application), dia hanya merender satu file HTML. Untuk menambah halaman pada website SPA, kita tidak perlu membuat file HTML lagi. Kita hanya perlu mengatur **route** pada website SPA dengan JavaScript.
+
+### React Router
+
+Jika kita menggunakan React, pengaturan route tadi bisa menggunakan [react-router-dom](https://www.npmjs.com/package/react-router-dom). Maka kita perlu install `react-router-dom` terlebih dahulu dengan perintah `yarn add react-router-dom` atau `npm install react-router-dom`.
+
+#### BrowserRouter
+
+Pertama, kita perlu bungkus komponen `App` dengan `BrowserRouter` dari react-router-dom. Kita bisa bungkus lewat file `index.js`:
+
+```js
+...
+import { BrowserRouter } from 'react-router-dom';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+...
+```
+
+#### Route dan Switch
+
+Untuk menggunakan route, kita bisa buat file baru sebagai halaman yang akan diakses nanti. Misal kita akan membuat file `About.js` di dalam folder `src/components`. Lalu, kita isi file `About.js` sebagai contoh seperti berikut:
+
+```js showLineNumbers
+const About = () => {
+  return (
+    <div className="App">
+      <h1>About Me</h1>
+      <p>Halo, Nama Saya Hendra Agil</p>
+    </div>
+  );
+};
+
+export default About;
+```
+
+Kita akan menggunakan class `App` yang sudah ada di file `App.css` dan kita tampilkan nama kita disitu. Tapi kita masih belum bisa melihat tampilan dari file `About.js`. Untuk menampilkannya kita bisa tambahkan routing di file `App.js`. Sebelum itu, kita pindahkan kode di file `App.js` ke file `src/components/Home.js` (buat file baru). Agar file `App.js` nanti bisa bersih, hanya untuk pengaturan route saja.
+
+Sisakan kode berikut di file `App.js`:
+
+```js showLineNumbers
+import './App.css';
+
+function App() {}
+
+export default App;
+```
+
+Selain yang di atas pindahkan ke file `Home.js`.
+
+Yang pertama kita lakukan adalah import `Switch` dan `Route` dari react-router-dom. Lalu kita jadikan `Switch` sebagai pembungkusnya. Lalu, kita tambahkan 1 route untuk halaman `/` atau home dan isi komponen dengan file `Home.js` tadi:
+
+```js showLineNumbers
+import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+
+function App() {
+  return (
+    <Switch>
+      <Route path="/" component={Home} />
+    </Switch>
+  );
+}
+
+export default App;
+```
+
+Jika kita buka di browser maka akan tampil komponen `Home` tadi. Lalu, bagaimana cara kita menambah route? Mudah saja, kita tinggal tambahkan `Route` baru dengan `path` dan `component` yang berbeda:
+
+```js
+...
+import About from './components/About';
+
+function App() {
+  return (
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route path="/about" component={About} />
+    </Switch>
+  );
+}
+...
+```
+
+Jika kita coba menuju ke `localhost:3000/about`:
+
+![Wrong About Page](/assets/blog/berkenalan-dengan-react-props-and-route/wrong-about-page.png)
+
+Kenapa yang tampil halaman home?
+
+Itu terjadi karena kita pakai `Switch` pada routing kita, karena switch itu fungsinya sama seperti [switch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) pada JavaScript. Maka, dia mengecek apakah `/about` itu terdapat karakter `/`? Karena iya, maka yang tampil adalah halaman `/` atau home.
+
+Solusinya, kita bisa pindah Route dengan path `/` dibawah `/about`. Atau kita bisa pakai atribut [`exact`](https://reactrouter.com/web/api/Route/exact-bool) di Route dengan path `/`:
+
+```js
+...
+
+function App() {
+  return (
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/about" component={About} />
+    </Switch>
+  );
+}
+...
+```
+
+`exact` akan memberitahu kepada react-router-dom agar me-render komponen `Home` pada Route yang hanya mempunyai path `/` saja. Jika kita buka di browser, maka akan tampil halaman `About` kita:
+
+![Correct About Page](/assets/blog/berkenalan-dengan-react-props-and-route/correct-about-page.png)
+
+#### Link
+
+Bagaimana jika kita ingin menggunakan seperti navigasi untuk berpindah halaman?
+
+Kita bisa menggunakan komponen `Link`. Kenapa tidak menggunakan tag `a`? Karena tag `a` jika kita klik, dia akan memuat ulang (_reload_) halaman kita. Kita bisa kehilangan state jika kita memuat ulang website tersebut.
+
+Cara penggunaannya mudah sekali, kita hanya perlu mengimport dan menambahkannya ke komponen. Misal di file `Home.js` kita tambahkan navigasi ke halaman about:
+
+```js
+...
+import { Link } from 'react-router-dom';
+
+...
+
+const Home = () => {
+  ...
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        ...
+        <Link to="/about" className="App-link">
+          About
+        </Link>
+        ...
+      </header>
+    </div>
+  );
+};
+...
+```
+
+Jika kita klik link About, maka kita akan berpindah ke halaman about tanpa memuat ulang website kita.
+
+## Penutup
+
+Mungkin cukup itu sedikit tentang props dan route pada React. Tentu masih banyak lagi fitur lainnya, kalian bisa baca lewat sumber berikut:
+
+- [Dokumentasi React Tentang Props](https://reactjs.org/docs/components-and-props.html)
+- [Dokumentasi React Router](https://reactrouter.com/web/guides/quick-start)
+
+Terima kasih sudah membaca blog ini dan belajar sedikit tentang props dan route di React, tetap semangat belajar! Semoga bermanfaat.

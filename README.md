@@ -7,8 +7,6 @@
 First, copy `.env.example` and paste as `.env.local`, fill all field:
 
 ```bash
-NEXT_PUBLIC_CONTENTFUL_SPACE_ID = ''
-NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY = ''
 NEXT_PUBLIC_SITE_URL = ''
 ```
 
@@ -28,7 +26,7 @@ Thanks to my inspiration.
 - [griko.id](https://griko.id/)
 - [joshuanatanielm.space](https://joshuanatanielm.space/)
 
-Built with [Chakra UI](https://chakra-ui.com), [Contentful](https://contentful.com), [Giscus](https://giscus.app/) and [Next.js](https://nextjs.org).
+Built with [Chakra UI](https://chakra-ui.com), [MDX](https://mdxjs.com), [Giscus](https://giscus.app/) and [Next.js](https://nextjs.org).
 
 ## License
 

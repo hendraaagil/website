@@ -17,13 +17,13 @@ const Footer = () => (
     <Text>
       With{' '}
       <Link
-        href="https://contentful.com"
+        href="https://mdxjs.com"
         isExternal
         color="brand.blue"
         fontWeight="700"
         textDecor="underline"
       >
-        Contentful
+        MDX
       </Link>
       ,{' '}
       <Link

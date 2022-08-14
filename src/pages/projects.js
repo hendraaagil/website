@@ -1,22 +1,12 @@
 import { NextSeo } from 'next-seo';
-import { createClient } from 'contentful';
 import { Divider, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 
 import Card from '@/components/projects/Card';
 import PageContainer from '@/components/PageContainer';
 
-const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-});
+import projects from '@/data/projects.json';
 
-export const getStaticProps = async () => {
-  const res = await client.getEntries({ content_type: 'project' });
-
-  return { props: { projects: res.items } };
-};
-
-const Projects = ({ projects }) => {
+const Projects = () => {
   const title = 'Projects';
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/projects`;
 
@@ -40,15 +30,13 @@ const Projects = ({ projects }) => {
               github,
               thumbnail,
               title: projectName,
-            } = project.fields;
-            const { url: imgUrl } = thumbnail.fields.file;
-            const { id } = project.sys;
+            } = project;
 
             return (
               <Card
-                key={id}
+                key={title}
                 name={projectName}
-                thumbnail={`https:${imgUrl}`}
+                thumbnail={thumbnail}
                 desc={description}
                 github={github}
                 demo={demo}

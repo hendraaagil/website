@@ -1,24 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
-import { createClient } from 'contentful';
-import { Divider, Heading, Text, VStack } from '@chakra-ui/react';
+import { Divider, Heading, Text } from '@chakra-ui/react';
 
-import Card from '@/components/blog/Card';
+import BlogList from '@/components/blog/BlogList';
 import PageContainer from '@/components/PageContainer';
-
-const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-});
+import { getBlogs } from '@/libs/blog';
 
 export const getStaticProps = async () => {
-  const res = await client.getEntries({
-    content_type: 'blog',
-    order: '-sys.createdAt',
-  });
+  const blogs = (await getBlogs())
+    .map((blog) => blog.frontmatter)
+    .sort((first, second) => second.createdAt.localeCompare(first.createdAt));
 
-  return { props: { blogs: res.items } };
+  return { props: { blogs } };
 };
 
 const Blog = ({ blogs }) => {
@@ -27,22 +21,17 @@ const Blog = ({ blogs }) => {
 
   const router = useRouter();
   const { query } = router;
-  const [blogLists, setBlogLists] = useState(blogs);
+  const [filteredBlogs, setFilteredBlogs] = useState(blogs);
 
   useEffect(() => {
-    if (!query) return;
+    if (!query.tag) return;
 
-    const fetchBlogByTag = async () => {
-      const res = await client.getEntries({
-        content_type: 'blog',
-        'metadata.tags.sys.id[in]': query.tag,
-        order: '-sys.createdAt',
-      });
-      setBlogLists(res.items);
+    const fetchBlogByTag = () => {
+      setFilteredBlogs(blogs.filter((blog) => blog.tags.includes(query.tag)));
     };
 
     fetchBlogByTag();
-  }, [query]);
+  }, [blogs, query]);
 
   return (
     <>
@@ -56,25 +45,11 @@ const Blog = ({ blogs }) => {
           Sharing by Writing
         </Text>
         <Divider mb={8} />
-        <VStack spacing={6}>
-          {blogLists.map((blog) => {
-            const { slug, summary } = blog.fields;
-            const { tags } = blog.metadata;
-            const { createdAt, id } = blog.sys;
-
-            return (
-              <Card
-                key={id}
-                slug={slug}
-                summary={summary}
-                title={blog.fields.title}
-                tags={tags}
-                createdAt={createdAt}
-                router={router}
-              />
-            );
-          })}
-        </VStack>
+        {query.tag ? (
+          <BlogList blogs={filteredBlogs} router={router} />
+        ) : (
+          <BlogList blogs={blogs} router={router} />
+        )}
       </PageContainer>
     </>
   );
