@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
-import { createClient } from 'contentful';
 import { Divider, Heading, Text } from '@chakra-ui/react';
 
 import BlogList from '@/components/blog/BlogList';
@@ -12,7 +11,6 @@ export const getStaticProps = async () => {
   const blogs = (await getBlogs())
     .map((blog) => blog.frontmatter)
     .sort((first, second) => second.createdAt.localeCompare(first.createdAt));
-  console.dir(blogs, { depth: null });
 
   return { props: { blogs } };
 };

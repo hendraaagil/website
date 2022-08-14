@@ -7,8 +7,6 @@
 First, copy `.env.example` and paste as `.env.local`, fill all field:
 
 ```bash
-NEXT_PUBLIC_CONTENTFUL_SPACE_ID = ''
-NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY = ''
 NEXT_PUBLIC_SITE_URL = ''
 ```
 

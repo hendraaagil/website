@@ -4,7 +4,7 @@ import rehypePrism from 'rehype-prism-plus';
 import remarkGfm from 'remark-gfm';
 import { serialize } from 'next-mdx-remote/serialize';
 
-const contentDirectory = path.join(process.cwd(), 'src/_content');
+const contentDirectory = path.join(process.cwd(), 'src/_blogs');
 
 const getAllBlogPaths = async () => {
   const files = await fs.readdir(contentDirectory);

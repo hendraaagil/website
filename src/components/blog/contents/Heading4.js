@@ -3,6 +3,7 @@ import toLowerDashed from '@/libs/toLowerDashed';
 
 const Heading4 = ({ children }) => {
   const id = toLowerDashed(children);
+
   return (
     <a href={`#${id}`}>
       <Heading

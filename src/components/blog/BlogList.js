@@ -1,5 +1,4 @@
 import { VStack } from '@chakra-ui/react';
-
 import Card from './Card';
 
 const BlogList = ({ blogs, router }) => (

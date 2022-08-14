@@ -17,7 +17,6 @@
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "11.10.0",
     "@giscus/react": "^2.2.0",
-    "contentful": "^9.1.34",
     "date-fns": "^2.29.1",
     "framer-motion": "7.1.0",
     "next": "12.2.5",

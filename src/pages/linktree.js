@@ -1,33 +1,34 @@
 import { NextSeo } from 'next-seo';
-import { createClient } from 'contentful';
-import { Divider, Heading, Stack, Text } from '@chakra-ui/react';
+import { Divider, Heading, Stack } from '@chakra-ui/react';
 
 import PageContainer from '@/components/PageContainer';
-import SocialButton from '@/components/about/SocialButton';
+import LinkList from '@/components/linktree/LinkList';
 
-const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-});
+import discussions from '@/data/discussions.json';
+import socials from '@/data/socials.json';
+import supports from '@/data/supports.json';
 
-export const getStaticProps = async () => {
-  const res = await client.getEntries({ content_type: 'about' });
-  const discussions = await res.items.filter(
-    (item) => item.fields.title === 'discussions'
-  )[0].fields.items;
-  const socials = await res.items.filter(
-    (item) => item.fields.title === 'socials'
-  )[0].fields.items;
-  const supports = await res.items.filter(
-    (item) => item.fields.title === 'supports'
-  )[0].fields.items;
-
-  return { props: { discussions, socials, supports } };
-};
-
-const Linktree = ({ discussions, socials, supports }) => {
+const Linktree = () => {
   const title = 'Linktree';
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/linktree`;
+
+  const links = [
+    {
+      title: 'Socials',
+      description: 'If you want to contact me.',
+      links: socials,
+    },
+    {
+      title: 'Discussions',
+      description: 'If you want to discuss with me.',
+      links: discussions,
+    },
+    {
+      title: 'Supports',
+      description: 'If you want to support me.',
+      links: supports,
+    },
+  ];
 
   return (
     <>
@@ -39,43 +40,16 @@ const Linktree = ({ discussions, socials, supports }) => {
         </Heading>
         <Divider my={8} />
         <Stack pt={2} spacing={3}>
-          <Heading as="h3" fontSize="2xl">
-            Socials
-          </Heading>
-          <Text>If you want to contact me.</Text>
-          {socials.map((social) => (
-            <SocialButton
-              key={social.name}
-              name={social.name}
-              url={social.url}
-              isLinktree
-            />
-          ))}
-          <Divider my={4} />
-          <Heading as="h3" fontSize="2xl">
-            Discussions
-          </Heading>
-          <Text>If you want to discuss with me.</Text>
-          {discussions.map((discussion) => (
-            <SocialButton
-              key={discussion.name}
-              name={discussion.name}
-              url={discussion.url}
-              isLinktree
-            />
-          ))}
-          <Divider my={4} />
-          <Heading as="h3" fontSize="2xl">
-            Supports
-          </Heading>
-          <Text>If you want to support me.</Text>
-          {supports.map((support) => (
-            <SocialButton
-              key={support.name}
-              name={support.name}
-              url={support.url}
-              isLinktree
-            />
+          {links.map((link, index) => (
+            <>
+              <LinkList
+                key={link.title}
+                title={link.title}
+                description={link.description}
+                links={link.links}
+              />
+              {index + 1 !== links.length && <Divider my={4} />}
+            </>
           ))}
         </Stack>
       </PageContainer>

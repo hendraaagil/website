@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
-import { createClient } from 'contentful';
 import { MDXRemote } from 'next-mdx-remote';
 import {
   Badge,
@@ -15,8 +14,8 @@ import {
 import { format } from 'date-fns';
 
 import Comments from '@/components/blog/Comments';
-import { getBlogBySlug, getBlogs } from '@/libs/blog';
 import markdownComponents from '@/components/blog/contents';
+import { getBlogBySlug, getBlogs } from '@/libs/blog';
 
 export const getStaticPaths = async () => {
   const blogs = (await getBlogs())
@@ -38,7 +37,6 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const DetailBlog = ({ blog }) => {
-  console.log('Blog >>', blog);
   const {
     author,
     slug,
@@ -50,8 +48,6 @@ const DetailBlog = ({ blog }) => {
     createdAt,
     updatedAt,
   } = blog.frontmatter;
-  // const { description, file } = thumbnail.fields;
-  // const { width, height } = file.details.image;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
   const router = useRouter();
 
