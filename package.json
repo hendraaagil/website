@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint ./src/components/** ./src/pages/** -c .eslintrc.js --ext js,jsx",
     "lint-fix": "eslint ./src/components/** ./src/pages/** -c .eslintrc.js --fix --ext js,jsx"
@@ -22,6 +23,7 @@
     "next": "12.2.5",
     "next-mdx-remote": "^4.1.0",
     "next-seo": "^5.5.0",
+    "next-sitemap": "^3.1.21",
     "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
