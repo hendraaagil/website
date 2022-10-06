@@ -4,7 +4,7 @@
     "description": "Unofficial Valorant match API from https://vlr.gg site. Made with Express and Cheerio.",
     "thumbnail": "/assets/project/vlr-api.png",
     "github": "https://github.com/hendraaagil/vlr-api",
-    "demo": "https://vlr-api.hendraaagil.id"
+    "demo": "https://vlr-api.hendraaagil.dev"
   },
   {
     "title": "RPL Skandakra Bot",
