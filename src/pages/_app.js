@@ -29,7 +29,7 @@ const MyApp = ({ Component, pageProps, router }) => (
       <Container maxW="container.lg">
         <Navbar />
         <ToggleMode />
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode="wait">
           <MotionBox
             key={router.route}
             animate="enter"
