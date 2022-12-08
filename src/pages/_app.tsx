@@ -3,15 +3,20 @@ import '@fontsource/plus-jakarta-sans'
 import '@/styles/globals.css'
 
 import type { AppProps } from 'next/app'
+import { DefaultSeo } from 'next-seo'
 import { ThemeProvider } from 'next-themes'
-import { Container } from '@/components'
+
+import defaultSeoConfig from '@/configs/next-seo'
+import { RootContainer, Navbar } from '@/components'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
-      <Container>
+      <DefaultSeo {...defaultSeoConfig} />
+      <RootContainer>
+        <Navbar />
         <Component {...pageProps} />
-      </Container>
+      </RootContainer>
     </ThemeProvider>
   )
 }

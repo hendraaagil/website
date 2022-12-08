@@ -1,9 +1,9 @@
 import { PageContainer } from '@/components'
 
-export default function Home() {
+export default function Uses() {
   return (
     <PageContainer>
-      <h1 className="text-3xl font-bold">Coming Soon...</h1>
+      <h1 className="text-3xl font-bold">Uses</h1>
     </PageContainer>
   )
 }
