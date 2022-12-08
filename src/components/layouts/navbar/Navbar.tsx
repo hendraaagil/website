@@ -7,7 +7,7 @@ import navs from '@/_data/navs.json'
 
 export const Navbar = () => {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { theme, systemTheme, setTheme } = useTheme()
 
   // Theme will available after first render
   useEffect(() => {
@@ -37,7 +37,7 @@ export const Navbar = () => {
             className="rounded-md p-2 px-4 transition-all  hover:bg-gray-200 dark:hover:bg-gray-700"
             onClick={handleToggleTheme}
           >
-            {theme === 'light' ? <FiSun /> : <FiMoon />}
+            {(theme === 'system' && systemTheme === 'light') || theme === 'light' ? <FiMoon /> : <FiSun />}
           </button>
         )}
       </nav>
