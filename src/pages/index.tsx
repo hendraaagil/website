@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Navbar } from '@/components'
 
 export default function Home() {
   return (
@@ -9,7 +10,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col text-center justify-center text-brand-blue bg-brand-dark h-screen">
+      <Navbar />
+      <main className="flex h-screen flex-col justify-center text-center">
         <h1 className="text-3xl font-bold">Coming Soon...</h1>
       </main>
     </>
