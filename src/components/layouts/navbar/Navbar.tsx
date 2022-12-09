@@ -1,13 +1,20 @@
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { FiMoon, FiSun } from 'react-icons/fi'
+import { useMedia } from 'react-use'
+import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi'
+import { AnimatePresence } from 'framer-motion'
 
 import navs from '@/_data/navs.json'
+import { IconButton } from '@/components'
+import { NavMenu } from './NavMenu'
 
 export const Navbar = () => {
   const [mounted, setMounted] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
   const { theme, systemTheme, setTheme } = useTheme()
+  const isWide = useMedia('(min-width: 768px)', true)
+  const isLight = (theme === 'system' && systemTheme === 'light') || theme === 'light'
 
   // Theme will available after first render
   useEffect(() => {
@@ -15,13 +22,21 @@ export const Navbar = () => {
   }, [])
 
   const handleToggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
+    setTheme(isLight ? 'dark' : 'light')
+  }
+
+  const handleClickMenu = () => {
+    setShowMenu((prevState) => !prevState)
   }
 
   return (
     <header className="sticky top-0 shadow-sm">
-      <nav className="mx-auto flex w-full max-w-5xl justify-between py-4">
-        <ul className="flex space-x-2">
+      <nav className="mx-auto flex w-full max-w-5xl justify-between p-4">
+        <IconButton className="visible relative md:hidden" onClick={handleClickMenu}>
+          {showMenu ? <FiX /> : <FiMenu />}
+        </IconButton>
+        <AnimatePresence>{showMenu && !isWide && <NavMenu clickAction={handleClickMenu} />}</AnimatePresence>
+        <div className="hidden space-x-2 md:flex">
           {navs.map((nav) => (
             <Link
               key={nav.name}
@@ -31,15 +46,8 @@ export const Navbar = () => {
               {nav.name}
             </Link>
           ))}
-        </ul>
-        {mounted && (
-          <button
-            className="rounded-md p-2 px-4 transition-all  hover:bg-gray-200 dark:hover:bg-gray-700"
-            onClick={handleToggleTheme}
-          >
-            {(theme === 'system' && systemTheme === 'light') || theme === 'light' ? <FiMoon /> : <FiSun />}
-          </button>
-        )}
+        </div>
+        {mounted && <IconButton onClick={handleToggleTheme}>{isLight ? <FiMoon /> : <FiSun />}</IconButton>}
       </nav>
     </header>
   )

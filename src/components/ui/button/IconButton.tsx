@@ -1,0 +1,17 @@
+import React from 'react'
+import clsx from 'clsx'
+
+export type IconButtonProps = {
+  children: React.ReactNode
+  className?: string
+  onClick: () => void
+}
+
+export const IconButton = ({ children, className, ...rest }: IconButtonProps) => (
+  <button
+    className={clsx('rounded-md py-3 px-4 transition-all hover:bg-gray-200 dark:hover:bg-gray-700 md:py-2', className)}
+    {...rest}
+  >
+    {children}
+  </button>
+)
