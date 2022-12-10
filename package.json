@@ -22,12 +22,15 @@
     "clsx": "^1.2.1",
     "framer-motion": "^7.6.19",
     "next": "13.0.6",
+    "next-mdx-remote": "^4.2.0",
     "next-seo": "^5.15.0",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-use": "^17.4.0",
+    "rehype-prism-plus": "^1.5.0",
+    "remark-gfm": "^3.0.1",
     "sharp": "^0.31.2"
   },
   "devDependencies": {

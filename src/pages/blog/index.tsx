@@ -1,9 +1,31 @@
-import { PageContainer } from '@/components'
+import type { BlogMetadata } from '@/types/blog'
 
-export default function Blog() {
+import { Heading, PageContainer } from '@/components'
+import { getBlogs } from '@/libs/blog'
+
+export const getStaticProps = async () => {
+  const blogs = (await getBlogs())
+    .map((blog) => blog.frontmatter)
+    .sort((first, second) => second.createdAt.localeCompare(first.createdAt))
+
+  return { props: { blogs } }
+}
+
+export type BlogProps = {
+  blogs: BlogMetadata[]
+}
+
+export default function Blog({ blogs }: BlogProps) {
+  // console.log(blogs)
+
   return (
     <PageContainer>
-      <h1 className="text-3xl font-bold">Blog</h1>
+      <Heading variant="h1">Blog</Heading>
+      {blogs.map((blog) => (
+        <Heading variant="h2" key={blog.slug}>
+          {blog.title}
+        </Heading>
+      ))}
     </PageContainer>
   )
 }
