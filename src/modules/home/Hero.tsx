@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import logo from '../../../public/assets/ha-logo.png'
 import bio from '@/_data/bio.json'
+import logo from '@/assets/img/ha-logo.png'
 import { Heading } from '@/components'
 
 export const Hero = () => {
