@@ -32,7 +32,7 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 shadow-sm">
       <nav className="mx-auto flex w-full max-w-5xl justify-between p-4">
-        <IconButton className="visible relative md:hidden" onClick={handleClickMenu}>
+        <IconButton className="visible relative md:hidden" label="Toggle menu" onClick={handleClickMenu}>
           {showMenu ? <FiX /> : <FiMenu />}
         </IconButton>
         <AnimatePresence>{showMenu && !isWide && <NavMenu clickAction={handleClickMenu} />}</AnimatePresence>
@@ -47,7 +47,11 @@ export const Navbar = () => {
             </Link>
           ))}
         </div>
-        {mounted && <IconButton onClick={handleToggleTheme}>{isLight ? <FiMoon /> : <FiSun />}</IconButton>}
+        {mounted && (
+          <IconButton label="Toggle theme" onClick={handleToggleTheme}>
+            {isLight ? <FiMoon /> : <FiSun />}
+          </IconButton>
+        )}
       </nav>
     </header>
   )
