@@ -1,9 +1,10 @@
 import { PageContainer } from '@/components'
+import { Hero } from '@/modules/home'
 
 export default function Home() {
   return (
     <PageContainer>
-      <h1 className="text-3xl font-bold">Coming Soon...</h1>
+      <Hero />
     </PageContainer>
   )
 }

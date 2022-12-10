@@ -5,5 +5,5 @@ export type PageContainerProps = {
 }
 
 export const PageContainer = ({ children }: PageContainerProps) => (
-  <main className="flex h-screen flex-col justify-center text-center">{children}</main>
+  <main className="mx-auto flex w-full max-w-5xl flex-col justify-center p-9">{children}</main>
 )
