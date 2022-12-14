@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import clsx from 'clsx'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { useMedia } from 'react-use'
@@ -30,8 +31,15 @@ export const Navbar = () => {
   }
 
   return (
-    <header className="sticky top-0 shadow-sm">
-      <nav className="mx-auto flex w-full max-w-5xl justify-between p-4">
+    <header className="sticky top-0 z-10 shadow-sm">
+      <nav
+        className={clsx(
+          'mx-auto flex w-full max-w-5xl justify-between',
+          'bg-brand-light p-4',
+          'transition-[background-color] duration-300',
+          'dark:bg-brand-dark'
+        )}
+      >
         <IconButton className="visible relative md:hidden" label="Toggle menu" onClick={handleClickMenu}>
           {showMenu ? <FiX /> : <FiMenu />}
         </IconButton>
@@ -41,7 +49,7 @@ export const Navbar = () => {
             <Link
               key={nav.name}
               href={nav.path}
-              className="rounded-md py-2 px-4 font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="rounded-md py-2 px-4 font-medium hover:bg-gray-200 dark:hover:bg-gray-700"
             >
               {nav.name}
             </Link>

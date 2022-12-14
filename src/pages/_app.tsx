@@ -1,5 +1,6 @@
 import '@fontsource/fira-code'
-import '@fontsource/plus-jakarta-sans'
+import '@fontsource/plus-jakarta-sans/variable.css'
+import '@fontsource/plus-jakarta-sans/variable-italic.css'
 import '@/styles/globals.css'
 
 import type { AppProps } from 'next/app'

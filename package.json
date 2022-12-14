@@ -7,6 +7,9 @@
     "name": "Hendra Agil <@hendraaagil>",
     "url": "https://hendraaagil.dev"
   },
+  "engines": {
+    "node": ">=16.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

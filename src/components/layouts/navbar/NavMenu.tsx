@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import clsx from 'clsx'
 import { motion } from 'framer-motion'
 
 import navs from '@/_data/navs.json'
@@ -37,7 +38,12 @@ export const NavMenu = ({ clickAction }: NavMenuProps) => (
     animate="open"
     exit="closed"
     variants={containerVariants}
-    className="absolute top-0 left-0 mt-[72px] h-screen w-full space-y-6 bg-brand-light py-6 px-8 transition-all dark:bg-brand-dark"
+    className={clsx(
+      'absolute top-0 left-0 mt-[72px] h-screen w-full space-y-6',
+      'bg-brand-light py-6 px-8',
+      'transition-[background-color] duration-300',
+      'dark:bg-brand-dark'
+    )}
   >
     {navs.map((nav) => (
       <motion.li key={nav.name} variants={linkVariants} className="font-medium">
