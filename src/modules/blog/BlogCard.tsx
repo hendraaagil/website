@@ -32,7 +32,7 @@ export const BlogCard = ({ blog }: BlogCardProps) => {
           alt={`Image thumbnail for "${blog.title}" post`}
         />
       </div>
-      <div className="space-y-2 p-6">
+      <div className="space-y-2 p-4 xs:p-6">
         <Heading variant="h2">{blog.title}</Heading>
         <p className="text-gray-700 dark:text-gray-200">{blog.summary}</p>
       </div>

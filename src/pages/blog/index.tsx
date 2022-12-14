@@ -1,6 +1,6 @@
 import type { BlogMetadata } from '@/types/blog'
 
-import { Heading, PageContainer } from '@/components'
+import { PageContainer, PageHeader } from '@/components'
 import { BlogCard } from '@/modules/blog'
 import { getBlogs } from '@/libs/blog'
 
@@ -21,8 +21,8 @@ export default function Blog({ blogs }: BlogProps) {
 
   return (
     <PageContainer>
-      <Heading variant="h1">Blog</Heading>
-      <section className="flex flex-col space-y-6 py-6">
+      <PageHeader title="Blog" />
+      <section className="flex flex-col space-y-6 py-8">
         {blogs.map((blog) => (
           <BlogCard blog={blog} key={blog.slug} />
         ))}
