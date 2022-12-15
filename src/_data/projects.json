@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Vlr API",
+    "description": "Unofficial Valorant match API from https://vlr.gg site. Made with Express and Cheerio.",
+    "thumbnail": "/assets/project/vlr-api.png",
+    "github": "https://github.com/hendraaagil/vlr-api",
+    "demo": "https://vlr-api.hendraaagil.dev"
+  },
+  {
+    "title": "RPL Skandakra Bot",
+    "description": "A bot for help moderation in RPL Skandakra Discord Server. Made using discord.js.",
+    "thumbnail": "/assets/project/rpl-skandakra-bot.png",
+    "github": "https://github.com/rpl-skandakra/bot",
+    "demo": "-"
+  },
+  {
+    "title": "RPL Skandakra Dev Website",
+    "description": "An official website for RPL Skandakra Dev Community. Made with Next.js, Chakra UI and Contentful.",
+    "thumbnail": "/assets/project/rpl-skandakra-dev-website.png",
+    "github": "https://github.com/rpl-skandakra/website",
+    "demo": "https://rplskandakra.org"
+  },
+  {
+    "title": "Bed Covid RS Indonesia",
+    "description": "A website that provides information regarding the availability of hospitals and hospital beds for covid-19 or non-covid patients in Indonesia.",
+    "thumbnail": "/assets/project/bed-covid-rs-indonesia.png",
+    "github": "https://github.com/hendraaagil/bed-covid-rs-indo",
+    "demo": "https://bed-covid-rs-indo.vercel.app"
+  },
+  {
+    "title": "Next.js Chakra Starter",
+    "description": "An opinionated simple starter / template project with Next.js and Chakra UI.",
+    "thumbnail": "/assets/project/next-chakra-starter.png",
+    "github": "https://github.com/hendraaagil/next-chakra-starter",
+    "demo": "https://nextjs-chakra-hendraaagil.vercel.app"
+  },
+  {
+    "title": "Pengaduan Sekolah",
+    "description": "Pengaduan sekolah is an app for sent complaint to your school. Made with React & Chakra UI.",
+    "thumbnail": "/assets/project/pengaduan-sekolah.png",
+    "github": "https://github.com/erpeel-a/Sistem-Pengaduan-Sekolah-SMKN2Karanganyar-Frontend",
+    "demo": "https://pengaduan-smkn2kra.netlify.app"
+  },
+  {
+    "title": "Gift Store Landing Page",
+    "description": "Simple landing page sliced from design in figma. Made with React and Framer Motion.",
+    "thumbnail": "/assets/project/gift-store-landing-page.png",
+    "github": "https://github.com/hendraaagil/gift-store-landing-page",
+    "demo": "https://gift-store-landing-page.netlify.app"
+  },
+  {
+    "title": "E-Voting",
+    "description": "E-Voting app to choose your choice. Made with React and TailwindCSS.",
+    "thumbnail": "/assets/project/e-voting.png",
+    "github": "https://github.com/hendraaagil/vote-client",
+    "demo": "https://demo-vote.netlify.app"
+  },
+  {
+    "title": "Todo List App",
+    "description": "Todo list app to manage your activities. Made with React and data stored to web storage.",
+    "thumbnail": "/assets/project/todo-list.png",
+    "github": "https://github.com/hendraaagil/simple-todo-app",
+    "demo": "https://simple-todo-app-pearl.vercel.app"
+  },
+  {
+    "title": "Image Gallery",
+    "description": "Image gallery app to search your favorite image. Made with React, TailwindCSS and Pixabay API.",
+    "thumbnail": "/assets/project/image-gallery.png",
+    "github": "https://github.com/hendraaagil/image-gallery",
+    "demo": "https://image-gallery-three.vercel.app"
+  }
+]

@@ -20,9 +20,9 @@ export default function Blog({ blogs }: BlogProps) {
   // console.log(blogs)
 
   return (
-    <PageContainer>
+    <PageContainer seoProps={{ title: 'Blog' }}>
       <PageHeader title="Blog" />
-      <section className="flex flex-col space-y-6 py-8">
+      <section className="flex flex-col space-y-6">
         {blogs.map((blog) => (
           <BlogCard blog={blog} key={blog.slug} />
         ))}
