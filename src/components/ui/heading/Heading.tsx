@@ -8,7 +8,7 @@ export type HeadingProps = {
 }
 
 export const Heading = ({ children, className, variant, ...rest }: HeadingProps) => {
-  const baseClass = 'font-bold'
+  const baseClass = 'font-bold my-3'
 
   switch (variant) {
     case 'h2':

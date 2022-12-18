@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading } from '@/components'
+import { Heading, Hr } from '@/components'
 
 export type PageHeaderProps = {
   title: string
@@ -8,6 +8,6 @@ export type PageHeaderProps = {
 export const PageHeader = ({ title }: PageHeaderProps) => (
   <>
     <Heading variant="h1">{title}</Heading>
-    <hr className="my-5" aria-orientation="horizontal" />
+    <Hr className="my-5" />
   </>
 )

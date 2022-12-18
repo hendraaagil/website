@@ -2,6 +2,7 @@ import '@fontsource/fira-code'
 import '@fontsource/plus-jakarta-sans/variable.css'
 import '@fontsource/plus-jakarta-sans/variable-italic.css'
 import '@/styles/globals.css'
+import '@/styles/prism-one-dark.css'
 
 import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo'

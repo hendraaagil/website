@@ -1,4 +1,4 @@
-export type BlogMetadata = {
+export type BlogMetadata = Record<string, string> & {
   title: string
   thumbnail: string
   thumbnailCredit: string
