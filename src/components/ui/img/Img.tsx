@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
+import { imageUrl } from '@/constants/url'
 
 export type ImgProps = {
   src: string
@@ -7,9 +8,14 @@ export type ImgProps = {
 }
 
 export const Img = ({ src, alt }: ImgProps) => {
+  let imageSource = src
+  if (src.startsWith('/assets/blog')) {
+    imageSource = imageUrl + src
+  }
+
   return (
     <>
-      <img src={src} alt={alt} />
+      <img src={imageSource} alt={alt} />
       <figcaption className="py-2 text-xs">{alt}</figcaption>
     </>
   )
