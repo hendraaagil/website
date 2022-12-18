@@ -15,7 +15,7 @@ export const Img = ({ src, alt }: ImgProps) => {
 
   return (
     <>
-      <img src={imageSource} alt={alt} />
+      <img src={imageSource} alt={alt} className="w-full" />
       <figcaption className="py-2 text-xs">{alt}</figcaption>
     </>
   )
