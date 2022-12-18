@@ -33,7 +33,8 @@ const getMdxContent = async (contentPath: string): Promise<BlogContent> => {
 export const getBlogs = async () => {
   const paths = await getAllBlogPaths()
   const files = paths.map(async (p) => getMdxContent(p))
-  return Promise.all(files)
+  const blogs = await Promise.all(files)
+  return blogs.map((blog) => blog.frontmatter).sort((first, second) => second.createdAt.localeCompare(first.createdAt))
 }
 
 export const getBlogBySlug = async (slug: string) => getMdxContent(`${slug}.mdx`)

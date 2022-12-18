@@ -8,7 +8,7 @@ export const Hero = () => {
   const { description, name, title } = bio
 
   return (
-    <div className="flex flex-col-reverse items-start justify-between px-5 xs:px-0 sm:flex-row sm:items-center">
+    <div className="flex flex-col-reverse items-start justify-between px-4 xs:px-0 sm:flex-row sm:items-center">
       <div className="flex max-w-md flex-col">
         <Heading variant="h1">{name}</Heading>
         <p className="mt-1 text-lg font-semibold">{title}</p>

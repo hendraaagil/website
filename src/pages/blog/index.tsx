@@ -5,10 +5,7 @@ import { BlogCard } from '@/modules/blog'
 import { getBlogs } from '@/libs/blog'
 
 export const getStaticProps = async () => {
-  const blogs = (await getBlogs())
-    .map((blog) => blog.frontmatter)
-    .sort((first, second) => second.createdAt.localeCompare(first.createdAt))
-
+  const blogs = await getBlogs()
   return { props: { blogs } }
 }
 
@@ -22,7 +19,7 @@ export default function Blog({ blogs }: BlogProps) {
   return (
     <PageContainer seoProps={{ title: 'Blog' }}>
       <PageHeader title="Blog" />
-      <section className="flex flex-col space-y-6">
+      <section className="flex flex-col space-y-4">
         {blogs.map((blog) => (
           <BlogCard blog={blog} key={blog.slug} />
         ))}

@@ -1,9 +1,8 @@
 import Image from 'next/image'
 
 import type { ProjectData } from '@/types/project'
-import { CardContainer, ExternalLink, Heading } from '@/components'
+import { CardContainer, Heading, Link } from '@/components'
 import { imageUrl } from '@/constants/url'
-import { FiExternalLink } from 'react-icons/fi'
 
 export type ProjectCardProps = {
   project: ProjectData
@@ -27,8 +26,14 @@ export const ProjectCard = ({ project }: ProjectCardProps) => (
       <div>
         <hr className="my-3" />
         <div className="flex justify-end space-x-4">
-          <ExternalLink url={project.github}>GitHub</ExternalLink>
-          {project.demo !== '-' && <ExternalLink url={project.demo}>Demo</ExternalLink>}
+          <Link url={project.github} isExternal>
+            GitHub
+          </Link>
+          {project.demo !== '-' && (
+            <Link url={project.demo} isExternal>
+              Demo
+            </Link>
+          )}
         </div>
       </div>
     </div>
