@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import clsx from 'clsx'
-import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { useMedia } from 'react-use'
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi'
@@ -9,13 +8,13 @@ import { AnimatePresence } from 'framer-motion'
 import navs from '@/_data/navs.json'
 import { IconButton } from '@/components'
 import { NavMenu } from './NavMenu'
+import { useTheme } from '@/hooks'
 
 export const Navbar = () => {
   const [mounted, setMounted] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
-  const { theme, systemTheme, setTheme } = useTheme()
+  const { isLight, setTheme } = useTheme()
   const isWide = useMedia('(min-width: 768px)', true)
-  const isLight = (theme === 'system' && systemTheme === 'light') || theme === 'light'
 
   // Theme will available after first render
   useEffect(() => {

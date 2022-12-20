@@ -1,8 +1,9 @@
 import { DefaultSeoProps } from 'next-seo'
+import { siteUrl as webUrl } from '@/constants/url'
 
 const title = 'Hendra Agil'
 const description = `Hi! I'm a software developer. Born and live in Karanganyar, Central Java, Indonesia.`
-const siteUrl = 'https://hendraaagil.dev'
+const siteUrl = webUrl || 'https://hendraaagil.dev'
 
 const config: DefaultSeoProps = {
   titleTemplate: `%s | ${title}`,

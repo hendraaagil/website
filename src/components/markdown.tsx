@@ -4,7 +4,7 @@ import { Blockquote, Heading, Hr, Img, Link, OrderedList, Paragraph, UnorderedLi
 
 export const markdownComponents: React.ComponentProps<typeof MDXProvider>['components'] = {
   a: ({ children, href }) => (
-    <Link url={href as string} isExternal>
+    <Link url={href as string} className="underline" isExternal>
       {children}
     </Link>
   ),
