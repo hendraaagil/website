@@ -14,3 +14,8 @@ export type BlogContent = {
   compiledSource: string
   frontmatter: BlogMetadata
 }
+
+export type BlogTag = {
+  label: string
+  value: string
+}
