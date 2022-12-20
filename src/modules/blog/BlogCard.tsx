@@ -11,7 +11,7 @@ export type BlogCardProps = {
 
 export const BlogCard = ({ blog }: BlogCardProps) => (
   <CardContainer>
-    <div className="relative max-h-64 overflow-hidden">
+    <div className="relative flex max-h-64 items-center overflow-hidden">
       <div className="absolute bottom-0 right-0 mr-4 mb-4 space-x-2">
         {blog.tags.map((tag) => (
           <Tag key={tag} className="bg-brand-light text-brand-dark dark:bg-brand-dark dark:text-brand-light">
