@@ -58,6 +58,18 @@ export type SpotifyTopTracks = {
   items: SpotifyTrack[]
 }
 
+export type SpotifyTopTrack = {
+  albumImageUrl: string
+  artist: string
+  songUrl: string
+  title: string
+  id: string
+}
+
+export type SpotifyTopTracksApiResponse = {
+  tracks: SpotifyTopTrack[]
+}
+
 export type SpotifyCurrentlyPlaying = {
   timestamp: number
   context: {
@@ -70,4 +82,13 @@ export type SpotifyCurrentlyPlaying = {
   item: SpotifyTrack
   currently_playing_type: string
   is_playing: boolean
+}
+
+export type SpotifyCurrentlyPlayingApiResponse = {
+  album: string
+  albumImageUrl: string
+  artist: string
+  isPlaying: boolean
+  songUrl: string
+  title: string
 }

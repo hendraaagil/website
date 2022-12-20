@@ -15,3 +15,16 @@ export type GithubRepository = {
   fork: boolean
   stargazers_count: number
 }
+
+export type GithubApiResponse = {
+  user: {
+    username: string
+    avatarUrl: string
+    name: string
+    publicRepos: number
+    publicGists: number
+    followers: number
+    following: number
+  }
+  stars: number
+}

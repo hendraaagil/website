@@ -27,9 +27,9 @@ const handler: NextApiHandler = async (req, res) => {
     const { subscriberCount, videoCount, viewCount } = channel.statistics
 
     return res.status(200).json({
-      subscriberCount,
-      videoCount,
-      viewCount,
+      subscriberCount: new Number(subscriberCount),
+      videoCount: new Number(videoCount),
+      viewCount: new Number(viewCount),
     })
   }
 

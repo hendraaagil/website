@@ -3,8 +3,11 @@ import type { GithubRepository, GithubUserProfile } from '@/types/github'
 
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === 'GET') {
-    const userResponse = await fetch('https://api.github.com/users/hendraaagil')
-    const userReposResponse = await fetch('https://api.github.com/users/hendraaagil/repos?per_page=100')
+    const headers = {
+      Authorization: 'Bearer ' + process.env.GITHUB_TOKEN,
+    }
+    const userResponse = await fetch('https://api.github.com/users/hendraaagil', { headers })
+    const userReposResponse = await fetch('https://api.github.com/users/hendraaagil/repos?per_page=100', { headers })
 
     const user: GithubUserProfile = await userResponse.json()
     const repositories: GithubRepository[] = await userReposResponse.json()
