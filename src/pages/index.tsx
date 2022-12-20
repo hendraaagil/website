@@ -19,6 +19,7 @@ export default function Home({ blogs }: HomeProps) {
       <Hero />
       <Hr className="mb-4 mt-9" />
       <Posts posts={blogs} />
+      <Hr className="mb-4 mt-9" />
     </PageContainer>
   )
 }
