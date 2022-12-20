@@ -20,13 +20,14 @@ export const CurrentlyPlaying = () => {
       <FiPlayCircle className="mr-1 text-lg" />
       {!data?.isPlaying ? (
         <>
-          <p className="font-bold">{'Not Playing'}</p>
+          <p className="font-bold">Not Playing</p>
           <p>- Spotify</p>
         </>
       ) : (
-        <Link url={data?.songUrl as string} className="flex items-center" isExternal>
-          <p className="font-bold">{`${data.title} [${data.artist}]`}</p>
-          <FiExternalLink className="ml-1" />
+        <Link url={data?.songUrl as string} className="flex items-center space-x-1" isExternal>
+          <p className="font-bold">{data.title}</p>
+          <p>- {data.artist}</p>
+          <FiExternalLink />
         </Link>
       )}
     </div>
