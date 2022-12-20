@@ -10,19 +10,14 @@ type PostCardProps = {
 }
 
 const PostCard = ({ post }: PostCardProps) => (
-  <CardContainer className="flex flex-col justify-between space-y-4 p-4">
-    <div className="mb-2 space-y-2">
-      <time className="text-sm" dateTime={post.createdAt}>
-        {formatDate(post.createdAt)}
-      </time>
-      <div className="space-y-2">
-        <Heading variant="h2">{post.title}</Heading>
-        <p className="text-gray-700 dark:text-gray-200">{post.summary}</p>
-      </div>
-    </div>
+  <CardContainer className="flex flex-col p-4">
+    <time className="text-sm" dateTime={post.createdAt}>
+      {formatDate(post.createdAt)}
+    </time>
     <Link url={`/blog/${post.slug}`} className="flex items-center">
-      Read more <FiArrowRight className="ml-1" />
+      <Heading variant="h2">{post.title}</Heading>
     </Link>
+    <p className="text-gray-700 dark:text-gray-200">{post.summary}</p>
   </CardContainer>
 )
 

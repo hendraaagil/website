@@ -32,7 +32,7 @@ export type ProjectsProps = {
 }
 
 export const Projects = ({ projects }: ProjectsProps) => (
-  <Section title="Latest Projects" link="/projects" linkTitle="View all projects">
+  <Section title="Latest Projects" link="/projects" linkTitle="View all projects" containerClass="md:grid-cols-3">
     {projects.map((project) => (
       <ProjectCard project={project} key={project.title} />
     ))}
