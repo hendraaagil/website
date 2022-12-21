@@ -12,7 +12,7 @@ export const Hardware = () => {
           <Heading variant="h3">{list.heading}</Heading>
           <UnorderedList className="space-y-1">
             {list.lists.map((item) => (
-              <li key={item.name}>
+              <li key={item.name || item.title}>
                 {item.title && <strong>{item.title}</strong>} {item.name}
                 {item.specs && (
                   <UnorderedList className="space-y-1">

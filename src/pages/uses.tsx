@@ -21,6 +21,7 @@ export default function Uses() {
           alt="A personal computer setup on the table"
           width={1200}
           height={630}
+          priority
         />
         <figcaption className="py-2 text-xs">Photo by Fotis Fotopoulos on Unsplash</figcaption>
       </figure>
