@@ -6,8 +6,11 @@ import { imageUrl, siteUrl } from '@/constants/url'
 import { Hardware, Software } from '@/modules/uses'
 
 export default function Uses() {
+  const title = 'Uses'
+  const url = siteUrl + '/uses'
+
   return (
-    <PageContainer seoProps={{ title: 'Uses', canonical: siteUrl + '/uses' }}>
+    <PageContainer seoProps={{ title, canonical: url, openGraph: { title, url } }}>
       <PageHeader title="Uses" />
       <figure
         className={clsx(

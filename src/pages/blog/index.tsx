@@ -3,6 +3,7 @@ import type { BlogMetadata, BlogTag } from '@/types/blog'
 import { useEffect, useState } from 'react'
 import { PageContainer, PageHeader } from '@/components'
 import { BlogCard, Search } from '@/modules/blog'
+import { siteUrl } from '@/constants/url'
 import { getBlogs } from '@/libs/blog'
 import { toTitleCase } from '@/libs/string'
 
@@ -28,6 +29,9 @@ export type BlogProps = {
 }
 
 export default function Blog({ blogs, tags }: BlogProps) {
+  const title = 'Blog'
+  const url = siteUrl + '/blog'
+
   const [posts, setPosts] = useState<BlogMetadata[]>(blogs)
   const [tag, setTag] = useState<string | undefined>()
 
@@ -48,7 +52,7 @@ export default function Blog({ blogs, tags }: BlogProps) {
   }
 
   return (
-    <PageContainer seoProps={{ title: 'Blog' }}>
+    <PageContainer seoProps={{ title, canonical: url, openGraph: { title, url } }}>
       <PageHeader title="Blog" />
       <Search tags={tags} setTag={handleChangeTag} currentTag={tag} />
       <section className="flex flex-col space-y-4">
