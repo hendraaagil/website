@@ -34,7 +34,7 @@ export const TopTracks = () => {
         data?.tracks.map((track, index) => (
           <Fragment key={track.id}>
             <Track track={track} index={index} />
-            {index + 1 !== data.tracks.length && <Hr variant="subtle" />}
+            {index + 1 !== data.tracks.length && <Hr />}
           </Fragment>
         ))
       )}

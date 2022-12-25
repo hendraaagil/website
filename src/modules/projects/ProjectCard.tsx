@@ -25,7 +25,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => (
         <p className="text-gray-700 dark:text-gray-200">{project.description}</p>
       </div>
       <div>
-        <Hr className="my-3" variant="subtle" />
+        <Hr className="my-3" />
         <div className="flex justify-end space-x-4">
           <Link url={project.github} className="flex items-center" isExternal>
             GitHub

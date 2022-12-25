@@ -11,7 +11,7 @@ import { DefaultSeo } from 'next-seo'
 import { ThemeProvider } from 'next-themes'
 
 import defaultSeoConfig from '@/configs/next-seo'
-import { RootContainer, Navbar } from '@/components'
+import { RootContainer, Navbar, Footer } from '@/components'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
@@ -24,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <RootContainer>
         <Navbar />
         <Component {...pageProps} />
+        <Footer />
       </RootContainer>
     </ThemeProvider>
   )

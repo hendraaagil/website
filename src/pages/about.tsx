@@ -8,7 +8,7 @@ export default function About() {
       <PageHeader title="About Me" />
       <section>
         <Description />
-        <Hr className="my-4" />
+        <Hr className="mt-4" />
         <Skillset />
         <Hr className="mt-4" />
         <Social />

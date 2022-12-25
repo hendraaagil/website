@@ -27,7 +27,7 @@ export default function Uses() {
       </figure>
       <section>
         <Software />
-        <Hr className="mt-4" variant="subtle" />
+        <Hr className="mt-4" />
         <Hardware />
       </section>
     </PageContainer>
