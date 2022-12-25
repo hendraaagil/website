@@ -77,6 +77,10 @@
         "heading": "Miscellaneous",
         "lists": [
           {
+            "name": "Git",
+            "link": "https://git-scm.com"
+          },
+          {
             "name": "Notion",
             "link": "https://notion.so"
           },

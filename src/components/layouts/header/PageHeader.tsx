@@ -8,6 +8,6 @@ export type PageHeaderProps = {
 export const PageHeader = ({ title }: PageHeaderProps) => (
   <>
     <Heading variant="h1">{title}</Heading>
-    <Hr className="my-5" />
+    <Hr className="my-4" />
   </>
 )

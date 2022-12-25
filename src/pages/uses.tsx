@@ -27,7 +27,7 @@ export default function Uses() {
       </figure>
       <section>
         <Software />
-        <Hr className="mt-4 border-gray-200 transition-[border-color] duration-300 dark:border-gray-700" />
+        <Hr className="mt-4" variant="subtle" />
         <Hardware />
       </section>
     </PageContainer>

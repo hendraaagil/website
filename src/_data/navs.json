@@ -4,6 +4,10 @@
     "path": "/"
   },
   {
+    "name": "About",
+    "path": "/about"
+  },
+  {
     "name": "Blog",
     "path": "/blog"
   },
@@ -18,9 +22,5 @@
   {
     "name": "Dashboard",
     "path": "/dashboard"
-  },
-  {
-    "name": "About",
-    "path": "/about"
   }
 ]

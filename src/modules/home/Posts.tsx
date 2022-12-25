@@ -1,6 +1,5 @@
 import type { BlogMetadata } from '@/types/blog'
 
-import { FiArrowRight } from 'react-icons/fi'
 import { CardContainer, Heading, Link } from '@/components'
 import { formatDate } from '@/libs/string'
 import { Section } from './layouts'

@@ -11,7 +11,7 @@ export default function Dashboard() {
         <Website />
         <Youtube />
       </section>
-      <Hr className="mt-5" />
+      <Hr className="mt-4" />
       <Music />
     </PageContainer>
   )
