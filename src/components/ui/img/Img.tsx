@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
 import { imageUrl } from '@/constants/url'
 
 export type ImgProps = {

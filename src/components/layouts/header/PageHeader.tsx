@@ -1,4 +1,3 @@
-import React from 'react'
 import { Heading, Hr } from '@/components'
 
 export type PageHeaderProps = {
