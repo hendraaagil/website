@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Languages",
+    "items": ["C#", "CSS & HTML", "Java", "JavaScript", "PHP", "TypeScript"]
+  },
+  {
+    "name": "Frontend",
+    "items": ["Chakra UI", "Emotion", "Next.js", "React", "Webpack", "Tailwind CSS"]
+  },
+  {
+    "name": "Backend",
+    "items": ["Firebase", "MongoDB", "MySQL", "Node.js", "PostgreSQL"]
+  }
+]

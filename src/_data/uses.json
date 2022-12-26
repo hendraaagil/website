@@ -1,0 +1,167 @@
+{
+  "software": {
+    "heading": "Software",
+    "lists": [
+      {
+        "heading": "Editor",
+        "lists": [
+          {
+            "name": "Visual Studio Code",
+            "link": "https://code.visualstudio.com"
+          },
+          {
+            "title": "Theme:",
+            "name": "GitHub Theme",
+            "link": "https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme"
+          },
+          {
+            "title": "Editor Font:",
+            "name": "Iosevka Mayukai",
+            "link": "https://github.com/Iosevka-Mayukai/Iosevka-Mayukai"
+          },
+          {
+            "title": "Terminal Font:",
+            "name": "Caskaydia Cove",
+            "link": "https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode"
+          }
+        ]
+      },
+      {
+        "heading": "Terminal",
+        "lists": [
+          {
+            "name": "Windows Terminal",
+            "link": "https://github.com/microsoft/terminal"
+          },
+          {
+            "name": "oh-my-posh",
+            "link": "https://ohmyposh.dev"
+          },
+          {
+            "name": "Scoop",
+            "link": "https://scoop.sh"
+          }
+        ]
+      },
+      {
+        "heading": "Design",
+        "lists": [
+          {
+            "name": "GIMP",
+            "link": "https://gimp.org"
+          },
+          {
+            "name": "Figma",
+            "link": "https://figma.com"
+          }
+        ]
+      },
+      {
+        "heading": "Video",
+        "lists": [
+          {
+            "name": "OBS Studio",
+            "link": "https://obsproject.com"
+          },
+          {
+            "name": "HandBrake",
+            "link": "https://handbrake.fr"
+          },
+          {
+            "name": "Kdenlive",
+            "link": "https://kdenlive.org"
+          }
+        ]
+      },
+      {
+        "heading": "Miscellaneous",
+        "lists": [
+          {
+            "name": "Git",
+            "link": "https://git-scm.com"
+          },
+          {
+            "name": "Notion",
+            "link": "https://notion.so"
+          },
+          {
+            "name": "Postman",
+            "link": "https://postman.com"
+          },
+          {
+            "name": "DBeaver",
+            "link": "https://dbeaver.io"
+          }
+        ]
+      }
+    ]
+  },
+  "hardware": {
+    "heading": "Hardware",
+    "lists": [
+      {
+        "heading": "Laptop",
+        "lists": [
+          {
+            "title": null,
+            "name": "Lenovo Idepad Gaming 3 15ACH6"
+          },
+          {
+            "title": "Specs:",
+            "specs": [
+              {
+                "title": "Processor:",
+                "name": "AMD Ryzen 5 5600H"
+              },
+              {
+                "title": "Graphics:",
+                "name": "NVIDIA GeForce RTX 3050 4GB GDDR6"
+              },
+              {
+                "title": "RAM:",
+                "name": "2 x 8GB DDR4-3200"
+              },
+              {
+                "title": "Storage[0]:",
+                "name": "512GB SSD M.2 2280 PCIe"
+              },
+              {
+                "title": "Storage[1]:",
+                "name": "256GB SSD M.2 2242 PCIe"
+              },
+              {
+                "title": "OS:",
+                "name": "Windows 11 Home 64-bit"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Peripherals",
+        "lists": [
+          {
+            "title": "Monitor:",
+            "name": "Samsung S24R350",
+            "specs": null
+          },
+          {
+            "title": "Keyboard:",
+            "name": "Fantech MAXFIT61 FROST",
+            "specs": null
+          },
+          {
+            "title": "Headset:",
+            "name": "Rexus Thundervox HX25",
+            "specs": null
+          },
+          {
+            "title": "IEM:",
+            "name": "KZ EDX Pro",
+            "specs": null
+          }
+        ]
+      }
+    ]
+  }
+}

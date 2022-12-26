@@ -1,33 +1,50 @@
-![Hendra Agil](public/og-image.png)
+# hendraaagil.dev
 
----
+![Open Graph Image](public/og-image.png)
 
-## Getting Started
+## Developing
 
-First, copy `.env.example` and paste as `.env.local`, fill all field:
-
-```bash
-NEXT_PUBLIC_SITE_URL = ''
-```
-
-Second, install all dependencies & run the development server:
+Node.js `>= 16.x` setup with [yarn](https://yarnpkg.com/) is recommended.
 
 ```bash
-yarn && yarn dev
+# duplicate & fill environment file
+cp .env.example .env.local
+
+# install dependencies
+yarn
+
+# serve with hot reload at localhost:3000
+yarn dev
+
+# build for production
+yarn build
 ```
 
-Last, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Built With
+
+- Framework - [**Next.js**](https://nextjs.org/)
+- Styling - [**Tailwind CSS**](https://tailwindcss.com/)
+- Fonts - [**Fontsource**](https://fontsource.org/)
+- Icons - [**React Icons**](https://github.com/react-icons/react-icons)
+- Data Fetching - [**SWR**](https://swr.vercel.app/)
+- Comments - [**Giscus**](https://github.com/giscus/giscus)
+- Analytics - [**Umami**](https://umami.is/)
+- Others
+  - Classname Utility - [**clsx**](https://github.com/lukeed/clsx)
+  - Date Formatting - [**date-fns**](https://github.com/date-fns/date-fns)
+  - Animation - [**framer-motion**](https://github.com/framer/motion)
+  - Theme - [**next-themes**](https://github.com/pacocoursey/next-themes)
+  - SEO - [**next-seo**](https://github.com/garmeeh/next-seo)
+  - MDX - [**next-mdx-remote**](https://github.com/hashicorp/next-mdx-remote)
+  - Hooks - [**react-use**](https://github.com/streamich/react-use)
 
 ## Credits
 
 Thanks to my inspiration.
 
 - [leerob.io](https://leerob.io/)
-- [griko.id](https://griko.id/)
-- [joshuanatanielm.space](https://joshuanatanielm.space/)
-
-Built with [Chakra UI](https://chakra-ui.com), [MDX](https://mdxjs.com), [Giscus](https://giscus.app/) and [Next.js](https://nextjs.org).
+- [resir014.xyz](https://resir014.xyz/)
 
 ## License
 
-This source code is under [MIT License](LICENSE).
+This source code is under the [MIT License](LICENSE).

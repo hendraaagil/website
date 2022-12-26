@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Make clicks pass-through */
+#nprogress {
+  @apply pointer-events-none;
+}
+
+#nprogress .bar {
+  @apply fixed top-0 left-0 z-[1000] h-[3px] w-full bg-brand-blue;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  @apply absolute right-0 block h-full w-24 rotate-3 opacity-100 shadow-md shadow-brand-blue;
+}

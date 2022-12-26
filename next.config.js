@@ -1,6 +1,11 @@
-module.exports = {
-  images: { domains: ['images.ctfassets.net'] },
-  async redirects() {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['ik.imagekit.io', 'i.scdn.co'],
+  },
+  redirects: async () => {
     // https://twitter.com/LiamHammett/status/1260984553570570240
     return [
       {
@@ -38,6 +43,8 @@ module.exports = {
         destination: 'https://github.com/hendraaagil/website',
         permanent: false,
       },
-    ];
+    ]
   },
-};
+}
+
+module.exports = nextConfig
