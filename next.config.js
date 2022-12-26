@@ -43,6 +43,11 @@ const nextConfig = {
         destination: 'https://github.com/hendraaagil/website',
         permanent: false,
       },
+      {
+        source: '/analytics',
+        destination: 'https://analytics.hendraaagil.dev/share/uYc4Zzl2/personal-website',
+        permanent: false,
+      },
     ]
   },
 }
