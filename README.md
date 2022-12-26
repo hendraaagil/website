@@ -28,6 +28,7 @@ yarn build
 - Icons - [**React Icons**](https://github.com/react-icons/react-icons)
 - Data Fetching - [**SWR**](https://swr.vercel.app/)
 - Comments - [**Giscus**](https://github.com/giscus/giscus)
+- Analytics - [**Umami**](https://umami.is/)
 - Others
   - Classname Utility - [**clsx**](https://github.com/lukeed/clsx)
   - Date Formatting - [**date-fns**](https://github.com/date-fns/date-fns)
