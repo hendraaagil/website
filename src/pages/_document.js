@@ -46,7 +46,7 @@ export default class MyDocument extends NextDocument {
           <script
             async
             defer
-            data-website-id="d7044884-6f55-4a16-8344-9221c0e82832"
+            data-website-id="b408f1f4-59d1-4ee1-b282-f1ee61bbac4c"
             src="https://analytics.hendraaagil.dev/umami.js"
           />
         </Head>
