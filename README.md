@@ -20,7 +20,7 @@ yarn dev
 yarn build
 ```
 
-## Built With
+## Built with
 
 - Framework - [**Next.js**](https://nextjs.org/)
 - Styling - [**Tailwind CSS**](https://tailwindcss.com/)
@@ -29,6 +29,7 @@ yarn build
 - Data Fetching - [**SWR**](https://swr.vercel.app/)
 - Comments - [**Giscus**](https://github.com/giscus/giscus)
 - Analytics - [**Umami**](https://umami.is/)
+- Deploy - [**Vercel**](https://vercel.com/)
 - Others
   - Classname Utility - [**clsx**](https://github.com/lukeed/clsx)
   - Date Formatting - [**date-fns**](https://github.com/date-fns/date-fns)
