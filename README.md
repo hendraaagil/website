@@ -1,6 +1,6 @@
 # hendraaagil.dev
 
-![Open Graph Image](public/og-image.png)
+[![Open Graph Image](public/og-image.png)](https://hendraaagil.dev)
 
 ## Developing
 
@@ -29,6 +29,7 @@ yarn build
 - Data Fetching - [**SWR**](https://swr.vercel.app/)
 - Comments - [**Giscus**](https://github.com/giscus/giscus)
 - Analytics - [**Umami**](https://umami.is/)
+- Analytics DB - [**Supabase**](https://supabase.com/)
 - Deploy - [**Vercel**](https://vercel.com/)
 - Others
   - Classname Utility - [**clsx**](https://github.com/lukeed/clsx)
