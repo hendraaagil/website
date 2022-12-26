@@ -1,6 +1,6 @@
 const title = 'Hendra Agil';
 const description = `Hi! I'm a software developer. Born and live in Karanganyar, Central Java, Indonesia.`;
-const siteUrl = 'https://hendraaagil.dev';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hendraaagil.dev';
 
 const SEO = {
   titleTemplate: `%s | ${title}`,
