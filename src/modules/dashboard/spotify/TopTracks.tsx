@@ -38,19 +38,12 @@ export const TopTracks = () => {
 
   return (
     <div className="space-y-2">
-      {!isLoading
-        ? Array.from(Array(10).keys()).map((item) => (
-            <Fragment key={item}>
-              <TrackSkeleton />
-              {item !== 9 && <Hr />}
-            </Fragment>
-          ))
-        : data?.tracks.map((track, index) => (
-            <Fragment key={track.id}>
-              <Track track={track} index={index} />
-              {index + 1 !== data.tracks.length && <Hr />}
-            </Fragment>
-          ))}
+      {Array.from(Array(10).keys()).map((index) => (
+        <Fragment key={index}>
+          {isLoading ? <TrackSkeleton /> : <Track track={data?.tracks[index] as SpotifyTopTrack} index={index} />}
+          {index !== 9 && <Hr />}
+        </Fragment>
+      ))}
     </div>
   )
 }
