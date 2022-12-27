@@ -19,11 +19,9 @@ export const CurrentlyPlaying = () => {
     >
       <FiPlayCircle className="mr-1 w-8 text-lg xs:w-fit" />
       {!data?.isPlaying ? (
-        <>
-          <p>
-            <strong>Not Playing</strong> - Spotify
-          </p>
-        </>
+        <p>
+          <strong>Not Playing</strong> - Spotify
+        </p>
       ) : (
         <Link url={data?.songUrl as string} className="flex items-center space-x-1" isExternal>
           <p>
