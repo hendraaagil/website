@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection {
+  @apply bg-brand-blue text-brand-light dark:bg-brand-sky dark:text-brand-dark;
+}
+
+::-moz-selection {
+  @apply bg-brand-blue text-brand-light dark:bg-brand-sky dark:text-brand-dark;
+}
+
+::-webkit-scrollbar {
+  @apply w-3;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand-light dark:bg-brand-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-blue dark:bg-brand-sky;
+}
+
 /* Make clicks pass-through */
 #nprogress {
   @apply pointer-events-none;
