@@ -26,7 +26,7 @@ export default function Uses() {
           height={630}
           priority
         />
-        <figcaption className="py-2 text-xs">Photo by Fotis Fotopoulos on Unsplash</figcaption>
+        <figcaption className="py-2 text-xs">My Setup</figcaption>
       </figure>
       <section>
         <Software />
