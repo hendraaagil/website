@@ -15,10 +15,10 @@ const TrackSkeleton = () => (
   <div className="flex animate-pulse items-center space-x-4 rounded px-0 py-2 xs:px-2">
     <p className="opacity-0">01</p>
     <div className="h-12 w-12 bg-gray-200 transition-[background-color] duration-300 dark:bg-gray-700"></div>
-    <div className="space-y-2">
-      <div className="h-4 w-48 bg-gray-200 transition-[background-color] duration-300 dark:bg-gray-700"></div>
-      <div className="h-2 w-32 bg-gray-200 transition-[background-color] duration-300 dark:bg-gray-700"></div>
-    </div>
+    <a className="space-y-2" href="#">
+      <p className="h-4 w-48 bg-gray-200 transition-[background-color] duration-300 dark:bg-gray-700"></p>
+      <p className="h-2 w-32 bg-gray-200 transition-[background-color] duration-300 dark:bg-gray-700"></p>
+    </a>
   </div>
 )
 
