@@ -22,20 +22,20 @@ export const Hardware = () => {
           <Heading variant="h3">{list.heading}</Heading>
           <UnorderedList className="space-y-1">
             {list.lists.map((item) => (
-              <LinkWrapper key={item.name || item.title} link={item.link}>
-                <li>
+              <li key={item.name || item.title}>
+                <LinkWrapper link={item.link}>
                   {item.title && <strong>{item.title}</strong>} {item.name}
-                  {item.specs && (
-                    <UnorderedList className="space-y-1">
-                      {item.specs?.map((spec) => (
-                        <li key={spec.title}>
-                          <strong>{spec.title}</strong> {spec.name}
-                        </li>
-                      ))}
-                    </UnorderedList>
-                  )}
-                </li>
-              </LinkWrapper>
+                </LinkWrapper>
+                {item.specs && (
+                  <UnorderedList className="space-y-1">
+                    {item.specs?.map((spec) => (
+                      <li key={spec.title}>
+                        <strong>{spec.title}</strong> {spec.name}
+                      </li>
+                    ))}
+                  </UnorderedList>
+                )}
+              </li>
             ))}
           </UnorderedList>
         </div>
