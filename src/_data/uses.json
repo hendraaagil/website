@@ -104,7 +104,8 @@
         "lists": [
           {
             "title": null,
-            "name": "Lenovo Idepad Gaming 3 15ACH6"
+            "name": "Lenovo Idepad Gaming 3 15ACH6",
+            "link": "https://tokopedia.link/CeZ3F6IKwwb"
           },
           {
             "title": "Specs:",
@@ -143,21 +144,31 @@
           {
             "title": "Monitor:",
             "name": "Samsung S24R350",
+            "link": "https://tokopedia.link/QYOMgHOKwwb",
             "specs": null
           },
           {
             "title": "Keyboard:",
             "name": "Fantech MAXFIT61 FROST",
+            "link": "https://tokopedia.link/Fm59VeRKwwb",
+            "specs": null
+          },
+          {
+            "title": "Mouse:",
+            "name": "Fantech X9",
+            "link": "https://tokopedia.link/3uayEF0Lwwb",
             "specs": null
           },
           {
             "title": "Headset:",
             "name": "Rexus Thundervox HX25",
+            "link": "https://tokopedia.link/AVlkyITKwwb",
             "specs": null
           },
           {
             "title": "IEM:",
             "name": "KZ EDX Pro",
+            "link": "https://tokopedia.link/sPGB5BULwwb",
             "specs": null
           }
         ]
