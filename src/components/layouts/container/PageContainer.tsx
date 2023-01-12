@@ -14,7 +14,7 @@ const wrapper = (type: string, props: any, children: React.ReactNode[]) => React
 export const PageContainer = ({ as, children, className, seoProps }: PageContainerProps) => {
   return wrapper(
     as || 'main',
-    { className: clsx('mx-auto flex w-full max-w-5xl flex-col justify-center py-8 px-4 xs:py-6 xs:px-9', className) },
+    { className: clsx('mx-auto flex w-full max-w-5xl flex-col justify-center py-6 px-4 xs:py-6 xs:px-9', className) },
     [<NextSeo {...seoProps} key="next-seo" />, children]
   )
 }
