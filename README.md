@@ -2,6 +2,8 @@
 
 [![Open Graph Image](public/og-image.png)](https://hendraaagil.dev)
 
+You can visit the old version in [here](https://v2.hendraaagil.dev/).
+
 ## Developing
 
 Node.js `>= 16.x` setup with [yarn](https://yarnpkg.com/) is recommended.
