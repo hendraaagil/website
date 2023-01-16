@@ -48,6 +48,11 @@ const nextConfig = {
         destination: 'https://analytics.hendraaagil.dev/share/uYc4Zzl2/personal-website',
         permanent: false,
       },
+      {
+        source: '/links',
+        destination: 'https://links.hendraaagil.dev',
+        permanent: false,
+      },
     ]
   },
 }
