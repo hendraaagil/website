@@ -7,7 +7,7 @@ const handler: NextApiHandler = async (req, res) => {
     const response = await getTopTracks()
     const { items }: SpotifyTopTracks = await response.json()
 
-    const tracks = items.slice(0, 10).map((track) => ({
+    const tracks = items.map((track) => ({
       albumImageUrl: track.album.images[0].url,
       artist: track.artists.map((_artist) => _artist.name).join(', '),
       songUrl: track.external_urls.spotify,
