@@ -20,7 +20,7 @@ export default function Uses() {
         )}
       >
         <Image
-          src={`${imageUrl}/main/setup.png`}
+          src={`${imageUrl}/main/setup-1.png`}
           alt="A personal computer setup on the table"
           width={1200}
           height={630}
