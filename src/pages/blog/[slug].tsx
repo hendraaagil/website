@@ -9,6 +9,7 @@ import { Heading, Hr, markdownComponents, PageContainer, Tag } from '@/component
 import { Comment } from '@/modules/blog'
 import { imageUrl, siteUrl } from '@/constants/url'
 import { getBlogBySlug, getBlogs } from '@/libs/blog'
+import { getReadingTime } from '@/libs/math'
 import { formatDate, toTitleCase } from '@/libs/string'
 
 export const getStaticPaths = async () => {
@@ -32,6 +33,7 @@ export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getSta
   const { author, slug, summary, tags, thumbnail, thumbnailCredit, title, createdAt, updatedAt } = blog.frontmatter
   const postUrl = `${siteUrl}/blog/${slug}`
   const thumbnailUrl = `${imageUrl}${thumbnail}`
+  const readTime = getReadingTime(blog.compiledSource)
 
   return (
     <PageContainer
@@ -74,7 +76,7 @@ export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getSta
       </figure>
       <time dateTime={createdAt} className="flex items-center text-sm font-medium">
         <FiCalendar className="mr-1" />
-        {formatDate(createdAt)}
+        {formatDate(createdAt)}・{readTime} minute(s) read
       </time>
       <Heading variant="h1">{title}</Heading>
       <p>{summary}</p>
