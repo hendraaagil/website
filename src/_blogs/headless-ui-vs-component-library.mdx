@@ -1,0 +1,110 @@
+---
+title: 'Headless UI vs Component Library'
+thumbnail: /assets/blog/headless-ui-vs-component-library/thumbnail.png
+thumbnailCredit: Photo by Ryunosuke Kikuno on Unsplash
+summary: Kapan kita harus memilih untuk menggunakan Headless UI daripada Component Library?
+tags: [development, react]
+author: Hendra Agil
+createdAt: '2023-02-09T12:21:00+07:00'
+updatedAt: '2023-02-09T12:21:00+07:00'
+---
+
+Karena saya cukup aktif di twitter, saya melihat ada developer yang membuat sebuah UI library: [shadcn/ui](https://ui.shadcn.com/). Pas saya cek ke repository-nya, dia pakai tailwind dan juga Radix UI. Dari situ saya jadi penasaran untuk tau lebih lanjut mengenai [Radix UI](https://www.radix-ui.com/).
+
+Di kepala saya muncul pertanyaan, kenapa sudah pakai Tailwind tapi masih pakai Radix UI. Setelah saya cari, ternyata Radix UI itu adalah sebuah Headless UI. Artinya, dia cuma punya logic bagaimana sebuah komponen berinteraksi. Untuk styling dari component, kita bisa custom sesuka hati. Entah itu pakai Emotion, styled-components, Tailwind, dsb.
+
+Ini pernah saya lihat sebelumnya di [headless-ui](https://headlessui.com/). headless-ui sendiri itu buatan Tailwind, jadi kalau sudah pakai Tailwind saya kira paling cocok pakai itu. Namun setelah saya coba cari referensi artikel yang membahas tentang library headless-ui ternyata dia tidak selengkap Radix UI yang sempat saya mention di awal tadi.
+
+---
+
+## Headless UI vs Component Library
+
+[Artikel: Headless components in React and why I stopped using a UI library for our design system](https://medium.com/@nirbenyair/headless-components-in-react-and-why-i-stopped-using-ui-libraries-a8208197c268)
+
+Pada artikel di atas, dia menulis kalau kita pakai component library yang sudah jadi dan siap pakai semacam Material UI, Chakra, dsb. Itu akan kompleks jika kita perlu custom style-nya. Berbeda jika pakai Headless UI, kita bisa fokus membuat style sesuai kebutuhan dan menyerahkan logic interaktifitas komponen ke library Headless UI.
+
+Lalu, apakah Headless UI akan lebih worth untuk dipakai daripada component library?
+
+Jawabannya belum tentu, kembali lagi ke kebutuhan kita. Kalau kita perlu membuat tampilan yang cepat dan tampilannya tidak terlalu “ribet”, kita bisa pakai component library. Tapi kalau perlu tampilan yang lumayan custom dan tidak bisa di cover dengan component library, lebih baik pakai Headless UI daripada mengeluarkan banyak effort untuk tweak konfigurasi si component library.
+
+Beberapa pilihan untuk component library:
+
+- [Material UI](https://mui.com/material-ui/getting-started/overview/)
+- [Chakra UI](https://chakra-ui.com/)
+- [Ant Design](https://ant.design/)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+
+Sedangkan pilihan untuk Headless UI:
+
+- [Radix UI](https://www.radix-ui.com/)
+- [Reach UI](https://reach.tech/)
+- [Downshift](https://www.downshift-js.com/)
+- [Headless UI](https://headlessui.com/)
+
+---
+
+## Kebutuhan
+
+Mungkin saya akan sedikit mundur untuk membahas kebutuhan apa yang diperlukan sebelum memilih tool yang akan kita gunakan. Dari artikel yang sempat saya mention sebelumnya, si penulis mengatakan dalam membuat sebuah design system itu harus menjawab beberapa kebutuhan:
+
+1. Accessibility,
+
+   Acessibility (aksesibilitas) ini memang penting, tapi terkadang banyak orang yang tidak peduli tentang ini.
+
+2. Theming,
+
+   Tema tampilan seperti light / dark mode.
+
+3. Uniqueness,
+
+   Tampilan software yang kita buat harus unik. Kita tidak ingin terlihat kalau kita pakai Material UI, dsb. yang sangat terlihat generic.
+
+4. Browser support,
+
+   Support digunakan di banyak jenis browser. Tapi untuk saat ini setau saya ada 3 engine yang sering digunakan: chromium, webkit dan gecko (kalau tidak salah dipakai oleh firefox).
+
+5. Functionality,
+
+   Fungsionalitas yang artinya kita punya kontrol terhadap apa yang akan dilakukan oleh komponen.
+
+6. Responsiveness,
+
+   Responsif, karena pengguna kita tidak hanya memakai desktop.
+
+7. Maintainability.
+
+   Mudah untuk di maintain dan di modifikasi.
+
+---
+
+### Tradeoffs
+
+Kalau menurut saya jika kita benar benar membutuhkan 7 poin di atas, component library bukanlah pilihan tepat. Karena kita perlu untuk custom konfigurasinya. Seperti yang disebutkan pada artikel sebelumnya, ketika si penulis memakai Material UI dan seiring berjalannya waktu ternyata dia membutuhkan komponen yang lebih _complicated_.
+
+Dan tentu saja component library akan sangat sulit untuk memenuhi hal tersebut. Pada akhirnya dia menyadari kalau memakai component library bukan pilihan yang tepat dan memutuskan untuk menggunakan Headless UI.
+
+Mungkin di sini saya akan tuliskan beberapa _tradeoffs_ dari Headless UI dan component library:
+
+- Headless UI
+  1. ✅ Kontrol tampilan lebih bebas
+  2. ✅ Bisa dipakai dengan berbagai tool styling seperti Emotion, styled-components, Tailwind, dsb.
+  3. ❌ Membutuhkan setup yang lebih banyak
+- Component library
+  1. ✅ Tidak membutuhkan setup yang banyak
+  2. ❌ Kontrol terhadap tampilan lebih sedikit
+  3. ❌ Biasanya perlu menggabungkan dengan styling kita sendiri
+
+---
+
+## Penutup
+
+Untuk sekarang, Headless UI bisa dibilang adalah tool yang mainstream. Seperti tim dari Material sekarang sedang membuat Headless UI yang bernama [MUI Base](https://mui.com/base/getting-started/overview/). MUI Base adalah versi Headless dari component library Material UI. Tapi masih versi alpha dan tentu saja belum direkomendasikan untuk dipakai di production.
+
+Mungkin cukup itu saja yang bisa saya tuliskan. Menurut saya dengan Headless UI kita bisa membuat komponen yang accessible dan tampilan yang sesuai kebutuhan. Component library pun sama, tapi kita tidak bisa cukup leluasa untuk mengatur tampilannya. Mungkin di post selanjutnya saya akan berbagi pengalaman saya mencoba menggunakan Headless UI.
+
+Berapa referensi yang saya ambil:
+
+- [youtube.com/watch?v=BVLBNqW4ves](https://www.youtube.com/watch?v=BVLBNqW4ves)
+- [medium.com/@nirbenyair/headless-components-in-react-and-why-i-stopped-using-ui-libraries](https://medium.com/@nirbenyair/headless-components-in-react-and-why-i-stopped-using-ui-libraries-a8208197c268)
+
+Terima kasih.
