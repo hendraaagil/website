@@ -1,5 +1,5 @@
 import { MDXProvider } from '@mdx-js/react'
-import { ListItem, ParagraphChildNode } from './ui'
+import { ListItem } from './ui'
 import { Blockquote, Heading, Hr, Img, Link, OrderedList, Paragraph, UnorderedList } from './ui'
 
 export const markdownComponents: React.ComponentProps<typeof MDXProvider>['components'] = {
@@ -18,5 +18,5 @@ export const markdownComponents: React.ComponentProps<typeof MDXProvider>['compo
   ol: ({ children }) => <OrderedList>{children}</OrderedList>,
   ul: ({ children }) => <UnorderedList>{children}</UnorderedList>,
   li: ({ children }) => <ListItem>{children}</ListItem>,
-  p: ({ children }) => <Paragraph>{children as ParagraphChildNode}</Paragraph>,
+  p: ({ children }) => <Paragraph>{children}</Paragraph>,
 }

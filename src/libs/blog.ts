@@ -2,6 +2,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import rehypePrism from 'rehype-prism-plus'
 import remarkGfm from 'remark-gfm'
+import remarkUnwrapImages from 'remark-unwrap-images'
 import { serialize } from 'next-mdx-remote/serialize'
 
 import type { BlogContent } from '@/types/blog'
@@ -17,7 +18,7 @@ const getMdxContent = async (contentPath: string): Promise<BlogContent> => {
   const filePath = path.join(`${contentDirectory}`, contentPath)
   const file = await fs.readFile(filePath, 'utf8')
   const content = await serialize(file, {
-    mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypePrism] },
+    mdxOptions: { remarkPlugins: [remarkGfm, remarkUnwrapImages], rehypePlugins: [rehypePrism] },
     parseFrontmatter: true,
   })
 
