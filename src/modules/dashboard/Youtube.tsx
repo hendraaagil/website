@@ -10,11 +10,6 @@ export const Youtube = () => {
 
   return (
     <>
-      <Card
-        count={isLoading ? '...' : data?.subscriberCount.toLocaleString()}
-        link={link}
-        title="YouTube Subscribers"
-      />
       <Card count={isLoading ? '...' : data?.videoCount.toLocaleString()} link={link} title="YouTube Videos" />
       <Card count={isLoading ? '...' : data?.viewCount.toLocaleString()} link={link} title="YouTube Views" />
     </>
