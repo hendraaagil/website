@@ -1,7 +1,7 @@
 {
   "name": "personal-website",
   "description": "Source code for my personal website",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "private": true,
   "author": {
     "name": "Hendra Agil <@hendraaagil>",
