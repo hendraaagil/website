@@ -5,7 +5,7 @@ const handler: NextApiHandler = async (req, res) => {
   if (req.method === 'GET') {
     const supabase = createClient(process.env.SUPABASE_URL as string, process.env.SUPABASE_KEY as string)
     const [{ count: viewCount }, { count: visitorCount }] = await Promise.all([
-      supabase.from('pageview').select('*', { count: 'exact', head: true }),
+      supabase.from('website_event').select('*', { count: 'exact', head: true }),
       supabase.from('session').select('*', { count: 'exact', head: true }),
     ])
 
