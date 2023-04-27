@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { format } from 'date-fns';
 
-import Comments from '@/components/blog/Comments';
+// import Comments from '@/components/blog/Comments';
 import markdownComponents from '@/components/blog/contents';
 import { getBlogBySlug, getBlogs } from '@/libs/blog';
 
