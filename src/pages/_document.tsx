@@ -13,7 +13,7 @@ export default function Document() {
             defer
             strategy="afterInteractive"
             data-website-id="d7044884-6f55-4a16-8344-9221c0e82832"
-            src="https://analytics.hendraaagil.dev/umami.js"
+            src="https://analytics.hendraaagil.dev/script.js"
           />
         )}
       </Head>
