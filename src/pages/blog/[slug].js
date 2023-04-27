@@ -133,7 +133,7 @@ const DetailBlog = ({ blog }) => {
         <MDXRemote {...blog} components={markdownComponents} />
       </Box>
       <Divider my={4} />
-      <Comments />
+      {/* <Comments /> */}
     </>
   );
 };
