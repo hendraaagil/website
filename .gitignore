@@ -17,6 +17,9 @@
 /public/robots.txt
 /public/sitemap.xml
 /public/sitemap-0.xml
+/public/workbox-*.js
+/public/sw.js
+/public/fallback-*.js
 
 # misc
 .DS_Store
