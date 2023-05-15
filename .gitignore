@@ -18,7 +18,9 @@
 /public/sitemap.xml
 /public/sitemap-0.xml
 /public/workbox-*.js
+/public/workbox-*.js.map
 /public/sw.js
+/public/sw.js.map
 /public/fallback-*.js
 
 # misc

@@ -17,6 +17,7 @@ const handler: NextApiHandler = async (req, res) => {
     const album = song.item.album.name
     const albumImageUrl = song.item.album.images[0].url
     const songUrl = song.item.external_urls.spotify
+    const embedUrl = songUrl.split('track').join('embed/track')
 
     return res.status(200).json({
       album,
@@ -24,6 +25,7 @@ const handler: NextApiHandler = async (req, res) => {
       artist,
       isPlaying,
       songUrl,
+      embedUrl,
       title,
     })
   }

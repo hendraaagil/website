@@ -90,5 +90,6 @@ export type SpotifyCurrentlyPlayingApiResponse = {
   artist: string
   isPlaying: boolean
   songUrl: string
+  embedUrl: string
   title: string
 }
