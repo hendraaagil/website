@@ -40,6 +40,10 @@
           {
             "name": "Scoop",
             "link": "https://scoop.sh"
+          },
+          {
+            "name": "Chocolatey",
+            "link": "https://chocolatey.org"
           }
         ]
       },
@@ -169,6 +173,24 @@
             "title": "IEM:",
             "name": "KZ EDX Pro",
             "link": "https://tokopedia.link/sPGB5BULwwb",
+            "specs": null
+          },
+          {
+            "title": "TWS:",
+            "name": "dbE TWS10",
+            "link": "https://tokopedia.link/74KG8tQyTzb",
+            "specs": null
+          },
+          {
+            "title": "Phone[0]:",
+            "name": "Google Pixel 6a",
+            "link": "https://www.aliexpress.com/item/1005004588143607.html",
+            "specs": null
+          },
+          {
+            "title": "Phone[1]:",
+            "name": "Realme 9",
+            "link": "https://tokopedia.link/RDCDD9XyTzb",
             "specs": null
           }
         ]
