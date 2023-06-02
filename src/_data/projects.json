@@ -1,5 +1,12 @@
 [
   {
+    "title": "GilBot",
+    "description": "WhatsApp bot for any needs. Made with whatsapp-web.js and Prisma, for the website is using React and TailwindCSS",
+    "thumbnail": "/assets/project/gilbot.png",
+    "github": "https://gilbot.hendraaagil.dev/source",
+    "demo": "https://gilbot.hendraaagil.dev"
+  },
+  {
     "title": "Vlr API",
     "description": "Unofficial Valorant match API from https://vlr.gg site. Made with Express and Cheerio.",
     "thumbnail": "/assets/project/vlr-api.png",
