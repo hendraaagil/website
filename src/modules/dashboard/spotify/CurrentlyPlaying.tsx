@@ -21,7 +21,7 @@ export const CurrentlyPlaying = () => {
         </p>
       ) : (
         <iframe
-          style={{ borderRadius: '12px' }}
+          style={{ borderRadius: '14px' }}
           src={data?.embedUrl}
           width="100%"
           height="80"
