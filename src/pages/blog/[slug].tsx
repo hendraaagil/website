@@ -40,6 +40,7 @@ export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getSta
       as="article"
       seoProps={{
         title,
+        description: summary,
         canonical: postUrl,
         openGraph: {
           title,
