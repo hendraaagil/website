@@ -1,5 +1,6 @@
 export * from './blockquote'
 export * from './button'
+export * from './code'
 export * from './heading'
 export * from './hr'
 export * from './img'
