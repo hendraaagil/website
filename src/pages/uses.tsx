@@ -20,10 +20,10 @@ export default function Uses() {
         )}
       >
         <Image
-          src={`${imageUrl}/main/setup-v1.0.jpg`}
+          src={`${imageUrl}/main/setup-v1.1.jpg`}
           alt="A personal computer setup on the table"
           width={2016}
-          height={1402}
+          height={1436}
           priority
         />
         <figcaption className="py-2 text-xs">My Setup</figcaption>
