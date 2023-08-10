@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { NextApiHandler } from 'next'
 import { google } from 'googleapis'
 
@@ -16,20 +17,30 @@ const handler: NextApiHandler = async (req, res) => {
       version: 'v3',
     })
 
-    const response = await youtube.channels.list({
-      // @ts-ignore
-      id: 'UCy44Cn1aBo3LYrZsh2gKGIA',
-      part: 'statistics',
-    })
+    const [response, secondResponse] = await Promise.all([
+      youtube.channels.list({
+        id: 'UCy44Cn1aBo3LYrZsh2gKGIA',
+        part: 'statistics',
+      }),
+      youtube.channels.list({
+        id: 'UC-8I6YXDaagpTHTWM5GYl8Q',
+        part: 'statistics',
+      }),
+    ])
 
-    // @ts-ignore
     const channel = response.data.items[0]
+    const secondChannel = secondResponse.data.items[0]
     const { subscriberCount, videoCount, viewCount } = channel.statistics
+    const {
+      subscriberCount: secondSubscriberCount,
+      videoCount: secondVideoCount,
+      viewCount: secondViewCount,
+    } = secondChannel.statistics
 
     return res.status(200).json({
-      subscriberCount: new Number(subscriberCount),
-      videoCount: new Number(videoCount),
-      viewCount: new Number(viewCount),
+      subscriberCount: new Number(subscriberCount) + new Number(secondSubscriberCount),
+      videoCount: new Number(videoCount) + new Number(secondVideoCount),
+      viewCount: new Number(viewCount) + new Number(secondViewCount),
     })
   }
 
