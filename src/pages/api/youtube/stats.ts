@@ -17,31 +17,21 @@ const handler: NextApiHandler = async (req, res) => {
       version: 'v3',
     })
 
-    const [response, secondResponse] = await Promise.all([
-      youtube.channels.list({
-        id: 'UCy44Cn1aBo3LYrZsh2gKGIA',
-        part: 'statistics',
-      }),
-      youtube.channels.list({
-        id: 'UC-8I6YXDaagpTHTWM5GYl8Q',
-        part: 'statistics',
-      }),
-    ])
-
-    const channel = response.data.items[0]
-    const secondChannel = secondResponse.data.items[0]
-    const { subscriberCount, videoCount, viewCount } = channel.statistics
-    const {
-      subscriberCount: secondSubscriberCount,
-      videoCount: secondVideoCount,
-      viewCount: secondViewCount,
-    } = secondChannel.statistics
-
-    return res.status(200).json({
-      subscriberCount: new Number(subscriberCount) + new Number(secondSubscriberCount),
-      videoCount: new Number(videoCount) + new Number(secondVideoCount),
-      viewCount: new Number(viewCount) + new Number(secondViewCount),
+    const channelIds = ['UCy44Cn1aBo3LYrZsh2gKGIA', 'UC-8I6YXDaagpTHTWM5GYl8Q']
+    const channels = await youtube.channels.list({
+      id: channelIds,
+      part: 'statistics',
     })
+
+    const statistics = { subscriberCount: 0, videoCount: 0, viewCount: 0 }
+    channels.data.items.forEach((channel) => {
+      const { subscriberCount, videoCount, viewCount } = channel.statistics
+      statistics.subscriberCount += new Number(subscriberCount)
+      statistics.videoCount += new Number(videoCount)
+      statistics.viewCount += new Number(viewCount)
+    })
+
+    return res.status(200).json(statistics)
   }
 
   return res.status(404).json({ message: 'Not found' })
