@@ -5,12 +5,15 @@ import { getNowPlaying } from '@/libs/spotify'
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === 'GET') {
     const response = await getNowPlaying()
-
     if (response.status === 204 || response.status > 400) {
       return res.status(200).json({ isPlaying: false })
     }
 
     const song: SpotifyCurrentlyPlaying = await response.json()
+    if (song.currently_playing_type === 'episode') {
+      return res.status(200).json({ isPlaying: false })
+    }
+
     const isPlaying = song.is_playing
     const title = song.item.name
     const artist = song.item.artists.map((_artist) => _artist.name).join(', ')

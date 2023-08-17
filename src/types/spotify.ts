@@ -80,7 +80,7 @@ export type SpotifyCurrentlyPlaying = {
   }
   progress_ms: number
   item: SpotifyTrack
-  currently_playing_type: string
+  currently_playing_type: 'track' | 'episode'
   is_playing: boolean
 }
 
