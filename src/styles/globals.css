@@ -35,3 +35,11 @@
 #nprogress .peg {
   @apply absolute right-0 block h-full w-24 rotate-3 opacity-100 shadow-md shadow-brand-blue;
 }
+
+/* Line clamp */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
