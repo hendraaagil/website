@@ -21,11 +21,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@fontsource/fira-code": "^4.5.12",
-    "@fontsource/plus-jakarta-sans": "^4.5.10",
+    "@fontsource/fira-code": "^5.0.8",
+    "@fontsource/plus-jakarta-sans": "^5.0.9",
     "@giscus/react": "^2.2.6",
-    "clsx": "^1.2.1",
-    "date-fns": "^2.29.3",
+    "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
     "framer-motion": "^7.6.19",
     "googleapis": "^109.0.1",
     "isomorphic-unfetch": "^3.1.0",
@@ -50,17 +50,17 @@
     "@types/nprogress": "^0.2.0",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.15",
     "eslint": "^8.29.0",
     "eslint-config-next": "^13.0.6",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "next-sitemap": "^3.1.43",
-    "postcss": "^8.4.19",
+    "postcss": "^8.4.28",
     "prettier": "^2.8.0",
     "prettier-plugin-tailwindcss": "^0.2.0",
-    "tailwindcss": "^3.2.4",
+    "tailwindcss": "^3.3.3",
     "typescript": "^4.9.3"
   }
 }

@@ -48,7 +48,7 @@ export const Navbar = () => {
             <Link
               key={nav.name}
               href={nav.path}
-              className="rounded-md py-2 px-4 font-medium hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="rounded-md px-4 py-2 font-medium hover:bg-gray-200 dark:hover:bg-gray-700"
             >
               {nav.name}
             </Link>

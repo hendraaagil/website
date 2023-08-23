@@ -38,8 +38,8 @@ export const NavMenu = ({ clickAction }: NavMenuProps) => (
     exit="closed"
     variants={containerVariants}
     className={clsx(
-      'absolute top-0 left-0 mt-[72px] h-screen w-full space-y-6',
-      'bg-brand-light py-6 px-8',
+      'absolute left-0 top-0 mt-[72px] h-screen w-full space-y-6',
+      'bg-brand-light px-8 py-6',
       'transition-[background-color] duration-300',
       'dark:bg-brand-dark'
     )}
