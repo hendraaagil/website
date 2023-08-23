@@ -11,7 +11,7 @@ export type IconButtonProps = {
 export const IconButton = ({ children, className, label, ...rest }: IconButtonProps) => (
   <button
     className={clsx(
-      'rounded-md px-4 py-3',
+      'rounded-md py-3 px-4',
       'transition-[background-color] duration-300',
       'hover:bg-gray-200 dark:hover:bg-gray-700',
       'md:py-2',

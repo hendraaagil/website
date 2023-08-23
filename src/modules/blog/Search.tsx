@@ -10,7 +10,7 @@ export type SearchProps = {
 }
 
 export const Search = ({ tags, currentTag, setTag }: SearchProps) => (
-  <div className="-mt-1 mb-4 flex flex-wrap items-center space-x-2">
+  <div className="mb-4 -mt-1 flex flex-wrap items-center space-x-2">
     <p className="font-medium">Tags :</p>
     {tags.map((tag) => (
       <button
@@ -18,7 +18,7 @@ export const Search = ({ tags, currentTag, setTag }: SearchProps) => (
         onClick={() => setTag(tag.value)}
         disabled={tag.value === currentTag}
         className={clsx(
-          'my-1 rounded border border-gray-200 px-2 py-1 text-base',
+          'my-1 rounded border border-gray-200 py-1 px-2 text-base',
           'transition-[background-color,border-color] duration-300',
           'hover:bg-gray-200 dark:border-gray-700 dark:hover:bg-gray-700',
           'disabled:cursor-not-allowed disabled:bg-gray-200 dark:disabled:bg-gray-700'

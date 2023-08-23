@@ -8,7 +8,7 @@ export type TagProps = {
 
 export const Tag = ({ children, className }: TagProps) => (
   <span
-    className={clsx('rounded px-2 py-1 text-xs capitalize', 'transition-[background-color] duration-300', className)}
+    className={clsx('rounded py-1 px-2 text-xs capitalize', 'transition-[background-color] duration-300', className)}
   >
     {children}
   </span>
