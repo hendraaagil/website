@@ -60,6 +60,7 @@ export type SpotifyTopTracks = {
 
 export type SpotifyTopTrack = {
   albumImageUrl: string
+  albumImagePlaceholder: string
   artist: string
   songUrl: string
   title: string

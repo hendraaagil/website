@@ -1,13 +1,11 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import type { BlogContent } from '@/types/blog'
 
-import Image from 'next/image'
 import clsx from 'clsx'
 import { MDXRemote } from 'next-mdx-remote'
 import { FiCalendar } from 'react-icons/fi'
-import { useState } from 'react'
 
-import { Heading, Hr, markdownComponents, PageContainer, Tag } from '@/components'
+import { Heading, Hr, ImgBlur, markdownComponents, PageContainer, Tag } from '@/components'
 import { Comment } from '@/modules/blog'
 import { imageUrl, siteUrl } from '@/constants/url'
 import { getBlogBySlug, getBlogs } from '@/libs/blog'
@@ -29,7 +27,6 @@ export const getStaticProps: GetStaticProps<{ blog: BlogContent }> = async ({ pa
 export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { author, slug, summary, tags, thumbnail, thumbnailPlaceholder, thumbnailCredit, title, createdAt, updatedAt } =
     blog.frontmatter
-  const [blur, setBlur] = useState(true)
 
   const postUrl = `${siteUrl}/blog/${slug}`
   const thumbnailUrl = `${imageUrl}${thumbnail}`
@@ -72,15 +69,12 @@ export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getSta
           'dark:bg-gray-700'
         )}
       >
-        <Image
+        <ImgBlur
           src={thumbnailUrl}
           alt={`Image thumbnail for "${title}" post`}
           width={1200}
           height={630}
-          placeholder="blur"
           blurDataURL={thumbnailPlaceholder}
-          className={blur ? 'blur' : ''}
-          onLoadingComplete={() => setBlur(false)}
         />
         <figcaption className="py-2 text-xs">{thumbnailCredit}</figcaption>
       </figure>
