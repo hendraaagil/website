@@ -1,11 +1,22 @@
-import Image from 'next/image'
 import clsx from 'clsx'
 
-import { Hr, PageContainer, PageHeader } from '@/components'
-import { imageUrl, siteUrl } from '@/constants/url'
+import { Hr, ImgBlur, PageContainer, PageHeader } from '@/components'
+import { siteUrl } from '@/constants/url'
 import { Hardware, Software } from '@/modules/uses'
+import { generateBase64Image } from '@/libs/image'
 
-export default function Uses() {
+export const getStaticProps = async () => {
+  const setupUrl = '/assets/main/setup-v1.1.jpg'
+  const placeholder = await generateBase64Image(setupUrl)
+
+  return { props: { setup: { url: setupUrl, placeholder } } }
+}
+
+export type UsesProps = {
+  setup: { url: string; placeholder: string }
+}
+
+export default function Uses({ setup }: UsesProps) {
   const title = 'Uses'
   const url = siteUrl + '/uses'
 
@@ -19,11 +30,12 @@ export default function Uses() {
           'dark:bg-gray-700'
         )}
       >
-        <Image
-          src={`${imageUrl}/main/setup-v1.1.jpg`}
+        <ImgBlur
+          src={setup.url}
           alt="A personal computer setup on the table"
           width={2016}
           height={1436}
+          blurDataURL={setup.placeholder}
           priority
         />
         <figcaption className="py-2 text-xs">My Setup</figcaption>

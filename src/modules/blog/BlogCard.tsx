@@ -1,8 +1,6 @@
-import Image from 'next/image'
-
 import type { BlogMetadata } from '@/types/blog'
-import { CardContainer, Heading, Link, Tag } from '@/components'
-import { imageUrl } from '@/constants/url'
+
+import { CardContainer, Heading, ImgBlur, Link, Tag } from '@/components'
 import { formatDate, toTitleCase } from '@/libs/string'
 
 export type BlogCardProps = {
@@ -19,11 +17,12 @@ export const BlogCard = ({ blog }: BlogCardProps) => (
           </Tag>
         ))}
       </div>
-      <Image
-        src={`${imageUrl}${blog.thumbnail}`}
+      <ImgBlur
+        src={blog.thumbnail}
         width={1200}
         height={630}
         alt={`Image thumbnail for "${blog.title}" post`}
+        blurDataURL={blog.thumbnailPlaceholder}
       />
     </div>
     <div className="space-y-2 p-4 xs:p-6">

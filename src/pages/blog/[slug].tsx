@@ -1,27 +1,22 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
-import Image from 'next/image'
+import type { BlogContent } from '@/types/blog'
+
 import clsx from 'clsx'
 import { MDXRemote } from 'next-mdx-remote'
 import { FiCalendar } from 'react-icons/fi'
 
-import type { BlogContent } from '@/types/blog'
-import { Heading, Hr, markdownComponents, PageContainer, Tag } from '@/components'
+import { Heading, Hr, ImgBlur, markdownComponents, PageContainer, Tag } from '@/components'
 import { Comment } from '@/modules/blog'
-import { imageUrl, siteUrl } from '@/constants/url'
+import { siteUrl } from '@/constants/url'
 import { getBlogBySlug, getBlogs } from '@/libs/blog'
 import { getReadingTime } from '@/libs/math'
 import { formatDate, toTitleCase } from '@/libs/string'
 
 export const getStaticPaths = async () => {
   const blogs = await getBlogs()
-  const paths = blogs.map((blog) => ({
-    params: { slug: blog.slug },
-  }))
+  const paths = blogs.map((blog) => ({ params: { slug: blog.slug } }))
 
-  return {
-    paths,
-    fallback: false,
-  }
+  return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps<{ blog: BlogContent }> = async ({ params }) => {
@@ -30,9 +25,11 @@ export const getStaticProps: GetStaticProps<{ blog: BlogContent }> = async ({ pa
 }
 
 export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { author, slug, summary, tags, thumbnail, thumbnailCredit, title, createdAt, updatedAt } = blog.frontmatter
+  const { author, slug, summary, tags, thumbnail, thumbnailPlaceholder, thumbnailCredit, title, createdAt, updatedAt } =
+    blog.frontmatter
+
   const postUrl = `${siteUrl}/blog/${slug}`
-  const thumbnailUrl = `${imageUrl}${thumbnail}`
+  const thumbnailUrl = `${siteUrl}${thumbnail}`
   const readTime = getReadingTime(blog.compiledSource)
 
   return (
@@ -72,7 +69,13 @@ export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getSta
           'dark:bg-gray-700'
         )}
       >
-        <Image src={thumbnailUrl} alt={`Image thumbnail for "${title}" post`} width={1200} height={630} />
+        <ImgBlur
+          src={thumbnail}
+          alt={`Image thumbnail for "${title}" post`}
+          width={1200}
+          height={630}
+          blurDataURL={thumbnailPlaceholder}
+        />
         <figcaption className="py-2 text-xs">{thumbnailCredit}</figcaption>
       </figure>
       <time dateTime={createdAt} className="flex items-center text-sm font-medium">

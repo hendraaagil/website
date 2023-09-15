@@ -1,6 +1,7 @@
-const withPWA = require('next-pwa')({
-  dest: 'public',
-})
+import withPlaiceholder from '@plaiceholder/next'
+import nextPWA from 'next-pwa'
+
+const withPWA = nextPWA({ dest: 'public' })
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -61,4 +62,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withPWA(nextConfig)
+export default withPWA(withPlaiceholder(nextConfig))

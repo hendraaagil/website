@@ -1,9 +1,7 @@
 import type { ProjectData } from '@/types/project'
 
-import Image from 'next/image'
-import { CardContainer, Heading } from '@/components'
+import { CardContainer, Heading, ImgBlur } from '@/components'
 import { Section } from './layouts'
-import { imageUrl } from '@/constants/url'
 
 type ProjectCardProps = {
   project: ProjectData
@@ -12,11 +10,12 @@ type ProjectCardProps = {
 const ProjectCard = ({ project }: ProjectCardProps) => (
   <CardContainer className="flex flex-col">
     <div className="flex max-h-32 items-center overflow-hidden">
-      <Image
-        src={`${imageUrl}${project.thumbnail}`}
+      <ImgBlur
+        src={project.thumbnail}
         alt={`Image preview of ${project.title} project`}
         width={640}
         height={360}
+        blurDataURL={project.thumbnailPlaceholder}
         className="w-full"
       />
     </div>

@@ -1,9 +1,7 @@
-import Image from 'next/image'
 import { FiExternalLink } from 'react-icons/fi'
 
 import type { ProjectData } from '@/types/project'
-import { CardContainer, Heading, Hr, Link } from '@/components'
-import { imageUrl } from '@/constants/url'
+import { CardContainer, Heading, Hr, ImgBlur, Link } from '@/components'
 
 export type ProjectCardProps = {
   project: ProjectData
@@ -11,11 +9,12 @@ export type ProjectCardProps = {
 
 export const ProjectCard = ({ project }: ProjectCardProps) => (
   <CardContainer className="flex flex-col">
-    <Image
-      src={`${imageUrl}${project.thumbnail}`}
+    <ImgBlur
+      src={project.thumbnail}
       alt={`Image preview of ${project.title} project`}
       width={1280}
       height={720}
+      blurDataURL={project.thumbnailPlaceholder}
     />
     <div className="flex h-full flex-col justify-between px-4 pb-4 pt-2 xs:px-6 xs:pb-6 xs:pt-3">
       <div className="space-y-2">

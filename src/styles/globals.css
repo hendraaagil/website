@@ -43,3 +43,8 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
+
+/* Image */
+img {
+  @apply duration-500 ease-linear;
+}
