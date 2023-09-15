@@ -1,6 +1,7 @@
 export type BlogMetadata = Record<string, string> & {
   title: string
   thumbnail: string
+  thumbnailPlaceholder: string
   thumbnailCredit: string
   summary: string
   tags: string[]

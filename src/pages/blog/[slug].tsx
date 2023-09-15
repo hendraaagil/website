@@ -1,10 +1,12 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
+import type { BlogContent } from '@/types/blog'
+
 import Image from 'next/image'
 import clsx from 'clsx'
 import { MDXRemote } from 'next-mdx-remote'
 import { FiCalendar } from 'react-icons/fi'
+import { useState } from 'react'
 
-import type { BlogContent } from '@/types/blog'
 import { Heading, Hr, markdownComponents, PageContainer, Tag } from '@/components'
 import { Comment } from '@/modules/blog'
 import { imageUrl, siteUrl } from '@/constants/url'
@@ -14,14 +16,9 @@ import { formatDate, toTitleCase } from '@/libs/string'
 
 export const getStaticPaths = async () => {
   const blogs = await getBlogs()
-  const paths = blogs.map((blog) => ({
-    params: { slug: blog.slug },
-  }))
+  const paths = blogs.map((blog) => ({ params: { slug: blog.slug } }))
 
-  return {
-    paths,
-    fallback: false,
-  }
+  return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps<{ blog: BlogContent }> = async ({ params }) => {
@@ -30,7 +27,10 @@ export const getStaticProps: GetStaticProps<{ blog: BlogContent }> = async ({ pa
 }
 
 export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { author, slug, summary, tags, thumbnail, thumbnailCredit, title, createdAt, updatedAt } = blog.frontmatter
+  const { author, slug, summary, tags, thumbnail, thumbnailPlaceholder, thumbnailCredit, title, createdAt, updatedAt } =
+    blog.frontmatter
+  const [blur, setBlur] = useState(true)
+
   const postUrl = `${siteUrl}/blog/${slug}`
   const thumbnailUrl = `${imageUrl}${thumbnail}`
   const readTime = getReadingTime(blog.compiledSource)
@@ -72,7 +72,16 @@ export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getSta
           'dark:bg-gray-700'
         )}
       >
-        <Image src={thumbnailUrl} alt={`Image thumbnail for "${title}" post`} width={1200} height={630} />
+        <Image
+          src={thumbnailUrl}
+          alt={`Image thumbnail for "${title}" post`}
+          width={1200}
+          height={630}
+          placeholder="blur"
+          blurDataURL={thumbnailPlaceholder}
+          className={blur ? 'blur' : ''}
+          onLoadingComplete={() => setBlur(false)}
+        />
         <figcaption className="py-2 text-xs">{thumbnailCredit}</figcaption>
       </figure>
       <time dateTime={createdAt} className="flex items-center text-sm font-medium">

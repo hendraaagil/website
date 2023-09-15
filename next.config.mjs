@@ -1,11 +1,13 @@
-const withPWA = require('next-pwa')({
-  dest: 'public',
-})
+import withPlaiceholder from '@plaiceholder/next'
+import nextPWA from 'next-pwa'
+
+const withPWA = nextPWA({ dest: 'public' })
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  staticPageGenerationTimeout: 180,
   images: {
     domains: ['ik.imagekit.io', 'i.scdn.co'],
   },
@@ -61,4 +63,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withPWA(nextConfig)
+export default withPWA(withPlaiceholder(nextConfig))
