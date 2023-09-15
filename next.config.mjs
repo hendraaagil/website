@@ -7,7 +7,6 @@ const withPWA = nextPWA({ dest: 'public' })
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  staticPageGenerationTimeout: 180,
   images: {
     domains: ['ik.imagekit.io', 'i.scdn.co'],
   },

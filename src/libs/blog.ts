@@ -6,7 +6,6 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 import { serialize } from 'next-mdx-remote/serialize'
 
 import type { BlogContent } from '@/types/blog'
-import { imageUrl } from '@/constants/url'
 import { generateBase64Image } from './image'
 
 const contentDirectory = path.join(process.cwd(), 'src/_blogs')
@@ -23,7 +22,7 @@ const getMdxContent = async (contentPath: string): Promise<BlogContent> => {
     mdxOptions: { remarkPlugins: [remarkGfm, remarkUnwrapImages], rehypePlugins: [rehypePrism] },
     parseFrontmatter: true,
   })
-  const thumbnailPlaceholder = await generateBase64Image(`${imageUrl}${content.frontmatter?.thumbnail}`)
+  const thumbnailPlaceholder = await generateBase64Image(content.frontmatter?.thumbnail as string)
 
   return {
     ...content,
@@ -42,7 +41,7 @@ export const getBlogs = async () => {
   return (
     await Promise.all(
       blogs.map(async (blog) => {
-        const thumbnailPlaceholder = await generateBase64Image(`${imageUrl}${blog.frontmatter.thumbnail}`)
+        const thumbnailPlaceholder = await generateBase64Image(blog.frontmatter.thumbnail)
         return { ...blog.frontmatter, thumbnailPlaceholder }
       })
     )

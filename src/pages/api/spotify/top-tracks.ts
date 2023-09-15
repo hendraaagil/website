@@ -11,7 +11,7 @@ const handler: NextApiHandler = async (req, res) => {
 
     const tracks = await Promise.all(
       items.map(async (track) => {
-        const placeholder = await generateBase64Image(track.album.images[0].url)
+        const placeholder = await generateBase64Image(track.album.images[0].url, true)
         return {
           albumImageUrl: track.album.images[0].url,
           albumImagePlaceholder: placeholder,

@@ -2,7 +2,6 @@ import { FiExternalLink } from 'react-icons/fi'
 
 import type { ProjectData } from '@/types/project'
 import { CardContainer, Heading, Hr, ImgBlur, Link } from '@/components'
-import { imageUrl } from '@/constants/url'
 
 export type ProjectCardProps = {
   project: ProjectData
@@ -11,7 +10,7 @@ export type ProjectCardProps = {
 export const ProjectCard = ({ project }: ProjectCardProps) => (
   <CardContainer className="flex flex-col">
     <ImgBlur
-      src={`${imageUrl}${project.thumbnail}`}
+      src={project.thumbnail}
       alt={`Image preview of ${project.title} project`}
       width={1280}
       height={720}

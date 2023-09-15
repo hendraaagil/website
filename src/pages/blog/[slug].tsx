@@ -7,7 +7,7 @@ import { FiCalendar } from 'react-icons/fi'
 
 import { Heading, Hr, ImgBlur, markdownComponents, PageContainer, Tag } from '@/components'
 import { Comment } from '@/modules/blog'
-import { imageUrl, siteUrl } from '@/constants/url'
+import { siteUrl } from '@/constants/url'
 import { getBlogBySlug, getBlogs } from '@/libs/blog'
 import { getReadingTime } from '@/libs/math'
 import { formatDate, toTitleCase } from '@/libs/string'
@@ -29,7 +29,7 @@ export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getSta
     blog.frontmatter
 
   const postUrl = `${siteUrl}/blog/${slug}`
-  const thumbnailUrl = `${imageUrl}${thumbnail}`
+  const thumbnailUrl = `${siteUrl}${thumbnail}`
   const readTime = getReadingTime(blog.compiledSource)
 
   return (
@@ -70,7 +70,7 @@ export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getSta
         )}
       >
         <ImgBlur
-          src={thumbnailUrl}
+          src={thumbnail}
           alt={`Image thumbnail for "${title}" post`}
           width={1200}
           height={630}

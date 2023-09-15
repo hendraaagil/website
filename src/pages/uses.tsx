@@ -1,12 +1,12 @@
 import clsx from 'clsx'
 
 import { Hr, ImgBlur, PageContainer, PageHeader } from '@/components'
-import { imageUrl, siteUrl } from '@/constants/url'
+import { siteUrl } from '@/constants/url'
 import { Hardware, Software } from '@/modules/uses'
 import { generateBase64Image } from '@/libs/image'
 
 export const getStaticProps = async () => {
-  const setupUrl = `${imageUrl}/main/setup-v1.1.jpg`
+  const setupUrl = '/assets/main/setup-v1.1.jpg'
   const placeholder = await generateBase64Image(setupUrl)
 
   return { props: { setup: { url: setupUrl, placeholder } } }

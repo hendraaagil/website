@@ -1,7 +1,6 @@
 import type { BlogMetadata } from '@/types/blog'
 
 import { CardContainer, Heading, ImgBlur, Link, Tag } from '@/components'
-import { imageUrl } from '@/constants/url'
 import { formatDate, toTitleCase } from '@/libs/string'
 
 export type BlogCardProps = {
@@ -19,7 +18,7 @@ export const BlogCard = ({ blog }: BlogCardProps) => (
         ))}
       </div>
       <ImgBlur
-        src={`${imageUrl}${blog.thumbnail}`}
+        src={blog.thumbnail}
         width={1200}
         height={630}
         alt={`Image thumbnail for "${blog.title}" post`}

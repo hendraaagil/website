@@ -2,7 +2,7 @@ import type { ProjectData } from '@/types/project'
 
 import { PageContainer, PageHeader } from '@/components'
 import { ProjectCard } from '@/modules/projects'
-import { imageUrl, siteUrl } from '@/constants/url'
+import { siteUrl } from '@/constants/url'
 
 import projectData from '@/_data/projects.json'
 import { generateBase64Image } from '@/libs/image'
@@ -10,7 +10,7 @@ import { generateBase64Image } from '@/libs/image'
 export const getStaticProps = async () => {
   const projectsWithPlaceholder = await Promise.all(
     projectData.map(async (project) => {
-      const thumbnailPlaceholder = await generateBase64Image(`${imageUrl}${project.thumbnail}`)
+      const thumbnailPlaceholder = await generateBase64Image(project.thumbnail)
 
       return {
         ...project,
