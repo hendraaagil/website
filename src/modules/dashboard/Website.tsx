@@ -10,8 +10,8 @@ export const Website = () => {
 
   return (
     <>
-      <Card count={isLoading ? '...' : data?.viewCount.toLocaleString()} link={link} title="All-Time Views" />
-      <Card count={isLoading ? '...' : data?.visitorCount.toLocaleString()} link={link} title="All-Time Visitors" />
+      <Card count={isLoading ? 0 : data?.viewCount} link={link} title="All-Time Views" />
+      <Card count={isLoading ? 0 : data?.visitorCount} link={link} title="All-Time Visitors" />
     </>
   )
 }

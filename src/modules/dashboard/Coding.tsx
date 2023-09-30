@@ -10,7 +10,7 @@ export const Coding = () => {
 
   return (
     <>
-      <Card count={isLoading ? '...' : data?.codingHours.toLocaleString()} link={link} title="Coding Hours" />
+      <Card count={isLoading ? 0 : data?.codingHours} link={link} title="Coding Hours" />
     </>
   )
 }

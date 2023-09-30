@@ -10,8 +10,8 @@ export const Youtube = () => {
 
   return (
     <>
-      <Card count={isLoading ? '...' : data?.videoCount.toLocaleString()} link={link} title="YouTube Videos" />
-      <Card count={isLoading ? '...' : data?.viewCount.toLocaleString()} link={link} title="YouTube Views" />
+      <Card count={isLoading ? 0 : data?.videoCount} link={link} title="YouTube Videos" />
+      <Card count={isLoading ? 0 : data?.viewCount} link={link} title="YouTube Views" />
     </>
   )
 }
