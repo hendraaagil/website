@@ -1,6 +1,5 @@
-// @ts-nocheck
 import type { NextApiHandler } from 'next'
-import { google } from 'googleapis'
+import { google, youtube_v3 } from 'googleapis'
 
 const handler: NextApiHandler = async (req, res) => {
   if (req.method === 'GET') {
@@ -12,7 +11,7 @@ const handler: NextApiHandler = async (req, res) => {
       scopes: ['https://www.googleapis.com/auth/youtube.readonly'],
     })
 
-    const youtube = google.youtube({
+    const youtube: youtube_v3.Youtube = google.youtube({
       auth,
       version: 'v3',
     })
@@ -20,15 +19,16 @@ const handler: NextApiHandler = async (req, res) => {
     const channelIds = ['UCy44Cn1aBo3LYrZsh2gKGIA', 'UC-8I6YXDaagpTHTWM5GYl8Q']
     const channels = await youtube.channels.list({
       id: channelIds,
-      part: 'statistics',
+      part: ['statistics'],
     })
 
     const statistics = { subscriberCount: 0, videoCount: 0, viewCount: 0 }
-    channels.data.items.forEach((channel) => {
-      const { subscriberCount, videoCount, viewCount } = channel.statistics
-      statistics.subscriberCount += new Number(subscriberCount)
-      statistics.videoCount += new Number(videoCount)
-      statistics.viewCount += new Number(viewCount)
+    const channelItems = channels.data.items as youtube_v3.Schema$Channel[]
+    channelItems.forEach((channel) => {
+      const { subscriberCount, videoCount, viewCount } = channel.statistics as youtube_v3.Schema$ChannelStatistics
+      statistics.subscriberCount += Number(subscriberCount)
+      statistics.videoCount += Number(videoCount)
+      statistics.viewCount += Number(viewCount)
     })
 
     return res.status(200).json(statistics)
