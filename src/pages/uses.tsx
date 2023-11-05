@@ -6,7 +6,7 @@ import { Hardware, Software } from '@/modules/uses'
 import { generateBase64Image } from '@/libs/image'
 
 export const getStaticProps = async () => {
-  const setupUrl = '/assets/main/setup-v1.1.jpg'
+  const setupUrl = '/assets/main/setup-v1.2.png'
   const placeholder = await generateBase64Image(setupUrl)
 
   return { props: { setup: { url: setupUrl, placeholder } } }
@@ -33,8 +33,8 @@ export default function Uses({ setup }: UsesProps) {
         <ImgBlur
           src={setup.url}
           alt="A personal computer setup on the table"
-          width={2016}
-          height={1436}
+          width={2560}
+          height={1632}
           blurDataURL={setup.placeholder}
           priority
         />
