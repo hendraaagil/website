@@ -5,10 +5,10 @@
   },
   {
     "name": "Frontend",
-    "items": ["Chakra UI", "Emotion", "Next.js", "React", "Webpack", "Tailwind CSS"]
+    "items": ["Chakra UI", "Emotion", "Next.js", "React", "Webpack", "Tailwind CSS", "Vite"]
   },
   {
     "name": "Backend",
-    "items": ["Firebase", "MongoDB", "MySQL", "Node.js", "PostgreSQL"]
+    "items": ["Firebase", "MongoDB", "MySQL", "Nest.js", "Node.js", "PostgreSQL"]
   }
 ]
