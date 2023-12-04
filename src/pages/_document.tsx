@@ -12,7 +12,7 @@ export default function Document() {
             async
             defer
             strategy="afterInteractive"
-            data-website-id="d7044884-6f55-4a16-8344-9221c0e82832"
+            data-website-id="a39d1c1b-20ad-4d93-89a8-0378f8c1e16c"
             src="https://analytics.hendraaagil.dev/script.js"
           />
         )}

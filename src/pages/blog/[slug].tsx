@@ -6,7 +6,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import { FiCalendar } from 'react-icons/fi'
 
 import { Heading, Hr, ImgBlur, markdownComponents, PageContainer, Tag } from '@/components'
-import { Comment } from '@/modules/blog'
+// import { Comment } from '@/modules/blog'
 import { siteUrl } from '@/constants/url'
 import { getBlogBySlug, getBlogs } from '@/libs/blog'
 import { getReadingTime } from '@/libs/math'
@@ -96,7 +96,7 @@ export default function BlogPost({ blog }: InferGetStaticPropsType<typeof getSta
         <MDXRemote {...blog} components={markdownComponents} />
       </section>
       <Hr />
-      <Comment />
+      {/* <Comment /> */}
     </PageContainer>
   )
 }
