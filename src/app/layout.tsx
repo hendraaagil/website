@@ -24,12 +24,11 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          'min-h-screen bg-slate-50 font-sans text-slate-900 antialiased',
-          'dark:bg-slate-900 dark:text-slate-50',
+          'min-h-screen font-sans antialiased bg-color text-color',
           fontSans.variable,
         )}
       >
-        <main className="mx-auto flex max-w-6xl px-2 md:px-4">
+        <main className="mx-auto flex max-w-5xl px-2 md:px-4">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
