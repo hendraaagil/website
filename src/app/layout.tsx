@@ -3,7 +3,9 @@ import type { Metadata } from 'next'
 import { Gabarito as FontSans } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import '@/styles/globals.css'
+
 import { ThemeProvider } from '@/components/provider'
+import { Navigation } from '@/components/layout'
 
 const fontSans = FontSans({ subsets: ['latin'], variable: '--font-sans' })
 
@@ -22,18 +24,22 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          'min-h-screen bg-slate-50 font-sans antialiased dark:bg-slate-900',
+          'min-h-screen bg-slate-50 font-sans text-slate-900 antialiased',
+          'dark:bg-slate-900 dark:text-slate-50',
           fontSans.variable,
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <main className="mx-auto flex max-w-6xl px-2 md:px-4">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navigation />
+            {children}
+          </ThemeProvider>
+        </main>
       </body>
     </html>
   )
