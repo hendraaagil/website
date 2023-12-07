@@ -1,4 +1,5 @@
 export * from './button'
 export * from './dropdown-menu'
 export * from './heading'
+export * from './image-blur'
 export * from './sheet'

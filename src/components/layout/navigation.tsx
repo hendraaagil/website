@@ -1,8 +1,7 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
-import Link, { LinkProps } from 'next/link'
+import Link, { type LinkProps } from 'next/link'
 
 import { usePathname } from 'next/navigation'
 import {
@@ -17,7 +16,14 @@ import {
 } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
-import { Heading, Sheet, SheetContent, SheetTrigger } from '@/components/ui'
+import {
+  Button,
+  Heading,
+  ImageBlur,
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from '@/components/ui'
 import { ThemeToggle } from '@/components/theme'
 
 const navigations = [
@@ -88,9 +94,15 @@ const MobileNavigation = ({ pathname }: { pathname: string }) => {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className="fixed bottom-0 left-0 z-10 m-2 block border bg-slate-200 bg-opacity-80 p-2 backdrop-blur-sm border-color dark:bg-slate-800 dark:bg-opacity-75 sm:hidden">
-        <PanelTopOpen size={20} className="-rotate-90" />
-        <span className="sr-only">Open menu</span>
+      <SheetTrigger asChild>
+        <Button
+          variant="outline"
+          size="icon"
+          className="fixed bottom-0 left-0 z-20 m-2 inline-flex shadow-sm sm:hidden"
+        >
+          <PanelTopOpen className="h-[1.2rem] w-[1.2rem] -rotate-90 scale-100" />
+          <span className="sr-only">Open menu</span>
+        </Button>
       </SheetTrigger>
       <SheetContent side="left" className="p-4">
         <ul className="space-y-4 overflow-scroll py-4">
@@ -112,21 +124,28 @@ const MobileNavigation = ({ pathname }: { pathname: string }) => {
   )
 }
 
-export function Navigation() {
+export function Navigation({
+  avatarPlaceholder,
+}: {
+  avatarPlaceholder: string
+}) {
   const pathname = usePathname()
 
   return (
     <>
       <MobileNavigation pathname={pathname} />
+      <ThemeToggle isMobile />
       <nav className="sticky top-0 hidden min-h-screen max-w-fit flex-col items-center self-start border-r py-8 pr-2 border-color sm:flex md:pr-4">
         <div className="w-full space-y-2 pb-4">
-          <Image
-            src="/avatar.png"
-            width={256}
-            height={256}
-            alt="Avatar"
-            className="h-36 w-36 border-4 border-color"
-          />
+          <div className="h-36 w-36 overflow-hidden border-4 border-color">
+            <ImageBlur
+              blurDataURL={avatarPlaceholder}
+              src="/avatar.png"
+              width={256}
+              height={256}
+              alt="Avatar"
+            />
+          </div>
           <Heading variant="h2">Hendra Agil</Heading>
           <p>@hendraaagil</p>
           <ThemeToggle />
