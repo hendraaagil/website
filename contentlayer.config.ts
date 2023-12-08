@@ -3,13 +3,35 @@ import {
   defineDocumentType,
   makeSource,
 } from 'contentlayer/source-files'
+import { generateBase64Image } from './src/lib/server/utils'
 
 const computedFields: ComputedFields = {
   slug: {
     type: 'string',
     resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx/, ''),
   },
+  thumbnailPlaceholder: {
+    type: 'string',
+    resolve: async (doc) => await generateBase64Image(doc.thumbnail),
+  },
 }
+
+const About = defineDocumentType(() => ({
+  name: 'About',
+  filePathPattern: `data/about.json`,
+  fields: {
+    avatar: { type: 'string', required: true },
+    name: { type: 'string', required: true },
+    username: { type: 'string', required: true },
+    summary: { type: 'string', required: true },
+  },
+  computedFields: {
+    avatarPlaceholder: {
+      type: 'string',
+      resolve: async (doc) => await generateBase64Image(doc.avatar),
+    },
+  },
+}))
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -18,7 +40,6 @@ const Post = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     thumbnail: { type: 'string', required: true },
-    thumbnailPlaceholder: { type: 'string' },
     thumbnailCredit: { type: 'string', required: true },
     summary: { type: 'string', required: true },
     tags: { type: 'list', of: { type: 'string' }, required: true },
@@ -31,5 +52,5 @@ const Post = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'src/_content',
-  documentTypes: [Post],
+  documentTypes: [About, Post],
 })

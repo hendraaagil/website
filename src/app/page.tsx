@@ -1,22 +1,17 @@
 import Link from 'next/link'
+import htmr from 'htmr'
 import { ChevronRight } from 'lucide-react'
-import { allPosts } from 'contentlayer/generated'
+import { allAbouts, allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 
 import { Heading } from '@/components/ui'
 import { PostCard } from '@/components/home'
-import { generateBase64Image } from '@/lib/server/utils'
 
-export default async function Home() {
-  const posts = await Promise.all(
-    allPosts
-      .sort((a, b) => compareDesc(new Date(a.createdAt), new Date(b.createdAt)))
-      .slice(0, 3)
-      .map(async (post) => ({
-        ...post,
-        thumbnailPlaceholder: await generateBase64Image(post.thumbnail),
-      })),
-  )
+export default function Home() {
+  const { summary } = allAbouts[0]
+  const posts = allPosts
+    .sort((a, b) => compareDesc(new Date(a.createdAt), new Date(b.createdAt)))
+    .slice(0, 3)
 
   return (
     <section className="flex flex-col space-y-4 px-2 py-8 sm:px-4">
@@ -26,12 +21,7 @@ export default async function Home() {
           <p className="text-4xl">👋</p>
         </div>
       </div>
-      <p>
-        My name is <strong>Hendra Agil</strong>, I&apos;m a web developer
-        specializing in JavaScript. With expertise in the full software
-        development life cycle, I create scalable web applications with a focus
-        on clean, maintainable code and effective problem-solving.
-      </p>
+      <p>{htmr(summary)}</p>
       <section className="space-y-4 border-t pt-4 border-color">
         <div className="flex items-center justify-between">
           <Heading variant="h2">Latest Posts</Heading>

@@ -14,6 +14,7 @@ import {
   User,
   Wrench,
 } from 'lucide-react'
+import { allAbouts } from 'contentlayer/generated'
 
 import { cn } from '@/lib/utils'
 import {
@@ -124,11 +125,8 @@ const MobileNavigation = ({ pathname }: { pathname: string }) => {
   )
 }
 
-export function Navigation({
-  avatarPlaceholder,
-}: {
-  avatarPlaceholder: string
-}) {
+export function Navigation() {
+  const { avatar, avatarPlaceholder, name, username } = allAbouts[0]
   const pathname = usePathname()
 
   return (
@@ -140,14 +138,14 @@ export function Navigation({
           <div className="h-36 w-36 overflow-hidden border-4 border-color">
             <ImageBlur
               blurDataURL={avatarPlaceholder}
-              src="/avatar.png"
+              src={avatar}
               width={256}
               height={256}
               alt="Avatar"
             />
           </div>
-          <Heading variant="h2">Hendra Agil</Heading>
-          <p>@hendraaagil</p>
+          <Heading variant="h2">{name}</Heading>
+          <p>@{username}</p>
           <ThemeToggle />
         </div>
         <ul className="space-y-4 border-t py-4 border-color">
