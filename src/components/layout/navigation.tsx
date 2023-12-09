@@ -131,8 +131,6 @@ export function Navigation() {
 
   return (
     <>
-      <MobileNavigation pathname={pathname} />
-      <ThemeToggle isMobile />
       <nav className="sticky top-0 hidden min-h-screen max-w-fit flex-col items-center self-start border-r py-8 pr-2 border-color sm:flex md:pr-4">
         <div className="w-full space-y-2 pb-4">
           <div className="h-36 w-36 overflow-hidden border-4 border-color">
@@ -159,6 +157,8 @@ export function Navigation() {
           ))}
         </ul>
       </nav>
+      <MobileNavigation pathname={pathname} />
+      <ThemeToggle isMobile />
     </>
   )
 }

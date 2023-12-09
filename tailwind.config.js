@@ -61,6 +61,9 @@ module.exports = {
         '.text-color': {
           '@apply text-slate-900 dark:text-slate-50': {},
         },
+        '.text-color-secondary': {
+          '@apply text-slate-700 dark:text-slate-200': {},
+        },
       })
     }),
     require('tailwindcss-animate'),

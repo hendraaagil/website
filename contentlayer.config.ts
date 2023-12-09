@@ -19,6 +19,7 @@ const computedFields: ComputedFields = {
 const About = defineDocumentType(() => ({
   name: 'About',
   filePathPattern: `data/about.json`,
+  contentType: 'data',
   fields: {
     avatar: { type: 'string', required: true },
     name: { type: 'string', required: true },
@@ -50,7 +51,22 @@ const Post = defineDocumentType(() => ({
   computedFields,
 }))
 
+const Project = defineDocumentType(() => ({
+  name: 'Project',
+  filePathPattern: `project/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    position: { type: 'number', required: true },
+    title: { type: 'string', required: true },
+    thumbnail: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    github: { type: 'string' },
+    demo: { type: 'string' },
+  },
+  computedFields,
+}))
+
 export default makeSource({
   contentDirPath: 'src/_content',
-  documentTypes: [About, Post],
+  documentTypes: [About, Post, Project],
 })
