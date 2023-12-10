@@ -3,7 +3,8 @@ import { allAbouts, allPosts, allProjects } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 
 import { Heading } from '@/components/ui'
-import { PostCard, SectionContainer } from '@/components/home'
+import { SectionContainer } from '@/components/home'
+import { PostCard } from '@/components/blog'
 import { ProjectCard } from '@/components/project'
 
 export default function Home() {

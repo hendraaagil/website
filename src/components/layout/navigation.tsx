@@ -78,7 +78,7 @@ const NavigationLink = ({
   <Link
     href={href}
     className={cn(
-      'flex items-center space-x-2 border-b-2 border-l-2 border-transparent bg-slate-200 bg-opacity-25 py-2 pl-3 pr-8 font-medium tracking-wide transition-colors hover:border-color',
+      'flex items-center space-x-2 border-2 border-transparent bg-slate-200 bg-opacity-25 py-2 pl-3 pr-8 font-medium tracking-wide transition-colors hover:border-color',
       'dark:bg-slate-800 dark:bg-opacity-25',
       {
         'bg-opacity-50 border-color dark:bg-opacity-50': currentPath === href,
