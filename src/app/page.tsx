@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </SectionContainer>
       <SectionContainer title="projects" path="/projects">
-        <div className="grid auto-rows-[1fr] gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project._id} project={project} />
           ))}

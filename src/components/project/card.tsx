@@ -11,7 +11,7 @@ export const ProjectCard = ({ project }: { project: Project }) => (
     aria-label="Link project"
   >
     <article className="group h-full border transition-colors border-color hover:bg-slate-200 hover:dark:bg-slate-800">
-      <div className="relative flex h-32 flex-col justify-center overflow-hidden">
+      <div className="relative flex flex-col justify-center overflow-hidden">
         <ImageBlur
           blurDataURL={project.thumbnailPlaceholder}
           src={project.thumbnail}

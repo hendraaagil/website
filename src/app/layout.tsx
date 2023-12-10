@@ -24,7 +24,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          'min-h-screen font-sans antialiased bg-color text-color',
+          'min-h-screen overflow-y-scroll font-sans antialiased bg-color text-color',
           fontSans.variable,
         )}
       >
