@@ -55,6 +55,9 @@ module.exports = {
         '.bg-color': {
           '@apply bg-slate-50 dark:bg-slate-900': {},
         },
+        '.bg-color-secondary': {
+          '@apply bg-slate-200 dark:bg-slate-800': {},
+        },
         '.border-color': {
           '@apply border-slate-200 dark:border-slate-800': {},
         },

@@ -10,7 +10,7 @@ export const ProjectCard = ({ project }: { project: Project }) => (
     className="block"
     aria-label="Link project"
   >
-    <article className="group h-full border transition-colors border-color hover:bg-slate-200 hover:dark:bg-slate-800">
+    <article className="group h-full border transition-colors border-color hover:bg-color-secondary">
       <div className="relative flex flex-col justify-center overflow-hidden">
         <ImageBlur
           blurDataURL={project.thumbnailPlaceholder}

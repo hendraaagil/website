@@ -9,7 +9,7 @@ import { toTitleCase } from '@/lib/format'
 
 export const PostCard = ({ post }: { post: Post }) => (
   <Link href={`/blog/${post.slug}`} className="block" aria-label="Link post">
-    <article className="group border transition-colors border-color hover:bg-slate-200 hover:dark:bg-slate-800">
+    <article className="group border transition-colors border-color hover:bg-color-secondary">
       <div className="relative flex h-[10rem] flex-col justify-center overflow-hidden">
         <ImageBlur
           blurDataURL={post.thumbnailPlaceholder}

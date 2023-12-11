@@ -1,6 +1,7 @@
 import {
   type ComputedFields,
   defineDocumentType,
+  defineNestedType,
   makeSource,
 } from 'contentlayer/source-files'
 import { generateBase64Image } from './src/lib/server/utils'
@@ -16,6 +17,14 @@ const computedFields: ComputedFields = {
   },
 }
 
+const Skill = defineNestedType(() => ({
+  name: 'Skill',
+  fields: {
+    name: { type: 'string', required: true },
+    items: { type: 'list', of: { type: 'string' }, required: true },
+  },
+}))
+
 const About = defineDocumentType(() => ({
   name: 'About',
   filePathPattern: `data/about.json`,
@@ -25,6 +34,8 @@ const About = defineDocumentType(() => ({
     name: { type: 'string', required: true },
     username: { type: 'string', required: true },
     summary: { type: 'string', required: true },
+    description: { type: 'list', of: { type: 'string' }, required: true },
+    skills: { type: 'list', of: Skill, required: true },
   },
   computedFields: {
     avatarPlaceholder: {

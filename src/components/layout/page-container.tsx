@@ -21,7 +21,7 @@ export const PageContainer = ({
       className,
     )}
   >
-    <header className="space-y-4 border-b pb-4 border-color">
+    <header className="space-y-2 border-b pb-4 border-color">
       <Heading>{title}</Heading>
       <p className="text-color-secondary">{description}</p>
     </header>
