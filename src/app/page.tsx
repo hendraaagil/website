@@ -1,7 +1,7 @@
-import htmr from 'htmr'
 import { allAbouts, allPosts, allProjects } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 
+import { htmr } from '@/lib/transform'
 import { Heading } from '@/components/ui'
 import { SectionContainer } from '@/components/home'
 import { PostCard } from '@/components/blog'

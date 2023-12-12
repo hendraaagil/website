@@ -35,5 +35,14 @@
         "PostgreSQL"
       ]
     }
-  ]
+  ],
+  "social": {
+    "description": "You can react me out via email at: <a href='mailto:hi@hendraaagil.dev'>hi@hendraaagil.dev</a> or via socials below:",
+    "links": [
+      { "name": "GitHub", "url": "https://github.com/hendraaagil" },
+      { "name": "LinkedIn", "url": "https://linkedin.com/in/hendraaagil" },
+      { "name": "Telegram", "url": "https://t.me/hendraaagil" },
+      { "name": "Twitter", "url": "https://twitter.com/hendraaagil" }
+    ]
+  }
 }

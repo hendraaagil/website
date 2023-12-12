@@ -1,11 +1,25 @@
-import htmr from 'htmr'
+import React from 'react'
 import { allAbouts } from 'contentlayer/generated'
 
+import { htmr } from '@/lib/transform'
 import { PageContainer } from '@/components/layout'
-import { Heading } from '@/components/ui'
+import { ExternalLink, Heading } from '@/components/ui'
+
+const SectionContainer = ({
+  title,
+  children,
+}: {
+  title: string
+  children?: React.ReactNode
+}) => (
+  <section className="space-y-4 border-t pt-4 border-color">
+    <Heading variant="h2">{title}</Heading>
+    {children}
+  </section>
+)
 
 export default function Page() {
-  const { description, skills } = allAbouts[0]
+  const { description, skills, social } = allAbouts[0]
 
   return (
     <PageContainer title="About me" description="A little about myself.">
@@ -14,8 +28,7 @@ export default function Page() {
           <p key={i}>{htmr(desc)}</p>
         ))}
       </section>
-      <section className="space-y-4 border-t pt-4 border-color">
-        <Heading variant="h2">Skills</Heading>
+      <SectionContainer title="Skills">
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
           {skills.map((skill) => (
             <div
@@ -31,7 +44,21 @@ export default function Page() {
             </div>
           ))}
         </div>
-      </section>
+      </SectionContainer>
+      <SectionContainer title="Get in touch">
+        <div className="space-y-2">
+          <p>{htmr(social.description)}</p>
+          <ul className="list-disc space-y-1 pl-6">
+            {social.links.map((link) => (
+              <li key={link.name}>
+                <span className="font-medium">{link.name}</span>
+                {' - '}
+                <ExternalLink href={link.url}>{link.url}</ExternalLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </SectionContainer>
     </PageContainer>
   )
 }

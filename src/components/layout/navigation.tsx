@@ -78,7 +78,7 @@ const NavigationLink = ({
   <Link
     href={href}
     className={cn(
-      'flex items-center space-x-2 border-2 border-transparent bg-slate-200 bg-opacity-25 py-2 pl-3 pr-8 font-medium tracking-wide transition-colors hover:border-color',
+      'flex items-center space-x-2 border-2 border-transparent bg-slate-200 bg-opacity-25 py-2 pl-3 pr-3 font-medium tracking-wide transition-colors hover:border-color md:pr-8',
       'dark:bg-slate-800 dark:bg-opacity-25',
       {
         'bg-opacity-50 border-color dark:bg-opacity-50': currentPath === href,
@@ -131,7 +131,7 @@ export function Navigation() {
 
   return (
     <>
-      <nav className="sticky top-0 hidden min-h-screen max-w-fit flex-col items-center self-start border-r py-8 pr-2 border-color sm:flex md:pr-4">
+      <nav className="sticky top-0 hidden min-h-screen max-w-fit flex-col items-center self-start border-r py-8 pl-2 pr-4 border-color sm:flex md:px-4">
         <div className="w-full space-y-2 pb-4">
           <div className="h-36 w-36 overflow-hidden border-4 border-color">
             <ImageBlur

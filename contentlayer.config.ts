@@ -25,6 +25,22 @@ const Skill = defineNestedType(() => ({
   },
 }))
 
+const SocialLink = defineNestedType(() => ({
+  name: 'SocialLink',
+  fields: {
+    name: { type: 'string', required: true },
+    url: { type: 'string', required: true },
+  },
+}))
+
+const Social = defineNestedType(() => ({
+  name: 'Social',
+  fields: {
+    description: { type: 'string', required: true },
+    links: { type: 'list', of: SocialLink, required: true },
+  },
+}))
+
 const About = defineDocumentType(() => ({
   name: 'About',
   filePathPattern: `data/about.json`,
@@ -36,6 +52,7 @@ const About = defineDocumentType(() => ({
     summary: { type: 'string', required: true },
     description: { type: 'list', of: { type: 'string' }, required: true },
     skills: { type: 'list', of: Skill, required: true },
+    social: { type: 'nested', of: Social, required: true },
   },
   computedFields: {
     avatarPlaceholder: {

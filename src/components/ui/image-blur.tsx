@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 
 export type ImageBlurProps = Omit<ImageProps, 'onLoad' | 'placeholder'> & {}
 
-export const ImageBlur = ({
+const ImageBlur = ({
   src,
   alt,
   blurDataURL,
@@ -43,3 +43,5 @@ export const ImageBlur = ({
     />
   )
 }
+
+export { ImageBlur }
