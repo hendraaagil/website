@@ -1,15 +1,21 @@
 import React from 'react'
+import { cn } from '@/lib/utils'
 
 export type ExternalLinkProps =
-  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-    href?: string
-    children?: React.ReactNode
-  }
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {}
 
-const ExternalLink = ({ href, children, ...rest }: ExternalLinkProps) => (
+const ExternalLink = ({
+  href,
+  children,
+  className,
+  ...rest
+}: ExternalLinkProps) => (
   <a
     href={href}
-    className="underline underline-offset-2 transition-colors hover:text-blue-600 dark:hover:text-blue-500"
+    className={cn(
+      'underline underline-offset-2 transition-colors hover:text-blue-600 dark:hover:text-blue-500',
+      className,
+    )}
     target="_blank"
     rel="noopener noreferrer"
     {...rest}
