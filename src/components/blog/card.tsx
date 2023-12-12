@@ -2,10 +2,9 @@ import type { Post } from 'contentlayer/generated'
 
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
-import { format } from 'date-fns'
 
 import { Heading, ImageBlur } from '@/components/ui'
-import { toTitleCase } from '@/lib/format'
+import { formatFullDate, toTitleCase } from '@/lib/format'
 
 export const PostCard = ({ post }: { post: Post }) => (
   <Link href={`/blog/${post.slug}`} className="block" aria-label="Link post">
@@ -19,8 +18,11 @@ export const PostCard = ({ post }: { post: Post }) => (
           height={630}
           className="object-cover group-hover:scale-105"
         />
-        <time className="absolute bottom-0 z-10 bg-slate-50/50 px-2 py-1 text-sm backdrop-blur-sm dark:bg-slate-900/50">
-          {format(new Date(post.createdAt), 'MMMM d, yyyy')}
+        <time
+          dateTime={post.createdAt}
+          className="absolute bottom-0 z-10 bg-slate-50/50 px-2 py-1 text-sm backdrop-blur-sm dark:bg-slate-900/50"
+        >
+          {formatFullDate(post.createdAt)}
         </time>
         <div className="absolute right-0 top-0 z-10 m-1 space-x-1">
           {post.tags.map((tag) => (

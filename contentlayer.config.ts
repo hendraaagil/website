@@ -1,3 +1,7 @@
+import remarkGfm from 'remark-gfm'
+import remarkUnwrapImages from 'remark-unwrap-images'
+import rehypePrism from 'rehype-prism-plus'
+
 import {
   type ComputedFields,
   defineDocumentType,
@@ -76,7 +80,13 @@ const Post = defineDocumentType(() => ({
     createdAt: { type: 'string', required: true },
     updatedAt: { type: 'string', required: true },
   },
-  computedFields,
+  computedFields: {
+    ...computedFields,
+    readTime: {
+      type: 'number',
+      resolve: (doc) => Math.ceil(doc.body.raw.split(' ').length / 200),
+    },
+  },
 }))
 
 const Project = defineDocumentType(() => ({
@@ -97,4 +107,8 @@ const Project = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'src/_content',
   documentTypes: [About, Post, Project],
+  mdx: {
+    remarkPlugins: [remarkGfm, remarkUnwrapImages],
+    rehypePlugins: [rehypePrism],
+  },
 })
