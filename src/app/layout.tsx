@@ -5,6 +5,7 @@ import {
   JetBrains_Mono as FontMono,
 } from 'next/font/google'
 import { cn } from '@/lib/utils'
+
 import '@/styles/globals.css'
 import '@/styles/one-dark.css'
 
