@@ -28,7 +28,7 @@ export function ThemeToggle({
           variant="outline"
           size="icon"
           className={cn({
-            'fixed bottom-0 right-0 z-20 m-2 inline-flex shadow-sm sm:hidden':
+            'fixed right-0 top-0 z-20 m-2 inline-flex shadow-sm sm:hidden':
               isMobile,
             'w-full': isCollapse && !isMobile,
           })}

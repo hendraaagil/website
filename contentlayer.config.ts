@@ -5,11 +5,12 @@ import rehypePrism from 'rehype-prism-plus'
 import {
   type ComputedFields,
   defineDocumentType,
-  defineNestedType,
   makeSource,
 } from 'contentlayer/source-files'
 import { generateBase64Image } from './src/lib/server/utils'
+import { Hardware, Skill, Social, Software } from './src/types/content'
 
+// Computed fields
 const computedFields: ComputedFields = {
   slug: {
     type: 'string',
@@ -21,30 +22,7 @@ const computedFields: ComputedFields = {
   },
 }
 
-const Skill = defineNestedType(() => ({
-  name: 'Skill',
-  fields: {
-    name: { type: 'string', required: true },
-    items: { type: 'list', of: { type: 'string' }, required: true },
-  },
-}))
-
-const SocialLink = defineNestedType(() => ({
-  name: 'SocialLink',
-  fields: {
-    name: { type: 'string', required: true },
-    url: { type: 'string', required: true },
-  },
-}))
-
-const Social = defineNestedType(() => ({
-  name: 'Social',
-  fields: {
-    description: { type: 'string', required: true },
-    links: { type: 'list', of: SocialLink, required: true },
-  },
-}))
-
+// Document types
 const About = defineDocumentType(() => ({
   name: 'About',
   filePathPattern: `data/about.json`,
@@ -63,6 +41,16 @@ const About = defineDocumentType(() => ({
       type: 'string',
       resolve: async (doc) => await generateBase64Image(doc.avatar),
     },
+  },
+}))
+
+const Equipment = defineDocumentType(() => ({
+  name: 'Equipment',
+  filePathPattern: `data/equipment.json`,
+  contentType: 'data',
+  fields: {
+    software: { type: 'nested', of: Software, required: true },
+    hardware: { type: 'nested', of: Hardware, required: true },
   },
 }))
 
@@ -106,7 +94,7 @@ const Project = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'src/_content',
-  documentTypes: [About, Post, Project],
+  documentTypes: [About, Equipment, Post, Project],
   mdx: {
     remarkPlugins: [remarkGfm, remarkUnwrapImages],
     rehypePlugins: [rehypePrism],

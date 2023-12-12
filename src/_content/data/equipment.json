@@ -1,0 +1,135 @@
+{
+  "software": {
+    "title": "Software",
+    "details": [
+      {
+        "subtitle": "Editor",
+        "items": [
+          {
+            "name": "Visual Studio Code",
+            "link": "https://code.visualstudio.com"
+          },
+          {
+            "name": "<strong>Theme:</strong> GitHub Theme",
+            "link": "https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme"
+          },
+          {
+            "name": "<strong>Editor Font:</strong> Iosevka Mayukai",
+            "link": "https://github.com/Iosevka-Mayukai/Iosevka-Mayukai"
+          },
+          {
+            "name": "<strong>Terminal Font:</strong> Caskaydia Cove",
+            "link": "https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode"
+          }
+        ]
+      },
+      {
+        "subtitle": "Terminal",
+        "items": [
+          {
+            "name": "Windows Terminal",
+            "link": "https://github.com/microsoft/terminal"
+          },
+          {
+            "name": "oh-my-posh",
+            "link": "https://ohmyposh.dev"
+          },
+          {
+            "name": "Scoop",
+            "link": "https://scoop.sh"
+          },
+          {
+            "name": "Chocolatey",
+            "link": "https://chocolatey.org"
+          }
+        ]
+      },
+      {
+        "subtitle": "Design",
+        "items": [
+          {
+            "name": "GIMP",
+            "link": "https://gimp.org"
+          },
+          {
+            "name": "Figma",
+            "link": "https://figma.com"
+          }
+        ]
+      },
+      {
+        "subtitle": "Video",
+        "items": [
+          {
+            "name": "OBS Studio",
+            "link": "https://obsproject.com"
+          },
+          {
+            "name": "HandBrake",
+            "link": "https://handbrake.fr"
+          },
+          {
+            "name": "Kdenlive",
+            "link": "https://kdenlive.org"
+          }
+        ]
+      },
+      {
+        "subtitle": "Miscellaneous",
+        "items": [
+          {
+            "name": "Git",
+            "link": "https://git-scm.com"
+          },
+          {
+            "name": "Notion",
+            "link": "https://notion.so"
+          },
+          {
+            "name": "Postman",
+            "link": "https://postman.com"
+          },
+          {
+            "name": "DBeaver",
+            "link": "https://dbeaver.io"
+          }
+        ]
+      }
+    ]
+  },
+  "hardware": {
+    "title": "Hardware",
+    "details": [
+      {
+        "subtitle": "Laptop",
+        "items": [
+          { "name": "Lenovo Idepad Gaming 3 15ACH6" },
+          {
+            "name": "<strong>Specs:</strong>",
+            "subitems": [
+              "<strong>Processor:</strong> AMD Ryzen 5 5600H",
+              "<strong>Graphics:</strong> NVIDIA GeForce RTX 3050 4GB GDDR6",
+              "<strong>RAM:</strong> 2 x 8GB DDR4-3200",
+              "<strong>Storage[0]:</strong> 512GB SSD M.2 2280 PCIe",
+              "<strong>Storage[1]:</strong> 256GB SSD M.2 2242 PCIe",
+              "<strong>OS:</strong> Windows 11 Home 64-bit"
+            ]
+          }
+        ]
+      },
+      {
+        "subtitle": "Peripherals",
+        "items": [
+          { "name": "<strong>Monitor:</strong> Samsung S24R350" },
+          { "name": "<strong>Keyboard:</strong> Rexus Daiva Max D68SF" },
+          { "name": "<strong>Mouse:</strong> Fantech VENOM II" },
+          { "name": "<strong>Gamepad:</strong> Fantech Nova WGP14" },
+          { "name": "<strong>Headset:</strong> Rexus Thundervox HX25" },
+          { "name": "<strong>TWS:</strong> dbE TWS10" },
+          { "name": "<strong>Phone[0]:</strong> Google Pixel 6a" },
+          { "name": "<strong>Phone[1]:</strong> Realme 9" }
+        ]
+      }
+    ]
+  }
+}

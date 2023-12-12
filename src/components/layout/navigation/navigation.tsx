@@ -31,7 +31,7 @@ const MobileNavigation = ({ pathname }: { pathname: string }) => {
           <Button
             variant="outline"
             size="icon"
-            className="fixed bottom-0 left-0 z-20 m-2 inline-flex shadow-sm sm:hidden"
+            className="fixed bottom-0 right-0 z-20 m-2 inline-flex shadow-sm sm:hidden"
           >
             <PanelTopOpen className="h-[1.2rem] w-[1.2rem] -rotate-90 scale-100" />
             <span className="sr-only">Open menu</span>

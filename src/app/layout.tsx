@@ -12,7 +12,12 @@ import '@/styles/one-dark.css'
 import { ThemeProvider } from '@/components/provider'
 import { Navigation } from '@/components/layout'
 
-const fontSans = FontSans({ subsets: ['latin'], variable: '--font-sans' })
+const fontSans = FontSans({
+  subsets: ['latin'],
+  display: 'swap',
+  adjustFontFallback: false,
+  variable: '--font-sans',
+})
 const fontMono = FontMono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
