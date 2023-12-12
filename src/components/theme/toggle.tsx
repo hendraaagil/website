@@ -12,7 +12,13 @@ import {
 } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
-export function ThemeToggle({ isMobile }: { isMobile?: boolean }) {
+export function ThemeToggle({
+  isCollapse,
+  isMobile,
+}: {
+  isCollapse?: boolean
+  isMobile?: boolean
+}) {
   const { setTheme } = useTheme()
 
   return (
@@ -24,6 +30,7 @@ export function ThemeToggle({ isMobile }: { isMobile?: boolean }) {
           className={cn({
             'fixed bottom-0 right-0 z-20 m-2 inline-flex shadow-sm sm:hidden':
               isMobile,
+            'w-full': isCollapse && !isMobile,
           })}
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

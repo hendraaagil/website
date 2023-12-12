@@ -28,7 +28,7 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <main className="mx-auto flex max-w-5xl px-2 md:px-4">
+        <main className="mx-auto flex max-w-5xl">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

@@ -5,6 +5,8 @@ import Link, { type LinkProps } from 'next/link'
 
 import { usePathname } from 'next/navigation'
 import {
+  ChevronsLeft,
+  ChevronsRight,
   History,
   Home,
   Keyboard,
@@ -69,26 +71,34 @@ const NavigationLink = ({
   href,
   currentPath,
   children,
+  isCollapse,
   ...rest
 }: {
   href: string
   currentPath: string
   children: React.ReactNode
-} & LinkProps) => (
-  <Link
-    href={href}
-    className={cn(
-      'flex items-center space-x-2 border-2 border-transparent bg-slate-200 bg-opacity-25 py-2 pl-3 pr-3 font-medium tracking-wide transition-colors hover:border-color md:pr-8',
-      'dark:bg-slate-800 dark:bg-opacity-25',
-      {
-        'bg-opacity-50 border-color dark:bg-opacity-50': currentPath === href,
-      },
-    )}
-    {...rest}
-  >
-    {children}
-  </Link>
-)
+  isCollapse?: boolean
+} & LinkProps) => {
+  const regEx = new RegExp(`^${href}`)
+  const isActive = href === '/' ? currentPath === href : regEx.test(currentPath)
+
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'flex items-center space-x-2 border-2 border-transparent bg-slate-200 bg-opacity-25 px-3 py-2 font-medium tracking-wide transition-colors hover:border-color',
+        'dark:bg-slate-800 dark:bg-opacity-25',
+        {
+          'md:min-w-[10rem] ': !isCollapse,
+          'bg-opacity-50 border-color dark:bg-opacity-50': isActive,
+        },
+      )}
+      {...rest}
+    >
+      {children}
+    </Link>
+  )
+}
 
 const MobileNavigation = ({ pathname }: { pathname: string }) => {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -129,11 +139,17 @@ export function Navigation() {
   const { avatar, avatarPlaceholder, name, username } = allAbouts[0]
   const pathname = usePathname()
 
+  const [isCollapse, setIsCollapse] = React.useState(false)
+
   return (
     <>
-      <nav className="sticky top-0 hidden min-h-screen max-w-fit flex-col items-center self-start border-r py-8 pl-2 pr-4 border-color sm:flex md:px-4">
-        <div className="w-full space-y-2 pb-4">
-          <div className="h-36 w-36 overflow-hidden border-4 border-color">
+      <nav className="sticky top-0 hidden min-h-screen max-w-fit flex-col items-center self-start border-r px-4 py-8 border-color sm:flex">
+        <div className={cn('w-full pb-4', { 'space-y-2': !isCollapse })}>
+          <div
+            className={cn('h-36 w-36 overflow-hidden border-4 border-color', {
+              hidden: isCollapse,
+            })}
+          >
             <ImageBlur
               blurDataURL={avatarPlaceholder}
               src={avatar}
@@ -142,20 +158,39 @@ export function Navigation() {
               alt="Avatar"
             />
           </div>
-          <Heading variant="h2">{name}</Heading>
-          <p>@{username}</p>
-          <ThemeToggle />
+          <Heading variant="h2" className={cn({ hidden: isCollapse })}>
+            {name}
+          </Heading>
+          <p className={cn({ hidden: isCollapse })}>@{username}</p>
+          <ThemeToggle isCollapse={isCollapse} />
         </div>
-        <ul className="space-y-4 border-t py-4 border-color">
+        <ul className="space-y-4 border-y py-4 border-color">
           {navigations.map(({ name, href, Icon }) => (
             <li key={name}>
-              <NavigationLink href={href} currentPath={pathname}>
+              <NavigationLink
+                href={href}
+                currentPath={pathname}
+                isCollapse={isCollapse}
+              >
                 <Icon size={20} />
-                <span>{name}</span>
+                <span className={cn({ 'sr-only': isCollapse })}>{name}</span>
               </NavigationLink>
             </li>
           ))}
         </ul>
+        <Button
+          size="icon"
+          variant="outline"
+          className="mt-4 w-full"
+          onClick={() => setIsCollapse((prev) => !prev)}
+        >
+          {isCollapse ? (
+            <ChevronsRight size={20} />
+          ) : (
+            <ChevronsLeft size={20} />
+          )}
+          <span className="sr-only">Collapse sidebar</span>
+        </Button>
       </nav>
       <MobileNavigation pathname={pathname} />
       <ThemeToggle isMobile />
