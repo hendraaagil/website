@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { ExternalLink as ExternalLinkIcon, Github } from 'lucide-react'
 
 import { ExternalLink, Heading, ImageBlur, MDXContent } from '@/components/ui'
+import { ArticleContainer } from '@/components/layout'
 
 const getProject = (slug: string) =>
   allProjects.find((project) => project.slug === slug)
@@ -18,7 +19,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   if (!project) return notFound()
 
   return (
-    <article className="w-full space-y-4 px-2 py-8 sm:px-4">
+    <ArticleContainer>
       <div className="overflow-hidden border border-color">
         <ImageBlur
           src={project.thumbnail}
@@ -54,6 +55,6 @@ export default function Page({ params }: { params: { slug: string } }) {
       </div>
       <hr className="border-color" />
       <MDXContent code={project.body.code} />
-    </article>
+    </ArticleContainer>
   )
 }

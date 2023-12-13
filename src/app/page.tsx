@@ -3,6 +3,7 @@ import { compareDesc } from 'date-fns'
 
 import { htmr } from '@/lib/transform'
 import { Heading } from '@/components/ui'
+import { PageContainer } from '@/components/layout'
 import { SectionContainer } from '@/components/home'
 import { PostCard } from '@/components/blog'
 import { ProjectCard } from '@/components/project'
@@ -17,7 +18,7 @@ export default function Home() {
     .slice(0, 4)
 
   return (
-    <section className="flex flex-col space-y-4 px-2 py-8 sm:px-4">
+    <PageContainer>
       <div className="flex space-x-2">
         <Heading>Hi there!</Heading>
         <div className="animate-wiggle motion-reduce:animate-none">
@@ -39,6 +40,6 @@ export default function Home() {
           ))}
         </div>
       </SectionContainer>
-    </section>
+    </PageContainer>
   )
 }

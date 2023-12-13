@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 
 import { formatFullDate, toTitleCase } from '@/lib/format'
 import { Heading, ImageBlur, MDXContent } from '@/components/ui'
+import { ArticleContainer } from '@/components/layout'
 import { Comment } from '@/components/blog'
 
 const getPost = (slug: string) => allPosts.find((post) => post.slug === slug)
@@ -18,7 +19,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   if (!post) return notFound()
 
   return (
-    <article className="w-full space-y-4 px-2 py-8 sm:px-4">
+    <ArticleContainer>
       <figure className="overflow-hidden border text-center bg-color-secondary border-color">
         <ImageBlur
           src={post.thumbnail}
@@ -48,6 +49,6 @@ export default function Page({ params }: { params: { slug: string } }) {
       <MDXContent code={post.body.code} />
       <hr className="pb-4 border-color" />
       <Comment />
-    </article>
+    </ArticleContainer>
   )
 }

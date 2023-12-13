@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import { Heading } from '@/components/ui'
+import { PageContainer } from '@/components/layout'
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-screen w-full flex-col items-center justify-center space-y-4">
+    <PageContainer className="min-h-screen items-center justify-center">
       <Heading>Page not found!</Heading>
       <Link href="/" className="underline underline-offset-4">
         Go to home
       </Link>
-    </section>
+    </PageContainer>
   )
 }

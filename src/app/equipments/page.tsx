@@ -27,6 +27,7 @@ export default function Page() {
       className="space-y-0"
       title="Equipments"
       description="Some of the tools / peripherals that I'm using."
+      withHeader
     >
       <SectionContainer title={software.title}>
         {software.details.map((detail) => (

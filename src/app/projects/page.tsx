@@ -10,6 +10,7 @@ export default function Page() {
     <PageContainer
       title="Projects"
       description="Some of the projects I've worked on, both private and open source."
+      withHeader
     >
       <div className="grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (

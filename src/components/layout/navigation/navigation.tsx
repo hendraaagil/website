@@ -69,9 +69,9 @@ export const Navigation = () => {
     <>
       <nav
         className={cn(
-          'sticky top-0 hidden min-h-screen w-48 flex-col items-center self-start border-r px-4 py-8 border-color sm:flex',
+          'sticky top-0 hidden min-h-screen w-48 flex-col items-center self-start px-4 py-8 sm:flex',
           'translate-y-0 transition-[width,transform] duration-300 motion-reduce:transition-none',
-          { 'w-24 -translate-y-[14.75rem] delay-150': isCollapse },
+          { 'w-[5.25rem] -translate-y-[14.75rem] delay-150': isCollapse },
         )}
       >
         <div
@@ -83,7 +83,7 @@ export const Navigation = () => {
             className={cn(
               'h-36 w-36 overflow-hidden border-4 border-color',
               'translate-x-0 transition-transform duration-300 motion-reduce:transition-none',
-              { '-translate-x-96': isCollapse, 'delay-150': !isCollapse },
+              { '-translate-x-48': isCollapse, 'delay-150': !isCollapse },
             )}
           >
             <ImageBlur
@@ -98,7 +98,7 @@ export const Navigation = () => {
             variant="h2"
             className={cn(
               'translate-x-0 transition-transform duration-300 motion-reduce:transition-none',
-              { '-translate-x-96': isCollapse, 'delay-150': !isCollapse },
+              { '-translate-x-48': isCollapse, 'delay-150': !isCollapse },
             )}
           >
             {name}
@@ -106,7 +106,7 @@ export const Navigation = () => {
           <p
             className={cn(
               'translate-x-0 transition-transform duration-300 motion-reduce:transition-none',
-              { '-translate-x-96': isCollapse, 'delay-150': !isCollapse },
+              { '-translate-x-48': isCollapse, 'delay-150': !isCollapse },
             )}
           >
             @{username}

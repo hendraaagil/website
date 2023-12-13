@@ -22,7 +22,11 @@ export default function Page() {
   const { description, skills, social } = allAbouts[0]
 
   return (
-    <PageContainer title="About me" description="A little about myself.">
+    <PageContainer
+      title="About me"
+      description="A little about myself."
+      withHeader
+    >
       <section className="space-y-2">
         {description.map((desc, i) => (
           <p key={i}>{htmr(desc)}</p>

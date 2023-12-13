@@ -13,6 +13,7 @@ export default function Page() {
     <PageContainer
       title="Blog"
       description="Some of the posts that I've written, not only about code."
+      withHeader
     >
       <div className="flex flex-col space-y-4">
         {posts.map((post) => (
