@@ -26,6 +26,7 @@ export const NavigationLink = ({
         'dark:bg-slate-800 dark:bg-opacity-25',
         {
           'md:min-w-[10rem] ': !isCollapse,
+          'justify-center': isCollapse,
           'bg-opacity-50 border-color dark:bg-opacity-50': isActive,
         },
       )}

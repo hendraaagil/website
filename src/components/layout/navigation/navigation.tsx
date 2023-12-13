@@ -67,12 +67,24 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav className="sticky top-0 hidden min-h-screen max-w-fit flex-col items-center self-start border-r px-4 py-8 border-color sm:flex">
-        <div className={cn('w-full pb-4', { 'space-y-2': !isCollapse })}>
+      <nav
+        className={cn(
+          'sticky top-0 hidden min-h-screen w-48 flex-col items-center self-start border-r px-4 py-8 border-color sm:flex',
+          'translate-y-0 transition-[width,transform] duration-300 motion-reduce:transition-none',
+          { 'w-24 -translate-y-[14.75rem] delay-150': isCollapse },
+        )}
+      >
+        <div
+          className={cn('w-full overflow-hidden pb-4', {
+            'space-y-2': !isCollapse,
+          })}
+        >
           <div
-            className={cn('h-36 w-36 overflow-hidden border-4 border-color', {
-              hidden: isCollapse,
-            })}
+            className={cn(
+              'h-36 w-36 overflow-hidden border-4 border-color',
+              'translate-x-0 transition-transform duration-300 motion-reduce:transition-none',
+              { '-translate-x-96': isCollapse, 'delay-150': !isCollapse },
+            )}
           >
             <ImageBlur
               blurDataURL={avatarPlaceholder}
@@ -82,13 +94,26 @@ export const Navigation = () => {
               alt="Avatar"
             />
           </div>
-          <Heading variant="h2" className={cn({ hidden: isCollapse })}>
+          <Heading
+            variant="h2"
+            className={cn(
+              'translate-x-0 transition-transform duration-300 motion-reduce:transition-none',
+              { '-translate-x-96': isCollapse, 'delay-150': !isCollapse },
+            )}
+          >
             {name}
           </Heading>
-          <p className={cn({ hidden: isCollapse })}>@{username}</p>
+          <p
+            className={cn(
+              'translate-x-0 transition-transform duration-300 motion-reduce:transition-none',
+              { '-translate-x-96': isCollapse, 'delay-150': !isCollapse },
+            )}
+          >
+            @{username}
+          </p>
           <ThemeToggle isCollapse={isCollapse} />
         </div>
-        <ul className="space-y-4 border-y py-4 border-color">
+        <ul className="w-full space-y-4 border-y py-4 border-color">
           {navigations.map(({ name, href, Icon }) => (
             <li key={name}>
               <NavigationLink

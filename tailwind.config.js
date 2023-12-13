@@ -51,6 +51,9 @@ module.exports = {
         wiggle: 'wiggle 1s ease-in-out infinite',
         'bounce-right': 'bounce-right 1s ease-in-out infinite',
       },
+      transitionProperty: {
+        width: 'width',
+      },
     },
   },
   plugins: [
