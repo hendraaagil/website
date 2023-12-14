@@ -34,22 +34,22 @@ export const MDXContent = ({ code }: { code: string }) => {
       </blockquote>
     ),
     h1: ({ children }) => (
-      <Heading variant="h1" className="my-4">
+      <Heading variant="h1" className="my-4" withLink>
         {children}
       </Heading>
     ),
     h2: ({ children }) => (
-      <Heading variant="h2" className="my-4">
+      <Heading variant="h2" className="my-4" withLink>
         {children}
       </Heading>
     ),
     h3: ({ children }) => (
-      <Heading variant="h3" className="my-4">
+      <Heading variant="h3" className="my-4" withLink>
         {children}
       </Heading>
     ),
     h4: ({ children }) => (
-      <Heading variant="h4" className="my-4">
+      <Heading variant="h4" className="my-4" withLink>
         {children}
       </Heading>
     ),
