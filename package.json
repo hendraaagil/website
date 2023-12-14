@@ -19,6 +19,7 @@
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
     "htmr": "^1.0.2",
+    "jsdom": "^23.0.1",
     "lucide-react": "^0.294.0",
     "next": "14.0.4",
     "next-contentlayer": "^0.3.4",
@@ -34,6 +35,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/jsdom": "^21.1.6",
+    "@types/mdx": "^2.0.10",
     "@types/node": "^20",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18",

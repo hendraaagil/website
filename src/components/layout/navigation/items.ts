@@ -1,12 +1,4 @@
-import {
-  History,
-  Home,
-  Keyboard,
-  LineChart,
-  PenLine,
-  User,
-  Wrench,
-} from 'lucide-react'
+import { Home, Keyboard, LineChart, PenLine, User, Wrench } from 'lucide-react'
 
 export const navigationItems = [
   {
@@ -28,11 +20,6 @@ export const navigationItems = [
     name: 'Projects',
     href: '/projects',
     Icon: Wrench,
-  },
-  {
-    name: 'Resume',
-    href: '/resume',
-    Icon: History,
   },
   {
     name: 'Equipments',
