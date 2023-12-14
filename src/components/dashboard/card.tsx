@@ -45,7 +45,7 @@ export const DashboardCardSkeleton = () => (
   <div className="border p-4 transition-colors border-color hover:bg-color-secondary">
     <div className="animate-pulse space-y-2">
       <div className="h-4 w-1/2 bg-color-secondary" />
-      <div className="h-8 w-full bg-color-secondary" />
+      <div className="h-9 w-full bg-color-secondary" />
     </div>
   </div>
 )
