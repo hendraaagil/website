@@ -25,14 +25,6 @@ const defaultMeta: Metadata = {
     url: env.url.website,
     type: 'website',
     siteName: title,
-    images: [
-      {
-        url: `/og/main`,
-        width: 1200,
-        height: 630,
-        alt: title,
-      },
-    ],
   },
   robots: {
     index: true,
