@@ -1,12 +1,13 @@
 import { google, youtube_v3 } from 'googleapis'
+import { env } from '@/lib/constants'
 
 export const fetchYoutubeStats = async () => {
   try {
     const channelIds = ['UCy44Cn1aBo3LYrZsh2gKGIA', 'UC-8I6YXDaagpTHTWM5GYl8Q']
     const auth = new google.auth.GoogleAuth({
       credentials: {
-        client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY,
+        client_email: env.google.clientEmail,
+        private_key: env.google.privateKey,
       },
       scopes: ['https://www.googleapis.com/auth/youtube.readonly'],
     })

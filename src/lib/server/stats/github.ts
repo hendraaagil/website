@@ -1,9 +1,10 @@
 import type { GithubRepository, GithubUserProfile } from '@/types/github'
+import { env } from '@/lib/constants'
 
 export const fetchGithubStats = async () => {
   try {
     const headers: HeadersInit = {
-      Authorization: 'Bearer ' + process.env.GITHUB_TOKEN,
+      Authorization: 'Bearer ' + env.github.token,
     }
     const [userResponse, reposResponse] = await Promise.all([
       fetch('https://api.github.com/users/hendraaagil', { headers }),

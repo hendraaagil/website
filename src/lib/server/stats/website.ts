@@ -1,10 +1,12 @@
 import type { WebsiteStatsResponse } from '@/types/website'
 import { set } from 'date-fns'
 
+import { env } from '@/lib/constants'
+
 export const fetchWebsiteStats = async () => {
   try {
-    const websiteStatsEndpoint = process.env.WEBSITE_STATS_ENDPOINT as string
-    const websiteStatsToken = process.env.WEBSITE_STATS_TOKEN as string
+    const websiteStatsEndpoint = env.websiteStats.endpoint
+    const websiteStatsToken = env.websiteStats.token
 
     const today = set(new Date(), {
       hours: 23,

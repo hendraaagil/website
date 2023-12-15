@@ -1,15 +1,17 @@
 import type { SpotifyNowPlaying, SpotifyTopTracks } from '@/types/spotify'
 import qs from 'querystring'
 
+import { env } from '@/lib/constants'
+
 enum TimeRange {
   LastMonth = 'short_term',
   Last6Month = 'medium_term',
   AllTime = 'long_term',
 }
 
-const client_id = process.env.SPOTIFY_CLIENT_ID
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET
-const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
+const client_id = env.spotify.clientId
+const client_secret = env.spotify.clientSecret
+const refresh_token = env.spotify.refreshToken
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=${TimeRange.LastMonth}&limit=10`

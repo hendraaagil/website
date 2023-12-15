@@ -20,7 +20,7 @@ export const GithubStars = async () => {
     <DashboardCard
       title="GitHub Stars"
       link={url.github}
-      count={githubStats?.stars || 0}
+      count={githubStats?.stars}
     />
   )
 }
@@ -32,7 +32,7 @@ export const WebsiteViews = async () => {
     <DashboardCard
       title="All-Time Views"
       link={url.analytic}
-      count={websiteStats?.viewCount || 0}
+      count={websiteStats?.viewCount}
     />
   )
 }
@@ -44,7 +44,7 @@ export const WebsiteVisitors = async () => {
     <DashboardCard
       title="All-Time Visitors"
       link={url.analytic}
-      count={websiteStats?.visitorCount || 0}
+      count={websiteStats?.visitorCount}
     />
   )
 }
@@ -56,7 +56,7 @@ export const CodingHours = async () => {
     <DashboardCard
       title="Coding Hours"
       link={url.wakatime}
-      count={wakatimeStats?.codingHours || 0}
+      count={wakatimeStats?.codingHours}
     />
   )
 }
@@ -68,7 +68,7 @@ export const YoutubeViews = async () => {
     <DashboardCard
       title="YouTube Views"
       link={url.youtube}
-      count={youtubeStats?.viewCount || 0}
+      count={youtubeStats?.viewCount}
     />
   )
 }
@@ -80,7 +80,7 @@ export const YoutubeVideos = async () => {
     <DashboardCard
       title="YouTube Videos"
       link={url.youtube}
-      count={youtubeStats?.videoCount || 0}
+      count={youtubeStats?.videoCount}
     />
   )
 }

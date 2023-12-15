@@ -1,9 +1,11 @@
 import type { WakatimeStats } from '@/types/wakatime'
 import { secondsToHours } from 'date-fns'
 
+import { env } from '@/lib/constants'
+
 export const fetchWakatimeStats = async () => {
   try {
-    const response = await fetch(process.env.WAKATIME_URL as string)
+    const response = await fetch(env.url.wakatime)
     const {
       data: { range, grand_total },
     }: WakatimeStats = await response.json()
