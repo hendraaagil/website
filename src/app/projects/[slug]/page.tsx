@@ -1,7 +1,11 @@
+import type { Metadata } from 'next'
+
 import { allProjects } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { ExternalLink as ExternalLinkIcon, Github } from 'lucide-react'
 
+import { env } from '@/lib/constants'
+import { generateSeoMeta } from '@/lib/seo'
 import { ExternalLink, Heading, ImageBlur, MDXContent } from '@/components/ui'
 import { ArticleContainer } from '@/components/layout'
 
@@ -12,6 +16,46 @@ export async function generateStaticParams() {
   return allProjects.map((project) => ({
     slug: project.slug,
   }))
+}
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> => {
+  const project = getProject(params.slug)
+  if (!project) return {}
+
+  const projectUrl = new URL(env.url.website + '/projects/' + params.slug)
+  const imageUrl = new URL(env.url.website + project.thumbnail)
+  return {
+    ...generateSeoMeta({
+      title: project.title,
+      description: project.description,
+      alternates: { canonical: projectUrl },
+      openGraph: {
+        title: project.title,
+        description: project.description,
+        url: projectUrl,
+        images: [
+          {
+            url: `/og/content?title=${project.title}&link=${projectUrl}&image=${imageUrl}`,
+            width: 1200,
+            height: 630,
+            alt: project.title,
+          },
+        ],
+      },
+      robots: {
+        index: false,
+        follow: true,
+        googleBot: {
+          index: false,
+          follow: true,
+        },
+      },
+    }),
+  }
 }
 
 export default function Page({ params }: { params: { slug: string } }) {

@@ -1,8 +1,24 @@
+import type { Metadata } from 'next'
+
 import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 
+import { env } from '@/lib/constants'
+import { generateSeoMeta } from '@/lib/seo'
 import { PageContainer } from '@/components/layout'
 import { PostCard } from '@/components/blog'
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const url = new URL(env.url.website + '/blog')
+
+  return {
+    ...generateSeoMeta({
+      title: 'Blog',
+      alternates: { canonical: url },
+      newOg: { url: url },
+    }),
+  }
+}
 
 export default function Page() {
   const posts = allPosts.sort((a, b) =>

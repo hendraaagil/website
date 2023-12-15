@@ -61,7 +61,8 @@ export const LinkPreview = async ({
           <div className="overflow-hidden">
             <img
               src={
-                (data?.image as string) || '/assets/main/placeholder-post.png'
+                (data?.image as string) ||
+                '/assets/main/placeholder-content.png'
               }
               alt={(data?.title as string) || 'Link preview image'}
               className={cn('w-full', {

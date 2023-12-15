@@ -1,6 +1,10 @@
+import type { Metadata } from 'next'
+
 import { allPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 
+import { env } from '@/lib/constants'
+import { generateSeoMeta } from '@/lib/seo'
 import { formatFullDate, toTitleCase } from '@/lib/format'
 import { Heading, ImageBlur, MDXContent } from '@/components/ui'
 import { ArticleContainer } from '@/components/layout'
@@ -12,6 +16,43 @@ export async function generateStaticParams() {
   return allPosts.map((post) => ({
     slug: post.slug,
   }))
+}
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> => {
+  const post = getPost(params.slug)
+  if (!post) return {}
+
+  const postUrl = new URL(env.url.website + '/blog/' + params.slug)
+  const imageUrl = new URL(env.url.website + post.thumbnail)
+  return {
+    ...generateSeoMeta({
+      title: post.title,
+      description: post.summary,
+      alternates: { canonical: postUrl },
+      openGraph: {
+        title: post.title,
+        description: post.summary,
+        url: postUrl,
+        type: 'article',
+        publishedTime: post.createdAt,
+        modifiedTime: post.updatedAt,
+        authors: ['Hendra Agil'],
+        tags: post.tags,
+        images: [
+          {
+            url: `/og/content?title=${post.title}&link=${postUrl}&image=${imageUrl}`,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          },
+        ],
+      },
+    }),
+  }
 }
 
 export default function Page({ params }: { params: { slug: string } }) {

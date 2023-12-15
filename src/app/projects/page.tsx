@@ -1,7 +1,22 @@
+import type { Metadata } from 'next'
 import { allProjects } from 'contentlayer/generated'
 
+import { env } from '@/lib/constants'
+import { generateSeoMeta } from '@/lib/seo'
 import { PageContainer } from '@/components/layout'
 import { ProjectCard } from '@/components/project'
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const url = new URL(env.url.website + '/projects')
+
+  return {
+    ...generateSeoMeta({
+      title: 'Projects',
+      alternates: { canonical: url },
+      newOg: { url: url },
+    }),
+  }
+}
 
 export default function Page() {
   const projects = allProjects.sort((a, b) => b.position - a.position)

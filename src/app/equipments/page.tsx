@@ -1,6 +1,9 @@
+import type { Metadata } from 'next'
 import { allEquipment } from 'contentlayer/generated'
 
+import { env } from '@/lib/constants'
 import { htmr } from '@/lib/transform'
+import { generateSeoMeta } from '@/lib/seo'
 import { PageContainer } from '@/components/layout'
 import { ExternalLink, Heading } from '@/components/ui'
 
@@ -18,6 +21,18 @@ const SectionContainer = ({
     {children}
   </section>
 )
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const url = new URL(env.url.website + '/equipments')
+
+  return {
+    ...generateSeoMeta({
+      title: 'Equipments',
+      alternates: { canonical: url },
+      newOg: { url: url },
+    }),
+  }
+}
 
 export default function Page() {
   const { software, hardware } = allEquipment[0]

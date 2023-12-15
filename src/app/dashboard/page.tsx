@@ -1,5 +1,8 @@
+import type { Metadata } from 'next'
 import React from 'react'
 
+import { env } from '@/lib/constants'
+import { generateSeoMeta } from '@/lib/seo'
 import { PageContainer } from '@/components/layout'
 import { Heading } from '@/components/ui'
 import {
@@ -30,6 +33,18 @@ const statistics = [
 const SectionContainer = ({ children }: { children?: React.ReactNode }) => (
   <section className="space-y-4 border-t pt-4 border-color">{children}</section>
 )
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const url = new URL(env.url.website + '/dashboard')
+
+  return {
+    ...generateSeoMeta({
+      title: 'Dashboard',
+      alternates: { canonical: url },
+      newOg: { url: url },
+    }),
+  }
+}
 
 export const dynamic = 'force-dynamic'
 
