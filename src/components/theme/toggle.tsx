@@ -7,7 +7,8 @@ import {
   Button,
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from '@/components/ui'
 import { cn } from '@/lib/utils'
@@ -19,7 +20,7 @@ export function ThemeToggle({
   isCollapse?: boolean
   isMobile?: boolean
 }) {
-  const { setTheme } = useTheme()
+  const { theme, themes, setTheme } = useTheme()
 
   return (
     <DropdownMenu>
@@ -39,15 +40,17 @@ export function ThemeToggle({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align={isMobile ? 'end' : 'start'}>
-        <DropdownMenuItem onClick={() => setTheme('light')}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>
-          System
-        </DropdownMenuItem>
+        <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+          {themes.map((theme) => (
+            <DropdownMenuRadioItem
+              key={theme}
+              value={theme}
+              className="capitalize"
+            >
+              {theme}
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   )
