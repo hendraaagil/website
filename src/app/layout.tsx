@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 
+import Script from 'next/script'
 import {
   Gabarito as FontSans,
   JetBrains_Mono as FontMono,
@@ -59,6 +60,14 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </main>
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            data-website-id="d7044884-6f55-4a16-8344-9221c0e82832"
+            src="https://analytics.hendraaagil.dev/script.js"
+            async
+            defer
+          />
+        )}
       </body>
     </html>
   )
