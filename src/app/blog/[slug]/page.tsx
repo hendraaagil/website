@@ -44,7 +44,9 @@ export const generateMetadata = async ({
         tags: post.tags,
         images: [
           {
-            url: `/og/content?title=${post.title}&link=${postUrl}&image=${imageUrl}`,
+            url: `/og/content?title=${post.title}&link=${encodeURIComponent(
+              postUrl.toString(),
+            )}&image=${encodeURIComponent(imageUrl.toString())}`,
             width: 1200,
             height: 630,
             alt: post.title,
