@@ -35,7 +35,7 @@ export const NowPlaying = async () => {
 }
 
 export const NowPlayingSkeleton = () => (
-  <div className="border px-3 py-2.5 transition-colors border-color hover:bg-color-secondary">
+  <div className="border px-3 py-2.5 transition-colors border-color">
     <div className="flex space-x-4">
       <div className="h-14 w-14 animate-pulse bg-color-secondary" />
       <div className="space-y-1.5">
