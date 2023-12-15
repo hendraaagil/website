@@ -1,21 +1,32 @@
+'use client'
+
+import type { NowPlayingResponse } from '@/lib/server/stats'
+
+import useSWR, { type Fetcher } from 'swr'
 import Image from 'next/image'
 
-import { fetchNowPlaying } from '@/lib/server/stats'
 import { ExternalLink } from '@/components/ui'
 
-export const dynamic = 'force-dynamic'
+const fetcher: Fetcher<NowPlayingResponse, string> = (url: string) =>
+  fetch(url).then((res) => res.json())
 
-export const NowPlaying = async () => {
-  const nowPlaying = await fetchNowPlaying()
+export const NowPlaying = () => {
+  const { isLoading, data: nowPlaying } = useSWR(
+    '/api/spotify/now-playing',
+    fetcher,
+    { refreshInterval: 10000 },
+  )
+
+  if (isLoading) return <NowPlayingSkeleton />
 
   return (
     <div className="border px-3 py-2.5 transition-colors border-color hover:bg-color-secondary">
       <ExternalLink
-        href={nowPlaying.songUrl ?? 'https://open.spotify.com'}
+        href={nowPlaying?.songUrl ?? 'https://open.spotify.com'}
         className="flex items-center space-x-4 no-underline hover:underline"
       >
         <Image
-          src={nowPlaying.albumImageUrl ?? '/assets/main/spotify.png'}
+          src={nowPlaying?.albumImageUrl ?? '/assets/main/spotify.png'}
           alt="Album cover"
           width={56}
           height={56}
@@ -23,10 +34,10 @@ export const NowPlaying = async () => {
         />
         <div className="space-y-0.5">
           <p className="line-clamp-1 text-lg font-semibold">
-            {nowPlaying.title ?? 'Not playing'}
+            {nowPlaying?.title ?? 'Not playing'}
           </p>
           <p className="line-clamp-1 text-sm">
-            {nowPlaying.artist ?? 'Spotify'}
+            {nowPlaying?.artist ?? 'Spotify'}
           </p>
         </div>
       </ExternalLink>

@@ -64,9 +64,7 @@ export default async function Page() {
       </section>
       <SectionContainer>
         <Heading variant="h2">Music</Heading>
-        <React.Suspense fallback={<NowPlayingSkeleton />}>
-          <NowPlaying />
-        </React.Suspense>
+        <NowPlaying />
       </SectionContainer>
       <SectionContainer>
         <Heading variant="h3">Top tracks</Heading>

@@ -34,6 +34,8 @@ const getAccessToken = async () => {
   return response.json()
 }
 
+export type NowPlayingResponse = Awaited<ReturnType<typeof fetchNowPlaying>>
+
 export const fetchNowPlaying = async () => {
   try {
     const { access_token } = await getAccessToken()
@@ -41,6 +43,7 @@ export const fetchNowPlaying = async () => {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
+      cache: 'no-store',
     })
     if (response.status === 204 || response.status > 400) {
       return { isPlaying: false }
@@ -72,6 +75,7 @@ export const fetchTopTracks = async () => {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
+      cache: 'no-store',
     })
 
     const { items }: SpotifyTopTracks = await response.json()
