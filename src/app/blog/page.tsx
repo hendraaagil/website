@@ -30,6 +30,7 @@ export default function Page() {
       title="Blog"
       description="Some of the posts that I've written, not only about code."
       withHeader
+      withFooter
     >
       <div className="flex flex-col space-y-4">
         {posts.map((post) => (

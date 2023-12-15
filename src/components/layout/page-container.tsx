@@ -1,6 +1,8 @@
 import React from 'react'
-import { Heading } from '@/components/ui'
 import { cn } from '@/lib/utils'
+
+import { Heading } from '@/components/ui'
+import { Footer } from '@/components/layout'
 
 type PageContainerProps = {
   title?: string
@@ -8,6 +10,7 @@ type PageContainerProps = {
   children?: React.ReactNode
   className?: string
   withHeader?: boolean
+  withFooter?: boolean
 }
 
 export const PageContainer = ({
@@ -16,10 +19,11 @@ export const PageContainer = ({
   children,
   className,
   withHeader,
+  withFooter,
 }: PageContainerProps) => (
   <section
     className={cn(
-      'flex w-full flex-col space-y-4 border-l px-2 py-8 border-color sm:px-4',
+      'flex w-full flex-col space-y-4 border-l px-2 pb-4 pt-8 border-color sm:px-4',
       className,
     )}
   >
@@ -30,5 +34,6 @@ export const PageContainer = ({
       </header>
     )}
     {children}
+    {withFooter && <Footer />}
   </section>
 )

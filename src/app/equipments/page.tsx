@@ -14,7 +14,7 @@ const SectionContainer = ({
   title: string
   children?: React.ReactNode
 }) => (
-  <section className="space-y-2 odd:border-t odd:border-color even:pb-2">
+  <section className="space-y-2 odd:border-t odd:pb-4 odd:border-color even:pb-2">
     <Heading variant="h2" className="border-b py-2 border-color">
       {title}
     </Heading>
@@ -43,6 +43,7 @@ export default function Page() {
       title="Equipments"
       description="Some of the tools / peripherals that I'm using."
       withHeader
+      withFooter
     >
       <SectionContainer title={software.title}>
         {software.details.map((detail) => (

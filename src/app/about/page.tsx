@@ -42,6 +42,7 @@ export default function Page() {
       title="About me"
       description="A little about myself."
       withHeader
+      withFooter
     >
       <section className="space-y-2">
         {description.map((desc, i) => (

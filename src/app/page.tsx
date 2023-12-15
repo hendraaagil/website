@@ -18,7 +18,7 @@ export default function Home() {
     .slice(0, 4)
 
   return (
-    <PageContainer>
+    <PageContainer withFooter>
       <div className="flex space-x-2">
         <Heading>Hi there!</Heading>
         <div className="animate-wiggle motion-reduce:animate-none">
