@@ -37,6 +37,8 @@ export const generateMetadata = async ({
         title: project.title,
         description: project.description,
         url: projectUrl,
+        type: 'website',
+        siteName: 'Hendra Agil',
         images: [
           {
             url: `/og/content?title=${encodeURIComponent(

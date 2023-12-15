@@ -42,6 +42,7 @@ export const generateMetadata = async ({
         modifiedTime: post.updatedAt,
         authors: ['Hendra Agil'],
         tags: post.tags,
+        siteName: 'Hendra Agil',
         images: [
           {
             url: `/og/content?title=${encodeURIComponent(
