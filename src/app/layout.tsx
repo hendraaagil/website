@@ -26,7 +26,10 @@ export const generateMetadata = async (): Promise<Metadata> => generateSeoMeta()
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0f172a',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
   colorScheme: 'dark light',
 }
 
