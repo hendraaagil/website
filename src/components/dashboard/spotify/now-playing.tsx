@@ -8,7 +8,7 @@ import Image from 'next/image'
 import { ExternalLink } from '@/components/ui'
 
 const fetcher: Fetcher<NowPlayingResponse, string> = (url: string) =>
-  fetch(url, { cache: 'no-store' }).then((res) => res.json())
+  fetch(url).then((res) => res.json())
 
 export const NowPlaying = () => {
   const { isLoading, data: nowPlaying } = useSWR(
