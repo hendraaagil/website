@@ -34,6 +34,7 @@ pre[class*='language-'] {
   color: hsl(220, 14%, 71%);
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   font-family: var(--font-mono), monospace;
+  font-size: 0.875em;
   direction: ltr;
   text-align: left;
   white-space: pre;
