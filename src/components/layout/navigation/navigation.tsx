@@ -7,6 +7,7 @@ import { ChevronsLeft, ChevronsRight, PanelTopOpen } from 'lucide-react'
 import { allAbouts } from 'contentlayer/generated'
 
 import { cn } from '@/lib/utils'
+import { useNavigationState } from '@/hooks'
 import {
   Button,
   Heading,
@@ -21,48 +22,52 @@ import {
   NavigationLink,
 } from '@/components/layout'
 
-const MobileNavigation = ({ pathname }: { pathname: string }) => {
-  const [isOpen, setIsOpen] = React.useState(false)
+const MobileNavigation = ({
+  pathname,
+  isOpen,
+  setIsOpen,
+}: {
+  pathname: string
+  isOpen: boolean
+  setIsOpen: (open: boolean) => void
+}) => (
+  <>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetTrigger asChild>
+        <Button
+          variant="outline"
+          size="icon"
+          className="fixed bottom-0 right-0 z-20 m-2 inline-flex shadow-sm sm:hidden"
+        >
+          <PanelTopOpen className="h-[1.2rem] w-[1.2rem] -rotate-90 scale-100" />
+          <span className="sr-only">Open menu</span>
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="p-4">
+        <ul className="space-y-4 py-4">
+          {navigations.map(({ name, href, Icon }) => (
+            <li key={name}>
+              <NavigationLink
+                href={href}
+                currentPath={pathname}
+                onClick={() => setIsOpen(false)}
+              >
+                <Icon size={20} />
+                <span>{name}</span>
+              </NavigationLink>
+            </li>
+          ))}
+        </ul>
+      </SheetContent>
+    </Sheet>
 
-  return (
-    <>
-      <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTrigger asChild>
-          <Button
-            variant="outline"
-            size="icon"
-            className="fixed bottom-0 right-0 z-20 m-2 inline-flex shadow-sm sm:hidden"
-          >
-            <PanelTopOpen className="h-[1.2rem] w-[1.2rem] -rotate-90 scale-100" />
-            <span className="sr-only">Open menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left" className="p-4">
-          <ul className="space-y-4 overflow-scroll py-4">
-            {navigations.map(({ name, href, Icon }) => (
-              <li key={name}>
-                <NavigationLink
-                  href={href}
-                  currentPath={pathname}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <Icon size={20} />
-                  <span>{name}</span>
-                </NavigationLink>
-              </li>
-            ))}
-          </ul>
-        </SheetContent>
-      </Sheet>
-
-      <ThemeToggle isMobile />
-    </>
-  )
-}
+    <ThemeToggle isMobile />
+  </>
+)
 
 export const Navigation = () => {
-  const [isCollapse, setIsCollapse] = React.useState(false)
   const { avatar, avatarPlaceholder, name, username } = allAbouts[0]
+  const { isCollapse, isOpen, setIsCollapse, setIsOpen } = useNavigationState()
   const pathname = usePathname()
 
   return (
@@ -142,7 +147,11 @@ export const Navigation = () => {
         </Button>
       </nav>
 
-      <MobileNavigation pathname={pathname} />
+      <MobileNavigation
+        pathname={pathname}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
     </>
   )
 }
