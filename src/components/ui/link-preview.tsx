@@ -52,7 +52,7 @@ export const LinkPreview = async ({
 
   return (
     <div
-      className={cn('group mt-4 border bg-color-secondary border-color', {
+      className={cn('group mb-4 mt-2 border bg-color-secondary border-color', {
         'max-w-lg': fullImage,
       })}
     >

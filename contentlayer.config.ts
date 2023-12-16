@@ -72,7 +72,7 @@ const Post = defineDocumentType(() => ({
     },
     readTime: {
       type: 'number',
-      resolve: (doc) => Math.ceil(doc.body.raw.split(' ').length / 200),
+      resolve: (doc) => Math.ceil(doc.body.raw.split(' ').length / 183),
     },
     createdAt: { type: 'string', resolve: (doc) => doc.createdAt.trim() },
     updatedAt: { type: 'string', resolve: (doc) => doc.updatedAt.trim() },
