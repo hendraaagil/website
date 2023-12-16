@@ -10,12 +10,8 @@ import {
 import { generateBase64Image } from './src/lib/server/utils'
 import { Hardware, Skill, Social, Software } from './src/types/content'
 
-// Computed fields
+// Common computed fields
 const computedFields: ComputedFields = {
-  slug: {
-    type: 'string',
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx/, ''),
-  },
   thumbnailPlaceholder: {
     type: 'string',
     resolve: async (doc) => await generateBase64Image(doc.thumbnail),
@@ -70,6 +66,10 @@ const Post = defineDocumentType(() => ({
   },
   computedFields: {
     ...computedFields,
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx/, ''),
+    },
     readTime: {
       type: 'number',
       resolve: (doc) => Math.ceil(doc.body.raw.split(' ').length / 200),
@@ -84,14 +84,37 @@ const Project = defineDocumentType(() => ({
   filePathPattern: `project/**/*.mdx`,
   contentType: 'mdx',
   fields: {
-    position: { type: 'number', required: true },
     title: { type: 'string', required: true },
     thumbnail: { type: 'string', required: true },
     description: { type: 'string', required: true },
     github: { type: 'string' },
     demo: { type: 'string' },
   },
-  computedFields,
+  computedFields: {
+    ...computedFields,
+    // 01-foo-bar.mdx -> 1
+    position: {
+      type: 'number',
+      resolve: (doc) =>
+        Number(
+          doc._raw.sourceFileName
+            .replace(/\.mdx/, '')
+            .split('-')
+            .slice(0, 1)
+            .toString(),
+        ),
+    },
+    // 01-foo-bar.mdx -> foo-bar
+    slug: {
+      type: 'string',
+      resolve: (doc) =>
+        doc._raw.sourceFileName
+          .replace(/\.mdx/, '')
+          .split('-')
+          .slice(1)
+          .join('-'),
+    },
+  },
 }))
 
 export default makeSource({
