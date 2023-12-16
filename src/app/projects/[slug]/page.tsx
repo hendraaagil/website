@@ -32,7 +32,7 @@ export const generateMetadata = async ({
     ...generateSeoMeta({
       title: project.title,
       description: project.description,
-      alternates: { canonical: projectUrl },
+      alternates: { canonical: projectUrl.toString() },
       openGraph: {
         title: project.title,
         description: project.description,

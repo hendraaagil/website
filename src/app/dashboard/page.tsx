@@ -40,7 +40,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     ...generateSeoMeta({
       title: 'Dashboard',
-      alternates: { canonical: url },
+      alternates: { canonical: url.toString() },
       newOg: { url: url },
     }),
   }

@@ -32,7 +32,7 @@ export const generateMetadata = async ({
     ...generateSeoMeta({
       title: post.title,
       description: post.summary,
-      alternates: { canonical: postUrl },
+      alternates: { canonical: postUrl.toString() },
       openGraph: {
         title: post.title,
         description: post.summary,
