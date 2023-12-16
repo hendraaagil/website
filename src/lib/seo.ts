@@ -26,6 +26,13 @@ const defaultMeta: Metadata = {
     type: 'website',
     siteName: title,
   },
+  twitter: {
+    creator: '@hendraaagil',
+    site: '@hendraaagil',
+    creatorId: '1218556081586102272',
+    siteId: '1218556081586102272',
+    card: 'summary_large_image',
+  },
   robots: {
     index: true,
     follow: true,
