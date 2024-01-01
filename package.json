@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@giscus/react": "^2.4.0",
-    "@plaiceholder/next": "^3.0.0",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
