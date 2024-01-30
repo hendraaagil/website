@@ -1,0 +1,154 @@
+---
+title: Mengenal Clean Code
+thumbnail: /assets/blog/mengenal-clean-code/thumbnail.png
+thumbnailCredit: Photo by Gil Ribeiro on Unsplash
+summary: Mari kita berkenalan dengan clean code.
+tags:
+  - development
+  - practice
+author: Hendra Agil
+createdAt: 2024-01-30T14:35:00+07:00
+updatedAt: 2024-01-30T14:35:00+07:00
+---
+
+Mana yang merepresentasikan kode kamu?
+
+<div className="max-w-lg">
+  ![Pengukuran kualitas kode](/assets/blog/mengenal-clean-code/wtfm.jpg)
+</div>
+
+Kalau kita membahas tentang _clean code_ seharusnya tidak jauh dari _code quality_. Karena penerapan dari _clean code_ juga akan meningkatkan kualitas kode.
+
+---
+
+## Bad Code
+
+Kita mungkin sering mengatakan untuk membersihkan (cleanup) kode-nya di kemudian hari. Namun [LeBlanc`s law](https://yiming.dev/clipping/2019/03/21/le-blanc's-law-a-k-a-later-equals-never/) mengatakan, **"Later equals never"**.
+
+Ketika kita sudah menulis kode yang _messy_ lalu kita membacanya lagi di kemudian hari, pasti kita akan kebingungan akan maksud dari kode tersebut. Itu juga bisa menjadi penghambat jika kita perlu mengintegrasikan kode yang akan dikerjakan dengan kode yang sudah ada. Akibatnya, kita perlu waktu yang lebih banyak untuk menyelesaikan proses pengerjaannya.
+
+Kita tidak akan mencapai _deadline_ dengan membuat kekacauan (_messy_). Bahkan, kekacauan akan memperlambat kita, dan akan memaksa kita untuk melewatkan _deadline_. Satu - satunya cara untuk memenuhi _deadline_ adalah dengan menjaga kode sebersih mungkin setiap saat.
+
+---
+
+## Clean Code
+
+Clean code menjadi salah satu aspek penting dalam _software development_. Kode yang menerapkan clean code diharapkan dapat membuat kode menjadi rapi dan baik. Setiap kode memiliki arti dan tugas masing - masing. Clean code juga sebaiknya diterapkan pada [Agile Methodology](https://asana.com/resources/agile-methodology), karena sistem dapat berubah dengan cepat. Jadi, penting untuk memanfaatkan clean code untuk proses development yang lebih efisien.
+
+### Penamaan
+
+Dalam menuis kode, hampir semua hal kita beri nama. Seperti: variabel, fungsi, parameter, kelas, dan sebagainya. Penamaan yang baik akan memudahkan developer lain ketika membaca kode kita dan tentu kita sendiri di masa depan. Lalu, bagaimana cara untuk memberi nama yang baik?
+
+1. **Gunakan bahasa inggris**. Suka atau tidak, semua sintaks bahasa pemrograman ditulis dalam bahasa inggris. Dengan menulis kode dalam bahasa inggris, kita bisa meningkatkan kesatuannya.
+
+2. **Naming convention**. Pilih satu naming convention, bisa `camelCase`, `PascalCase`, `snake_case`, dan sebagainya. Selama itu konsisten. Beberapa bahasa pemrograman mempunyai budaya sendiri terkait naming convention ini, jadi cek dokumentasinya juga.
+
+3. **SID (Short, Intuitive, Descriptive)**. Contohnya:
+
+   ```js
+   /* Bad */
+   const a = 5 // "a" bisa bermakna apa saja
+   const isPaginatable = a > 10 // "Paginatable" terdengar tidak natural
+   const shouldPaginatize = a > 10 // Kata kerja yang dibuat - buat
+
+   /* Good */
+   const postCount = 5
+   const hasPagination = postCount > 10
+   const shouldPaginate = postCount > 10 // alternatif
+   ```
+
+4. **Hindari kontraksi**. Kontraksi tidak memberikan kontribusi apa pun selain mengurangi keterbacaan kode. Contohnya:
+
+   ```js
+   /* Bad */
+   const onItmClk = () => {}
+
+   /* Good */
+   const onItemClick = () => {}
+   ```
+
+5. **Hindari pengulangan konteks**. Contohnya:
+
+   ```js
+   class MenuItem {
+     /* Nama method mengulang konteks (MenuItem) */
+     handleMenuItemClick = (event) => { ... }
+
+     /* Terbaca dengan baik sebagai `MenuItem.handleClick()` */
+     handleClick = (event) => { ... }
+   }
+   ```
+
+6. **Mencerminkan hasil yang diharapkan**. Contohnya:
+
+   ```jsx
+   /* Bad */
+   const isEnabled = itemCount > 3
+   return <Button disabled={!isEnabled} />
+
+   /* Good */
+   const isDisabled = itemCount <= 3
+   return <Button disabled={isDisabled} />
+   ```
+
+7. **Singular dan plurals**. Contohnya:
+
+   ```js
+   /* Bad */
+   const friends = 'Bob'
+   const friend = ['Bob', 'Tony', 'Tanya']
+
+   /* Good */
+   const friend = 'Bob'
+   const friends = ['Bob', 'Tony', 'Tanya']
+   ```
+
+#### Penamaan fungsi
+
+Ada pattern yang cukup berguna untuk menamai suatu fungsi:
+
+```sh
+prefix? + action (A) + high context (HC) + low context? (LC)
+```
+
+- **Action**. Kata kerja dari nama fungsi, menjelaskan apa yang dilakukan fungsi tersebut.
+- **Context**. Domain di mana fungsi beroperasi.
+- **Prefix**. Menambah arti dari sebuah variabel. Jarang digunakan dalam penamaan fungsi.
+
+Contoh:
+
+| Name                   | Prefix   | Action (A) | High context (HC) | Low context (LC) |
+| ---------------------- | -------- | ---------- | ----------------- | ---------------- |
+| `getUser`              |          | `get`      | `User`            |                  |
+| `getUserMessages`      |          | `get`      | `User`            | `Messages`       |
+| `handleClickOutside`   |          | `handle`   | `Click`           | `Outside`        |
+| `shouldDisplayMessage` | `should` | `Display`  | `Message`         |                  |
+
+---
+
+### Aturan fungsi
+
+Ketika fungsi tidak dibuat secara baik. Maka ketika akan melakukan integrasi, test, dan refactor akan sulit ke depannya. Berikut beberapa cara untuk menerapkan clean code pada fungsi:
+
+- Ketika perlu lebih dari 2 atau 3 parameter, pertimbangkan untuk menggunakan _object_ sebagai parameter.
+- Tidak ada _side-effect_.
+- Hanya memiliki satu tujuan dan seminimal mungkin.
+- Mengontrol error dengan baik.
+
+---
+
+### Aturan komentar
+
+- Tuliskan secara singkat dan deskriptif.
+- Jangan gunakan komentar jika kita dapat menggunakan fungsi atau variabel.
+
+---
+
+## Penutup
+
+Mungkin itu sedikit pembahasan tentang clean code. Beberapa referensi yang saya gunakan sebagai berikut:
+
+- [oreilly.com/library/view/clean-code-a](https://www.oreilly.com/library/view/clean-code-a/9780136083238/)
+- [medium.com/@muhammadardivan/mengenal-clean-code-lebih-dekat](https://medium.com/@muhammadardivan/mengenal-clean-code-lebih-dekat-7d670413084b)
+
+Terima kasih.

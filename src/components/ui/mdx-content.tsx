@@ -65,6 +65,19 @@ export const MDXContent = ({ code }: { code: string }) => {
     ul: ({ children }) => <ul className="list-disc pl-6">{children}</ul>,
     ol: ({ children }) => <ol className="list-decimal pl-6">{children}</ol>,
     li: ({ children }) => <li className="my-1">{children}</li>,
+    table: ({ children }) => (
+      <div className="overflow-auto">
+        <table className="border-collapse border-color">{children}</table>
+      </div>
+    ),
+    th: ({ children }) => (
+      <th className="border px-2 py-1 text-start bg-color-secondary border-color">
+        {children}
+      </th>
+    ),
+    td: ({ children }) => (
+      <th className="border px-2 py-1 text-start border-color">{children}</th>
+    ),
 
     // Custom component
     LinkPreview: ({ ...props }: LinkPreviewProps) => <LinkPreview {...props} />,
