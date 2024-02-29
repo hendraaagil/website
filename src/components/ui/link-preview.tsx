@@ -56,7 +56,10 @@ export const LinkPreview = async ({
         'max-w-lg': fullImage,
       })}
     >
-      <ExternalLink href={data?.url || '#'} className="no-underline">
+      <ExternalLink
+        href={data?.url || url.toString() || '#'}
+        className="no-underline"
+      >
         {withImage && (
           <div className="overflow-hidden">
             <img
