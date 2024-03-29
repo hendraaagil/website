@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
+import { allPosts } from 'contentlayer/generated'
+import { compareDesc } from 'date-fns'
 
 import { env } from '@/lib/constants'
 import { navigationItems } from '@/components/layout'
-import { allPosts } from 'contentlayer/generated'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const websiteUrl = env.url.website
@@ -15,13 +16,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  const posts = allPosts.map((post) => {
-    return {
-      url: `${websiteUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.updatedAt),
-      priority: 0.5,
-    }
-  })
+  const posts = allPosts
+    .sort((a, b) => compareDesc(new Date(a.createdAt), new Date(b.createdAt)))
+    .map((post) => {
+      return {
+        url: `${websiteUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.updatedAt),
+        priority: 0.5,
+      }
+    })
 
   return [...navigations, ...posts]
 }
