@@ -40,6 +40,12 @@ const nextConfig = {
         permanent: false,
       },
       {
+        source: '/spotify',
+        destination:
+          'https://open.spotify.com/user/31c2l7t3xscqcrmfz6nvinn645nu',
+        permanent: false,
+      },
+      {
         source: '/source',
         destination: 'https://github.com/hendraaagil/website',
         permanent: false,

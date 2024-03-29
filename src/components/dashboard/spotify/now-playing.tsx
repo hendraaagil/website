@@ -22,7 +22,7 @@ export const NowPlaying = () => {
   return (
     <div className="border px-3 py-2.5 transition-colors border-color hover:bg-color-secondary">
       <ExternalLink
-        href={nowPlaying?.songUrl ?? 'https://open.spotify.com'}
+        href={nowPlaying?.songUrl ?? '/spotify'}
         className="flex items-center space-x-4 no-underline hover:underline"
       >
         <Image
