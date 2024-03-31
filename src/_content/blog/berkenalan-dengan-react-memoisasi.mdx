@@ -1,0 +1,102 @@
+---
+title: 'Berkenalan Dengan React: Memoisasi'
+thumbnail: /assets/blog/berkenalan-dengan-react-memoisasi/thumbnail.png
+thumbnailCredit: Photo by Fredy Jacob on Unsplash
+summary: Mari lanjut berkenalan dengan React, yaitu tentang memoisasi dengan memo, useMemo dan useCallback.
+tags:
+  - development
+  - react
+author: Hendra Agil
+createdAt: 2024-03-31T21:10:00+07:00
+updatedAt: 2024-03-31T21:10:00+07:00
+---
+
+## Apa itu Memoisasi?
+
+Memoisasi adalah suatu teknik dalam pemrograman komputer yang memungkinkan kita untuk menyimpan hasil dari pemanggilan fungsi dan disimpan dalam memori cache. Sehingga jika kita memanggil fungsi tersebut dengan nilai argumen yang sama, maka hasilnya dapat langsung diperoleh dari cache tanpa melakukan komputasi kembali. Teknik ini membantu meningkatkan efisiensi kinerja aplikasi dengan menghindari pengulangan komputasi yang sama.
+
+---
+
+## Fungsi memo
+
+Fungsi `memo` adalah salah satu cara untuk menerapkan memoisasi dalam React. Ini dapat digunakan untuk mengoptimalkan kinerja komponen fungsional dengan menyimpan versi terakhir dari outputnya. Ketika komponen diberikan properti yang sama, React akan menghindari pengulangan rendering dengan menggunakan hasil memoisasi yang disimpan sebelumnya.
+
+### Contoh penggunaan
+
+```jsx
+import { memo } from 'react'
+
+const MyComponent = memo((props) => {
+  // Komputasi atau rendering komponen
+})
+
+export default MyComponent
+```
+
+---
+
+## Hook useMemo
+
+Hook `useMemo` adalah hooks yang digunakan untuk melakukan memoisasi dalam fungsi komponen. Ini memungkinkan kita untuk menghitung nilai dengan argumen yang diberikan dan menyimpannya untuk digunakan kembali nanti. `useMemo` menerima sebuah fungsi dan sebuah array dependensi. Nilai yang dihitung oleh fungsi akan hanya diupdate saat salah satu dari dependensi berubah.
+
+### Contoh penggunaan
+
+```jsx
+import { useMemo } from 'react'
+
+const MyComponent = ({ data }) => {
+  const memoizedValue = useMemo(() => {
+    // Komputasi yang akan dimemoisasi
+  }, [data]) // Daftar dependensi
+
+  return (
+    // JSX untuk menampilkan komponen
+  )
+}
+
+export default MyComponent
+```
+
+---
+
+## Hook useCallback
+
+Hook `useCallback` adalah hooks yang digunakan untuk memoisasi fungsi callback dalam komponen React. Ini memungkinkan kita untuk menyimpan versi terakhir dari fungsi callback, sehingga komponen yang bergantung pada callback tersebut tidak perlu dirender ulang setiap kali komponen tersebut di-render kembali.
+
+### Contoh penggunaan
+
+```jsx
+import { useCallback } from 'react'
+
+const MyComponent = ({ onClick }) => {
+  const handleClick = useCallback(() => {
+    // Logika handler
+  }, []) // Daftar dependensi
+
+  return <button onClick={handleClick}>Click me</button>
+}
+
+export default MyComponent
+```
+
+---
+
+Penting untuk dicatat perbedaan antara `useCallback` dan `useMemo`:
+
+- `useCallback` digunakan untuk memoisasi fungsi, sedangkan `useMemo` digunakan untuk memoisasi nilai yang dihitung secara dinamis.
+- `useCallback` mengembalikan kembali versi terakhir dari fungsi callback yang dimemoisasi, sedangkan `useMemo` mengembalikan nilai yang dihitung oleh fungsi yang dimemoisasi.
+- Kedua hooks dapat menggunakan array dependensi untuk menentukan kapan mereka harus dijalankan ulang. Jika daftar dependensi berubah, kedua hooks tersebut akan menghitung ulang nilai yang dimemoisasi atau fungsi callback yang dimemoisasi.
+
+---
+
+## Penutup
+
+Dengan menggunakan memoisasi melalui fungsi `memo`, hook `useMemo`, dan hook `useCallback`, kita dapat meningkatkan kinerja aplikasi React dengan menghindari pengulangan komputasi yang sama dan rendering yang tidak perlu. Ini merupakan teknik yang sangat berguna terutama saat kita memiliki komponen yang sering dirender dengan argumen yang sama atau bergantung pada callback yang sering berubah.
+
+Kalian bisa pelajari lebih lanjut tentang ketiga fungsi tersebut melalui dokumentasi dari React berikut:
+
+- [memo - React](https://react.dev/reference/react/memo)
+- [useMemo - React](https://react.dev/reference/react/useMemo)
+- [useCallback - React](https://react.dev/reference/react/useCallback)
+
+Thank you.
