@@ -24,7 +24,7 @@ export const fetchWebsiteStats = async () => {
     })
     const {
       pageviews: { value: viewCount },
-      uniques: { value: visitorCount },
+      visitors: { value: visitorCount },
     }: WebsiteStatsResponse = await response.json()
 
     return {
