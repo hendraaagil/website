@@ -1,6 +1,6 @@
 import type { Post } from 'contentlayer/generated'
 
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { ChevronRight } from 'lucide-react'
 
 import { Heading, ImageBlur, headingVariants } from '@/components/ui'

@@ -1,5 +1,7 @@
+import type { LinkProps } from 'next/link'
+
 import React from 'react'
-import Link, { type LinkProps } from 'next/link'
+import { Link } from 'next-view-transitions'
 
 import { cn } from '@/lib/utils'
 

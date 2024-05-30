@@ -5,6 +5,7 @@ import {
   Gabarito as FontSans,
   JetBrains_Mono as FontMono,
 } from 'next/font/google'
+import { ViewTransitions } from 'next-view-transitions'
 import { generateSeoMeta } from '@/lib/seo'
 import { cn } from '@/lib/utils'
 
@@ -40,35 +41,37 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          'min-h-screen overflow-y-scroll font-sans antialiased bg-color text-color',
-          fontSans.variable,
-          fontMono.variable,
-        )}
-      >
-        <main className="mx-auto flex max-w-5xl">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navigation />
-            {children}
-          </ThemeProvider>
-        </main>
-        {process.env.NODE_ENV === 'production' && (
-          <Script
-            data-website-id="d7044884-6f55-4a16-8344-9221c0e82832"
-            src="https://analytics.hendraaagil.dev/script.js"
-            async
-            defer
-          />
-        )}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body
+          className={cn(
+            'min-h-screen overflow-y-scroll font-sans antialiased bg-color text-color',
+            fontSans.variable,
+            fontMono.variable,
+          )}
+        >
+          <main className="mx-auto flex max-w-5xl">
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navigation />
+              {children}
+            </ThemeProvider>
+          </main>
+          {process.env.NODE_ENV === 'production' && (
+            <Script
+              data-website-id="d7044884-6f55-4a16-8344-9221c0e82832"
+              src="https://analytics.hendraaagil.dev/script.js"
+              async
+              defer
+            />
+          )}
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }
