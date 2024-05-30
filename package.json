@@ -17,7 +17,7 @@
     "clsx": "^2.1.1",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.6.0",
-    "googleapis": "^129.0.0",
+    "googleapis": "^137.1.0",
     "htmr": "^1.0.2",
     "jsdom": "^24.1.0",
     "lucide-react": "^0.381.0",
