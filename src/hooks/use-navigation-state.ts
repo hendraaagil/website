@@ -32,7 +32,9 @@ export function useNavigationState() {
     documentRef(document)
 
     // Clean up swipeable event listeners
-    return () => documentRef(null)
+    return () => {
+      documentRef(null)
+    }
   }, [documentRef])
 
   return { isCollapse, setIsCollapse, isOpen, setIsOpen }
