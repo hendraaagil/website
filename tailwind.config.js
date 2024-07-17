@@ -54,6 +54,9 @@ module.exports = {
       transitionProperty: {
         width: 'width',
       },
+      backdropBlur: {
+        xs: '2px',
+      },
     },
   },
   plugins: [
