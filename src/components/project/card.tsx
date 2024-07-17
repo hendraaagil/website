@@ -18,7 +18,7 @@ export const ProjectCard = ({ project }: { project: Project }) => (
       <Link
         href={`/projects/${project.slug}`}
         aria-label={`View details of project: ${project.title}`}
-        className="absolute flex h-full w-full items-center justify-center space-x-2 opacity-0 transition-opacity group-hover:bg-slate-50/75 group-hover:opacity-100 dark:group-hover:bg-slate-900/75"
+        className="group-hover:backdrop-blur-xs absolute flex h-full w-full items-center justify-center space-x-2 opacity-0 transition-opacity group-hover:bg-slate-50/75 group-hover:opacity-100 dark:group-hover:bg-slate-900/75"
       >
         <span className="text-color">View project</span>
         <ChevronRight size={16} />
