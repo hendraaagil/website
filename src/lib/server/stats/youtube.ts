@@ -1,10 +1,10 @@
-import { google, youtube_v3 } from 'googleapis'
+import { auth, youtube, youtube_v3 } from '@googleapis/youtube'
 import { env } from '@/lib/constants'
 
 export const fetchYoutubeStats = async () => {
   try {
     const channelIds = ['UCy44Cn1aBo3LYrZsh2gKGIA', 'UC-8I6YXDaagpTHTWM5GYl8Q']
-    const auth = new google.auth.GoogleAuth({
+    const googleAuth = new auth.GoogleAuth({
       credentials: {
         client_email: env.google.clientEmail,
         private_key: env.google.privateKey,
@@ -12,8 +12,11 @@ export const fetchYoutubeStats = async () => {
       scopes: ['https://www.googleapis.com/auth/youtube.readonly'],
     })
 
-    const youtube: youtube_v3.Youtube = google.youtube({ auth, version: 'v3' })
-    const channels = await youtube.channels.list({
+    const youtubeAuth: youtube_v3.Youtube = youtube({
+      auth: googleAuth,
+      version: 'v3',
+    })
+    const channels = await youtubeAuth.channels.list({
       id: channelIds,
       part: ['statistics'],
     })
