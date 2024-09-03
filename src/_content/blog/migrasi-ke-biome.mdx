@@ -1,0 +1,90 @@
+---
+title: Migrasi ke Biome
+thumbnail: /assets/blog/migrasi-ke-biome/thumbnail.png
+thumbnailCredit: Photo by Thomas Chan on Unsplash
+summary: Menuliskan sedikit tentang proses migrasi dari ESLint & Prettier ke Biome.
+tags:
+  - development
+  - practice
+  - javascript
+author: Hendra Agil
+createdAt: 2024-09-04T03:45:00+07:00
+updatedAt: 2024-09-04T03:45:00+07:00
+---
+
+Kita pasti sudah sering mendengar / menggunakan [ESLint](https://eslint.org/) sebagai linter dan [Prettier](https://prettier.io/) sebagai formatter dalam sebuah project JavaScript. Seiring berjalannya waktu pasti ada library baru terutama dalam ekosistem JavaScript, salah satunya adalah [Biome](https://biomejs.dev/) sebagai tool yang menggabungkan formatter dan linter.
+
+---
+
+## Apa itu Biome?
+
+**Biome** adalah suatu library untuk menerapkan linter dan formatter untuk project JavaScript kita. Dulunya library ini bernama [rome](https://github.com/rome/tools) dan sudah sekarang sudah di*maintain* lagi, sehingga dilanjutkan oleh komunitas dan diberi nama Biome. Jika ingin melihat cerita lengkapnya, bisa melalui tautan berikut:
+
+<LinkPreview href="https://bytes.dev/archives/219" />
+
+## Memulai Migrasi
+
+Untuk proses migrasi dari ESLint dan Prettier sendiri sudah dituliskan pada [dokumentasi Biome](https://biomejs.dev/guides/migrate-eslint-prettier/). Yang terlihat berbeda antara ESLint dan Biome adalah penulisan rule-nya. Jika di ESLint menggunakan `kebab-case`, di Biome sendiri menggunakan `camelCase` untuk penulisan rule-nya.
+
+Untuk instalasinya dapat menjalankan perintah:
+
+```bash
+pnpm add --save-dev --save-exact @biomejs/biome
+pnpm biome init
+```
+
+Lalu, jalankan perintah untuk memindahkan konfigurasi dari ESLint ke Biome:
+
+```bash
+pnpm biome migrate eslint --write
+```
+
+Dan perintah untuk memindahkan konfigurasi Prettier:
+
+```bash
+pnpm biome migrate prettier --write
+```
+
+Pada kasus saya, ada penggunaan plugin Prettier untuk Tailwind. Di Biome sendiri sudah membuatkan rule sendiri untuk menerapkan sorted class untuk utility framework seperti Tailwind:
+
+<LinkPreview href="https://biomejs.dev/linter/rules/use-sorted-classes/" />
+
+Akhirnya, kita bisa menghapus ESLint dan Prettier serta config / plugin tambahannya jika ada:
+
+```bash
+pnpm remove eslint prettier eslint-config-next prettier-plugin-tailwindcss
+```
+
+Kita juga bisa menambahkan script baru pada file package.json untuk menjalankan linter dan formatter dari Biome:
+
+```json
+"scripts": {
+  "lint": "biome lint",
+  "lint:write": "biome lint --write",
+  "lint:write:unsafe": "biome lint --write --unsafe",
+  "format": "biome format",
+  "format:write": "biome format --write"
+},
+```
+
+---
+
+## Kesimpulan
+
+Proses migrasi cukup smooth. Mungkin ada beberapa rules yang masih _work in progress_ seperti `useSortedClasses` tadi, sehingga ada beberapa algoritma yang belum diadaptasi. Proses pengecekan dari Biome juga cukup cepat, seperti klaim pada website-nya:
+
+![Menjalankan perintah Biome](/assets/blog/migrasi-ke-biome/biome-run.png)
+
+Kita juga bisa melihat progress development dari Biome melalui issue berikut:
+
+<LinkPreview href="https://github.com/biomejs/biome/issues/2455" />
+
+Jika kalian ingin tahu kode lebih lengkap terkait proses migrasi pada post ini dapat mengunjungi pull request berikut:
+
+<LinkPreview
+	href="https://github.com/hendraaagil/website/pull/66"
+	withImage
+	fullImage
+/>
+
+Sekian dan terima kasih.
