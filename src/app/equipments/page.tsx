@@ -14,8 +14,8 @@ const SectionContainer = ({
 	title: string
 	children?: React.ReactNode
 }) => (
-	<section className="space-y-2 odd:border-t odd:pb-4 odd:border-color even:pb-2">
-		<Heading variant="h2" className="border-b py-2 border-color">
+	<section className="space-y-2 odd:border-color odd:border-t odd:pb-4 even:pb-2">
+		<Heading variant="h2" className="border-color border-b py-2">
 			{title}
 		</Heading>
 		{children}

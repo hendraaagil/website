@@ -20,7 +20,7 @@ export const NowPlaying = () => {
 	if (isLoading) return <NowPlayingSkeleton />
 
 	return (
-		<div className="border px-3 py-2.5 transition-colors border-color hover:bg-color-secondary">
+		<div className="border border-color px-3 py-2.5 transition-colors hover:bg-color-secondary">
 			<ExternalLink
 				href={nowPlaying?.songUrl ?? '/spotify'}
 				className="flex items-center space-x-4 no-underline hover:underline"
@@ -33,7 +33,7 @@ export const NowPlaying = () => {
 					className="border border-color"
 				/>
 				<div className="space-y-0.5">
-					<p className="line-clamp-1 text-lg font-semibold">
+					<p className="line-clamp-1 font-semibold text-lg">
 						{nowPlaying?.title ?? 'Not playing'}
 					</p>
 					<p className="line-clamp-1 text-sm">
@@ -46,7 +46,7 @@ export const NowPlaying = () => {
 }
 
 export const NowPlayingSkeleton = () => (
-	<div className="border px-3 py-2.5 transition-colors border-color">
+	<div className="border border-color px-3 py-2.5 transition-colors">
 		<div className="flex space-x-4">
 			<div className="h-14 w-14 animate-pulse bg-color-secondary" />
 			<div className="space-y-1.5">

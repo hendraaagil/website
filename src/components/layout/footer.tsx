@@ -2,7 +2,7 @@ import { Copyright } from 'lucide-react'
 import { ExternalLink } from '@/components/ui'
 
 export const Footer = () => (
-	<footer className="flex w-full items-center justify-between border-t pt-4 text-sm border-color">
+	<footer className="flex w-full items-center justify-between border-color border-t pt-4 text-sm">
 		<ExternalLink href="/source" className="no-underline hover:underline">
 			/source
 		</ExternalLink>

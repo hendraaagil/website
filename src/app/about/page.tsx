@@ -16,7 +16,7 @@ const SectionContainer = ({
 	title: string
 	children?: React.ReactNode
 }) => (
-	<section className="space-y-4 border-t pt-4 border-color">
+	<section className="space-y-4 border-color border-t pt-4">
 		<Heading variant="h2">{title}</Heading>
 		{children}
 	</section>
@@ -54,10 +54,10 @@ export default function Page() {
 					{skills.map((skill) => (
 						<div
 							key={skill.name}
-							className="border px-3 py-2 transition-colors border-color hover:bg-color-secondary"
+							className="border border-color px-3 py-2 transition-colors hover:bg-color-secondary"
 						>
 							<Heading variant="h3">{skill.name}</Heading>
-							<ul className="mt-2 space-y-1 border-t pt-2 border-color">
+							<ul className="mt-2 space-y-1 border-color border-t pt-2">
 								{skill.items.map((item) => (
 									<li key={item}>{item}</li>
 								))}

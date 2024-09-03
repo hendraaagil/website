@@ -15,7 +15,7 @@ export const SectionContainer = ({
 	title,
 	path,
 }: SectionContainerProps) => (
-	<section className="space-y-4 border-t pt-4 border-color">
+	<section className="space-y-4 border-color border-t pt-4">
 		<div className="flex items-center justify-between">
 			<Heading variant="h2">Latest {title}</Heading>
 			<Link

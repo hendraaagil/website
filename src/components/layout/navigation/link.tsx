@@ -29,7 +29,7 @@ export const NavigationLink = ({
 				{
 					'md:min-w-[10rem] ': !isCollapse,
 					'justify-center': isCollapse,
-					'bg-opacity-50 border-color dark:bg-opacity-50': isActive,
+					'border-color bg-opacity-50 dark:bg-opacity-50': isActive,
 				},
 			)}
 			{...rest}

@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-react'
 import { Heading, ImageBlur, headingVariants } from '@/components/ui'
 
 export const ProjectCard = ({ project }: { project: Project }) => (
-	<article className="group h-full border transition-colors border-color hover:bg-color-secondary">
+	<article className="group h-full border border-color transition-colors hover:bg-color-secondary">
 		<div className="relative flex flex-col justify-center overflow-hidden">
 			<ImageBlur
 				blurDataURL={project.thumbnailPlaceholder}

@@ -31,7 +31,7 @@ const statistics = [
 ]
 
 const SectionContainer = ({ children }: { children?: React.ReactNode }) => (
-	<section className="space-y-4 border-t pt-4 border-color">{children}</section>
+	<section className="space-y-4 border-color border-t pt-4">{children}</section>
 )
 
 export const generateMetadata = async (): Promise<Metadata> => {

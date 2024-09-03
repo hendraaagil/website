@@ -66,7 +66,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
 	return (
 		<ArticleContainer>
-			<figure className="overflow-hidden border text-center bg-color-secondary border-color">
+			<figure className="overflow-hidden border border-color bg-color-secondary text-center">
 				<ImageBlur
 					src={post.thumbnail}
 					alt={`Thumbnail for article ${post.title}`}
@@ -76,7 +76,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 				/>
 				<figcaption className="py-2 text-xs">{post.thumbnailCredit}</figcaption>
 			</figure>
-			<div className="flex items-center text-sm font-medium text-color-secondary">
+			<div className="flex items-center font-medium text-color-secondary text-sm">
 				<time dateTime={post.createdAt} className="flex items-center space-x-2">
 					Published at {formatFullDate(post.createdAt)}
 				</time>
@@ -86,14 +86,14 @@ export default function Page({ params }: { params: { slug: string } }) {
 			<p>{post.summary}</p>
 			<div className="flex items-center space-x-2">
 				{post.tags.map((tag) => (
-					<span key={tag} className="px-2 py-1 text-sm bg-color-secondary">
+					<span key={tag} className="bg-color-secondary px-2 py-1 text-sm">
 						{toTitleCase(tag)}
 					</span>
 				))}
 			</div>
 			<hr className="border-color" />
 			<MDXContent code={post.body.code} />
-			<hr className="pb-4 border-color" />
+			<hr className="border-color pb-4" />
 			<Comment />
 		</ArticleContainer>
 	)

@@ -23,12 +23,12 @@ export const PageContainer = ({
 }: PageContainerProps) => (
 	<section
 		className={cn(
-			'flex w-full flex-col space-y-4 border-l px-2 pb-4 pt-8 border-color sm:px-4',
+			'flex w-full flex-col space-y-4 border-color border-l px-2 pt-8 pb-4 sm:px-4',
 			className,
 		)}
 	>
 		{withHeader && (
-			<header className="space-y-2 border-b pb-4 border-color">
+			<header className="space-y-2 border-color border-b pb-4">
 				<Heading>{title}</Heading>
 				<p className="text-color-secondary">{description}</p>
 			</header>

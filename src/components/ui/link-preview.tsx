@@ -52,7 +52,7 @@ export const LinkPreview = async ({
 
 	return (
 		<div
-			className={cn('group mb-4 mt-2 border bg-color-secondary border-color', {
+			className={cn('group mt-2 mb-4 border border-color bg-color-secondary', {
 				'max-w-lg': fullImage,
 			})}
 		>
@@ -78,7 +78,7 @@ export const LinkPreview = async ({
 					<p className="line-clamp-1 font-medium group-hover:underline">
 						{data?.title || 'No title'}
 					</p>
-					<p className="line-clamp-3 text-sm text-color-secondary">
+					<p className="line-clamp-3 text-color-secondary text-sm">
 						{data?.description || 'No description'}
 					</p>
 				</div>

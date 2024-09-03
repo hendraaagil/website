@@ -21,7 +21,7 @@ export const MDXContent = ({ code }: { code: string }) => {
 		code: ({ children }) => {
 			if (typeof children === 'string') {
 				return (
-					<code className="px-1 py-0.5 text-sm font-medium bg-color-secondary">
+					<code className="bg-color-secondary px-1 py-0.5 font-medium text-sm">
 						{children}
 					</code>
 				)
@@ -29,7 +29,7 @@ export const MDXContent = ({ code }: { code: string }) => {
 			return children
 		},
 		blockquote: ({ children }) => (
-			<blockquote className="mt-4 border-l-4 border-l-blue-600 py-1 pl-2 bg-color-secondary dark:border-l-blue-500">
+			<blockquote className="mt-4 border-l-4 border-l-blue-600 bg-color-secondary py-1 pl-2 dark:border-l-blue-500">
 				{children}
 			</blockquote>
 		),
@@ -57,7 +57,7 @@ export const MDXContent = ({ code }: { code: string }) => {
 			<hr className="my-4 border-color" aria-orientation="horizontal" />
 		),
 		img: ({ src, alt }) => (
-			<figure className="mt-4 border text-center bg-color-secondary border-color">
+			<figure className="mt-4 border border-color bg-color-secondary text-center">
 				<img src={src} alt={alt} className="w-full" />
 				<figcaption className="py-2 text-xs">{alt}</figcaption>
 			</figure>
@@ -71,12 +71,12 @@ export const MDXContent = ({ code }: { code: string }) => {
 			</div>
 		),
 		th: ({ children }) => (
-			<th className="border px-2 py-1 text-start bg-color-secondary border-color">
+			<th className="border border-color bg-color-secondary px-2 py-1 text-start">
 				{children}
 			</th>
 		),
 		td: ({ children }) => (
-			<th className="border px-2 py-1 text-start border-color">{children}</th>
+			<th className="border border-color px-2 py-1 text-start">{children}</th>
 		),
 
 		// Custom component

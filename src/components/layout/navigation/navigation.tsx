@@ -37,9 +37,9 @@ const MobileNavigation = ({
 				<Button
 					variant="outline"
 					size="icon"
-					className="fixed bottom-0 right-0 z-20 m-2 inline-flex shadow-sm sm:hidden"
+					className="fixed right-0 bottom-0 z-20 m-2 inline-flex shadow-sm sm:hidden"
 				>
-					<PanelTopOpen className="h-[1.2rem] w-[1.2rem] -rotate-90 scale-100" />
+					<PanelTopOpen className="-rotate-90 h-[1.2rem] w-[1.2rem] scale-100" />
 					<span className="sr-only">Open menu</span>
 				</Button>
 			</SheetTrigger>
@@ -76,7 +76,7 @@ export const Navigation = () => {
 				className={cn(
 					'sticky top-0 hidden min-h-screen w-48 flex-col items-center self-start px-4 py-8 sm:flex',
 					'translate-y-0 transition-[width,transform] duration-300 motion-reduce:transition-none',
-					{ 'w-[5.25rem] -translate-y-[14.75rem] delay-150': isCollapse },
+					{ '-translate-y-[14.75rem] w-[5.25rem] delay-150': isCollapse },
 				)}
 			>
 				<div
@@ -118,7 +118,7 @@ export const Navigation = () => {
 					</p>
 					<ThemeToggle isCollapse={isCollapse} />
 				</div>
-				<ul className="w-full space-y-4 border-y py-4 border-color">
+				<ul className="w-full space-y-4 border-color border-y py-4">
 					{navigations.map(({ name, href, Icon }) => (
 						<li key={name}>
 							<NavigationLink

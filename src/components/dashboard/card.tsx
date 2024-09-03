@@ -26,7 +26,7 @@ export const DashboardCard = ({ title, link, count }: CardProps) => {
 	}, [count, update])
 
 	return (
-		<div className="border p-4 transition-colors border-color hover:bg-color-secondary">
+		<div className="border border-color p-4 transition-colors hover:bg-color-secondary">
 			<ExternalLink
 				href={link}
 				className="flex items-center space-x-1 no-underline hover:underline"
@@ -34,7 +34,7 @@ export const DashboardCard = ({ title, link, count }: CardProps) => {
 				<span>{title}</span>
 				<ExternalLinkIcon className="h-4 w-4" />
 			</ExternalLink>
-			<p className="text-3xl font-bold tracking-wide" ref={countUpRef}>
+			<p className="font-bold text-3xl tracking-wide" ref={countUpRef}>
 				0
 			</p>
 		</div>
@@ -42,7 +42,7 @@ export const DashboardCard = ({ title, link, count }: CardProps) => {
 }
 
 export const DashboardCardSkeleton = () => (
-	<div className="border p-4 transition-colors border-color hover:bg-color-secondary">
+	<div className="border border-color p-4 transition-colors hover:bg-color-secondary">
 		<div className="animate-pulse space-y-2">
 			<div className="h-4 w-1/2 bg-color-secondary" />
 			<div className="h-9 w-full bg-color-secondary" />

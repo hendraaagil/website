@@ -7,7 +7,7 @@ import { Heading, ImageBlur, headingVariants } from '@/components/ui'
 import { formatFullDate, toTitleCase } from '@/lib/format'
 
 export const PostCard = ({ post }: { post: Post }) => (
-	<article className="group border transition-colors border-color hover:bg-color-secondary">
+	<article className="group border border-color transition-colors hover:bg-color-secondary">
 		<div className="relative flex h-[10rem] flex-col justify-center overflow-hidden">
 			<ImageBlur
 				blurDataURL={post.thumbnailPlaceholder}
@@ -23,7 +23,7 @@ export const PostCard = ({ post }: { post: Post }) => (
 			>
 				{formatFullDate(post.createdAt)}
 			</time>
-			<div className="absolute right-0 top-0 z-10 m-1 space-x-1">
+			<div className="absolute top-0 right-0 z-10 m-1 space-x-1">
 				{post.tags.map((tag) => (
 					<span
 						key={tag}

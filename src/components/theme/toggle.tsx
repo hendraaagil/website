@@ -29,12 +29,12 @@ export function ThemeToggle({
 					variant="outline"
 					size="icon"
 					className={cn({
-						'fixed right-0 top-0 z-20 m-2 inline-flex shadow-sm sm:hidden':
+						'fixed top-0 right-0 z-20 m-2 inline-flex shadow-sm sm:hidden':
 							isMobile,
 						'w-full': isCollapse && !isMobile,
 					})}
 				>
-					<Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+					<Sun className="dark:-rotate-90 h-5 w-5 rotate-0 scale-100 transition-all dark:scale-0" />
 					<Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
 					<span className="sr-only">Toggle theme</span>
 				</Button>
