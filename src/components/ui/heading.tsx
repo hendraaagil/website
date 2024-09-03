@@ -43,7 +43,7 @@ const Heading = ({
       >
         {children}
         <a href={`#${id}`}>
-          <Link size={16} className="ml-2 hidden group-hover:block" />
+          <Link className="ml-2 hidden h-4 w-4 group-hover:block" />
         </a>
       </Variant>
     )

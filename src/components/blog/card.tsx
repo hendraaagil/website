@@ -36,10 +36,10 @@ export const PostCard = ({ post }: { post: Post }) => (
       <Link
         href={`/blog/${post.slug}`}
         aria-label={`View details of post: ${post.title}`}
-        className="group-hover:backdrop-blur-xs absolute flex h-full w-full items-center justify-center space-x-2 opacity-0 transition-opacity group-hover:bg-slate-50/75 group-hover:opacity-100 dark:group-hover:bg-slate-900/75"
+        className="absolute flex h-full w-full items-center justify-center space-x-2 opacity-0 transition-opacity group-hover:bg-slate-50/75 group-hover:opacity-100 group-hover:backdrop-blur-xs dark:group-hover:bg-slate-900/75"
       >
         <span className="text-color">Continue reading</span>
-        <ChevronRight size={16} />
+        <ChevronRight className="h-4 w-4" />
       </Link>
     </div>
     <div className="space-y-1 px-3 py-2">

@@ -52,7 +52,7 @@ const MobileNavigation = ({
                 currentPath={pathname}
                 onClick={() => setIsOpen(false)}
               >
-                <Icon size={20} />
+                <Icon className="h-5 w-5" />
                 <span>{name}</span>
               </NavigationLink>
             </li>
@@ -126,7 +126,7 @@ export const Navigation = () => {
                 currentPath={pathname}
                 isCollapse={isCollapse}
               >
-                <Icon size={20} />
+                <Icon className="h-5 w-5" />
                 <span className={cn({ 'sr-only': isCollapse })}>{name}</span>
               </NavigationLink>
             </li>
@@ -139,9 +139,9 @@ export const Navigation = () => {
           onClick={() => setIsCollapse((prev) => !prev)}
         >
           {isCollapse ? (
-            <ChevronsRight size={20} />
+            <ChevronsRight className="h-5 w-5" />
           ) : (
-            <ChevronsLeft size={20} />
+            <ChevronsLeft className="h-5 w-5" />
           )}
           <span className="sr-only">Collapse sidebar</span>
         </Button>

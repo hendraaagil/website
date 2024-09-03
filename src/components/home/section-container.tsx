@@ -23,10 +23,7 @@ export const SectionContainer = ({
         className="flex items-center space-x-2 hover:underline hover:underline-offset-4"
       >
         <span className="tracking-wide">All {title}</span>
-        <ChevronRight
-          size={16}
-          className="animate-bounce-right motion-reduce:animate-none"
-        />
+        <ChevronRight className="h-4 w-4 animate-bounce-right motion-reduce:animate-none" />
       </Link>
     </div>
     {children}

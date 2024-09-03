@@ -88,7 +88,7 @@ export default function Page({ params }: { params: { slug: string } }) {
               href={project.github}
               className="flex items-center space-x-1"
             >
-              <Github size={16} />
+              <Github className="h-4 w-4" />
               <span>Source code</span>
             </ExternalLink>
           )}
@@ -97,7 +97,7 @@ export default function Page({ params }: { params: { slug: string } }) {
               href={project.demo}
               className="flex items-center space-x-1"
             >
-              <ExternalLinkIcon size={16} />
+              <ExternalLinkIcon className="h-4 w-4" />
               <span>Live demo</span>
             </ExternalLink>
           )}

@@ -7,7 +7,7 @@ export const Footer = () => (
       /source
     </ExternalLink>
     <div className="flex items-center space-x-1">
-      <Copyright size={12} />
+      <Copyright className="h-3 w-3" />
       <span>{new Date().getFullYear()} by Hendra Agil</span>
     </div>
   </footer>

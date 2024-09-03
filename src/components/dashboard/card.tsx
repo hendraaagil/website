@@ -32,7 +32,7 @@ export const DashboardCard = ({ title, link, count }: CardProps) => {
         className="flex items-center space-x-1 no-underline hover:underline"
       >
         <span>{title}</span>
-        <ExternalLinkIcon size={16} />
+        <ExternalLinkIcon className="h-4 w-4" />
       </ExternalLink>
       <p className="text-3xl font-bold tracking-wide" ref={countUpRef}>
         0
