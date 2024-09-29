@@ -4,8 +4,7 @@ import { Link } from 'next-view-transitions'
 import { ChevronRight } from 'lucide-react'
 
 import { Heading, ImageBlur, headingVariants } from '@/components/ui'
-import { toTitleCase } from '@/lib/format'
-import { PublishedTime } from './published-time'
+import { formatFullDate, toTitleCase } from '@/lib/format'
 
 export const PostCard = ({ post }: { post: Post }) => (
 	<article className="group border border-color transition-colors hover:bg-color-secondary">
@@ -18,10 +17,12 @@ export const PostCard = ({ post }: { post: Post }) => (
 				height={630}
 				className="object-cover group-hover:scale-105"
 			/>
-			<PublishedTime
-				date={post.createdAt}
+			<time
+				dateTime={post.createdAt}
 				className="absolute bottom-0 z-10 bg-slate-50/50 px-2 py-1 text-sm backdrop-blur-sm dark:bg-slate-900/50"
-			/>
+			>
+				{formatFullDate(post.createdAt)}
+			</time>
 			<div className="absolute top-0 right-0 z-10 m-1 space-x-1">
 				{post.tags.map((tag) => (
 					<span
