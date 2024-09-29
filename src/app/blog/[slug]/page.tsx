@@ -5,10 +5,10 @@ import { notFound } from 'next/navigation'
 
 import { env } from '@/lib/constants'
 import { generateSeoMeta } from '@/lib/seo'
-import { formatFullDate, toTitleCase } from '@/lib/format'
+import { toTitleCase } from '@/lib/format'
 import { Heading, ImageBlur, MDXContent } from '@/components/ui'
 import { ArticleContainer } from '@/components/layout'
-import { Comment } from '@/components/blog'
+import { Comment, PublishedTime } from '@/components/blog'
 
 const getPost = (slug: string) => allPosts.find((post) => post.slug === slug)
 
@@ -77,9 +77,11 @@ export default function Page({ params }: { params: { slug: string } }) {
 				<figcaption className="py-2 text-xs">{post.thumbnailCredit}</figcaption>
 			</figure>
 			<div className="flex items-center font-medium text-color-secondary text-sm">
-				<time dateTime={post.createdAt} className="flex items-center space-x-2">
-					Published at {formatFullDate(post.createdAt)}
-				</time>
+				<PublishedTime
+					date={post.createdAt}
+					className="flex items-center space-x-2"
+					prefix="Published at "
+				/>
 				<span>・{post.readTime} minute(s) read</span>
 			</div>
 			<Heading>{post.title}</Heading>
