@@ -8,6 +8,6 @@ export const PublishedTime = ({
 	prefix,
 }: { date: string; className?: string; prefix?: string }) => (
 	<time dateTime={date} className={className ?? undefined}>
-		{prefix ?? '' + formatFullDate(date)}
+		{(prefix ?? '') + formatFullDate(date)}
 	</time>
 )
