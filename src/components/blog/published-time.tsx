@@ -7,7 +7,11 @@ export const PublishedTime = ({
 	className,
 	prefix,
 }: { date: string; className?: string; prefix?: string }) => (
-	<time dateTime={date} className={className ?? undefined}>
+	<time
+		dateTime={date}
+		className={className ?? undefined}
+		suppressHydrationWarning
+	>
 		{(prefix ?? '') + formatFullDate(date)}
 	</time>
 )
