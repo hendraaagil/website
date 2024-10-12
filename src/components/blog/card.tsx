@@ -1,5 +1,6 @@
 import type { Post } from 'contentlayer/generated'
 
+import clsx from 'clsx'
 import { Link } from 'next-view-transitions'
 import { ChevronRight } from 'lucide-react'
 
@@ -8,7 +9,7 @@ import { toTitleCase } from '@/lib/format'
 import { PublishedTime } from './published-time'
 
 export const PostCard = ({ post }: { post: Post }) => (
-  <article className="group border border-color transition-colors hover:bg-color-secondary">
+  <article className="group border border-color">
     <div className="relative flex h-[10rem] flex-col justify-center overflow-hidden">
       <ImageBlur
         blurDataURL={post.thumbnailPlaceholder}
@@ -35,13 +36,17 @@ export const PostCard = ({ post }: { post: Post }) => (
       <Link
         href={`/blog/${post.slug}`}
         aria-label={`View details of post: ${post.title}`}
-        className="absolute flex h-full w-full items-center justify-center space-x-2 opacity-0 transition-opacity group-hover:bg-slate-50/75 group-hover:opacity-100 group-hover:backdrop-blur-xs dark:group-hover:bg-slate-900/75"
+        className={clsx(
+          'absolute flex h-full w-full items-center justify-center space-x-2 opacity-0 transition-opacity',
+          'group-hover:bg-slate-50/75 group-hover:opacity-100 group-hover:backdrop-blur-xs dark:group-hover:bg-slate-900/75',
+          'focus:bg-slate-50/75 focus:opacity-100 focus:backdrop-blur-xs dark:focus:bg-slate-900/75',
+        )}
       >
         <span className="text-color">Continue reading</span>
         <ChevronRight className="h-4 w-4" />
       </Link>
     </div>
-    <div className="space-y-1 px-3 py-2">
+    <div className="space-y-1 px-3 py-2 transition-colors group-hover:bg-color-secondary">
       <Heading variant="h2" className={headingVariants({ variant: 'h3' })}>
         {post.title}
       </Heading>
