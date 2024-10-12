@@ -6,35 +6,35 @@ import { Link } from 'next-view-transitions'
 import { cn } from '@/lib/utils'
 
 export const NavigationLink = ({
-	href,
-	currentPath,
-	children,
-	isCollapse,
-	...rest
+  href,
+  currentPath,
+  children,
+  isCollapse,
+  ...rest
 }: {
-	href: string
-	currentPath: string
-	children: React.ReactNode
-	isCollapse?: boolean
+  href: string
+  currentPath: string
+  children: React.ReactNode
+  isCollapse?: boolean
 } & LinkProps) => {
-	const regEx = new RegExp(`^${href}`)
-	const isActive = href === '/' ? currentPath === href : regEx.test(currentPath)
+  const regEx = new RegExp(`^${href}`)
+  const isActive = href === '/' ? currentPath === href : regEx.test(currentPath)
 
-	return (
-		<Link
-			href={href}
-			className={cn(
-				'flex items-center space-x-2 border-2 border-transparent bg-slate-200 bg-opacity-25 px-3 py-2 font-medium tracking-wide transition-colors hover:border-color',
-				'dark:bg-slate-800 dark:bg-opacity-25',
-				{
-					'md:min-w-[10rem] ': !isCollapse,
-					'justify-center': isCollapse,
-					'border-color bg-opacity-50 dark:bg-opacity-50': isActive,
-				},
-			)}
-			{...rest}
-		>
-			{children}
-		</Link>
-	)
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'flex items-center space-x-2 border-2 border-transparent bg-slate-200 bg-opacity-25 px-3 py-2 font-medium tracking-wide transition-colors hover:border-color',
+        'dark:bg-slate-800 dark:bg-opacity-25',
+        {
+          'md:min-w-[10rem] ': !isCollapse,
+          'justify-center': isCollapse,
+          'border-color bg-opacity-50 dark:bg-opacity-50': isActive,
+        },
+      )}
+      {...rest}
+    >
+      {children}
+    </Link>
+  )
 }

@@ -1,49 +1,49 @@
 {
-	"avatar": "/assets/main/avatar.png",
-	"name": "Hendra Agil",
-	"username": "hendraaagil",
-	"summary": "My name is <strong>Hendra Agil</strong>, I'm a software developer specializing in JavaScript and web development. With expertise in the full software development life cycle, I create scalable web applications with a focus on clean, maintainable code and effective problem-solving.",
-	"description": [
-		"Hello! My name is <strong>Hendra Agil Syaputra</strong>, usually called <strong>Hendra</strong> / <strong>Agil</strong>. Born in Karanganyar Regency, Central Java, Indonesia and currently lives in Bandung, West Java, Indonesia. Graduated from SMKN 2 Karanganyar in 2021 as a Software Engineering student. Currently studying at the Binus Online Learning.",
-		"I started learn about web development since 2019 with PHP language from the school. For now I spend more time to explore about software development using JavaScript, Node.js and React. I also still learn some other topics like accessibility, testing, CI/CD, etc."
-	],
-	"skills": [
-		{
-			"name": "Languages",
-			"items": ["C#", "CSS & HTML", "Java", "JavaScript", "PHP", "TypeScript"]
-		},
-		{
-			"name": "Frontend",
-			"items": [
-				"Chakra UI",
-				"Emotion",
-				"Next.js",
-				"React",
-				"Webpack",
-				"Tailwind CSS",
-				"Vite"
-			]
-		},
-		{
-			"name": "Backend",
-			"items": [
-				"Firebase",
-				"Laravel",
-				"MongoDB",
-				"MySQL",
-				"Nest.js",
-				"Node.js",
-				"PostgreSQL"
-			]
-		}
-	],
-	"social": {
-		"description": "You can react me out via email at: <a href='mailto:hi@hendraaagil.dev'>hi@hendraaagil.dev</a> or via socials below:",
-		"links": [
-			{ "name": "GitHub", "url": "https://github.com/hendraaagil" },
-			{ "name": "LinkedIn", "url": "https://linkedin.com/in/hendraaagil" },
-			{ "name": "Telegram", "url": "https://t.me/hendraaagil" },
-			{ "name": "Twitter", "url": "https://twitter.com/hendraaagil" }
-		]
-	}
+  "avatar": "/assets/main/avatar.png",
+  "name": "Hendra Agil",
+  "username": "hendraaagil",
+  "summary": "My name is <strong>Hendra Agil</strong>, I'm a software developer specializing in JavaScript and web development. With expertise in the full software development life cycle, I create scalable web applications with a focus on clean, maintainable code and effective problem-solving.",
+  "description": [
+    "Hello! My name is <strong>Hendra Agil Syaputra</strong>, usually called <strong>Hendra</strong> / <strong>Agil</strong>. Born in Karanganyar Regency, Central Java, Indonesia and currently lives in Bandung, West Java, Indonesia. Graduated from SMKN 2 Karanganyar in 2021 as a Software Engineering student. Currently studying at the Binus Online Learning.",
+    "I started learn about web development since 2019 with PHP language from the school. For now I spend more time to explore about software development using JavaScript, Node.js and React. I also still learn some other topics like accessibility, testing, CI/CD, etc."
+  ],
+  "skills": [
+    {
+      "name": "Languages",
+      "items": ["C#", "CSS & HTML", "Java", "JavaScript", "PHP", "TypeScript"]
+    },
+    {
+      "name": "Frontend",
+      "items": [
+        "Chakra UI",
+        "Emotion",
+        "Next.js",
+        "React",
+        "Webpack",
+        "Tailwind CSS",
+        "Vite"
+      ]
+    },
+    {
+      "name": "Backend",
+      "items": [
+        "Firebase",
+        "Laravel",
+        "MongoDB",
+        "MySQL",
+        "Nest.js",
+        "Node.js",
+        "PostgreSQL"
+      ]
+    }
+  ],
+  "social": {
+    "description": "You can react me out via email at: <a href='mailto:hi@hendraaagil.dev'>hi@hendraaagil.dev</a> or via socials below:",
+    "links": [
+      { "name": "GitHub", "url": "https://github.com/hendraaagil" },
+      { "name": "LinkedIn", "url": "https://linkedin.com/in/hendraaagil" },
+      { "name": "Telegram", "url": "https://t.me/hendraaagil" },
+      { "name": "Twitter", "url": "https://twitter.com/hendraaagil" }
+    ]
+  }
 }

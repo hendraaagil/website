@@ -28,8 +28,8 @@
  * --syntax-cursor-line: hsla(220, 100%, 80%, 0.04);
  */
 
-code[class*='language-'],
-pre[class*='language-'] {
+code[class*="language-"],
+pre[class*="language-"] {
   background: hsl(220, 28%, 15%);
   color: hsl(220, 14%, 71%);
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
@@ -51,24 +51,24 @@ pre[class*='language-'] {
 }
 
 /* Selection */
-code[class*='language-']::-moz-selection,
-code[class*='language-'] *::-moz-selection,
-pre[class*='language-'] *::-moz-selection {
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] *::-moz-selection,
+pre[class*="language-"] *::-moz-selection {
   background: hsl(220, 13%, 28%);
   color: inherit;
   text-shadow: none;
 }
 
-code[class*='language-']::selection,
-code[class*='language-'] *::selection,
-pre[class*='language-'] *::selection {
+code[class*="language-"]::selection,
+code[class*="language-"] *::selection,
+pre[class*="language-"] *::selection {
   background: hsl(220, 13%, 28%);
   color: inherit;
   text-shadow: none;
 }
 
 /* Code blocks */
-pre[class*='language-'] {
+pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
@@ -76,7 +76,7 @@ pre[class*='language-'] {
 }
 
 /* Inline code */
-:not(pre) > code[class*='language-'] {
+:not(pre) > code[class*="language-"] {
   padding: 0.2em 0.3em;
   border-radius: 0.3em;
   white-space: normal;
@@ -84,8 +84,8 @@ pre[class*='language-'] {
 
 /* Print */
 @media print {
-  code[class*='language-'],
-  pre[class*='language-'] {
+  code[class*="language-"],
+  pre[class*="language-"] {
     text-shadow: none;
   }
 }
