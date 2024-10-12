@@ -15,6 +15,7 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
+  TooltipProvider,
 } from '@/components/ui'
 import { ThemeToggle } from '@/components/theme'
 import {
@@ -49,6 +50,7 @@ const MobileNavigation = ({
             <li key={name}>
               <NavigationLink
                 href={href}
+                name={name}
                 currentPath={pathname}
                 onClick={() => setIsOpen(false)}
               >
@@ -71,7 +73,7 @@ export const Navigation = () => {
   const pathname = usePathname()
 
   return (
-    <>
+    <TooltipProvider>
       <nav
         className={cn(
           'sticky top-0 hidden min-h-screen w-48 flex-col items-center self-start px-4 py-8 sm:flex',
@@ -123,6 +125,7 @@ export const Navigation = () => {
             <li key={name}>
               <NavigationLink
                 href={href}
+                name={name}
                 currentPath={pathname}
                 isCollapse={isCollapse}
               >
@@ -152,6 +155,6 @@ export const Navigation = () => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
-    </>
+    </TooltipProvider>
   )
 }
