@@ -10,25 +10,33 @@
   "skills": [
     {
       "name": "Languages",
-      "items": ["C#", "CSS & HTML", "Java", "JavaScript", "PHP", "TypeScript"]
+      "items": [
+        "C#",
+        "CSS & HTML",
+        "Java",
+        "JavaScript",
+        "Markdown",
+        "PHP",
+        "TypeScript"
+      ]
     },
     {
       "name": "Frontend",
       "items": [
-        "Chakra UI",
         "Emotion",
         "Next.js",
         "React",
+        "Scss",
         "Webpack",
-        "Tailwind CSS",
+        "Tailwind",
         "Vite"
       ]
     },
     {
       "name": "Backend",
       "items": [
+        "Docker",
         "Firebase",
-        "Laravel",
         "MongoDB",
         "MySQL",
         "Nest.js",
@@ -43,7 +51,8 @@
       { "name": "GitHub", "url": "https://github.com/hendraaagil" },
       { "name": "LinkedIn", "url": "https://linkedin.com/in/hendraaagil" },
       { "name": "Telegram", "url": "https://t.me/hendraaagil" },
-      { "name": "Twitter", "url": "https://twitter.com/hendraaagil" }
+      { "name": "Twitter", "url": "https://twitter.com/hendraaagil" },
+      { "name": "Others", "url": "https://hendraaagil.dev/links" }
     ]
   }
 }

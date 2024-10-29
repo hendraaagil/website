@@ -14,12 +14,12 @@
             "link": "https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme"
           },
           {
-            "name": "<strong>Editor Font:</strong> Iosevka Mayukai",
+            "name": "<strong>Editor Font:</strong> Iosevka Mayukai Serif",
             "link": "https://github.com/Iosevka-Mayukai/Iosevka-Mayukai"
           },
           {
-            "name": "<strong>Terminal Font:</strong> Caskaydia Cove",
-            "link": "https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode"
+            "name": "<strong>Terminal Font:</strong> Geist Mono Nerd Font",
+            "link": "https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/GeistMono"
           }
         ]
       },
@@ -92,6 +92,10 @@
           {
             "name": "DBeaver",
             "link": "https://dbeaver.io"
+          },
+          {
+            "name": "Docker",
+            "link": "https://docker.com"
           }
         ]
       }
