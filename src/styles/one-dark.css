@@ -48,6 +48,9 @@ pre[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+
+  /* Temporary fix for overflow width */
+  max-width: 49.75rem;
 }
 
 /* Selection */
