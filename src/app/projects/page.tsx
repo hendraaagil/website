@@ -19,7 +19,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 export default function Page() {
-  const projects = project.reverse()
+  const projects = [...project].reverse()
 
   return (
     <PageContainer
