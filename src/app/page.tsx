@@ -13,7 +13,7 @@ export default function Home() {
   const posts = post
     .sort((a, b) => compareDesc(new Date(a.createdAt), new Date(b.createdAt)))
     .slice(0, 3)
-  const projects = project.sort((a, b) => b.position - a.position).slice(0, 4)
+  const projects = project.sort((a, b) => a.position - b.position).slice(0, 4)
 
   return (
     <PageContainer withFooter>

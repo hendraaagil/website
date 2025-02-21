@@ -19,7 +19,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 export default function Page() {
-  const projects = project.sort((a, b) => b.position - a.position)
+  const projects = project.sort((a, b) => a.position - b.position)
 
   return (
     <PageContainer
