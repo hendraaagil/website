@@ -16,8 +16,8 @@
 # production
 /build
 
-# contentlayer
-.contentlayer
+# velite
+.velite
 
 # misc
 .DS_Store
