@@ -12,6 +12,10 @@
     "format": "biome format",
     "format:write": "biome format --write"
   },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.4.1",
   "dependencies": {
     "@giscus/react": "^3.0.0",
     "@googleapis/youtube": "^20.0.0",
@@ -53,5 +57,12 @@
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.3",
     "velite": "^0.2.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "esbuild",
+      "sharp"
+    ]
   }
 }
