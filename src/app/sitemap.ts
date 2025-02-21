@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
-import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
+import { post } from '@/.velite'
 
 import { env } from '@/lib/constants'
 import { navigationItems } from '@/components/layout'
@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  const posts = allPosts
+  const posts = post
     .sort((a, b) => compareDesc(new Date(a.createdAt), new Date(b.createdAt)))
     .map((post) => {
       return {

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { allProjects } from 'contentlayer/generated'
+import { project } from '@/.velite'
 
 import { env } from '@/lib/constants'
 import { generateSeoMeta } from '@/lib/seo'
@@ -19,7 +19,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 export default function Page() {
-  const projects = allProjects.sort((a, b) => b.position - a.position)
+  const projects = project.sort((a, b) => b.position - a.position)
 
   return (
     <PageContainer
@@ -30,7 +30,7 @@ export default function Page() {
     >
       <div className="grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (
-          <ProjectCard key={project._id} project={project} />
+          <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
     </PageContainer>

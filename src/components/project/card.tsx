@@ -1,4 +1,4 @@
-import type { Project } from 'contentlayer/generated'
+import type { Project } from '@/.velite'
 
 import clsx from 'clsx'
 import { Link } from 'next-view-transitions'
@@ -9,7 +9,7 @@ export const ProjectCard = ({ project }: { project: Project }) => (
   <article className="group h-full border border-color">
     <div className="relative flex flex-col justify-center overflow-hidden">
       <ImageBlur
-        blurDataURL={project.thumbnailPlaceholder}
+        // blurDataURL={project.thumbnailPlaceholder}
         src={project.thumbnail}
         alt={`Thumbnail for project ${project.title}`}
         width={1200}

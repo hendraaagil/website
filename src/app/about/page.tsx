@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import React from 'react'
-import { allAbouts } from 'contentlayer/generated'
+import { about } from '@/.velite'
 
 import { env } from '@/lib/constants'
 import { htmr } from '@/lib/transform'
@@ -35,7 +35,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 export default function Page() {
-  const { description, skills, social } = allAbouts[0]
+  const { description, skills, social } = about
 
   return (
     <PageContainer

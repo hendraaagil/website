@@ -1,10 +1,8 @@
 'use client'
 
-import React from 'react'
-
 import { usePathname } from 'next/navigation'
 import { ChevronsLeft, ChevronsRight, PanelTopOpen } from 'lucide-react'
-import { allAbouts } from 'contentlayer/generated'
+import { about } from '@/.velite'
 
 import { cn } from '@/lib/utils'
 import { useNavigationState } from '@/hooks'
@@ -68,7 +66,7 @@ const MobileNavigation = ({
 )
 
 export const Navigation = () => {
-  const { avatar, avatarPlaceholder, name, username } = allAbouts[0]
+  const { avatar, name, username } = about
   const { isCollapse, isOpen, setIsCollapse, setIsOpen } = useNavigationState()
   const pathname = usePathname()
 
@@ -94,7 +92,7 @@ export const Navigation = () => {
             )}
           >
             <ImageBlur
-              blurDataURL={avatarPlaceholder}
+              // blurDataURL={avatarPlaceholder}
               src={avatar}
               width={256}
               height={256}
