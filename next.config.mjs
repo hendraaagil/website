@@ -1,16 +1,13 @@
-const { withContentlayer } = require('next-contentlayer')
+const isDev = process.argv.indexOf('dev') !== -1
+const isBuild = process.argv.indexOf('build') !== -1
+if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
+  process.env.VELITE_STARTED = '1'
+  const { build } = await import('velite')
+  await build({ watch: isDev, clean: !isDev })
+}
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'i.scdn.co',
-        pathname: '/image/**',
-      },
-    ],
-  },
+export default {
   redirects: async () => {
     // https://twitter.com/LiamHammett/status/1260984553570570240
     return [
@@ -63,5 +60,3 @@ const nextConfig = {
     ]
   },
 }
-
-module.exports = withContentlayer(nextConfig)
