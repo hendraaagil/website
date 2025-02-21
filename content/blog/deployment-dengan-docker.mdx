@@ -30,7 +30,7 @@ Pada kasus project yang saya deploy ke VPS ini menggunakan package manager pnpm 
 
 Jadi, kurang lebih Dockerfile yang saya gunakan seperti berikut:
 
-```Dockerfile
+```sh
 FROM node:20-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"

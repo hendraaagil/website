@@ -1,4 +1,4 @@
-import type { Project } from 'contentlayer/generated'
+import type { Project } from '@/.velite'
 
 import clsx from 'clsx'
 import { Link } from 'next-view-transitions'

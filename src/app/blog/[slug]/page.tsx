@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { allPosts } from 'contentlayer/generated'
+import { post } from '@/.velite'
 import { notFound } from 'next/navigation'
 
 import { env } from '@/lib/constants'
@@ -10,10 +10,10 @@ import { Heading, ImageBlur, MDXContent } from '@/components/ui'
 import { ArticleContainer } from '@/components/layout'
 import { Comment, PublishedTime } from '@/components/blog'
 
-const getPost = (slug: string) => allPosts.find((post) => post.slug === slug)
+const getPost = (slug: string) => post.find((post) => post.slug === slug)
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
+  return post.map((post) => ({
     slug: post.slug,
   }))
 }
@@ -82,7 +82,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           className="flex items-center space-x-2"
           prefix="Published at "
         />
-        <span>・{post.readTime} minute(s) read</span>
+        <span>・{post.metadata.readingTime} minute(s) read</span>
       </div>
       <Heading>{post.title}</Heading>
       <p>{post.summary}</p>
@@ -94,7 +94,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         ))}
       </div>
       <hr className="border-color" />
-      <MDXContent code={post.body.code} />
+      <MDXContent code={post.code} />
       <hr className="border-color pb-4" />
       <Comment />
     </ArticleContainer>

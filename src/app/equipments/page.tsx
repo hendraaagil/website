@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { allEquipment } from 'contentlayer/generated'
+import { hardware, software } from '@/.velite'
 
 import { env } from '@/lib/constants'
 import { htmr } from '@/lib/transform'
@@ -35,8 +35,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 export default function Page() {
-  const { software, hardware } = allEquipment[0]
-
   return (
     <PageContainer
       className="space-y-0"
@@ -45,10 +43,10 @@ export default function Page() {
       withHeader
       withFooter
     >
-      <SectionContainer title={software.title}>
-        {software.details.map((detail) => (
-          <div key={detail.subtitle} className="space-y-1">
-            <Heading variant="h3">{detail.subtitle}</Heading>
+      <SectionContainer title="Software">
+        {software.list.map((detail) => (
+          <div key={detail.name} className="space-y-1">
+            <Heading variant="h3">{detail.name}</Heading>
             <ul className="list-disc space-y-1 pl-6">
               {detail.items.map((item) => (
                 <li key={item.name}>
@@ -64,10 +62,10 @@ export default function Page() {
           </div>
         ))}
       </SectionContainer>
-      <SectionContainer title={hardware.title}>
-        {hardware.details.map((detail) => (
-          <div key={detail.subtitle} className="space-y-1">
-            <Heading variant="h3">{detail.subtitle}</Heading>
+      <SectionContainer title="Hardware">
+        {hardware.list.map((detail) => (
+          <div key={detail.name} className="space-y-1">
+            <Heading variant="h3">{detail.name}</Heading>
             <ul className="list-disc space-y-1 pl-6">
               {detail.items.map((item) => (
                 <li key={item.name}>

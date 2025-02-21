@@ -7,13 +7,13 @@ You can visit the old version in the repository [branches](https://github.com/he
 ## Stack
 
 - [Next.js 14 (App router)](https://nextjs.org/) - Full-stack React framework for the web.
-- [Contentlayer](https://contentlayer.dev/) - Content SDK that validates and transforms content into type-safe JSON data.
+- [Velite](https://velite.js.org/) - Tool for building type-safe data layer, turns Markdown / MDX, YAML, JSON, or other files into app's data layer with Zod schema.
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework.
 - [shadcn/ui](https://ui.shadcn.com/) - Beautifully designed components built with Radix UI and Tailwind CSS.
 
 ## Local development setup
 
-Node.js `>= 18.17` is required and setup with [pnpm](https://pnpm.io/) is recommended.
+Node.js `>=22.x` is required and setup with [pnpm](https://pnpm.io/) is recommended.
 
 ```sh
 # duplicate & fill environment file
@@ -22,7 +22,7 @@ cp .env.sample .env.local
 # install dependencies
 pnpm i
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at http://localhost:3000
 pnpm dev
 
 # build for production

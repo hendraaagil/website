@@ -1,4 +1,4 @@
-import type { Post } from 'contentlayer/generated'
+import type { Post } from '@/.velite'
 
 import clsx from 'clsx'
 import { Link } from 'next-view-transitions'

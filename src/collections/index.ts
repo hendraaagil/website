@@ -1,0 +1,5 @@
+export { default as about } from './about'
+export { default as hardware } from './hardware'
+export { default as software } from './software'
+export { default as post } from './post'
+export { default as project } from './project'

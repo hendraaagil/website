@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { allPosts } from 'contentlayer/generated'
+import { post } from '@/.velite'
 import { compareDesc } from 'date-fns'
 
 import { env } from '@/lib/constants'
@@ -21,7 +21,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 export default function Page() {
-  const posts = allPosts.sort((a, b) =>
+  const posts = post.sort((a, b) =>
     compareDesc(new Date(a.createdAt), new Date(b.createdAt)),
   )
 
@@ -34,7 +34,7 @@ export default function Page() {
     >
       <div className="flex flex-col space-y-4">
         {posts.map((post) => (
-          <PostCard key={post._id} post={post} />
+          <PostCard key={post.slug} post={post} />
         ))}
       </div>
     </PageContainer>

@@ -10,8 +10,6 @@ import { generateSeoMeta } from '@/lib/seo'
 import { cn } from '@/lib/utils'
 
 import '@/styles/globals.css'
-import '@/styles/one-dark.css'
-
 import { ThemeProvider } from '@/components/provider'
 import { Navigation } from '@/components/layout'
 
@@ -50,6 +48,7 @@ export default function RootLayout({
             fontSans.variable,
             fontMono.variable,
           )}
+          suppressHydrationWarning
         >
           <main className="mx-auto flex max-w-5xl">
             <ThemeProvider
