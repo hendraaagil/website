@@ -50,6 +50,7 @@ export default function RootLayout({
             fontSans.variable,
             fontMono.variable,
           )}
+          suppressHydrationWarning
         >
           <main className="mx-auto flex max-w-5xl">
             <ThemeProvider
