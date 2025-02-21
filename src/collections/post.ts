@@ -1,4 +1,5 @@
 import { defineCollection, s } from 'velite'
+import { generateBase64Image } from '@/lib/server/utils'
 
 const getFilename = (path: string) =>
   path
@@ -13,7 +14,6 @@ export default defineCollection({
     .object({
       metadata: s.metadata(),
       title: s.string(),
-      // thumbnail: s.image(),
       thumbnail: s.string(),
       thumbnailCredit: s.string(),
       summary: s.string(),
@@ -23,8 +23,9 @@ export default defineCollection({
       updatedAt: s.string(),
       code: s.mdx(),
     })
-    .transform((data, { meta }) => ({
+    .transform(async (data, { meta }) => ({
       ...data,
+      thumbnailPlaceholder: await generateBase64Image(data.thumbnail),
       slug: getFilename(meta.path),
     })),
 })
