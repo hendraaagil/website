@@ -21,6 +21,7 @@ export default defineCollection({
       author: s.string(),
       createdAt: s.string(),
       updatedAt: s.string(),
+      code: s.mdx(),
     })
     .transform((data, { meta }) => ({
       ...data,

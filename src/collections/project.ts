@@ -18,6 +18,7 @@ export default defineCollection({
       description: s.string(),
       github: s.string().optional(),
       demo: s.string().optional(),
+      code: s.mdx(),
     })
     .transform((data, { meta }) => {
       const filename = getFilename(meta.path)

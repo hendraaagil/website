@@ -82,7 +82,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           className="flex items-center space-x-2"
           prefix="Published at "
         />
-        {/* <span>・{post.readTime} minute(s) read</span> */}
+        <span>・{post.metadata.readingTime} minute(s) read</span>
       </div>
       <Heading>{post.title}</Heading>
       <p>{post.summary}</p>
@@ -94,7 +94,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         ))}
       </div>
       <hr className="border-color" />
-      {/* <MDXContent code={post.body.code} /> */}
+      <MDXContent code={post.code} />
       <hr className="border-color pb-4" />
       <Comment />
     </ArticleContainer>

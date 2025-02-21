@@ -104,7 +104,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
       </div>
       <hr className="border-color" />
-      {/* <MDXContent code={project.body.code} /> */}
+      <MDXContent code={project.code} />
     </ArticleContainer>
   )
 }
