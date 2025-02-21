@@ -66,7 +66,7 @@ const MobileNavigation = ({
 )
 
 export const Navigation = () => {
-  const { avatar, name, username } = about
+  const { avatar, avatarPlaceholder, name, username } = about
   const { isCollapse, isOpen, setIsCollapse, setIsOpen } = useNavigationState()
   const pathname = usePathname()
 
@@ -92,7 +92,7 @@ export const Navigation = () => {
             )}
           >
             <ImageBlur
-              // blurDataURL={avatarPlaceholder}
+              blurDataURL={avatarPlaceholder}
               src={avatar}
               width={256}
               height={256}

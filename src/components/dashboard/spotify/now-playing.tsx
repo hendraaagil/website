@@ -31,6 +31,7 @@ export const NowPlaying = () => {
           width={56}
           height={56}
           className="border border-color"
+          unoptimized
         />
         <div className="space-y-0.5">
           <p className="line-clamp-1 font-semibold text-lg">
