@@ -1,0 +1,101 @@
+{
+  "list": [
+    {
+      "name": "Editor",
+      "items": [
+        {
+          "name": "Visual Studio Code",
+          "link": "https://code.visualstudio.com"
+        },
+        {
+          "name": "<strong>Theme:</strong> GitHub Theme",
+          "link": "https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme"
+        },
+        {
+          "name": "<strong>Editor Font:</strong> Iosevka Mayukai Serif",
+          "link": "https://github.com/Iosevka-Mayukai/Iosevka-Mayukai"
+        },
+        {
+          "name": "<strong>Terminal Font:</strong> Geist Mono Nerd Font",
+          "link": "https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/GeistMono"
+        }
+      ]
+    },
+    {
+      "name": "Terminal",
+      "items": [
+        {
+          "name": "Windows Terminal",
+          "link": "https://github.com/microsoft/terminal"
+        },
+        {
+          "name": "oh-my-posh",
+          "link": "https://ohmyposh.dev"
+        },
+        {
+          "name": "Scoop",
+          "link": "https://scoop.sh"
+        },
+        {
+          "name": "Chocolatey",
+          "link": "https://chocolatey.org"
+        }
+      ]
+    },
+    {
+      "name": "Design",
+      "items": [
+        {
+          "name": "GIMP",
+          "link": "https://gimp.org"
+        },
+        {
+          "name": "Figma",
+          "link": "https://figma.com"
+        }
+      ]
+    },
+    {
+      "name": "Video",
+      "items": [
+        {
+          "name": "OBS Studio",
+          "link": "https://obsproject.com"
+        },
+        {
+          "name": "HandBrake",
+          "link": "https://handbrake.fr"
+        },
+        {
+          "name": "Kdenlive",
+          "link": "https://kdenlive.org"
+        }
+      ]
+    },
+    {
+      "name": "Miscellaneous",
+      "items": [
+        {
+          "name": "Git",
+          "link": "https://git-scm.com"
+        },
+        {
+          "name": "Notion",
+          "link": "https://notion.so"
+        },
+        {
+          "name": "Postman",
+          "link": "https://postman.com"
+        },
+        {
+          "name": "DBeaver",
+          "link": "https://dbeaver.io"
+        },
+        {
+          "name": "Docker",
+          "link": "https://docker.com"
+        }
+      ]
+    }
+  ]
+}
