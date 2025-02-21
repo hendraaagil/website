@@ -10,8 +10,6 @@ import { generateSeoMeta } from '@/lib/seo'
 import { cn } from '@/lib/utils'
 
 import '@/styles/globals.css'
-import '@/styles/one-dark.css'
-
 import { ThemeProvider } from '@/components/provider'
 import { Navigation } from '@/components/layout'
 
