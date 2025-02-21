@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn {
-  @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-slate-900 dark:focus-visible:ring-slate-300;
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-slate-900 dark:focus-visible:ring-slate-300;
+  }
+}
+
+pre {
+  counter-reset: line;
+  counter-increment: line 0;
+
+  @apply text-sm overflow-x-auto max-w-3xl leading-relaxed py-2;
+}
+
+pre .line {
+  @apply w-full inline-block px-2;
+}
+
+pre .line::before {
+  content: counter(line);
+  counter-increment: line;
+
+  @apply w-4 mr-5 text-right inline-block text-slate-500;
+}
+
+pre .line.highlighted {
+  @apply bg-slate-700/50 w-full inline-block;
 }
