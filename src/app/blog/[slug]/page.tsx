@@ -27,7 +27,7 @@ export const generateMetadata = async ({
   if (!post) return {}
 
   const postUrl = new URL(env.url.website + '/blog/' + params.slug)
-  const imageUrl = new URL(env.url.website + post.thumbnail)
+  const imageUrl = new URL(env.url.website + post.thumbnail.src)
   return {
     ...generateSeoMeta({
       title: post.title,
@@ -70,9 +70,9 @@ export default function Page({ params }: { params: { slug: string } }) {
         <ImageBlur
           src={post.thumbnail}
           alt={`Thumbnail for article ${post.title}`}
-          blurDataURL={post.thumbnailPlaceholder}
-          width={1200}
-          height={630}
+          blurDataURL={post.thumbnail.blurDataURL}
+          width={post.thumbnail.width}
+          height={post.thumbnail.height}
         />
         <figcaption className="py-2 text-xs">{post.thumbnailCredit}</figcaption>
       </figure>

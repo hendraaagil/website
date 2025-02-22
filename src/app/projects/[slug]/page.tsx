@@ -27,7 +27,7 @@ export const generateMetadata = async ({
   if (!project) return {}
 
   const projectUrl = new URL(env.url.website + '/projects/' + params.slug)
-  const imageUrl = new URL(env.url.website + project.thumbnail)
+  const imageUrl = new URL(env.url.website + project.thumbnail.src)
   return {
     ...generateSeoMeta({
       title: project.title,
@@ -74,9 +74,9 @@ export default function Page({ params }: { params: { slug: string } }) {
         <ImageBlur
           src={project.thumbnail}
           alt={`Thumbnail for project ${project.title}`}
-          blurDataURL={project.thumbnailPlaceholder}
-          width={1200}
-          height={720}
+          blurDataURL={project.thumbnail.blurDataURL}
+          width={project.thumbnail.width}
+          height={project.thumbnail.height}
         />
       </div>
       <Heading>{project.title}</Heading>
