@@ -22,8 +22,13 @@ export default defineCollection({
       updatedAt: s.string(),
       code: s.mdx(),
     })
-    .transform(async (data, { meta }) => ({
-      ...data,
-      slug: getFilename(meta.path),
-    })),
+    .transform(async (data, { meta }) => {
+      const filename = getFilename(meta.path)
+      console.log('Generated filename:', filename)
+
+      return {
+        ...data,
+        slug: filename,
+      }
+    }),
 })
