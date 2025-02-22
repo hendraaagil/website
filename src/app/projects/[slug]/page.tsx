@@ -27,7 +27,7 @@ export const generateMetadata = async ({
   if (!project) return {}
 
   const projectUrl = new URL(env.url.website + '/projects/' + params.slug)
-  const imageUrl = new URL(env.url.website + project.thumbnail)
+  const imageUrl = new URL(env.url.website + project.thumbnail.src)
   return {
     ...generateSeoMeta({
       title: project.title,
