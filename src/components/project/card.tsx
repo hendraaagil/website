@@ -11,6 +11,7 @@ export const ProjectCard = ({ project }: { project: Project }) => (
       <ImageBlur
         src={project.thumbnail}
         alt={`Thumbnail for project ${project.title}`}
+        blurDataURL={project.thumbnail.blurDataURL}
         width={project.thumbnail.width}
         height={project.thumbnail.height}
         className="object-cover group-hover:scale-105"

@@ -14,6 +14,7 @@ export const PostCard = ({ post }: { post: Post }) => (
       <ImageBlur
         src={post.thumbnail}
         alt={`Thumbnail for article ${post.title}`}
+        blurDataURL={post.thumbnail.blurDataURL}
         width={post.thumbnail.width}
         height={post.thumbnail.height}
         className="object-cover group-hover:scale-105"

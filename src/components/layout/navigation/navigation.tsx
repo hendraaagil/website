@@ -93,6 +93,7 @@ export const Navigation = () => {
           >
             <ImageBlur
               src={avatar}
+              blurDataURL={avatar.blurDataURL}
               width={avatar.width}
               height={avatar.height}
               alt="Avatar"

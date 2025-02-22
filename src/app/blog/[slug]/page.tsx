@@ -70,6 +70,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         <ImageBlur
           src={post.thumbnail}
           alt={`Thumbnail for article ${post.title}`}
+          blurDataURL={post.thumbnail.blurDataURL}
           width={post.thumbnail.width}
           height={post.thumbnail.height}
         />

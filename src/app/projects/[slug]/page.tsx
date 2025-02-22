@@ -74,6 +74,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         <ImageBlur
           src={project.thumbnail}
           alt={`Thumbnail for project ${project.title}`}
+          blurDataURL={project.thumbnail.blurDataURL}
           width={project.thumbnail.width}
           height={project.thumbnail.height}
         />
