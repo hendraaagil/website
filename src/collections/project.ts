@@ -3,7 +3,7 @@ import { defineCollection, s } from 'velite'
 const getFilename = (path: string) =>
   path
     .replace(/\.mdx$/, '')
-    .split('\\')
+    .split(/[\\/]/)
     .at(-1)
     ?.split('-') ?? []
 
