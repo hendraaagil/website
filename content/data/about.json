@@ -29,7 +29,8 @@
         "Scss",
         "Webpack",
         "Tailwind",
-        "Vite"
+        "Vite",
+        "Vue"
       ]
     },
     {
