@@ -1,11 +1,5 @@
 import { defineCollection, s } from 'velite'
-
-const getFilename = (path: string) =>
-  path
-    .replace(/\.mdx$/, '')
-    .split(/[\\/]/)
-    .at(-1)
-    ?.split('-') ?? []
+import { getFilename } from '@/lib/utils'
 
 export default defineCollection({
   name: 'Project',
@@ -20,7 +14,8 @@ export default defineCollection({
       code: s.mdx(),
     })
     .transform(async (data, { meta }) => {
-      const filename = getFilename(meta.path)
+      const filename = getFilename(meta.path).split('-')
+      console.info('[Project] Generated slug:', filename)
       return {
         ...data,
         position: Number(filename[0]),
