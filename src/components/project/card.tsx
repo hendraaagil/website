@@ -9,11 +9,10 @@ export const ProjectCard = ({ project }: { project: Project }) => (
   <article className="group h-full border border-color">
     <div className="relative flex flex-col justify-center overflow-hidden">
       <ImageBlur
-        blurDataURL={project.thumbnailPlaceholder}
         src={project.thumbnail}
         alt={`Thumbnail for project ${project.title}`}
-        width={1200}
-        height={630}
+        width={project.thumbnail.width}
+        height={project.thumbnail.height}
         className="object-cover group-hover:scale-105"
       />
       <Link

@@ -70,9 +70,8 @@ export default function Page({ params }: { params: { slug: string } }) {
         <ImageBlur
           src={post.thumbnail}
           alt={`Thumbnail for article ${post.title}`}
-          blurDataURL={post.thumbnailPlaceholder}
-          width={1200}
-          height={630}
+          width={post.thumbnail.width}
+          height={post.thumbnail.height}
         />
         <figcaption className="py-2 text-xs">{post.thumbnailCredit}</figcaption>
       </figure>

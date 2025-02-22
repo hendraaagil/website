@@ -12,11 +12,10 @@ export const PostCard = ({ post }: { post: Post }) => (
   <article className="group border border-color">
     <div className="relative flex h-[10rem] flex-col justify-center overflow-hidden">
       <ImageBlur
-        blurDataURL={post.thumbnailPlaceholder}
         src={post.thumbnail}
         alt={`Thumbnail for article ${post.title}`}
-        width={1200}
-        height={630}
+        width={post.thumbnail.width}
+        height={post.thumbnail.height}
         className="object-cover group-hover:scale-105"
       />
       <PublishedTime
