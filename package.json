@@ -34,7 +34,6 @@
     "next": "14.2.21",
     "next-themes": "^0.3.0",
     "next-view-transitions": "^0.3.2",
-    "plaiceholder": "^3.0.0",
     "react": "^18.3.1",
     "react-countup": "^6.5.3",
     "react-dom": "^18.3.1",
