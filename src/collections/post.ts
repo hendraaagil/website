@@ -1,10 +1,5 @@
 import { defineCollection, s } from 'velite'
-
-const getFilename = (path: string) =>
-  path
-    .replace(/\.mdx$/, '')
-    .split('\\')
-    .at(-1) ?? ''
+import { getFilename } from '@/lib/utils'
 
 export default defineCollection({
   name: 'Post',
@@ -22,8 +17,12 @@ export default defineCollection({
       updatedAt: s.string(),
       code: s.mdx(),
     })
-    .transform(async (data, { meta }) => ({
-      ...data,
-      slug: getFilename(meta.path),
-    })),
+    .transform(async (data, { meta }) => {
+      const filename = getFilename(meta.path)
+      console.info('[Post] Generated slug:', filename)
+      return {
+        ...data,
+        slug: filename,
+      }
+    }),
 })
