@@ -20,7 +20,8 @@
     {
       "name": "Peripherals",
       "items": [
-        { "name": "<strong>Monitor:</strong> Lenovo R27q-30" },
+        { "name": "<strong>Monitor[0]:</strong> Lenovo R27q-30" },
+        { "name": "<strong>Monitor[1]:</strong> Samsung S24R350" },
         { "name": "<strong>Keyboard:</strong> Rexus Daiva Max D68SF" },
         { "name": "<strong>Mouse:</strong> VortexSeries Oni R1" },
         { "name": "<strong>Gamepad:</strong> Fantech Nova WGP14" },
