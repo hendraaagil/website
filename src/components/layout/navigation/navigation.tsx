@@ -75,7 +75,7 @@ export const Navigation = () => {
       <nav
         className={cn(
           'sticky top-0 hidden min-h-screen w-48 flex-col items-center self-start px-4 py-8 sm:flex',
-          'translate-y-0 transition-[width,transform] duration-300 motion-reduce:transition-none',
+          'translate-y-0 transition-[width,transform] duration-300 motion-reduce:transition-none print:hidden',
           { '-translate-y-[14.75rem] w-[5.25rem] delay-150': isCollapse },
         )}
       >

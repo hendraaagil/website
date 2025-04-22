@@ -12,7 +12,7 @@ export const ArticleContainer = ({
 }) => (
   <article
     className={cn(
-      'w-full space-y-4 border-color border-l px-2 pt-8 pb-4 sm:px-4',
+      'w-full space-y-4 border-color border-l px-2 pt-8 pb-4 sm:px-4 print:border-none',
       className,
     )}
   >
