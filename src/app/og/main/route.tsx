@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
   const logoUrl = `${siteUrl}/assets/main/logo-rounded.png`
 
   const { searchParams } = request.nextUrl
-  const title = searchParams.get('title') || 'Software Developer'
+  const title = searchParams.get('title') || 'Software Engineer'
 
   const [gabaritoRegular, gabaritoBold] = await Promise.all([
     fs.readFile(

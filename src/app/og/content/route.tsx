@@ -69,7 +69,7 @@ export async function GET(request: NextRequest) {
             <h1 style={{ margin: 0, marginBottom: '6px', fontSize: '24px' }}>
               Hendra Agil
             </h1>
-            <p style={{ margin: 0, fontSize: '16px' }}>Software Developer</p>
+            <p style={{ margin: 0, fontSize: '16px' }}>Software Engineer</p>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Hendra Agil',
     short_name: 'Hendra Agil',
     description:
-      'A software developer specializing in JavaScript and web development.',
+      'A frontend-focused software engineer with a full-stack mindset and a passion for crafting digital experiences that truly solve problems.',
     start_url: '/',
     icons: [
       {

@@ -7,7 +7,7 @@ type SeoProps = Metadata & {
 
 const title = 'Hendra Agil'
 const description =
-  'A software developer specializing in JavaScript and web development.'
+  'A frontend-focused software engineer with a full-stack mindset and a passion for crafting digital experiences that truly solve problems.'
 
 const defaultMeta: Metadata = {
   metadataBase: new URL(env.url.website),
