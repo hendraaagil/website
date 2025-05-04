@@ -2,8 +2,6 @@
 
 [![Open Graph Image](src/app/opengraph-image.png)](https://hendraaagil.dev)
 
-You can visit the old version in the repository [branches](https://github.com/hendraaagil/website/branches).
-
 ## Stack
 
 - [Next.js 14 (App router)](https://nextjs.org/) - Full-stack React framework for the web.
