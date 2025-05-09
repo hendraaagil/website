@@ -22,6 +22,10 @@ export const fetchWebsiteStats = async () => {
     const response = await fetch(url, {
       headers: { Authorization: `Bearer ${websiteStatsToken}` },
     })
+    if (!response.ok) {
+      throw new Error(response.statusText)
+    }
+
     const {
       pageviews: { value: viewCount },
       visitors: { value: visitorCount },
