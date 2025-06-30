@@ -12,7 +12,7 @@
             "<strong>RAM:</strong> 2 x 8GB DDR4-3200",
             "<strong>Storage[0]:</strong> 512GB SSD M.2 2280 PCIe",
             "<strong>Storage[1]:</strong> 256GB SSD M.2 2242 PCIe",
-            "<strong>OS:</strong> Windows 11 Home 64-bit"
+            "<strong>OS:</strong> Windows 10 Home 64-bit"
           ]
         }
       ]
@@ -22,8 +22,8 @@
       "items": [
         { "name": "<strong>Monitor[0]:</strong> Lenovo R27q-30" },
         { "name": "<strong>Monitor[1]:</strong> Samsung S24R350" },
-        { "name": "<strong>Keyboard:</strong> Rexus Daiva Max D68SF" },
-        { "name": "<strong>Mouse:</strong> VortexSeries Oni R1" },
+        { "name": "<strong>Keyboard:</strong> Press Play Essential75" },
+        { "name": "<strong>Mouse:</strong> Noir M1 Nex" },
         { "name": "<strong>Gamepad:</strong> Fantech Nova WGP14" },
         { "name": "<strong>Microphone:</strong> Fifine AM8" },
         { "name": "<strong>Headphone:</strong> dbE GM500" },
