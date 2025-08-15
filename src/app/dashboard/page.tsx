@@ -4,7 +4,6 @@ import React from 'react'
 import { env } from '@/lib/constants'
 import { generateSeoMeta } from '@/lib/seo'
 import { PageContainer } from '@/components/layout'
-import { Heading } from '@/components/ui'
 import {
   CodingHours,
   DashboardCardSkeleton,
@@ -14,12 +13,6 @@ import {
   YoutubeVideos,
   YoutubeViews,
 } from '@/components/dashboard'
-import {
-  NowPlaying,
-  NowPlayingSkeleton,
-  TopTracks,
-  TopTracksSkeleton,
-} from '@/components/dashboard/spotify'
 
 const statistics = [
   GithubStars,
@@ -63,16 +56,6 @@ export default async function Page() {
           </React.Suspense>
         ))}
       </section>
-      <SectionContainer>
-        <Heading variant="h2">Music</Heading>
-        <NowPlaying />
-      </SectionContainer>
-      <SectionContainer>
-        <Heading variant="h3">Top tracks</Heading>
-        <React.Suspense fallback={<TopTracksSkeleton />}>
-          <TopTracks />
-        </React.Suspense>
-      </SectionContainer>
     </PageContainer>
   )
 }
