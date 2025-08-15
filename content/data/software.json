@@ -12,8 +12,8 @@
           "link": "https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme"
         },
         {
-          "name": "<strong>Editor Font:</strong> Iosevka Mayukai Serif",
-          "link": "https://github.com/Iosevka-Mayukai/Iosevka-Mayukai"
+          "name": "<strong>Editor Font:</strong> Google Sans Code",
+          "link": "https://github.com/googlefonts/googlesans-code"
         },
         {
           "name": "<strong>Terminal Font:</strong> Geist Mono Nerd Font",
@@ -35,10 +35,6 @@
         {
           "name": "Scoop",
           "link": "https://scoop.sh"
-        },
-        {
-          "name": "Chocolatey",
-          "link": "https://chocolatey.org"
         }
       ]
     },
@@ -84,8 +80,8 @@
           "link": "https://notion.so"
         },
         {
-          "name": "Postman",
-          "link": "https://postman.com"
+          "name": "Hoppscotch",
+          "link": "https://hoppscotch.com"
         },
         {
           "name": "DBeaver",
