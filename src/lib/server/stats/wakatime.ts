@@ -12,9 +12,7 @@ export const fetchWakatimeStats = async () => {
 
     const startDate = range.start
     const endDate = range.end
-    const codingHours = secondsToHours(
-      grand_total.total_seconds_including_other_language,
-    )
+    const codingHours = secondsToHours(grand_total.total_seconds)
 
     return { startDate, endDate, codingHours }
   } catch (error) {
