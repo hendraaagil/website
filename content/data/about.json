@@ -24,7 +24,7 @@
     {
       "name": "Frontend",
       "items": [
-        "Emotion",
+        "Astro",
         "Next.js",
         "React",
         "Scss",
@@ -37,6 +37,7 @@
     {
       "name": "Backend",
       "items": [
+        "Cloudflare",
         "Docker",
         "Firebase",
         "MongoDB",
