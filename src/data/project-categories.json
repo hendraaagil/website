@@ -1,0 +1,14 @@
+[
+	{
+		"id": "personal",
+		"name": "Personal"
+	},
+	{
+		"id": "abc-pte-ltd",
+		"name": "ABC Pte Ltd"
+	},
+	{
+		"id": "acme-corp",
+		"name": "Acme Corp"
+	}
+]

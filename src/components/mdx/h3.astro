@@ -1,0 +1,24 @@
+---
+import { Link } from 'lucide-react'
+
+const content = await Astro.slots.render('default')
+const slug = content
+	.toLowerCase()
+	.replace(/<[^>]*>/g, '')
+	.replace(/[^\w\s-]/g, '')
+	.replace(/\s+/g, '-')
+	.trim()
+---
+
+<h3 id={slug} class="group my-3 scroll-mt-20">
+	<a
+		href={`#${slug}`}
+		class="inline-flex items-center gap-2 text-[length:inherit]"
+		aria-label={`Link to ${content}`}
+	>
+		<slot />
+		<Link
+			className="size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 hover:text-foreground"
+		/>
+	</a>
+</h3>

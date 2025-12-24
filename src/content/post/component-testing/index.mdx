@@ -1,0 +1,323 @@
+---
+language: id
+title: MDX Component Testing
+thumbnail: ./thumbnail.png
+thumbnailCredit: Photo for testing purposes
+summary: A comprehensive test of all MDX components including headings, code blocks, lists, tables, and more.
+tags:
+  - testing
+  - mdx
+  - components
+author: Developer
+createdAt: 2025-12-21T10:00:00+07:00
+updatedAt: 2025-12-21T12:00:00+07:00
+---
+
+# Heading Level 1
+
+This is a test post to demonstrate all MDX components working correctly. Each component should render with custom styling.
+
+## Heading Level 2
+
+Paragraphs are the most basic building block. This is a regular paragraph with some text. Notice how paragraphs have proper spacing between them.
+
+This is another paragraph to show the spacing works correctly between multiple paragraphs.
+
+### Heading Level 3
+
+Here we test inline elements like `inline code` which should have a muted background and monospace font.
+
+#### Heading Level 4
+
+All headings should have an anchor link that appears on hover, allowing users to copy direct links to sections.
+
+---
+
+## Links
+
+Here's a test of [external links](https://github.com) which should open in a new tab. And here's an [internal link](/blog) that stays in the same tab.
+
+### Link Preview Component
+
+<LinkPreview href="https://github.com/aglabsid/ctros" />
+<LinkPreview href="https://github.com/aglabsid" withImage />
+<LinkPreview href="https://github.com/aglabsid/ctros" withImage fullImage />
+
+---
+
+## Blockquote
+
+> This is a blockquote. It should have a left border with primary color and a muted background. Blockquotes are great for highlighting important information or quotes from other sources.
+
+---
+
+## Lists
+
+### Unordered List
+
+- First item in the list
+- Second item with more content
+- Third item
+- Fourth item to show proper spacing
+
+### Ordered List
+
+1. First ordered item
+2. Second ordered item
+3. Third ordered item
+4. Fourth ordered item
+
+---
+
+## Images
+
+![Test image with caption - this alt text becomes the figcaption](./thumbnail.png)
+
+### Remote Image
+
+<div className="max-w-3xs">
+	![GitHub Avatar - Remote image loaded from external
+	URL](https://avatars.githubusercontent.com/u/208728185)
+</div>
+
+---
+
+## Rich Text Formatting
+
+This paragraph demonstrates **all the inline formatting options** available in MDX. You can make text **bold** for emphasis, or use _italics_ for a softer emphasis. Sometimes you need to combine them for **_bold and italic_** text. When referencing code like `useState()` or `async/await`, use inline code formatting. You can also include [links to external resources](https://github.com) that open in new tabs, or [internal navigation links](/about) that stay within the site. The quick brown fox jumps over the lazy dog — this classic pangram contains every letter of the alphabet and is often used for typography testing. In programming, we frequently discuss concepts like **type safety**, _immutability_, and `functional programming` paradigms that help us write more maintainable code.
+
+The second paragraph continues with more **complex formatting patterns**. When building modern web applications, developers often choose frameworks like [React](https://react.dev), [Vue](https://vuejs.org), or [Astro](https://astro.build) for their component-based architecture. Consider this: _performance optimization_ isn't just about faster load times — it's about creating **better user experiences** that keep visitors engaged. Using tools like `Lighthouse` and `WebPageTest`, you can measure metrics such as **First Contentful Paint (FCP)**, _Largest Contentful Paint (LCP)_, and `Cumulative Layout Shift (CLS)`. Remember that **_accessibility is not optional_** — it's a fundamental requirement for inclusive web development. Always use semantic HTML elements like `<article>`, `<section>`, and `<nav>` to provide meaningful structure, and ensure your color contrast ratios meet **WCAG 2.1 AA standards** for _all users_ to access your content effectively.
+
+---
+
+## Tables
+
+| Language   | Type System | Use Case              |
+| ---------- | ----------- | --------------------- |
+| TypeScript | Static      | Frontend & Backend    |
+| Go         | Static      | Backend & Systems     |
+| SQL        | Declarative | Database Queries      |
+| Rust       | Static      | Systems & WebAssembly |
+
+---
+
+## Code Blocks
+
+### Line Highlighting Example
+
+```ts {2,5-7}
+function greet(name: string) {
+	// This line is highlighted
+	const greeting = `Hello, ${name}!`
+
+	// These lines are also highlighted
+	console.log(greeting)
+	return greeting
+}
+```
+
+### SQL Query
+
+```sql
+-- Create a users table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert sample data
+INSERT INTO users (email, username, password_hash)
+VALUES
+    ('john@example.com', 'johndoe', 'hashed_password_here'),
+    ('jane@example.com', 'janedoe', 'hashed_password_here');
+
+-- Query with JOIN
+SELECT
+    u.username,
+    p.title,
+    p.created_at
+FROM users u
+INNER JOIN posts p ON u.id = p.author_id
+WHERE u.created_at >= '2024-01-01'
+ORDER BY p.created_at DESC
+LIMIT 10;
+```
+
+### React Component with TypeScript
+
+```tsx
+import { useState, useEffect, type FC } from 'react'
+
+interface User {
+	id: number
+	name: string
+	email: string
+	avatar?: string
+}
+
+interface UserCardProps {
+	userId: number
+	onSelect?: (user: User) => void
+}
+
+export const UserCard: FC<UserCardProps> = ({ userId, onSelect }) => {
+	const [user, setUser] = useState<User | null>(null)
+	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState<string | null>(null)
+
+	useEffect(() => {
+		const fetchUser = async () => {
+			try {
+				setLoading(true)
+				const response = await fetch(`/api/users/${userId}`)
+
+				if (!response.ok) {
+					throw new Error('Failed to fetch user')
+				}
+
+				const data: User = await response.json()
+				setUser(data)
+			} catch (err) {
+				setError(err instanceof Error ? err.message : 'Unknown error')
+			} finally {
+				setLoading(false)
+			}
+		}
+
+		fetchUser()
+	}, [userId])
+
+	if (loading) {
+		return <div className="h-24 animate-pulse rounded-lg bg-gray-200" />
+	}
+
+	if (error || !user) {
+		return (
+			<div className="rounded-lg bg-red-50 p-4 text-red-600">
+				{error ?? 'User not found'}
+			</div>
+		)
+	}
+
+	return (
+		<button
+			onClick={() => onSelect?.(user)}
+			className="flex w-full items-center gap-4 rounded-lg border p-4 text-left transition-colors hover:bg-gray-50"
+		>
+			<img
+				src={user.avatar ?? '/default-avatar.png'}
+				alt={user.name}
+				className="h-12 w-12 rounded-full object-cover"
+			/>
+			<div>
+				<h3 className="font-semibold">{user.name}</h3>
+				<p className="text-sm text-gray-500">{user.email}</p>
+			</div>
+		</button>
+	)
+}
+```
+
+### Go HTTP Server
+
+```go {1,3-6}
+package main
+
+import (
+	"encoding/json"
+	"log"
+	"net/http"
+	"sync"
+	"time"
+)
+
+// User represents a user in the system
+type User struct {
+	ID        int       `json:"id"`
+	Name      string    `json:"name"`
+	Email     string    `json:"email"`
+	CreatedAt time.Time `json:"created_at"`
+}
+
+// UserStore handles user data with thread-safe operations
+type UserStore struct {
+	mu    sync.RWMutex
+	users map[int]User
+}
+
+// NewUserStore creates a new UserStore instance
+func NewUserStore() *UserStore {
+	return &UserStore{
+		users: make(map[int]User),
+	}
+}
+
+// Get retrieves a user by ID
+func (s *UserStore) Get(id int) (User, bool) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	user, ok := s.users[id]
+	return user, ok
+}
+
+// Set stores a user
+func (s *UserStore) Set(user User) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.users[user.ID] = user
+}
+
+func main() {
+	store := NewUserStore()
+
+	// Seed with sample data
+	store.Set(User{
+		ID:        1,
+		Name:      "John Doe",
+		Email:     "john@example.com",
+		CreatedAt: time.Now(),
+	})
+
+	http.HandleFunc("/api/users/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+
+		if r.Method != http.MethodGet {
+			http.Error(w, `{"error": "method not allowed"}`, http.StatusMethodNotAllowed)
+			return
+		}
+
+		// Parse user ID from path
+		var id int
+		if _, err := fmt.Sscanf(r.URL.Path, "/api/users/%d", &id); err != nil {
+			http.Error(w, `{"error": "invalid user ID"}`, http.StatusBadRequest)
+			return
+		}
+
+		user, ok := store.Get(id)
+		if !ok {
+			http.Error(w, `{"error": "user not found"}`, http.StatusNotFound)
+			return
+		}
+
+		if err := json.NewEncoder(w).Encode(user); err != nil {
+			log.Printf("Error encoding response: %v", err)
+			http.Error(w, `{"error": "internal server error"}`, http.StatusInternalServerError)
+		}
+	})
+
+	log.Println("Server starting on :8080")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatalf("Server failed: %v", err)
+	}
+}
+```
+
+---
+
+## Conclusion
+
+All components should now be rendering correctly with their custom styles. The headings have anchor links, code blocks have syntax highlighting, and all elements maintain consistent spacing and typography.

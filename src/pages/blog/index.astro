@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+import PostCard from '@/components/post-card.astro'
+import SectionHeader from '@/components/section-header.astro'
+
+const posts = await getCollection('post')
+const sortedPosts = posts.sort(
+	(a, b) =>
+		new Date(b.data.createdAt).getTime() - new Date(a.data.createdAt).getTime(),
+)
+
+const postsByYear = sortedPosts.reduce(
+	(acc, post) => {
+		const year = new Date(post.data.createdAt).getFullYear()
+		if (!acc[year]) {
+			acc[year] = []
+		}
+		acc[year].push(post)
+		return acc
+	},
+	{} as Record<number, typeof sortedPosts>,
+)
+
+const years = Object.keys(postsByYear)
+	.map(Number)
+	.sort((a, b) => b - a)
+---
+
+<RootLayout metadata={{ title: 'Blog' }}>
+	<section class="border-b p-3 sm:p-6">
+		<h1>Blog</h1>
+		<p class="mt-2 text-muted-foreground">
+			Thoughts, ideas, and explorations I've had.
+		</p>
+	</section>
+
+	{
+		years.map((year) => (
+			<section class="border-b last:border-b-0">
+				<SectionHeader title={year.toString()} />
+				<div class="grid gap-2 p-3 sm:gap-3 sm:p-6">
+					{postsByYear[year].map((post) => (
+						<PostCard post={post} />
+					))}
+				</div>
+			</section>
+		))
+	}
+
+	{
+		sortedPosts.length === 0 && (
+			<div class="p-3 text-center text-muted-foreground sm:p-6">
+				<p>No posts yet. Check back soon!</p>
+			</div>
+		)
+	}
+</RootLayout>

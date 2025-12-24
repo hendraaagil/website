@@ -1,0 +1,103 @@
+---
+import { getCollection, render } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+import PostComment from '@/components/post-comment'
+
+import { mdxComponents } from '@/components/mdx'
+import { formatDate, getReadingTime } from '@/lib/utils'
+import Badge from '@/components/badge'
+
+export async function getStaticPaths() {
+	const posts = await getCollection('post')
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}))
+}
+
+const { post } = Astro.props
+const {
+	language,
+	title,
+	thumbnail,
+	thumbnailCredit,
+	summary,
+	tags,
+	author,
+	createdAt,
+	updatedAt,
+} = post.data
+const { Content } = await render(post)
+
+const readingTime = getReadingTime(post.body ?? '')
+const formattedDate = formatDate(createdAt, 'long')
+---
+
+<RootLayout
+	metadata={{
+		title: title,
+		description: summary,
+		article: {
+			author: author,
+			publishedTime: createdAt.toISOString(),
+			modifiedTime: updatedAt.toISOString(),
+			tags: tags,
+			language: language,
+		},
+	}}
+>
+	<article>
+		<figure class="overflow-hidden bg-muted text-center">
+			<img
+				src={thumbnail.src}
+				alt={`Thumbnail for article ${title}`}
+				class="w-full"
+				transition:name={`post-thumbnail-${post.id}`}
+			/>
+			{
+				thumbnailCredit && (
+					<figcaption class="py-2 text-xs text-muted-foreground">
+						{thumbnailCredit}
+					</figcaption>
+				)
+			}
+		</figure>
+
+		<div class="space-y-3 p-3 sm:p-6">
+			<div
+				class="flex items-center text-sm font-medium text-muted-foreground sm:text-base [&_span]:text-[length:inherit]"
+			>
+				<span class="flex items-center gap-2">
+					<span>Published at</span>
+					<time datetime={createdAt.toISOString()}>{formattedDate}</time>
+				</span>
+				<span class="mx-1.5">・</span>
+				<span>{readingTime} minute(s) read</span>
+			</div>
+
+			<h1 transition:name={`post-title-${post.id}`}>{title}</h1>
+			<p
+				class="text-muted-foreground"
+				transition:name={`post-description-${post.id}`}
+			>
+				{summary}
+			</p>
+
+			<div class="flex items-center gap-2">
+				{tags.map((tag) => <Badge>{tag}</Badge>)}
+			</div>
+		</div>
+
+		<hr class="border-border" />
+
+		<section class="p-3 sm:p-6">
+			<Content components={mdxComponents} />
+		</section>
+
+		<hr class="border-border" />
+
+		<section class="p-3 sm:p-6">
+			<PostComment client:load />
+		</section>
+	</article>
+</RootLayout>

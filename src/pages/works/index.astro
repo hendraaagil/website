@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+import ProjectCard from '@/components/project-card.astro'
+import SectionHeader from '@/components/section-header.astro'
+
+const projects = await getCollection('project')
+const categories = await getCollection('projectCategory')
+const sortedProjects = projects.sort(
+	(a, b) => (a.data.position ?? 999) - (b.data.position ?? 999),
+)
+
+const projectsByCategory = sortedProjects.reduce(
+	(acc, project) => {
+		const categoryId = project.data.category.id
+		if (!acc[categoryId]) {
+			acc[categoryId] = []
+		}
+		acc[categoryId].push(project)
+		return acc
+	},
+	{} as Record<string, typeof sortedProjects>,
+)
+---
+
+<RootLayout metadata={{ title: 'Works' }}>
+	<section class="border-b p-3 sm:p-6">
+		<h1>Works</h1>
+		<p class="mt-2 text-muted-foreground">
+			Projects and experiments I've worked on.
+		</p>
+	</section>
+
+	{
+		categories.map(
+			(category) =>
+				projectsByCategory[category.id] && (
+					<section class="border-b last:border-b-0">
+						<SectionHeader title={category.data.name} />
+						<div class="grid gap-2 p-3 sm:grid-cols-2 sm:gap-3 sm:p-6 lg:grid-cols-3">
+							{projectsByCategory[category.id].map((project) => (
+								<ProjectCard project={project} />
+							))}
+						</div>
+					</section>
+				),
+		)
+	}
+
+	{
+		sortedProjects.length === 0 && (
+			<div class="p-3 text-center text-muted-foreground sm:p-6">
+				<p>No projects yet. Check back soon!</p>
+			</div>
+		)
+	}
+</RootLayout>

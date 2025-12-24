@@ -1,0 +1,44 @@
+[
+	{
+		"id": "editor",
+		"name": "Editor",
+		"items": [
+			{
+				"name": "Visual Studio Code",
+				"link": "https://code.visualstudio.com"
+			},
+			{
+				"name": "<strong>Theme:</strong> GitHub Theme",
+				"link": "https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme"
+			}
+		]
+	},
+	{
+		"id": "terminal",
+		"name": "Terminal",
+		"items": [
+			{
+				"name": "Windows Terminal",
+				"link": "https://github.com/microsoft/terminal"
+			},
+			{
+				"name": "Scoop",
+				"link": "https://scoop.sh"
+			}
+		]
+	},
+	{
+		"id": "design",
+		"name": "Design",
+		"items": [
+			{
+				"name": "GIMP",
+				"link": "https://gimp.org"
+			},
+			{
+				"name": "Figma",
+				"link": "https://figma.com"
+			}
+		]
+	}
+]

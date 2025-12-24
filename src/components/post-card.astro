@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { ChevronRight } from 'lucide-react'
+import { formatDate } from '@/lib/utils'
+
+type Props = {
+	post: CollectionEntry<'post'>
+}
+
+const { post } = Astro.props
+const { title, thumbnail, summary, tags, createdAt } = post.data
+const formattedDate = formatDate(createdAt, 'short')
+---
+
+<article class="group isolate border">
+	<div class="relative flex h-40 flex-col justify-center overflow-hidden">
+		<img
+			src={thumbnail.src}
+			alt={`Thumbnail for article ${title}`}
+			class="h-full w-full object-cover transition-transform group-hover:scale-105"
+			transition:name={`post-thumbnail-${post.id}`}
+		/>
+		<time
+			datetime={createdAt.toISOString()}
+			class="absolute bottom-0 z-20 bg-background/50 px-2 py-1 text-sm backdrop-blur-sm"
+		>
+			{formattedDate}
+		</time>
+		<div class="absolute top-0 right-0 z-20 m-1 flex gap-1">
+			{
+				tags.map((tag) => (
+					<span class="bg-background/50 px-2 py-1 text-xs backdrop-blur-sm">
+						{tag}
+					</span>
+				))
+			}
+		</div>
+		<a
+			href={`/blog/${post.id}`}
+			aria-label={`View details of post: ${title}`}
+			class="absolute z-10 flex h-full w-full items-center justify-center gap-2 opacity-0 transition-opacity group-hover:bg-background/75 group-hover:opacity-100 group-hover:backdrop-blur-sm focus:bg-background/75 focus:opacity-100 focus:backdrop-blur-sm"
+		>
+			<span>Continue reading</span>
+			<ChevronRight className="size-4" />
+		</a>
+	</div>
+	<div class="space-y-1 px-3 py-2 transition-colors group-hover:bg-muted/50">
+		<h3
+			class="text-xl font-bold sm:text-2xl"
+			transition:name={`post-title-${post.id}`}
+		>
+			{title}
+		</h3>
+		<p
+			class="text-muted-foreground"
+			transition:name={`post-description-${post.id}`}
+		>
+			{summary}
+		</p>
+	</div>
+</article>

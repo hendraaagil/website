@@ -1,0 +1,46 @@
+[
+	{
+		"id": "main",
+		"avatar": "./avatar.png",
+		"name": "Ctros by Aglabs",
+		"username": "aglabsid",
+		"headline": "Innovative Labs",
+		"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis scelerisque leo. Sed pulvinar ligula eu enim venenatis tincidunt.",
+		"bio": "Passionate software developer with a knack for creating efficient and scalable web applications. Experienced in both frontend and backend development, always eager to learn new technologies and improve coding skills.",
+		"description": [
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis scelerisque leo. Sed pulvinar ligula eu enim venenatis tincidunt. Fusce elementum et urna dictum viverra. Phasellus quis lectus vel sem pellentesque tincidunt id ut elit. Nullam convallis eu ex sed auctor. Ut laoreet fermentum velit, vitae imperdiet nunc. Donec vestibulum magna non auctor porta. Phasellus nibh eros, laoreet quis efficitur vulputate, dapibus at lectus. Integer at tellus ullamcorper, elementum urna eget, suscipit dui. Suspendisse id elit nulla. Integer arcu lorem, varius in tellus eu, ullamcorper ultrices ligula. Duis tristique odio eu metus interdum maximus. Aliquam eget elit tortor. Phasellus a fermentum massa.",
+			"Quisque commodo orci in quam viverra sagittis. Praesent mollis augue nec urna molestie ullamcorper. Integer elementum dui ut ex euismod, in viverra turpis mollis. Ut sed libero a urna imperdiet viverra. Donec ut erat eu nisi luctus vestibulum eget non elit. Donec at gravida odio. Praesent accumsan dictum erat, sed molestie lacus vulputate at. Mauris porttitor neque lorem, vitae cursus turpis aliquam vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris blandit arcu euismod ipsum vestibulum, sed consectetur justo pulvinar."
+		],
+		"skills": [
+			{
+				"name": "Languages",
+				"items": ["JavaScript", "TypeScript", "Python", "Go", "HTML"]
+			},
+			{
+				"name": "Frontend",
+				"items": ["React", "Vue", "Astro"]
+			},
+			{
+				"name": "Backend",
+				"items": ["Node.js", "Express", "Django", "Flask"]
+			}
+		],
+		"social": {
+			"description": "You can react me out via email at: <a href='mailto:hi@aglabs.id'>hi@aglabs.id</a> or via socials below:",
+			"links": [
+				{
+					"name": "GitHub",
+					"url": "https://github.com/aglabsid"
+				},
+				{
+					"name": "LinkedIn",
+					"url": "https://linkedin.com/company/aglabsid"
+				},
+				{
+					"name": "Twitter",
+					"url": "https://twitter.com/hendraaagil"
+				}
+			]
+		}
+	}
+]

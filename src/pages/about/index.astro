@@ -1,0 +1,77 @@
+---
+import { getEntry } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+import SectionHeader from '@/components/section-header.astro'
+import Badge from '@/components/badge'
+
+const about = await getEntry('about', 'main')
+if (!about) {
+	return Astro.redirect('/404')
+}
+
+const { avatar, name, username, description, skills, social } = about.data
+---
+
+<RootLayout metadata={{ title: 'About' }}>
+	<section class="border-b p-3 sm:p-6">
+		<div class="flex items-center gap-6">
+			<img
+				src={avatar.src}
+				alt={name}
+				class="size-24 border-2 border-primary object-cover sm:size-28"
+			/>
+			<div class="space-y-1">
+				<h1 class="text-3xl sm:text-4xl">{name}</h1>
+				<p class="text-muted-foreground">@{username}</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="space-y-2.5 border-b p-3 sm:p-6">
+		{description.map((paragraph) => <p>{paragraph}</p>)}
+	</section>
+
+	<section class="border-b">
+		<SectionHeader title="Skills" />
+		<div class="grid gap-3 p-3 sm:grid-cols-3 sm:p-6">
+			{
+				skills.map((skill) => (
+					<div>
+						<h3 class="mb-1 text-lg font-semibold sm:text-xl">{skill.name}</h3>
+						<ul class="flex flex-wrap gap-2">
+							{skill.items.map((item) => (
+								<Badge as="li">{item}</Badge>
+							))}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<section>
+		<SectionHeader title="Contact" />
+		<div class="p-3 sm:p-6">
+			<p
+				class="mb-2 text-muted-foreground [&_a]:underline [&_a]:hover:text-primary"
+				set:html={social.description}
+			/>
+			<ul class="flex flex-wrap gap-2">
+				{
+					social.links.map((link) => (
+						<li>
+							<a
+								href={link.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
+							>
+								{link.name}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+</RootLayout>

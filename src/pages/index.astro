@@ -1,0 +1,55 @@
+---
+import { getCollection, getEntry } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+import PostCard from '@/components/post-card.astro'
+import { ChevronRight } from 'lucide-react'
+
+const about = await getEntry('about', 'main')
+const posts = await getCollection('post')
+
+const latestPosts = posts
+	.sort(
+		(a, b) =>
+			new Date(b.data.createdAt).getTime() -
+			new Date(a.data.createdAt).getTime(),
+	)
+	.slice(0, 3)
+---
+
+<RootLayout>
+	<section class="border-b p-3 sm:p-6">
+		<h1 class="text-3xl sm:text-4xl">
+			Hi, I'm {about?.data.name ?? 'there'} 👋
+		</h1>
+		{
+			about?.data.bio && (
+				<p class="mt-2 text-pretty text-muted-foreground">{about.data.bio}</p>
+			)
+		}
+	</section>
+
+	<section>
+		<div class="flex items-stretch border-b">
+			<h2 class="px-3 py-2 text-xl sm:px-6 sm:py-3 sm:text-2xl">
+				Latest posts
+			</h2>
+			<div class="flex-1 border-l diagonal-lines"></div>
+			<a
+				href="/blog"
+				class="flex items-center border-l px-3 text-base text-muted-foreground transition-colors hover:text-foreground sm:px-6"
+			>
+				<span>View all</span>
+				<ChevronRight className="ml-2 size-4 shrink-0 sm:size-5" />
+			</a>
+		</div>
+		<div class="grid gap-2 p-3 sm:gap-3 sm:p-6">
+			{latestPosts.map((post) => <PostCard post={post} />)}
+		</div>
+
+		{
+			latestPosts.length === 0 && (
+				<p class="text-center text-muted-foreground">No posts yet.</p>
+			)
+		}
+	</section>
+</RootLayout>

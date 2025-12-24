@@ -1,0 +1,11 @@
+---
+type Props = {
+	title: string
+}
+const { title } = Astro.props
+---
+
+<div class="flex items-stretch border-b">
+	<h2 class="px-3 py-2 text-xl sm:px-6 sm:py-3 sm:text-2xl">{title}</h2>
+	<div class="flex-1 border-l diagonal-lines"></div>
+</div>

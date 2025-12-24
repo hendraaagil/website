@@ -1,0 +1,39 @@
+{
+	"name": "personal-website",
+	"type": "module",
+	"version": "5.0.0",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^4.3.13",
+		"@astrojs/react": "^4.4.2",
+		"@astrojs/sitemap": "^3.6.0",
+		"@giscus/react": "^3.1.0",
+		"@resvg/resvg-js": "^2.6.2",
+		"@shikijs/transformers": "^3.20.0",
+		"@tailwindcss/vite": "^4.1.18",
+		"@yeskunall/astro-umami": "^0.0.7",
+		"astro": "^5.16.6",
+		"clsx": "^2.1.1",
+		"jsdom": "^27.3.0",
+		"lucide-react": "^0.562.0",
+		"react": "^19.2.3",
+		"react-dom": "^19.2.3",
+		"satori": "^0.18.3",
+		"tailwind-merge": "^3.4.0",
+		"tailwindcss": "^4.1.18"
+	},
+	"devDependencies": {
+		"@types/jsdom": "^27.0.0",
+		"@types/react": "^19.2.7",
+		"@types/react-dom": "^19.2.3",
+		"prettier": "^3.7.4",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-tailwindcss": "^0.7.2"
+	}
+}

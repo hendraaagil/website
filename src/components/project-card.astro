@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { ChevronRight } from 'lucide-react'
+
+type Props = {
+	project: CollectionEntry<'project'>
+}
+
+const { project } = Astro.props
+const { title, thumbnail, description } = project.data
+---
+
+<article class="group flex h-full flex-col border">
+	<div class="relative flex flex-col justify-center overflow-hidden">
+		<img
+			src={thumbnail.src}
+			alt={`Thumbnail for project ${title}`}
+			class="aspect-video w-full object-cover transition-transform group-hover:scale-105"
+			transition:name={`project-thumbnail-${project.id}`}
+		/>
+		<a
+			href={`/works/${project.id}`}
+			aria-label={`View details of project: ${title}`}
+			class="absolute flex h-full w-full items-center justify-center gap-2 opacity-0 transition-opacity group-hover:bg-background/75 group-hover:opacity-100 group-hover:backdrop-blur-sm focus:bg-background/75 focus:opacity-100 focus:backdrop-blur-sm"
+		>
+			<span>View project</span>
+			<ChevronRight className="size-4" />
+		</a>
+	</div>
+	<div
+		class="flex-1 space-y-1 px-3 py-2 transition-colors group-hover:bg-muted/50"
+	>
+		<h3
+			class="text-xl font-bold"
+			transition:name={`project-title-${project.id}`}
+		>
+			{title}
+		</h3>
+		<p
+			class="line-clamp-2 text-muted-foreground"
+			transition:name={`project-description-${project.id}`}
+		>
+			{description}
+		</p>
+	</div>
+</article>

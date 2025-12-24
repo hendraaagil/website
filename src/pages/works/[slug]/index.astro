@@ -1,0 +1,75 @@
+---
+import { getCollection, render } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+
+import { mdxComponents } from '@/components/mdx'
+import { CodeXml, ExternalLinkIcon } from 'lucide-react'
+
+export async function getStaticPaths() {
+	const projects = await getCollection('project')
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project: project },
+	}))
+}
+
+const { project } = Astro.props
+const { title, thumbnail, description, demo, github } = project.data
+const { Content } = await render(project)
+---
+
+<RootLayout
+	metadata={{
+		title: title,
+		description: description,
+		noIndex: true,
+	}}
+>
+	<article>
+		<figure class="overflow-hidden bg-muted text-center">
+			<img
+				src={thumbnail.src}
+				alt={`Thumbnail for project ${title}`}
+				class="w-full"
+				transition:name={`project-thumbnail-${project.id}`}
+			/>
+		</figure>
+
+		<div class="space-y-3 p-3 sm:p-6">
+			<h1 transition:name={`project-title-${project.id}`}>{title}</h1>
+			<p
+				class="text-muted-foreground"
+				transition:name={`project-description-${project.id}`}
+			>
+				{description}
+			</p>
+
+			<div class="flex items-center gap-4">
+				<a
+					href={demo}
+					class="flex items-center underline hover:text-primary"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<ExternalLinkIcon className="mr-1 size-4" />
+					<span>Live demo</span>
+				</a>
+				<a
+					href={github}
+					class="flex items-center underline hover:text-primary"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<CodeXml className="mr-1 size-4" />
+					<span>Source code</span>
+				</a>
+			</div>
+		</div>
+
+		<hr class="border-border" />
+
+		<section class="p-3 sm:p-6">
+			<Content components={mdxComponents} />
+		</section>
+	</article>
+</RootLayout>

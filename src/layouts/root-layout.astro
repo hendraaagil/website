@@ -1,0 +1,124 @@
+---
+import { Font } from 'astro:assets'
+import { ClientRouter } from 'astro:transitions'
+import { getEntry } from 'astro:content'
+import { getOpenGraphImageUrl } from '@/lib/utils'
+
+import MobileNav from '@/components/mobile-nav'
+import Navigation from './navigation.astro'
+import Footer from './footer.astro'
+
+import '@/styles/global.css'
+
+type Props = {
+	metadata?: {
+		title?: string
+		description?: string
+		noIndex?: boolean
+		article?: {
+			publishedTime: string
+			modifiedTime: string
+			author: string
+			tags: string[]
+			language?: string
+		}
+	}
+}
+
+const about = await getEntry('about', 'main')
+
+const props = Astro.props
+const pathname = Astro.url.pathname
+const baseUrl = Astro.url.toString()
+const ogImage = getOpenGraphImageUrl(baseUrl)
+
+const baseTitle = about?.data.name ?? 'Ctros'
+const title = props.metadata?.title
+	? `${props.metadata.title} / ${baseTitle}`
+	: baseTitle
+const description = props.metadata?.description ?? about?.data.summary ?? ''
+const isArticle = !!props.metadata?.article
+---
+
+<!doctype html>
+<html lang={props.metadata?.article?.language ?? 'en'}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="robots"
+			content={props.metadata?.noIndex ? 'noindex, nofollow' : 'index, follow'}
+		/>
+		<meta
+			name="googlebot"
+			content={props.metadata?.noIndex
+				? 'noindex, nofollow'
+				: 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'}
+		/>
+		<link rel="canonical" href={baseUrl} />
+
+		<title>{title}</title>
+		<meta name="theme-color" content="#0f172a" />
+		<meta name="description" content={description} />
+		<meta property="og:site_name" content={baseTitle} />
+		<meta property="og:url" content={baseUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:alt" content={title} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:type" content={isArticle ? 'article' : 'website'} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content={`@${about?.data.username ?? ''}`} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content={title} />
+		<meta name="twitter:image:width" content="1200" />
+		<meta name="twitter:image:height" content="630" />
+
+		{
+			isArticle && (
+				<>
+					<meta
+						property="article:published_time"
+						content={props.metadata!.article!.publishedTime}
+					/>
+					<meta
+						property="article:modified_time"
+						content={props.metadata!.article!.modifiedTime}
+					/>
+					<meta
+						property="article:author"
+						content={props.metadata!.article!.author}
+					/>
+					{props.metadata!.article!.tags.map((tag) => (
+						<meta property="article:tag" content={tag} />
+					))}
+				</>
+			)
+		}
+
+		<Font cssVariable="--font-gabarito" preload />
+		<Font cssVariable="--font-google-sans-code" />
+		<ClientRouter />
+	</head>
+	<body>
+		<Navigation />
+		<MobileNav client:media="(max-width: 640px)" pathname={pathname} />
+
+		<main
+			class="relative z-2 mx-auto mb-11.5 min-h-content max-w-5xl flex-1 border-x bg-background sm:mb-18.5"
+		>
+			<slot />
+		</main>
+
+		<Footer />
+	</body>
+</html>

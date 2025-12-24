@@ -1,0 +1,30 @@
+---
+import { navigations } from '@/lib/constants'
+const pathname = Astro.url.pathname
+---
+
+<nav class="sticky top-0 z-10 hidden w-full border-b bg-background sm:block">
+	<div class="mx-auto max-w-5xl border-x p-2">
+		<ul class="flex items-center space-x-2">
+			{
+				navigations.map((item) => (
+					<li>
+						<a
+							class:list={[
+								'block px-4 py-2 transition-colors hover:bg-muted/50',
+								{
+									'bg-muted/50':
+										(pathname === item.href && item.isExact) ||
+										(pathname.startsWith(item.href) && !item.isExact),
+								},
+							]}
+							href={item.href}
+						>
+							{item.title}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</nav>

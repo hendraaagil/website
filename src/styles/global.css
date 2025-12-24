@@ -1,0 +1,113 @@
+@import 'tailwindcss';
+
+@theme inline {
+	/* Default overrides */
+	--default-transition-duration: var(--default-transition-duration);
+
+	--font-sans: var(--font-gabarito);
+	--font-mono: var(--font-google-sans-code);
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-primary: var(--primary);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-border: var(--border);
+	--color-ring: var(--ring);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+
+	h1 {
+		@apply text-4xl font-bold sm:text-5xl;
+	}
+	h2 {
+		@apply text-3xl font-bold sm:text-4xl;
+	}
+	h3 {
+		@apply text-2xl font-bold sm:text-3xl;
+	}
+	h4 {
+		@apply text-xl font-bold sm:text-2xl;
+	}
+	h5 {
+		@apply text-lg font-bold sm:text-xl;
+	}
+	h6 {
+		@apply text-base font-bold sm:text-lg;
+	}
+
+	p,
+	span,
+	a,
+	li {
+		@apply text-base sm:text-lg;
+	}
+
+	a {
+		@apply underline-offset-2 transition-colors;
+	}
+
+	code {
+		@apply font-mono text-lg font-medium;
+	}
+}
+
+:root {
+	--default-transition-duration: 300ms;
+
+	--background: oklch(0.2084 0.0417 266.3592);
+	--foreground: oklch(0.9842 0.0034 247.8575);
+	--primary: oklch(62.3% 0.214 259.815);
+	--muted: oklch(0.3717 0.0392 257.287);
+	--muted-foreground: oklch(0.9288 0.0126 255.5078);
+	--border: oklch(0.2795 0.0368 260.031);
+	--ring: oklch(62.3% 0.214 259.815);
+}
+
+@utility min-h-content {
+	@apply min-h-[calc(100dvh-56px-44px-3px)] sm:min-h-[calc(100dvh-60px-72px-3px)];
+}
+
+@utility diagonal-lines {
+	background-image: repeating-linear-gradient(
+		-45deg,
+		transparent,
+		transparent 6px,
+		var(--border) 6px,
+		var(--border) 8px
+	);
+}
+
+/* Code block with line numbers */
+.astro-code {
+	counter-reset: line;
+	counter-increment: line 0;
+
+	@apply relative overflow-x-auto py-2 text-sm sm:text-base;
+}
+
+.astro-code code {
+	@apply grid;
+}
+
+.astro-code .line {
+	@apply px-3 leading-relaxed sm:px-4;
+}
+
+.astro-code .line::before {
+	content: counter(line);
+	counter-increment: line;
+
+	@apply mr-4 inline-block w-4 text-right text-muted-foreground/25 sm:mr-5;
+}
+
+.astro-code .line.highlighted {
+	@apply bg-primary/20;
+}

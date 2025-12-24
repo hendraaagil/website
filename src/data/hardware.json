@@ -1,0 +1,24 @@
+[
+	{
+		"id": "computer",
+		"name": "Computer",
+		"items": [
+			{
+				"name": "Example Item",
+				"subitems": ["Subitem 1", "Subitem 2"]
+			},
+			{
+				"name": "Another Item"
+			}
+		]
+	},
+	{
+		"id": "peripherals",
+		"name": "Peripherals",
+		"items": [
+			{
+				"name": "Example Peripheral"
+			}
+		]
+	}
+]

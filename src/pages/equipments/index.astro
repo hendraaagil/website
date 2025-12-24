@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content'
+import RootLayout from '@/layouts/root-layout.astro'
+import SectionHeader from '@/components/section-header.astro'
+
+const software = await getCollection('software')
+const hardware = await getCollection('hardware')
+---
+
+<RootLayout metadata={{ title: 'Equipments' }}>
+	<div class="flex min-h-content flex-col">
+		<section class="border-b p-3 sm:p-6">
+			<h1>Equipments</h1>
+			<p class="mt-2 text-muted-foreground">
+				Some of the tools / peripherals that I'm using currently.
+			</p>
+		</section>
+
+		<div class="grid flex-1 lg:grid-cols-2">
+			<section class="border-b lg:border-r lg:border-b-0">
+				<SectionHeader title="Software" />
+				<div class="space-y-2 py-3 sm:space-y-3 sm:py-6">
+					{
+						software.map((category) => (
+							<div class="space-y-1 px-3 sm:px-6">
+								<h3 class="text-lg font-semibold sm:text-xl">
+									{category.data.name}
+								</h3>
+								<ul class="list-disc space-y-1 pl-6">
+									{category.data.items.map((item) => (
+										<li>
+											<a
+												set:html={item.name}
+												href={item.link}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="no-underline hover:underline"
+											/>
+										</li>
+									))}
+								</ul>
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<section>
+				<SectionHeader title="Hardware" />
+				<div class="space-y-2 py-3 sm:space-y-3 sm:py-6">
+					{
+						hardware.map((category) => (
+							<div class="space-y-1 px-3 sm:px-6">
+								<h3 class="text-lg font-semibold sm:text-xl">
+									{category.data.name}
+								</h3>
+								<ul class="list-disc space-y-1 pl-6">
+									{category.data.items.map((item) => (
+										<li>
+											<span set:html={item.name} />
+											{item.subitems && item.subitems.length > 0 && (
+												<ul class="mt-1 list-[square] space-y-1 pl-6">
+													{item.subitems.map((subitem) => (
+														<li set:html={subitem} />
+													))}
+												</ul>
+											)}
+										</li>
+									))}
+								</ul>
+							</div>
+						))
+					}
+				</div>
+			</section>
+		</div>
+	</div>
+</RootLayout>

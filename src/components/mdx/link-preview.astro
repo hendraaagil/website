@@ -1,0 +1,91 @@
+---
+import { JSDOM } from 'jsdom'
+
+type Props = {
+	href: string
+	withImage?: boolean
+	fullImage?: boolean
+}
+
+async function getOpenGraphTags(url: URL | string) {
+	try {
+		const response = await fetch(url)
+		if (!response.ok) {
+			throw new Error(`Failed to fetch data from ${url}`)
+		}
+
+		const html = await response.text()
+		const dom = new JSDOM(html)
+		const document = dom.window.document
+
+		const ogData: { [key: string]: string } = {}
+		const metaTags = document.querySelectorAll('meta[property^="og:"]')
+		metaTags.forEach((tag) => {
+			if (tag.hasAttribute('property') && tag.hasAttribute('content')) {
+				const property = (tag.getAttribute('property') as string).replace(
+					'og:',
+					'',
+				)
+				const content = tag.getAttribute('content') as string
+				ogData[property] = content
+			}
+		})
+
+		return ogData
+	} catch (error) {
+		console.error(error)
+		return null
+	}
+}
+
+const { href, withImage = false, fullImage = false } = Astro.props
+
+let data: { [key: string]: string } | null = null
+let url: URL | null = null
+
+try {
+	url = new URL(href)
+	data = await getOpenGraphTags(url)
+} catch (error) {
+	console.error('Invalid URL:', href)
+}
+
+const linkHref = data?.url || url?.toString() || href
+const title = data?.title || 'No title'
+const description = data?.description || 'No description'
+const image = data?.image || '/placeholder.png'
+---
+
+<div
+	class:list={['group mt-2 mb-4 border bg-muted', { 'max-w-lg': fullImage }]}
+>
+	<a
+		href={linkHref}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="block no-underline"
+	>
+		{
+			withImage && (
+				<div class="overflow-hidden">
+					<img
+						src={image}
+						alt={title}
+						class:list={[
+							'w-full',
+							{ 'max-h-24 object-cover sm:max-h-32': !fullImage },
+						]}
+					/>
+				</div>
+			)
+		}
+		<div class="px-3 py-2">
+			<p
+				class="line-clamp-1 font-medium underline-offset-2 transition-colors group-hover:text-primary group-hover:underline"
+			>
+				{title}
+			</p>
+			<p class="line-clamp-3 text-sm text-muted-foreground">{description}</p>
+		</div>
+	</a>
+</div>

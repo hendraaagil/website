@@ -1,0 +1,35 @@
+---
+type ImageSrc = {
+	src: string
+	width: number
+	height: number
+	format: string
+}
+
+type Props = {
+	src?: string | ImageSrc
+	alt?: string
+}
+
+const { src, alt } = Astro.props
+
+// Handle local (object) and remote (string) images
+const imageSrc = typeof src === 'string' ? src : src?.src
+const imageWidth = typeof src === 'object' ? src.width : undefined
+const imageHeight = typeof src === 'object' ? src.height : undefined
+---
+
+<figure class="mt-3 border bg-muted text-center">
+	<img
+		src={imageSrc}
+		alt={alt}
+		width={imageWidth}
+		height={imageHeight}
+		class="w-full"
+	/>
+	{
+		alt && (
+			<figcaption class="py-2 text-xs text-muted-foreground">{alt}</figcaption>
+		)
+	}
+</figure>
