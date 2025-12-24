@@ -28,7 +28,7 @@ const { avatar, name, username, description, skills, social } = about.data
 	</section>
 
 	<section class="space-y-2.5 border-b p-3 sm:p-6">
-		{description.map((paragraph) => <p>{paragraph}</p>)}
+		{description.map((paragraph) => <p set:html={paragraph} />)}
 	</section>
 
 	<section class="border-b">

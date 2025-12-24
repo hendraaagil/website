@@ -1,14 +1,19 @@
 [
 	{
-		"id": "computer",
-		"name": "Computer",
+		"id": "laptop",
+		"name": "Laptop",
 		"items": [
+			{ "name": "Lenovo Idepad Gaming 3 15ACH6" },
 			{
-				"name": "Example Item",
-				"subitems": ["Subitem 1", "Subitem 2"]
-			},
-			{
-				"name": "Another Item"
+				"name": "<strong>Specs:</strong>",
+				"subitems": [
+					"<strong>Processor:</strong> AMD Ryzen 5 5600H",
+					"<strong>Graphics:</strong> NVIDIA GeForce RTX 3050 4GB GDDR6",
+					"<strong>RAM:</strong> 2 x 8GB DDR4-3200",
+					"<strong>Storage[0]:</strong> 512GB SSD M.2 2280 PCIe",
+					"<strong>Storage[1]:</strong> 256GB SSD M.2 2242 PCIe",
+					"<strong>OS:</strong> Windows 10 Home 64-bit"
+				]
 			}
 		]
 	},
@@ -16,9 +21,16 @@
 		"id": "peripherals",
 		"name": "Peripherals",
 		"items": [
-			{
-				"name": "Example Peripheral"
-			}
+			{ "name": "<strong>Monitor[0]:</strong> Lenovo R27q-30" },
+			{ "name": "<strong>Keyboard:</strong> Press Play Essential75" },
+			{ "name": "<strong>Mouse:</strong> Noir M1 Nex" },
+			{ "name": "<strong>Gamepad:</strong> Gamesir Nova 2 Lite" },
+			{ "name": "<strong>Microphone:</strong> Fifine AM8" },
+			{ "name": "<strong>Headphone:</strong> dbE GM500" },
+			{ "name": "<strong>IEM:</strong> KZ EDA Balanced" },
+			{ "name": "<strong>TWS:</strong> Tozo Aerosound 3" },
+			{ "name": "<strong>Phone[0]:</strong> Google Pixel 6a" },
+			{ "name": "<strong>Phone[1]:</strong> Realme 9" }
 		]
 	}
 ]

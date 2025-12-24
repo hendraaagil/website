@@ -10,6 +10,14 @@
 			{
 				"name": "<strong>Theme:</strong> GitHub Theme",
 				"link": "https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme"
+			},
+			{
+				"name": "<strong>Editor Font:</strong> Google Sans Code",
+				"link": "https://github.com/googlefonts/googlesans-code"
+			},
+			{
+				"name": "<strong>Terminal Font:</strong> Geist Mono Nerd Font",
+				"link": "https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/GeistMono"
 			}
 		]
 	},
@@ -20,6 +28,10 @@
 			{
 				"name": "Windows Terminal",
 				"link": "https://github.com/microsoft/terminal"
+			},
+			{
+				"name": "oh-my-posh",
+				"link": "https://ohmyposh.dev"
 			},
 			{
 				"name": "Scoop",
@@ -38,6 +50,50 @@
 			{
 				"name": "Figma",
 				"link": "https://figma.com"
+			}
+		]
+	},
+	{
+		"id": "video",
+		"name": "Video",
+		"items": [
+			{
+				"name": "OBS Studio",
+				"link": "https://obsproject.com"
+			},
+			{
+				"name": "HandBrake",
+				"link": "https://handbrake.fr"
+			},
+			{
+				"name": "Kdenlive",
+				"link": "https://kdenlive.org"
+			}
+		]
+	},
+	{
+		"id": "misc",
+		"name": "Miscellaneous",
+		"items": [
+			{
+				"name": "Git",
+				"link": "https://git-scm.com"
+			},
+			{
+				"name": "Notion",
+				"link": "https://notion.so"
+			},
+			{
+				"name": "Bruno",
+				"link": "https://usebruno.com"
+			},
+			{
+				"name": "DBeaver",
+				"link": "https://dbeaver.io"
+			},
+			{
+				"name": "Docker",
+				"link": "https://docker.com"
 			}
 		]
 	}

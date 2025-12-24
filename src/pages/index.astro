@@ -23,7 +23,10 @@ const latestPosts = posts
 		</h1>
 		{
 			about?.data.bio && (
-				<p class="mt-2 text-pretty text-muted-foreground">{about.data.bio}</p>
+				<p
+					class="mt-2 text-pretty text-muted-foreground"
+					set:html={about.data.bio}
+				/>
 			)
 		}
 	</section>

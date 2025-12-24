@@ -2,43 +2,71 @@
 	{
 		"id": "main",
 		"avatar": "./avatar.png",
-		"name": "Ctros by Aglabs",
-		"username": "aglabsid",
-		"headline": "Innovative Labs",
-		"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis scelerisque leo. Sed pulvinar ligula eu enim venenatis tincidunt.",
-		"bio": "Passionate software developer with a knack for creating efficient and scalable web applications. Experienced in both frontend and backend development, always eager to learn new technologies and improve coding skills.",
+		"name": "Hendra Agil",
+		"username": "hendraaagil",
+		"headline": "Software Crafter // Frontend Engineer",
+		"summary": "'A frontend-focused software engineer with a full-stack mindset and a passion for crafting digital experiences that truly solve problems.",
+		"bio": "I'm <strong>Hendra Agil</strong> — a frontend-focused software engineer with a full-stack mindset and a passion for crafting digital experiences that truly solve problems. With hands-on experience across companies and communities, I've led product development on both the backend and frontend. I enjoy building intuitive UIs, improving developer experience, and exploring what's next in the web ecosystem.",
 		"description": [
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis scelerisque leo. Sed pulvinar ligula eu enim venenatis tincidunt. Fusce elementum et urna dictum viverra. Phasellus quis lectus vel sem pellentesque tincidunt id ut elit. Nullam convallis eu ex sed auctor. Ut laoreet fermentum velit, vitae imperdiet nunc. Donec vestibulum magna non auctor porta. Phasellus nibh eros, laoreet quis efficitur vulputate, dapibus at lectus. Integer at tellus ullamcorper, elementum urna eget, suscipit dui. Suspendisse id elit nulla. Integer arcu lorem, varius in tellus eu, ullamcorper ultrices ligula. Duis tristique odio eu metus interdum maximus. Aliquam eget elit tortor. Phasellus a fermentum massa.",
-			"Quisque commodo orci in quam viverra sagittis. Praesent mollis augue nec urna molestie ullamcorper. Integer elementum dui ut ex euismod, in viverra turpis mollis. Ut sed libero a urna imperdiet viverra. Donec ut erat eu nisi luctus vestibulum eget non elit. Donec at gravida odio. Praesent accumsan dictum erat, sed molestie lacus vulputate at. Mauris porttitor neque lorem, vitae cursus turpis aliquam vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris blandit arcu euismod ipsum vestibulum, sed consectetur justo pulvinar."
+			"👋 Hello! My name is <strong>Hendra Agil Syaputra</strong>, usually called <strong>Hendra</strong> / <strong>Agil</strong>. Born and lives in Karanganyar Regency, Central Java, Indonesia. Graduated from SMKN 2 Karanganyar in 2021 as a Software Engineering student. Currently studying at the Binus Online Learning.",
+			"I started learn about web development since 2019 with PHP language from the school. For now I spend more time to explore about software engineering using JavaScript, Node.js and React. I also still learn some other topics like accessibility, testing, CI/CD, etc."
 		],
 		"skills": [
 			{
 				"name": "Languages",
-				"items": ["JavaScript", "TypeScript", "Python", "Go", "HTML"]
+				"items": [
+					"Bash",
+					"C#",
+					"CSS & HTML",
+					"Go",
+					"Java",
+					"JavaScript",
+					"Markdown",
+					"PHP",
+					"TypeScript"
+				]
 			},
 			{
 				"name": "Frontend",
-				"items": ["React", "Vue", "Astro"]
+				"items": [
+					"Astro",
+					"Next.js",
+					"React",
+					"Scss",
+					"Webpack",
+					"Tailwind",
+					"Vite",
+					"Vue"
+				]
 			},
 			{
 				"name": "Backend",
-				"items": ["Node.js", "Express", "Django", "Flask"]
+				"items": [
+					"Cloudflare",
+					"Docker",
+					"Firebase",
+					"MongoDB",
+					"MySQL",
+					"Nest.js",
+					"Node.js",
+					"PostgreSQL"
+				]
 			}
 		],
 		"social": {
-			"description": "You can react me out via email at: <a href='mailto:hi@aglabs.id'>hi@aglabs.id</a> or via socials below:",
+			"description": "You can reach me out via email at: <a href='mailto:hi@hendraaagil.dev'>hi@hendraaagil.dev</a> or via socials below:",
 			"links": [
 				{
 					"name": "GitHub",
-					"url": "https://github.com/aglabsid"
+					"url": "https://github.com/hendraaagil"
 				},
 				{
 					"name": "LinkedIn",
-					"url": "https://linkedin.com/company/aglabsid"
+					"url": "https://linkedin.com/in/hendraaagil"
 				},
 				{
-					"name": "Twitter",
-					"url": "https://twitter.com/hendraaagil"
+					"name": "X (Twitter)",
+					"url": "https://x.com/hendraaagil"
 				}
 			]
 		}
