@@ -1,0 +1,187 @@
+---
+title: Deployment dengan Docker dan GitHub Actions
+thumbnail: ./thumbnail.png
+thumbnailCredit: Photo by Bernd Dittrich on Unsplash
+summary: Membagikan pengalaman saya mendeploy suatu project dengan Docker dan GitHub Actions.
+tags:
+  - deployment
+  - practice
+  - node
+author: Hendra Agil
+createdAt: 2024-11-14T23:35:00+07:00
+updatedAt: 2024-11-15T11:05:00+07:00
+---
+
+Bicara mengenai deployment, saya sudah cukup banyak mencoba cukup banyak cara. Mulai dari drag & drop ke cPanel, deploy langsung ke VPS dengan process manager ([pm2](https://pm2.keymetrics.io/)), hingga yang paling mudah dengan sekali klik seperti [Vercel](https://vercel.com/) atau [Netlify](https://netlify.com/).
+
+Pada tulisan ini, saya ingin berbagi pengalaman saat mencoba deployment ke VPS menggunakan Docker.
+
+---
+
+## Kenapa Docker?
+
+[Docker](https://www.docker.com/) adalah tool yang powerful untuk meng-_containerize_ aplikasi kita. Dengan Docker, kita bisa menyiapkan environment aplikasi dalam satu container tanpa perlu mengubah konfigurasi di VPS secara langsung.
+
+Saya sudah merasakan bagaimana rumitnya ketika harus setup di VPS secara langsung ketika mendeploy bot whatsapp ([GilBot](https://github.com/hendraaagil/gilbot-whatsapp)). Yang membuat rumit adalah karena saya melakukan development di OS Windows yang mana dependensi yang dibutuhkan sudah pre-installed, sehingga bisa run & go. Berbeda ketika saya deploy ke VPS, ternyata muncul banyak error karena menggunakan OS Ubuntu dan perlu cukup banyak dependensi yang perlu diinstall. Karena waktu itu saya belum berani pakai dan eksplor Docker, maka saya membuat [bash script](https://github.com/hendraaagil/gilbot-whatsapp/blob/main/install.sh) untuk menjalankan perintah instalasi dependensi yang dibutuhkan.
+
+### Docker & pnpm
+
+Pada kasus project yang saya deploy ke VPS ini menggunakan package manager pnpm yang ternyata membutuhkan konfigurasi tambahan pada Docker-nya. Untungnya pnpm sudah menyediakan [dokumentasinya](https://pnpm.io/docker), jadi bisa langsung dicontek saja.
+
+Jadi, kurang lebih Dockerfile yang saya gunakan seperti berikut:
+
+```sh
+FROM node:20-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+COPY . /app
+WORKDIR /app
+
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm run build
+
+FROM base
+COPY --from=prod-deps /app/node_modules /app/node_modules
+COPY --from=build /app/dist /app/dist
+EXPOSE 3000
+CMD ["pnpm", "start"]
+```
+
+---
+
+## GitHub Actions
+
+Karena saya menyimpan project di repositori GitHub dan sudah cukup familiar, maka saya memilih GitHub Actions untuk menjalankan CI/CD. Workflow ini akan dijalankan setiap ada push commit ke `main` branch dan manual trigger pada menu Actions di repositori.
+
+```yaml
+name: Build & Deploy
+
+on:
+  workflow_dispatch: # Trigger the workflow manually
+  push:
+    branches:
+      - main # Trigger the workflow on push to the main branch
+```
+
+### Proses Deployment
+
+Dalam job ini kita melakukan build Docker image dan push ke [Docker Hub](https://hub.docker.com/). Kita bisa mendapatkan `DOCKER_HUB_TOKEN` melalui [Settings > Personal Access Token](https://app.docker.com/settings/personal-access-tokens), `DOCKER_HUB_USERNAME` adalah username yang kita buat, dan `gilbot-telegram` adalah nama repositori pada Docker Hub.
+
+```yaml
+- name: Build the Docker image
+  run: docker build -t gilbot-telegram .
+
+- name: Log in to Docker Hub
+  run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+
+- name: Push Docker image
+  run: docker tag gilbot-telegram ${{ secrets.DOCKER_HUB_USERNAME }}/gilbot-telegram:latest
+- run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/gilbot-telegram:latest
+```
+
+Setelah itu, kita setup SSH agent dan deploy ke VPS dengan melakukan pull image dan jalankan container dengan image terbaru. Jangan lupa untuk generate private key (`VPS_PRIVATE_KEY`) terlebih dahulu jika belum ada. Isi `VPS_USER` dengan username yang terdaftar di server dan `VPS_HOST` dengan IP address dari server yang digunakan.
+
+```yaml
+- name: Set up SSH agent for deployment
+  uses: webfactory/ssh-agent@v0.9.0
+  with:
+    ssh-private-key: ${{ secrets.VPS_PRIVATE_KEY }}
+
+- name: Deploy to VPS
+  run: |
+    ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+      # Create .env file with secrets
+      echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > .env
+      echo "DEBUG=grammy:*" >> .env
+
+      # Pull the latest Docker image
+      docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/gilbot-telegram:latest
+
+      # Stop and remove existing container if it's running
+      docker stop gilbot-telegram-container || true
+      docker rm gilbot-telegram-container || true
+
+      # Run the new container
+      docker run -d --name gilbot-telegram-container --env-file .env -p 3000:3000 ${{ secrets.DOCKER_HUB_USERNAME }}/gilbot-telegram:latest
+    EOF
+```
+
+### Kode Lengkap Workflow
+
+Berikut adalah keseluruhan workflow yang digunakan:
+
+```yaml
+name: Build & Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build the Docker image
+        run: docker build -t gilbot-telegram .
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+
+      - name: Push Docker image
+        run: docker tag gilbot-telegram ${{ secrets.DOCKER_HUB_USERNAME }}/gilbot-telegram:latest
+      - run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/gilbot-telegram:latest
+
+      - name: Set up SSH agent for deployment
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_PRIVATE_KEY }}
+
+      - name: Deploy to VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+            echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > .env
+            echo "DEBUG=grammy:*" >> .env
+
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/gilbot-telegram:latest
+
+            docker stop gilbot-telegram-container || true
+            docker rm gilbot-telegram-container || true
+
+            docker run -d --name gilbot-telegram-container --env-file .env -p 3000:3000 ${{ secrets.DOCKER_HUB_USERNAME }}/gilbot-telegram:latest
+          EOF
+```
+
+---
+
+## Masalah yang ditemukan
+
+Pada kasus saya di project ini sebenarnya hanya untuk mendeploy sebuah bot telegram. Namun, saya juga coba untuk menambahkan HTTP server untuk bisa menyediakan JSON response. Itulah kenapa saya menambahkan port pada konfigurasi di atas.
+
+Untuk HTTP server-nya sendiri saya menggunakan [Fastify](https://fastify.dev/) dan ketika deploy pertama kali, server mengembalikan empty response saat saya mengakses IP server, yang seharusnya mengembalikan sebuah JSON. Setelah saya [telusuri](https://stackoverflow.com/a/52525832/12078166), ternyata kita perlu bind aplikasi ke host `0.0.0.0` ketika menggunakan Docker.
+
+```ts
+fastify.listen({ host: '0.0.0.0' })
+```
+
+Dan masalah selesai, server bisa diakses melalui IP: [178.62.234.72:3000](http://178.62.234.72:3000/).
+
+---
+
+## Penutup
+
+Itulah sedikit pengalaman saya ketika melakukan deployment dengan Docker dan GitHub Actions. Bagi saya yang belum terlalu tertarik untuk mendalami masalah deployment dan server ini ternyata cukup rumit, walau pada akhirnya tinggal push dan auto deploy seperti menggunakan Vercel 😋
+
+Docker juga menyediakan [cheatsheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf) untuk mempermudah pengguna baru menjelajahi dan memahami perintah-perintah yang tersedia. Jika kalian ingin mencoba bot telegram yang sedang dalam development ini, bisa mengunjungi: [https://t.me/gilchatbot](https://t.me/gilchatbot) 🤘
+
+Sekian tulisan kali ini, jika ada yang salah mohon diluruskan. Terima kasih 🙏

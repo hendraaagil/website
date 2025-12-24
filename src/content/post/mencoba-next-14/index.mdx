@@ -1,0 +1,149 @@
+---
+title: Mencoba Next.js 14 👀
+thumbnail: ./thumbnail.png
+thumbnailCredit: Photo from Next.js Blog
+summary: Pengalaman ketika menggunakan Next.js 14.
+tags:
+  - development
+  - react
+  - nextjs
+author: Hendra Agil
+createdAt: 2023-12-16T15:00:00+07:00
+updatedAt: 2023-12-16T15:00:00+07:00
+---
+
+Beberapa waktu terakhir saya mempelajari banyak hal terkait frontend development. Salah satunya adalah Next.js 14 dengan app router. Ada banyak fitur baru dari versi ini, seperti yang disebutkan dalam blognya:
+
+<LinkPreview href="https://nextjs.org/blog/next-14" />
+
+Saya akan membahas beberapa fitur yang sudah pernah saya coba dalam post ini.
+
+---
+
+## Turbopack
+
+Pada saat post ini dibuat, compiler [turbopack](https://turbo.build/pack) sudah bisa digunakan pada local development server dengan menggunakan flag `--turbo`.
+
+```bash
+next dev --turbo
+```
+
+Untuk production sendiri masih belum bisa menggunakan turbopack karena masih ada tests yang belum passed. Kita bisa mengecek statusnya di [areweturboyet.com](https://areweturboyet.com/).
+
+Perbedaannya dengan compiler yang sekarang (webpack) cukup terasa karena turbopack sendiri menggunakan Rust engine yang katanya "blazingly fast" 👀
+
+---
+
+## Server actions
+
+Server actions memungkinkan kita untuk berinteraksi langsung dengan backend (seperti database) tanpa perlu menggunakan API. Penggunaannya adalah dengan menggunakan directive `'use server'`, directive ini adalah fitur dari [React](https://react.dev/reference/react/use-server) di channel canary.
+
+Server action ini saya gunakan di website ini untuk membuat preview dari sebuah link. Kodenya kurang lebih seperti berikut:
+
+```tsx showLineNumbers
+'use server'
+
+import { JSDOM } from 'jsdom'
+
+async function getOpenGraphTags(url: URL | string) {
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data from ${url}`)
+    }
+
+    const html = await response.text()
+    const dom = new JSDOM(html)
+    const document = dom.window.document
+
+    // Find and extract Open Graph tags
+    const ogData: { [key: string]: string } = {}
+    ...
+
+    return ogData
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export type LinkPreviewProps = {
+  href: string
+  ...
+}
+
+export const LinkPreview = async ({
+  href,
+  ...
+}: LinkPreviewProps) => {
+  const url = new URL(href)
+  const data = await getOpenGraphTags(url)
+
+  return ...
+}
+```
+
+Untuk kode lengkapnya dapat dicek di [file ini](https://github.com/hendraaagil/website/blob/main/src/components/ui/link-preview.tsx).
+
+Di situ saya fetch html dari sebuah link, lalu load ke library [jsdom](https://github.com/jsdom/jsdom). Karena jsdom jalan di server (Node.js), maka perlu menggunakan directive `'use server'`. Berkat jsdom, saya bisa berinteraksi dengan DOM API untuk mendapatkan semua tag open graph lalu di-render ke komponen react.
+
+Untuk menggunakannya di dalam artikel seperti ini, cukup panggil komponennya dengan mengirim props yang dibutuhkan. Karena saya menggunakan MDX, jadi saya bisa memanggil komponennya secara langsung. Hasilnya akan seperti berikut:
+
+- Full image
+
+  <LinkPreview href="https://hendraaagil.dev/source" withImage fullImage />
+
+- Image dengan full width & limited `height`
+
+  <LinkPreview href="https://hendraaagil.dev/" withImage />
+
+- Teks saja
+
+  <LinkPreview href="https://nextjs.org/" />
+
+---
+
+## Streaming
+
+Untuk penjelasan detail terkait streaming bisa langsung ke [dokumentasi](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense) aja karena disitu sudah sangat jelas 😅
+
+Pada intinya, streaming akan men-_stream_ sebuah komponen yang mempunyai proses _async_ di dalamnya. Jadi, di awal browser akan menerima komponen `fallback` yang didapatkan dari `<Suspense>` terlebih dahulu sebelum menerima komponen lengkap setelah proses asinkron-nya selesai.
+
+Di website ini, bisa coba kunjungi path [/dashboard](/dashboard). Di situ saya menampilkan sebuah skeleton terlebih dahulu sebelum fetch datanya selesai. Dengan begitu, kita tidak perlu lagi melakukan fetch data di sisi client untuk mendapatkan state loading.
+
+Tapi bukan berarti kita harus selalu menggunakan approach ini untuk semua kegiatan data fetching. Ada case di mana kita tetap memerlukan data fetching melalui sisi client. Seperti contoh di halaman dashboard saya tadi, untuk section spotify now playing masih perlu fetch data di sisi client. Karena ada keperluan untuk fetch berdasarkan interval waktu tertentu.
+
+---
+
+## Metadata
+
+Ketika menggunakan pages router, untuk kemudahan manajemen metadata kita perlu menggunakan library seperti [next-seo](https://github.com/garmeeh/next-seo). Jika menggunakan app router, sudah disediakan API Metadata untuk mempermudah manajemennya tanpa tambahan library:
+
+<LinkPreview href="https://nextjs.org/docs/app/building-your-application/optimizing/metadata" />
+
+Untuk penggunaannya hampir sama dengan library next-seo yang saya sebutkan tadi, dengan beberapa tambahan seperti file-based metadata dan dynamic image generation.
+
+### Dynamic image generation
+
+Ini salah satu fitur yang cukup menarik bagi saya, karena kita bisa membuat image secara dinamis. Biasanya ini akan terpakai untuk membuat sebuah open graph image dari sebuah artikel karena judul tiap artikel pasti berbeda.
+
+Cara penerapannya adalah menggunakan [ImageResponse](https://nextjs.org/docs/app/api-reference/functions/image-response) dan digunakan sebagai return di [route handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers). Di website ini saya sudah coba untuk menggunakannya, hasilnya akan seperti berikut:
+
+<LinkPreview
+	href="https://hendraaagil.dev/blog/pengalaman-menggunakan-prisma-orm"
+	withImage
+	fullImage
+/>
+
+Di situ saya ada mengirim beberapa params ke route handler untuk nantinya dibawa ke komponen, lalu di-generate menjadi sebuah image. Yang cukup terbatas di sini adalah styling, tidak semua fitur CSS dapat digunakan seperti yang dijelaskan pada dokumentasi di atas.
+
+---
+
+## Penutup
+
+Mungkin itu saja sedikit pembahasan terkait apa saja yang baru di Next.js 14 terutama di app router. Tentu masih banyak fitur lain yang tidak saya sebutkan, untuk lebih lengkapnya tentu bisa kunjungi ke [dokumentasi app router](https://nextjs.org/docs/app).
+
+Saat post ini dibuat, website ini juga baru saja migrasi ke Next.js 14 dan app router. Jadi, kalian juga bisa cek source code-nya di [GitHub](/source).
+
+Sebenarnya saya masih penasaran terkait deployment app router ini karena banyak fitur yang perlu aksi di server. Apakah bisa dengan mudah seperti deploy di Vercel atau tidak 😅. Mungkin nanti kalau saya sudah pernah coba untuk deploy selain di Vercel akan coba untuk share post lagi. Atau kalau kalian yang membaca ini ada pengalaman boleh share di comment 😁
+
+Thank you.

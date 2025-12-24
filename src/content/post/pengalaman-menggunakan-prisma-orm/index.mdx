@@ -1,0 +1,86 @@
+---
+title: Pengalaman Menggunakan Prisma ORM
+thumbnail: ./thumbnail.png
+thumbnailCredit: Photo by Andrey Novik on Unsplash
+summary: Pengalaman saya ketika menggunakan Prisma ORM untuk pertama kalinya.
+tags:
+  - development
+  - node
+  - database
+author: Hendra Agil
+createdAt: 2023-06-27T22:15:00+07:00
+updatedAt: 2023-06-27T22:35:00+07:00
+---
+
+Beberapa waktu terakhir ini saya cukup banyak terlibat di backend development menggunakan [Node.js](https://nodejs.org/en). Disitu saya juga menjadi kenal dengan ORM, yang pertama saya pakai adalah [Sequelize](https://sequelize.org/) ketika masih menggunakan [Express](https://expressjs.com/). Tapi setelah berpindah menggunakan [Nest](https://nestjs.com/) yang defaultnya menggunakan TypeScript, disitu saya pakai [TypeORM](https://typeorm.io/). Karena Sequelize sendiri support TypeScript-nya banyak yang menganggap masih kurang dan dari Nest sendiri default ORM yang digunakan ketika generate app baru adalah TypeORM.
+
+Di kedua ORM yang pernah saya pakai tadi, menurut saya implementasi migrationnya cukup “ribet”. Karena kita harus menulis manual query perubahan schema-nya. Sampai akhirnya saya menemukan [Prisma](https://www.prisma.io/), yang menurut saya DX dari prisma ini terasa berbeda dari ORM Node.js lainnya.
+
+---
+
+## Apa itu ORM?
+
+Sebelum saya bahas mengenai Prisma, mungkin saya akan coba jelaskan sedikit tentang ORM (Object Relational Mapping). Jadi ORM sendiri secara sederhana adalah jembatan antara (relational) database dengan server-side script yang akan kita gunakan. Dalam case ini saya menggunakan JavaScript dan berjalan di server Node.js. ORM ini memudahkan segala urusan yang berhubungan dengan database, mulai dari koneksi sampai aksi seperti create, read, update, dan delete ke database.
+
+Apakah bisa tanpa menggunakan ORM? Tentu saja bisa. Di Node.js sendiri sudah ada package yang bisa membuat koneksi antara Node.js dengan database secara langsung, seperti: [node-postgres](https://github.com/brianc/node-postgres) untuk PostgreSQL dan [node-mysql2](https://github.com/sidorares/node-mysql2) untuk MySQL. Mungkin sampai sini saja sudah mulai terlihat “ribet”nya karena jika kita switch database, kita perlu switch package yang dipakai juga. Dengan ORM, salah satu kemudahannya adalah ketika kita switch database itu tinggal ganti provider-nya entah itu `postgresql` atau `mysql`.
+
+## Apa itu Prisma?
+
+Prisma atau Prisma ORM adalah salah satu ORM yang menurut saya mempunyai DX yang bagus, sesuai deskripsi di landing page-nya 😅
+
+![Prisma Landing Page](./prisma-landing-page.png)
+
+Prisma sendiri menyebutkan bahwa dia adalah **[next-generation ORM](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm)** karena penggunaannya cukup berbeda dengan traditional ORM seperti Sequelize dan TypeORM. Ada 3 komponen utama yang menurut saya perlu dipahami ketika ingin menggunakan Prisma, yaitu Prisma Schema, Client, dan Migrate.
+
+### Prisma Schema
+
+Secara sederhana ini adalah file schema dan biasanya diberi nama `schema.prisma` yang berisi:
+
+- Data sources, untuk memberitahu prisma data yang yang akan dipakai akan berasal dari mana. Biasanya di sini perlu mengisi `provider` dan `url` database.
+- Generators, ini untuk membuat sebuah client yang akan dihasilkan dari schema yang sudah kita definisikan. Pada case sederhana biasanya kita hanya perlu prisma client.
+- Data model, di sini kita mendefinisikan model yang nantinya akan menjadi tabel di database atau biasa disebut entity.
+
+### Prisma Client
+
+Ini yang nantinya digunakan untuk melakukan transaksi data ke database, kita bisa jalankan perintah `prisma generate` untuk generate client dari schema yang sudah dibuat.
+
+### Prisma Migrate
+
+Sesuai dengan namanya, prisma migrate ini akan melakukan aksi yang berkaitan dengan migration. Menurut saya, proses migration di sini adalah yang paling mudah dibandingkan dengan ORM yang lain.
+
+Untuk menambahkan migration, kita tinggal mengubah file schema yang sebelumnya sudah kita buat. Jika sudah, kita tinggal jalankan perintah `prisma migrate dev` untuk menyinkronkan prisma schema dengan database schema yang dipakai. Perintah tadi selain menyinkronkan schema kita, dia juga membuatkan satu file SQL migration history. File SQL ini nantinya akan dipakai di environment staging / production dengan perintah `prisma migrate deploy` untuk melakukan perubahan ke database schema.
+
+---
+
+## Nest dan Prisma
+
+Jika menggunakan Nest sebagai framework backend, kita juga bisa menggunakan Prisma sebagai ORM. Dari Nest mereka sudah memberikan dokumentasi tentang penggunaan Prisma: [docs.nestjs.com/recipes/prisma](https://docs.nestjs.com/recipes/prisma).
+
+Kurang lebih penggunaannya sama, tinggal disesuaikan saja dengan struktur dari Nest itu sendiri. Karena Nest ini menggunakan konsep OOP, jadi kita bisa membuat satu class service untuk prisma lalu kita bisa memanggilnya di manapun ketika dibutuhkan. Untuk contoh template-nya bisa cek di salah satu repo saya:
+
+<LinkPreview
+	href="https://github.com/hendraaagil/nest-prisma"
+	withImage
+	fullImage
+/>
+
+---
+
+## Tradeoffs
+
+Di balik semua kemudahan yang diberikan prisma, tentu masih ada kekurangan yang menurut saya bisa menjadi suatu “dealbreaker”. Salah satunya adalah schema. Ya, schema di prisma untuk saat ini hanya bisa di satu file saja. Kita tidak bisa memisahkannya satu per satu. Menurut saya ini akan terasa cukup rumit dan cukup susah untuk di maintain, ketika kita membuat monolith app dengan banyak entity dan tidak hanya dikerjakan oleh satu developer.
+
+Untuk kekurangan tersebut sudah ada [open issue](https://github.com/keinsell/microludes/issues/1) dari prisma sendiri dan saya rasa mereka sedang mengerjakan untuk itu. Jadi, mari kita tunggu saja 😁
+
+---
+
+### Penutup
+
+Dengan kelebihan Prisma sebagai next-generation ORM yang menawarkan DX yang berbeda, serta kekurangan dalam hal manajemen schema yang sedang dalam proses update. Prisma tetap menjadi pilihan menarik bagi backend developer yang ingin menyederhanakan interaksi dengan database dan meningkatkan efisiensi . Dengan Prisma, kita dapat mengoptimalkan waktu dalam mengelola migration, menghasilkan kode yang lebih bersih, dan DX yang nyaman.
+
+Kalian bisa pelajari lebih lanjut tentang prisma melalui link berikut:
+
+- [prisma.io/docs/concepts](https://www.prisma.io/docs/concepts/overview/what-is-prisma)
+- [docs.nestjs.com/recipes/prisma](https://docs.nestjs.com/recipes/prisma)
+
+Terima kasih.

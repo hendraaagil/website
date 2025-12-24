@@ -1,0 +1,84 @@
+---
+title: Memilih rem Daripada px dalam CSS
+thumbnail: ./thumbnail.png
+thumbnailCredit: Photo by Mark Wilkinson Hughes on Unsplash
+summary: Kapan kita menggunakan rem daripada px ketika menuliskan kode CSS?
+tags:
+  - development
+  - css
+  - practice
+author: Hendra Agil
+createdAt: 2024-07-31T21:40:00+07:00
+updatedAt: 2024-07-31T21:40:00+07:00
+---
+
+Unit yang cukup populer ketika berbicara mengenai ukuran yaitu pixel atau `px`:
+
+```css
+.container {
+	width: 1024px;
+	padding: 16px;
+}
+```
+
+Tapi, apakah `px` adalah unit yang cukup bagus ketika kita menggunakannya dalam CSS?
+
+---
+
+## px vs rem
+
+Ketika kita berurusan dengan CSS dan aksesibilitas web, unit `px` adalah pilihan yang kurang tepat dalam beberapa skenario. Sebagai contoh, dalam sebuah web browser kita dapat mengatur ukuran teks seperti berikut:
+
+![Mengatur ukuran teks di browser
+  Firefox](./font-size-firefox.png)
+
+Secara default, browser akan mengatur ukuran teks ke 16px.
+
+Jika menggunakan unit `px` di kode CSS, maka ukuran teks tidak akan berubah mengikuti ukuran teks yang sudah diatur dari browser.
+
+```css
+p {
+	font-size: 16px;
+}
+```
+
+![Ukuran teks menggunakan px](./font-size-px.png)
+
+Berbeda jika menggunakan `rem`.
+
+```css
+p {
+	font-size: 1rem;
+}
+```
+
+![Ukuran teks menggunakan rem](./font-size-rem.png)
+
+Selain pada properti `font-size`, direkomendasikan juga menggunakan unit `rem` untuk properti lain seperti `width` dan `height` jika diperlukan.
+
+> **Bagaimana jika menggunakan `em`?**
+>
+> Sudah pasti hasilnya akan sama saja ketika tidak ada parent element yang meng-_override_ ukuran teks yang sudah diatur oleh browser.
+
+> **Bagaimana dengan `padding` dan `margin`?**
+>
+> Sebaiknya kita hanya gunakan `px` ketika mengatur `padding` atau `margin`. Karena jika kita menggunakan unit `rem` maka akan terlalu banyak whitespace yang tidak perlu ketika ukuran teks pada browser diperbesar.
+
+---
+
+Praktik ini juga sudah diterapkan oleh framework CSS yang cukup populer seperti [Tailwind](https://tailwindcss.com/) dan [Bootstrap](https://getbootstrap.com/). Sehingga jika kita sudah menggunakan salah satu framework tersebut dan menggunakan class-class yang sudah disediakan, maka tidak perlu khawatir dengan masalah yang saya sebutkan sebelumnya.
+
+Namun, jika kita membuat styling yang kustom maka kita perlu memperhatikan yang mungkin disebutnya "scalable size" dalam CSS yang kita tulis. Dengan begitu, kita tidak hanya mengikuti desain yang sudah disepakati. Namun juga memperhatikan aksesibilitas web yang akan diakses oleh berbagai macam pengguna di luar sana.
+
+---
+
+## Kesimpulan
+
+Itu saja yang dapat saya bagikan, tulisan yang singkat. Mungkin bisa disebut ini adalah catatan dari TIL (Today I Learn), karena saya juga baru mengetahui ini beberapa hari sebelum saya menuliskannya di sini. Sepertinya saya perlu membuat halaman TIL / snippet sendiri agar tulisan-tulisan singkat seperti ini dapat saya simpan di sana, sehingga blog ini akan khusus membahas hal yang cukup kompleks. Mari kita lihat~ 😆
+
+Jika kalian ingin mempelajari lebih lanjut terkait apa yang saya tuliskan sebelumnya, dapat mengunjungi tautan berikut:
+
+- [YouTube: Please stop using px for font-size](https://youtu.be/xCSw6bPXZks?si=4myvbgvTJvSHK8O1)
+- [Artikel: The Surprising Truth About Pixels and Accessibility](https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility)
+
+Terima kasih dan sampai jumpa! 👋

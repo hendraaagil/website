@@ -1,0 +1,246 @@
+---
+title: 'Panduan CSS: BEM'
+thumbnail: ./thumbnail.png
+thumbnailCredit: Photo by Francisco Moreno on Unsplash
+summary: Mari kita mempelajari salah satu panduan CSS yang cukup populer, yaitu BEM.
+tags:
+  - development
+  - css
+  - practice
+author: Hendra Agil
+createdAt: 2024-09-30T00:45:00+07:00
+updatedAt: 2024-09-30T00:45:00+07:00
+---
+
+Ketika kita sedang belajar untuk menuliskan kode CSS, tidak sedikit yang bingung dan menanyakan "Bagaimana praktik yang bagus ketika menuliskan kode CSS?". Saya juga sering menemukan pertanyaan-pertanyaan ini di suatu forum komunitas ataupun menanyakan ke saya langsung melalui pesan pribadi.
+
+---
+
+## Apa itu BEM?
+
+_Block, Element, Modifier_ atau biasa dikenal sebagai [**BEM**](https://en.bem.info/) adalah salah satu panduan yang bisa kita ikuti ketika menuliskan kode CSS. Panduan ini juga biasa kita kenal sebagai metodologi & _naming conventions_.
+
+---
+
+### Block
+
+Block adalah komponen halaman yang independen secara fungsional dan dapat digunakan kembali. Dalam HTML, block direpresentasikan dengan atribut `class`.
+
+- Nama block harus menggambarkan apa tujuannya, seperti menu atau tombol.
+- Block juga seharusnya tidak memengaruhi lingkungannya, seperti mengatur margin atau posisi block tersebut.
+- Kita juga tidak boleh menggunakan tag CSS atau selector `id`.
+
+#### Nesting block
+
+Block dapat diletakkan nested satu sama lain.
+
+```html
+<!-- `header` block -->
+<header class="header">
+	<!-- Nested `logo` block -->
+	<div class="logo"></div>
+
+	<!-- Nested `search-form` block -->
+	<form class="search-form"></form>
+</header>
+```
+
+---
+
+### Element
+
+Element adalah gabungan dari block yang tidak dapat digunakan secara terpisah.
+
+- Nama element harus menjelaskan apa tujuannya, seperti teks atau item.
+- Struktur nama lengkap element adalah `nama-block__nama-element`. Nama element dipisahkan dari nama block dengan dua _underscore_ (\_\_).
+
+#### Nesting element
+
+Block dapat diletakkan nested satu sama lain. Element ini selalu menjadi bagian dari block, bukan element lain. Ini berarti element itu tidak dapat mendefinisikan hierarki seperti `block_element1_element2`.
+
+```html
+<!-- Benar -->
+<form class="search-form">
+	<div class="search-form__content">
+		<input class="search-form__input" />
+
+		<button class="search-form__button">Search</button>
+	</div>
+</form>
+
+<!-- Salah -->
+<form class="search-form">
+	<div class="search-form__content">
+		<!-- Rekomendasi: `search-form__input` or `search-form__content-input` -->
+		<input class="search-form__content__input" />
+
+		<!-- Rekomendasi: `search-form__button` or `search-form__content-button` -->
+		<button class="search-form__content__button">Search</button>
+	</div>
+</form>
+```
+
+Ini untuk memastikan bahwa suatu element itu bergantung pada suatu block.
+
+Contoh lain yaitu block dapat mempunyai nested struktur element:
+
+```html
+<div class="block">
+	<div class="block__element1">
+		<div class="block__element2">
+			<div class="block__element3"></div>
+		</div>
+	</div>
+</div>
+```
+
+Ketika struktur element-nya berganti, ini akan memudahkan kita karena nama element tetap sama.
+
+#### Unsur element
+
+Element selalu menjadi bagian dari block dan jangan pernah digunakan terpisah dari block.
+
+```html
+<!-- Benar -->
+<form class="search-form">
+	<input class="search-form__input" />
+	<button class="search-form__button">Search</button>
+</form>
+
+<!-- Salah -->
+<form class="search-form"></form>
+<input class="search-form__input" />
+<button class="search-form__button">Search</button>
+```
+
+#### Opsionalitas element
+
+Element adalah komponen block opsional, tidak semua block mempunyai element.
+
+```html
+<!-- `search-form` block -->
+<div class="search-form">
+	<!-- `input` block -->
+	<input class="input" />
+
+	<!-- `button` block -->
+	<button class="button">Search</button>
+</div>
+```
+
+---
+
+### Kapan menggunakan block atau element?
+
+- Gunakan block jika kode tersebut **dapat digunakan kembali** dan **tidak bergantung** pada komponen lain.
+- Gunakan element jika kode tersebut **tidak dapat digunakan secara terpisah** (tanpa block).
+
+---
+
+### Modifier
+
+Modifier menentukan tampilan, status, atau perilaku suatu block atau element.
+
+- Nama modifier harus menjelaskan tampilannya, seperti `theme_dark`, `disabled`, atau `focused`.
+- Nama modifier dipisahkan dari block atau element dengan satu _underscore_ (\_).
+
+#### Tipe modifier
+
+**Boolean**
+
+Digunakan saat hanya ada atau tidaknya modifier. Misalnya disabled, jika modifier Boolean ada maka nilainya diasumsikan benar.
+
+```html
+<!-- Contoh penggunaan -->
+<!-- Block `search-form` mempunyai `focused` Boolean modifier -->
+<form class="search-form search-form_focused">
+	<input class="search-form__input" />
+
+	<!-- Element `button` mempunyai `disabled` Boolean modifier -->
+	<button class="search-form__button search-form__button_disabled">
+		Search
+	</button>
+</form>
+```
+
+**Key-value**
+
+Digunakan saat nilai modifier itu penting. Misalnya, "menu dengan tema desain gelap": `menu_theme_dark`.
+
+```html
+<!-- Contoh penggunaan -->
+<!-- Block `search-form` mempunyai modifier `theme` dengan nilai `dark` -->
+<form class="search-form search-form_theme_dark">
+	<input class="search-form__input" />
+
+	<!-- Element `button` mempunyai modifier `size` dengan nilai `m` -->
+	<button class="search-form__button search-form__button_size_m">Search</button>
+</form>
+
+<!-- Kita tidak bisa menggunakan dua modifier yang identik secara bersamaan -->
+<form class="search-form search-form_theme_dark search-form_theme_lite">
+	<input class="search-form__input" />
+
+	<button
+		class="search-form__button search-form__button_size_s search-form__button_size_m"
+	>
+		Search
+	</button>
+</form>
+```
+
+#### Panduan penggunaan modifier
+
+**Modifier tidak bisa digunakan sendiri**
+
+Dari perspektif BEM, modifier tidak dapat digunakan secara terpisah dari block atau element yang dimodifikasi. Modifier harus mengubah tampilan, perilaku, atau state, bukan menggantikannya.
+
+```html
+<!-- Benar -->
+<form class="search-form search-form_theme_dark">
+	<input class="search-form__input" />
+
+	<button class="search-form__button">Search</button>
+</form>
+
+<!-- Salah. Tidak ada `search-form` -->
+<form class="search-form_theme_dark">
+	<input class="search-form__input" />
+
+	<button class="search-form__button">Search</button>
+</form>
+```
+
+---
+
+### Mix
+
+Mix memungkinkan kita untuk:
+
+- Menggabungkan perilaku dan style beberapa entitas (block / element) tanpa menduplikasi kode.
+- Membuat komponen UI baru secara semantik berdasarkan komponen yang sudah ada.
+
+```html
+<!-- `header` block -->
+<div class="header">
+	<!-- Block `search-form` di-mix dengan element `search-form` dari block `header` -->
+	<div class="search-form header__search-form"></div>
+</div>
+```
+
+Di sini, kita menggabungkan perilaku dan style block `search-form` dan element `search-form` dari block `header`.
+
+Pendekatan ini memungkinkan kita untuk mengatur geometri eksternal (seperti margin) dan posisi untuk element `header__search-form`, sementara block `search-form` tetap universal. Hasilnya, kita dapat menggunakan block tersebut di tempat lain.
+
+---
+
+## Kesimpulan
+
+BEM (Block Element Modifier) adalah metodologi yang efektif untuk menulis kode CSS yang terstruktur. Dengan menerapkan prinsip-prinsip BEM, seperti mendefinisikan block, element, dan modifier dengan jelas, kita dapat menciptakan komponen yang modular dan dapat digunakan kembali tanpa risiko konflik nama kelas. Selain itu, pendekatan ini membantu meningkatkan keterbacaan dan memudahkan pengelolaan kode CSS yang kita tulis.
+
+Jika kalian ingin mempelajari lebih lanjut tentang BEM, dapat mengunjungi tautan berikut:
+
+- [en.bem.info](https://en.bem.info/)
+- [BEM 101](https://css-tricks.com/bem-101/)
+
+Terima kasih dan sampai jumpa! 👋
