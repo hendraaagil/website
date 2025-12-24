@@ -12,7 +12,7 @@ export default function MobileNav({ pathname }: { pathname: string }) {
 			<nav className="sticky top-0 z-50 w-full border-b bg-background sm:hidden">
 				<div className="flex items-center justify-between px-3 py-2">
 					<a href="/" className="px-2 py-1 text-xl font-bold">
-						Ctros
+						.hndr
 					</a>
 					<button
 						onClick={() => setIsOpen(!isOpen)}
