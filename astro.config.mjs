@@ -39,7 +39,7 @@ export default defineConfig({
 		react(),
 		sitemap(),
 		yeskunallumami({
-			id: 'ef49fad8-8804-4c69-b639-a4f7aace59eb',
+			id: 'd7044884-6f55-4a16-8344-9221c0e82832',
 			hostUrl: 'https://analytics.hendraaagil.dev',
 		}),
 	],
