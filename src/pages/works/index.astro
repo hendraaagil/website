@@ -7,7 +7,7 @@ import SectionHeader from '@/components/section-header.astro'
 const projects = await getCollection('project')
 const categories = await getCollection('projectCategory')
 const sortedProjects = projects.sort(
-	(a, b) => (a.data.position ?? 999) - (b.data.position ?? 999),
+	(a, b) => (b.data.position ?? 999) - (a.data.position ?? 999),
 )
 
 const projectsByCategory = sortedProjects.reduce(
