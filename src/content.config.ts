@@ -82,12 +82,12 @@ const post = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			language: z.enum(['en', 'id']).default('id'),
+			author: z.string().default('Hendra Agil'),
 			title: z.string(),
 			thumbnail: image(),
 			thumbnailCredit: z.string(),
 			summary: z.string(),
 			tags: z.array(z.string()),
-			author: z.string(),
 			createdAt: z.date(),
 			updatedAt: z.date(),
 		}),
