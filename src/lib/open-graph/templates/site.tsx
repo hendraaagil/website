@@ -1,7 +1,7 @@
+import { ImageResponse } from '@vercel/og'
 import { getEntry } from 'astro:content'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import satori from 'satori'
 
 import config from '../config'
 
@@ -15,7 +15,7 @@ export default async (title?: string) => {
 	)
 	const avatar = avatarBuffer.toString('base64')
 
-	return satori(
+	return new ImageResponse(
 		<div
 			style={{
 				display: 'flex',

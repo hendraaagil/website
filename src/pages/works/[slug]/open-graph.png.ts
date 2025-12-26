@@ -10,9 +10,5 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ params, request }) => {
-	const buffer = await generateProjectOgImage(params?.slug ?? '', request.url)
-
-	return new Response(buffer, {
-		headers: { 'Content-Type': 'image/png' },
-	})
+	return await generateProjectOgImage(params?.slug ?? '', request.url)
 }

@@ -1,8 +1,8 @@
-import type { SatoriOptions } from 'satori'
+import type { ImageResponseOptions } from '@vercel/og'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
-const createConfig = async (): Promise<SatoriOptions> => {
+const createConfig = async (): Promise<ImageResponseOptions> => {
 	const [gabaritoRegular, gabaritoBold] = await Promise.all([
 		readFile(
 			join(process.cwd(), 'src/lib/open-graph', './fonts/gabarito-400.ttf'),
@@ -15,6 +15,7 @@ const createConfig = async (): Promise<SatoriOptions> => {
 	return {
 		width: 1200,
 		height: 630,
+		emoji: 'fluent',
 		fonts: [
 			{
 				data: gabaritoRegular,
