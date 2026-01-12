@@ -106,6 +106,7 @@ const isArticle = !!props.metadata?.article
 			)
 		}
 
+		<slot name="head" />
 		<Font cssVariable="--font-gabarito" preload />
 		<Font cssVariable="--font-google-sans-code" />
 		<ClientRouter />
