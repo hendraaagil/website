@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { Image } from 'astro:assets'
 import { ChevronRight } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 
@@ -14,8 +15,8 @@ const formattedDate = formatDate(createdAt, 'short')
 
 <article class="group isolate border">
 	<div class="relative flex h-40 flex-col justify-center overflow-hidden">
-		<img
-			src={thumbnail.src}
+		<Image
+			src={thumbnail}
 			alt={`Thumbnail for article ${title}`}
 			class="h-full w-full object-cover transition-transform group-hover:scale-105"
 			transition:name={`post-thumbnail-${post.id}`}

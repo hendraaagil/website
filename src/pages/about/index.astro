@@ -1,4 +1,5 @@
 ---
+import { Image, getImage } from 'astro:assets'
 import { getEntry } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 import SectionHeader from '@/components/section-header.astro'
@@ -9,16 +10,38 @@ if (!about) {
 	return Astro.redirect('/404')
 }
 
-const { avatar, name, username, description, skills, social } = about.data
+const {
+	avatar: avatarOrigin,
+	name,
+	username,
+	description,
+	skills,
+	social,
+} = about.data
+const avatar = await getImage({
+	src: avatarOrigin,
+	format: 'webp',
+	width: avatarOrigin.width,
+	height: avatarOrigin.height,
+})
 ---
 
 <RootLayout metadata={{ title: 'About' }}>
+	<Fragment slot="head">
+		<link rel="preload" href={avatar.src} as="image" />
+	</Fragment>
+
 	<section class="border-b p-3 sm:p-6">
 		<div class="flex items-center gap-6">
-			<img
+			<Image
+				width={avatarOrigin.width}
+				height={avatarOrigin.height}
 				src={avatar.src}
 				alt={name}
 				class="size-24 border-2 border-primary object-cover sm:size-28"
+				loading="eager"
+				fetchpriority="high"
+				priority
 			/>
 			<div class="space-y-1">
 				<h1 class="text-3xl sm:text-4xl">{name}</h1>

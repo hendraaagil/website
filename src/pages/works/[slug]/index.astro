@@ -1,4 +1,5 @@
 ---
+import { Image, getImage } from 'astro:assets'
 import { getCollection, render } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 
@@ -14,8 +15,20 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props
-const { title, thumbnail, description, demo, github } = project.data
+const {
+	title,
+	thumbnail: thumbnailOrigin,
+	description,
+	demo,
+	github,
+} = project.data
 const { Content } = await render(project)
+const thumbnail = await getImage({
+	src: thumbnailOrigin,
+	format: 'webp',
+	width: thumbnailOrigin.width,
+	height: thumbnailOrigin.height,
+})
 ---
 
 <RootLayout
@@ -25,13 +38,22 @@ const { Content } = await render(project)
 		noIndex: true,
 	}}
 >
+	<Fragment slot="head">
+		<link rel="preload" href={thumbnail.src} as="image" />
+	</Fragment>
+
 	<article>
 		<figure class="overflow-hidden bg-muted text-center">
-			<img
+			<Image
+				width={thumbnailOrigin.width}
+				height={thumbnailOrigin.height}
 				src={thumbnail.src}
 				alt={`Thumbnail for project ${title}`}
 				class="w-full"
 				transition:name={`project-thumbnail-${project.id}`}
+				loading="eager"
+				fetchpriority="high"
+				priority
 			/>
 		</figure>
 

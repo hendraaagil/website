@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { Image } from 'astro:assets'
 import { ChevronRight } from 'lucide-react'
 
 type Props = {
@@ -12,8 +13,8 @@ const { title, thumbnail, description } = project.data
 
 <article class="group flex h-full flex-col border">
 	<div class="relative flex flex-col justify-center overflow-hidden">
-		<img
-			src={thumbnail.src}
+		<Image
+			src={thumbnail}
 			alt={`Thumbnail for project ${title}`}
 			class="aspect-video w-full object-cover transition-transform group-hover:scale-105"
 			transition:name={`project-thumbnail-${project.id}`}

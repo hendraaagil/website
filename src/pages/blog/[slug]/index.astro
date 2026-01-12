@@ -1,4 +1,5 @@
 ---
+import { Image, getImage } from 'astro:assets'
 import { getCollection, render } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 import PostComment from '@/components/post-comment'
@@ -19,7 +20,7 @@ const { post } = Astro.props
 const {
 	language,
 	title,
-	thumbnail,
+	thumbnail: thumbnailOrigin,
 	thumbnailCredit,
 	summary,
 	tags,
@@ -31,6 +32,12 @@ const { Content } = await render(post)
 
 const readingTime = getReadingTime(post.body ?? '')
 const formattedDate = formatDate(createdAt, 'long')
+const thumbnail = await getImage({
+	src: thumbnailOrigin,
+	format: 'webp',
+	width: thumbnailOrigin.width,
+	height: thumbnailOrigin.height,
+})
 ---
 
 <RootLayout
@@ -46,13 +53,22 @@ const formattedDate = formatDate(createdAt, 'long')
 		},
 	}}
 >
+	<Fragment slot="head">
+		<link rel="preload" href={thumbnail.src} as="image" />
+	</Fragment>
+
 	<article>
 		<figure class="overflow-hidden bg-muted text-center">
-			<img
+			<Image
+				width={thumbnailOrigin.width}
+				height={thumbnailOrigin.height}
 				src={thumbnail.src}
 				alt={`Thumbnail for article ${title}`}
 				class="w-full"
 				transition:name={`post-thumbnail-${post.id}`}
+				loading="eager"
+				fetchpriority="high"
+				priority
 			/>
 			{
 				thumbnailCredit && (
