@@ -10,7 +10,7 @@ export default function MobileNav({ pathname }: { pathname: string }) {
 	return (
 		<>
 			<nav className="sticky top-0 z-50 w-full border-b bg-background sm:hidden">
-				<div className="flex items-center justify-between px-3 py-2">
+				<div className="flex items-center justify-between border-x px-3 py-2">
 					<a href="/" className="px-2 py-1 text-xl font-bold">
 						.hndr
 					</a>
@@ -35,7 +35,7 @@ export default function MobileNav({ pathname }: { pathname: string }) {
 			{/* Menu */}
 			<div
 				className={cn(
-					'fixed top-14 right-0 z-20 h-[calc(100vh-56px)] w-52 border-l bg-background transition-transform sm:hidden',
+					'fixed top-14 right-0 z-20 h-[calc(100vh-56px)] w-52 border-x bg-background transition-transform sm:hidden',
 					{
 						'translate-x-0': isOpen,
 						'translate-x-full': !isOpen,
