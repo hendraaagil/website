@@ -9,7 +9,7 @@
 		"bio": "I'm <strong>Hendra Agil</strong> — a frontend-focused software engineer with a full-stack mindset and a passion for crafting digital experiences that truly solve problems. With hands-on experience across companies and communities, I've led product development on both the backend and frontend. I enjoy building intuitive UIs, improving developer experience, and exploring what's next in the web ecosystem.",
 		"description": [
 			"👋 Hello! My name is <strong>Hendra Agil Syaputra</strong>, usually called <strong>Hendra</strong> / <strong>Agil</strong>. Born and lives in Karanganyar Regency, Central Java, Indonesia. Graduated from SMKN 2 Karanganyar in 2021 as a Software Engineering student. Currently studying at the Binus Online Learning.",
-			"I started learn about web development since 2019 with PHP language from the school. For now I spend more time to explore about software engineering using JavaScript, Node.js and React. I also still learn some other topics like accessibility, testing, CI/CD, etc."
+			"I'm a frontend-focused software engineer with a full-stack mindset — passionate about crafting digital experiences that actually solve problems. My journey started back in 2019 when I first picked up PHP in school, and since then I've been going deeper into JavaScript, Node.js, and React. I've had the chance to work across companies and communities, leading product development on both the frontend and backend side. Outside of building things, I'm always exploring what's next — accessibility, testing, CI/CD, you name it."
 		],
 		"skills": [
 			{
@@ -35,6 +35,7 @@
 					"Scss",
 					"Webpack",
 					"Tailwind",
+					"TanStack",
 					"Vite",
 					"Vue"
 				]
@@ -49,7 +50,8 @@
 					"MySQL",
 					"Nest.js",
 					"Node.js",
-					"PostgreSQL"
+					"PostgreSQL",
+					"Supabase"
 				]
 			}
 		],
