@@ -17,16 +17,25 @@ const { src, alt } = Astro.props
 const imageSrc = typeof src === 'string' ? src : src?.src
 const imageWidth = typeof src === 'object' ? src.width : undefined
 const imageHeight = typeof src === 'object' ? src.height : undefined
+const isVideo = imageSrc?.toLowerCase().endsWith('.mp4')
 ---
 
 <figure class="mt-3 border bg-muted text-center">
-	<img
-		src={imageSrc}
-		alt={alt}
-		width={imageWidth}
-		height={imageHeight}
-		class="w-full"
-	/>
+	{
+		isVideo ? (
+			<video src={imageSrc} controls class="w-full">
+				<track kind="captions" />
+			</video>
+		) : (
+			<img
+				src={imageSrc}
+				alt={alt}
+				width={imageWidth}
+				height={imageHeight}
+				class="w-full"
+			/>
+		)
+	}
 	{
 		alt && (
 			<figcaption class="py-2 text-xs text-muted-foreground">{alt}</figcaption>
