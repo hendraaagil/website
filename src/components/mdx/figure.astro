@@ -12,12 +12,15 @@ type Props = {
 }
 
 const { src, alt } = Astro.props
+const videoExtensions = ['.webm', '.mp4']
 
 // Handle local (object) and remote (string) images
 const imageSrc = typeof src === 'string' ? src : src?.src
 const imageWidth = typeof src === 'object' ? src.width : undefined
 const imageHeight = typeof src === 'object' ? src.height : undefined
-const isVideo = imageSrc?.toLowerCase().endsWith('.mp4')
+const isVideo =
+	imageSrc &&
+	videoExtensions.some((ext) => imageSrc.toLowerCase().endsWith(ext))
 ---
 
 <figure class="mt-3 border bg-muted text-center">
