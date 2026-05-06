@@ -94,7 +94,7 @@ Untuk mengaksesnya sangat mudah, tinggal arahkan saja host-nya ke local IP dari 
 | ---------------------------------- | -------------------------------------- |
 | ![Koneksi Redis](./redis-conn.png) | ![Koneksi PostgreSQL](./psql-conn.png) |
 
-Kemarin juga sempat eksplorasi cara agar kedua database ini bisa di ekspose ke luar local network. Di sini aku menemukan [Tailscale](https://tailscale.com/). Dia berfungsi sebagai tunnel yang menghubungkan antara server database dan client yang membutuhkan koneksi ke databasenya. Cuma ini sifatnya peer-to-peer jadi server & client harus menjalankan service Tailscale di saat yang bersamaan.
+Kemarin juga sempat eksplorasi cara agar kedua database ini bisa diekspos ke luar local network. Di sini aku menemukan [Tailscale](https://tailscale.com/). Dia berfungsi sebagai tunnel yang menghubungkan antara server database dan client yang membutuhkan koneksi ke databasenya. Cuma ini sifatnya peer-to-peer jadi server & client harus menjalankan service Tailscale di saat yang bersamaan.
 
 ### Instalasi Immich
 
@@ -106,7 +106,7 @@ Untuk instalasinya tinggal mengikuti dari dokumentasinya:
 
 Di situ sudah disediakan template Docker compose serta value .env yang dibutuhkan. Untuk Immich ini aku juga pasangkan [Cloudflare tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) (cloudflared) agar bisa diakses lewat global network dan domain aku sendiri. Saat ini aku pasangkan ke domain [photos.hndr.xyz](https://photos.hndr.xyz).
 
-Cloudflared ini bisa langsung ditambahkan di file Docker compose:
+Cloudflared ini bisa langsung ditambahkan ke file Docker compose:
 
 ```yml
 services:
@@ -128,7 +128,7 @@ services:
 
 ### Instalasi Open WebUI
 
-Ini hanya iseng coba-coba aja karena spesifikasi servernya akan sangat berat untuk menjalankan sebuah model 😂
+Ini hanya iseng coba-coba aja karena spesifikasi servernya akan sangat keberatan untuk menjalankan sebuah model 😂
 
 Sebelum melakukan instalasi ini, aku install [Ollama](https://ollama.com/download/linux) terlebih dahulu. Baru setelah itu menambahkan file Docker compose untuk Open WebUI beserta cloudflared agar bisa diakses di [llm.hndr.xyz](https://llm.hndr.xyz/):
 
