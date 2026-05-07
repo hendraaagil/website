@@ -7,7 +7,7 @@ tags:
   - deployment
   - story
 createdAt: 2026-05-06T17:15:00+07:00
-updatedAt: 2026-05-06T17:15:00+07:00
+updatedAt: 2026-05-07T11:00:00+07:00
 ---
 
 Tidak terasa 2026 sudah sampai di bulan Mei dan ini adalah tulisan pertama di tahun ini. Kali ini aku akan sedikit berbagi tentang pengalaman mencoba setup "home server" untuk berbagai kebutuhan pribadi aku.
@@ -163,6 +163,20 @@ Bisa dilihat di sini responnya sangat cepat bukan? 🤣
 
 <div className="max-w-lg">![LLM response info](./llm-response.png)</div>
 
+### Final Direktori
+
+Instalasi ketiga service tadi aku kumpulkan ke 1 folder `apps` dan struktur direktorinya kurang lebih seperti berikut:
+
+```
+apps/
+├── database-server
+│   └── compose.yml
+├── immich
+│   └── docker-compose.yml
+└── open-webui
+    └── compose.yml
+```
+
 ---
 
 ## Akses Remote SSH
@@ -185,7 +199,7 @@ Atau jika ingin lebih aman bisa menggunakan identity file (private key). Caranya
 
 Jika kita punya banyak akses server dan tidak ingin menghafal setiap IP servernya, bisa membuat file config di `~/.ssh/config` seperti berikut:
 
-```plain
+```
 Host agil-server
     HostName 192.168.x.x
     User hndr
