@@ -10,30 +10,30 @@
 		"format": "prettier --write ."
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^4.3.13",
-		"@astrojs/react": "^4.4.2",
-		"@astrojs/sitemap": "^3.7.0",
+		"@astrojs/mdx": "^6.0.1",
+		"@astrojs/react": "^5.0.6",
+		"@astrojs/sitemap": "^3.7.3",
 		"@giscus/react": "^3.1.0",
-		"@shikijs/transformers": "^4.0.2",
-		"@tailwindcss/vite": "^4.2.1",
+		"@shikijs/transformers": "^4.1.0",
+		"@tailwindcss/vite": "^4.3.0",
 		"@vercel/og": "^0.11.1",
-		"@yeskunall/astro-umami": "^0.0.7",
-		"astro": "^5.18.0",
+		"@yeskunall/astro-umami": "^0.0.8",
+		"astro": "^6.4.2",
 		"clsx": "^2.1.1",
-		"jsdom": "^27.4.0",
-		"lucide-react": "^0.577.0",
-		"react": "^19.2.4",
-		"react-dom": "^19.2.4",
-		"tailwind-merge": "^3.5.0",
-		"tailwindcss": "^4.2.1"
+		"jsdom": "^29.1.1",
+		"lucide-react": "^1.17.0",
+		"react": "^19.2.6",
+		"react-dom": "^19.2.6",
+		"tailwind-merge": "^3.6.0",
+		"tailwindcss": "^4.3.0"
 	},
 	"devDependencies": {
-		"@types/jsdom": "^27.0.0",
-		"@types/react": "^19.2.14",
+		"@types/jsdom": "^28.0.3",
+		"@types/react": "^19.2.15",
 		"@types/react-dom": "^19.2.3",
-		"prettier": "^3.8.1",
+		"prettier": "^3.8.3",
 		"prettier-plugin-astro": "^0.14.1",
-		"prettier-plugin-tailwindcss": "^0.7.2",
+		"prettier-plugin-tailwindcss": "^0.8.0",
 		"sharp": "^0.34.5"
 	}
 }

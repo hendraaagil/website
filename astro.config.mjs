@@ -10,24 +10,22 @@ import yeskunallumami from '@yeskunall/astro-umami'
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://hendraaagil.dev',
-	experimental: {
-		fonts: [
-			{
-				provider: fontProviders.fontsource(),
-				name: 'Gabarito',
-				cssVariable: '--font-gabarito',
-				weights: ['400 900'],
-			},
-			{
-				provider: fontProviders.fontsource(),
-				name: 'Google Sans Code',
-				cssVariable: '--font-google-sans-code',
-				weights: ['400 900'],
-				display: 'swap',
-				fallbacks: ['monospace'],
-			},
-		],
-	},
+	fonts: [
+		{
+			provider: fontProviders.fontsource(),
+			name: 'Gabarito',
+			cssVariable: '--font-gabarito',
+			weights: ['400 900'],
+		},
+		{
+			provider: fontProviders.fontsource(),
+			name: 'Google Sans Code',
+			cssVariable: '--font-google-sans-code',
+			weights: ['400 900'],
+			display: 'swap',
+			fallbacks: ['monospace'],
+		},
+	],
 	markdown: {
 		shikiConfig: {
 			theme: 'github-dark-dimmed',
