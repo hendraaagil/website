@@ -181,19 +181,19 @@ apps/
 
 ## Akses Remote SSH
 
-Oh iya, semua proses tadi tidak aku lakukan langsung lewat laptop server. Tapi aku remote dari SSH lewat WSL di mesin utama. Seharusnya secara default server SSH sudah ada dan jalan di server, bisa diverifikasi melalui perintah:
+Oh iya, semua proses tadi tidak aku lakukan langsung lewat laptop server. Tapi aku remote dari SSH di mesin utama. Seharusnya secara default server SSH sudah ada dan jalan di server, bisa diverifikasi melalui perintah:
 
 ```sh
 sudo systemctl status ssh
 ```
 
-Untuk akses dari WSL kita bisa semudah menggunakan perintah `ssh hndr@192.168.x.x` lalu nanti akan diminta password dari username `hndr`.
+Untuk akses dari mesin utama (Windows) kita bisa semudah menggunakan perintah `ssh hndr@192.168.x.x` lalu nanti akan diminta password dari username `hndr`.
 
 Atau jika ingin lebih aman bisa menggunakan identity file (private key). Caranya kurang lebih seperti berikut:
 
 1. Generate SSH key baru: `ssh-keygen -t ed25519 -C "isi-comment"`
 2. Masukkan public key ke `~/.ssh/authorized_keys` di server tujuan
-3. Akses melalui WSL: `ssh -i ~/path-to/identity-file hndr@192.168.x.x`
+3. Akses melalui SSH: `ssh -i ~/path-to/identity-file hndr@192.168.x.x`
 
 ### SSH Config
 
