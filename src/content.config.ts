@@ -1,5 +1,6 @@
-import { defineCollection, reference, z } from 'astro:content'
+import { defineCollection, reference } from 'astro:content'
 import { file, glob } from 'astro/loaders'
+import { z } from 'astro/zod'
 
 const software = defineCollection({
 	loader: file('src/data/software.json'),
@@ -60,6 +61,7 @@ const projectCategory = defineCollection({
 	loader: file('src/data/project-categories.json'),
 	schema: z.object({
 		name: z.string(),
+		position: z.number().optional(),
 	}),
 })
 

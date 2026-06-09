@@ -6,6 +6,9 @@ import SectionHeader from '@/components/section-header.astro'
 
 const projects = await getCollection('project')
 const categories = await getCollection('projectCategory')
+const sortedCategories = categories.sort(
+	(a, b) => (a.data.position ?? 999) - (b.data.position ?? 999),
+)
 const sortedProjects = projects.sort(
 	(a, b) => (b.data.position ?? 999) - (a.data.position ?? 999),
 )
@@ -32,7 +35,7 @@ const projectsByCategory = sortedProjects.reduce(
 	</section>
 
 	{
-		categories.map(
+		sortedCategories.map(
 			(category) =>
 				projectsByCategory[category.id] && (
 					<section class="border-b last:border-b-0">

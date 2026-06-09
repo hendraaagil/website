@@ -1,18 +1,22 @@
 [
 	{
 		"id": "personal",
-		"name": "Personal"
+		"name": "Personal",
+		"position": 1
 	},
 	{
 		"id": "fokuslah",
-		"name": "Fokuslah"
+		"name": "Fokuslah",
+		"position": 2
 	},
 	{
 		"id": "dicoding",
-		"name": "Dicoding"
+		"name": "Dicoding",
+		"position": 3
 	},
 	{
 		"id": "xcidic",
-		"name": "Xcidic"
+		"name": "Xcidic",
+		"position": 4
 	}
 ]
