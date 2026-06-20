@@ -1,0 +1,198 @@
+---
+title: Bermain Home Server / Bagian 2
+thumbnail: ./thumbnail.png
+thumbnailCredit: Photo by Zendure Power Station on Unsplash
+summary: Melanjutkan bermain home server, bagian kedua (mungkin terakhir).
+tags:
+  - deployment
+  - story
+createdAt: 2026-06-20T14:35:00+07:00
+updatedAt: 2026-06-20T14:35:00+07:00
+---
+
+Ini adalah lanjutan dari tulisan sebelumnya: [Bermain Home Server / Bagian 1](/blog/bermain-home-server-1). Kali ini kurang lebih akan membahas tentang migrasi service-service yang sudah ada, backup plan, dan juga monitoring.
+
+---
+
+## Kondisi Awal
+
+Saat ini ada beberapa service yang berjalan di cloud VPS:
+
+![Daftar service cloud](./service-cloud.png)
+
+Aku berencana untuk memindahkan semuanya dan drop service yang tidak terpakai seperti `gilbot_postgres` karena sudah ada service database yang jalan di server.
+
+---
+
+## Proses Migrasi
+
+### Koneksi Database
+
+Database URL yang aku pakai kurang lebih seperti berikut:
+
+```
+postgresql://{{POSTGRES_USER}}:{{POSTGRES_PASSWORD}}@postgres:5432/{{POSTGRES_DB}}
+```
+
+Karena aksesnya ke `postgres:5432` berarti container postgres harus bisa dijangkau oleh container lain, dalam kasus ini berarti container `gilbot`. Jadi, di file compose-nya aku tambahkan baris berikut:
+
+```yml
+networks:
+  app-network:
+    external: true
+    name: database-server_default
+```
+
+`database-server_default` ini adalah nama network database yang bisa dicek melalui perintah `docker network ls`. Sisanya tinggal sesuaikan nama user, password, dan database yang sudah dibuat sebelumnya.
+
+### GitHub Actions
+
+Karena ada beberapa service yang di-deploy dengan GitHub Actions, jadi aku perlu mencari cara agar bisa akses SSH ke server tanpa menggunakan public IP. Untungnya ini bisa terselesaikan dengan adanya Tailscale. Jadi, di runner GitHub Actions akan connect ke "tailnet" yang sama dengan server. Lalu, tinggal menggunakan IP yang sudah disediakan oleh Tailscale menggantikan public IP yang sebelumnya.
+
+Dari Tailscale pun sudah disediakan workflow-nya, jadi tinggal pakai saja:
+
+```yml
+- name: Tailscale
+  uses: tailscale/github-action@v4
+  with:
+    oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+    oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+    tags: tag:ci
+```
+
+Untuk dokumentasi lengkapnya bisa cek di: [tailscale.com/docs/integrations/github/github-action](https://tailscale.com/docs/integrations/github/github-action).
+
+### Akses Melalui Custom Domain
+
+Jika di cloud VPS menggunakan Nginx untuk domain pointing & Certbot untuk SSL. Di sini aku menggantinya dengan tunnel cloudflared. Jadi, di file compose aku tambahkan 1 service cloudflared:
+
+```yml
+services:
+  bot: ...
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: gilbot_cloudflared
+    restart: always
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - bot
+    networks:
+      - app-network
+```
+
+Selain itu, aku juga harus menambahkan domain pointing melalui menu [Tunnel](https://developers.cloudflare.com/tunnel/) di dashboard Cloudflare. Dan akhirnya, kita bisa akses service-nya melalui: [api-bot.aglabs.id](https://api-bot.aglabs.id/).
+
+Kurang lebih proses migrasinya hampir sama untuk semua service, terutama service yang aku buat sendiri. Untuk service yang tinggal pakai seperti [cobalt](https://github.com/imputnet/cobalt) dan [lanyard](https://github.com/phineas/lanyard), tinggal aku samakan seperti proses menjalankan [Immich](/blog/bermain-home-server-1/#instalasi-immich) sebelumnya.
+
+---
+
+## Monitoring
+
+Untuk memantau semua status service yang berjalan, aku menggunakan [Uptime Kuma](https://uptimekuma.org/) dengan konfigurasi yang cukup sederhana:
+
+```yml
+services:
+  uptime_kuma:
+    image: louislam/uptime-kuma:2
+    container_name: uptime_kuma
+    restart: unless-stopped
+    ports:
+      - 3001:3001
+    volumes:
+      - uptime_kuma:/app/data
+
+volumes:
+  uptime_kuma:
+```
+
+Di dalam dashboard juga sudah disediakan konfigurasi untuk tunnel-nya, sehingga bisa diakses melalui [uptime.hndr.xyz](https://uptime.hndr.xyz/status/server).
+
+<div class="max-w-2xl">![Uptime reverse proxy](./uptime-proxy.png)</div>
+
+Lalu, kita juga bisa setup notifikasi ke Telegram.
+
+<div class="max-w-2xl">![Uptime notification](./uptime-notif.png)</div>
+
+Selain itu aku juga menambahkan untuk monitoring internet 😅. Di sini aku juga baru tau kalau internet mati itu kadang hanya karena DNS resolver-nya gagal. Jadi, di sini aku pasang 2 monitoring untuk internet: ping dan DNS.
+
+| Ping monitoring     | DNS monitoring    |
+| ------------------- | ----------------- |
+| ![Ping](./ping.png) | ![DNS](./dns.png) |
+
+---
+
+## Power Backup
+
+Karena suplai listrik di sini ~sangat bagus~, jadi aku perlu mencari solusi backup-nya. Setidaknya jika listrik mati, server tidak langsung ikut mati. Jadi, solusi yang terpikirkan adalah menggunakan UPS.
+
+Setelah mencari-cari referensi aku menemukan [NUT (Network UPS Tools)](https://github.com/networkupstools/nut/). Di situ kita bisa melakukan monitoring ke UPS dan menambahkan konfigurasi auto-shutdown ketika baterai UPS berada di level tertentu.
+
+Lanjut ke pemilihan UPS yang support untuk koneksi USB monitoring, akhirnya aku memilih UPS Prolink PRO1200SFCU yang sebenarnya overkill untuk 1 server 😄. Awalnya menginginkan PRO700SFCU karena lebih kecil, tapi stoknya sedang kosong.
+
+Nah, dari Prolink juga menyarankan untuk menggunakan software [ViewPower](https://www.power-software-download.com/viewpower.html) untuk monitoring ke UPS. Tapi ketika aku coba jalankan di server, entah karena bentrok port atau bagaimana, internet di router jadi terblokir. Sehingga semua device tidak bisa mengakses internet melalui WLAN/LAN.
+
+### Setup NUT
+
+Proses setup NUT ini ternyata cukup banyak setelah dicoba-coba. Jadi banyak bolak-balik tanya ke Claude untuk minta bantuan, terutama masalah driver. Setelah driver berhasil diinstall, maka akan muncul di `nut-scanner`.
+
+```sh
+[nutdev1]
+        driver = "nutdrv_qx"
+        port = "auto"
+        vendorid = "0665"
+        productid = "5161"
+        product = "USB to Serial"
+        vendor = "INNO TECH"
+        bus = "001"
+        device = "003"
+        busport = "002"
+```
+
+Baru dari sini lanjut ke beberapa konfigurasi penting seperti:
+
+1. Set `MODE=standalone` di [`nut.conf`](https://networkupstools.org/docs/man/nut.conf.html) karena UPS, driver, monitoring ada di 1 mesin yang sama.
+2. Mendaftarkan UPS melalui [`ups.conf`](https://networkupstools.org/docs/man/ups.conf.html).
+3. Mendaftarkan user credential untuk mengakses UPS melalui [`upsd.users`](https://networkupstools.org/docs/man/upsd.users.html).
+
+Sampai pada akhirnya konfigurasi [`upsmon.conf`](https://networkupstools.org/docs/man/upsmon.conf.html). Di sini aku atur threshold jika UPS di level 20%, maka trigger shutdown.
+
+```sh
+MONITOR prolink@localhost
+SHUTDOWNCMD "/sbin/shutdown -h +0"
+LOWBATT 20
+```
+
+Setelah itu kita bisa cek status service NUT:
+
+```sh
+sudo systemctl status nut-server
+sudo systemctl status nut-monitor
+```
+
+Jika sudah running, maka bisa cek status UPS dengan perintah `upsc prolink` yang kurang lebih akan menghasilkan output:
+
+```sh
+battery.charge: 100
+device.type: ups
+driver.name: nutdrv_qx
+...
+```
+
+Alternatifnya bisa install `nut-cgi` sehingga bisa diakses melalui browser: http://192.168.x.x:8080/nut
+
+---
+
+## Recap
+
+Sepertinya cukup sampai di sini perjalanan setup home server mulai dari ganti hardware sampai setup UPS 😃
+
+Ini adalah daftar container yang sudah berjalan sampai saat ini:
+
+![Daftar container](./containers.png)
+
+Jadi, kedepannya jika butuh deployment untuk service "mainan" semoga tidak perlu sewa cloud VPS lagi 😂
+
+Masih ada beberapa kasus yang belum tercover seperti jika internet mati dari ISP, belum ada backup. Tapi menurutku tidak masalah untuk saat ini, karena penggunaan service-service ini juga tidak terlalu intens. Dan sejauh ini sudah cukup puas dengan yang sudah diselesaikan.
+
+Terima kasih dan sampai bertemu di tulisan berikutnya 👋
