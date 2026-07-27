@@ -1,6 +1,7 @@
 ---
 import { navigations } from '@/lib/constants'
-const pathname = Astro.url.pathname
+import { stripHtmlExtension } from '@/lib/utils'
+const pathname = stripHtmlExtension(Astro.url.pathname)
 ---
 
 <nav class="sticky top-0 z-10 hidden w-full border-b bg-background sm:block">

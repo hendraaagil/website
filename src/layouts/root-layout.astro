@@ -2,7 +2,7 @@
 import { Font } from 'astro:assets'
 import { ClientRouter } from 'astro:transitions'
 import { getEntry } from 'astro:content'
-import { getOpenGraphImageUrl } from '@/lib/utils'
+import { getOpenGraphImageUrl, stripHtmlExtension } from '@/lib/utils'
 
 import Favicon from '@/components/favicon.astro'
 import MobileNav from '@/components/mobile-nav'
@@ -29,8 +29,10 @@ type Props = {
 const about = await getEntry('about', 'main')
 
 const props = Astro.props
-const pathname = Astro.url.pathname
-const baseUrl = Astro.url.toString()
+const cleanUrl = new URL(Astro.url)
+cleanUrl.pathname = stripHtmlExtension(cleanUrl.pathname)
+const pathname = cleanUrl.pathname
+const baseUrl = cleanUrl.toString()
 const ogImage = getOpenGraphImageUrl(baseUrl)
 
 const baseTitle = about?.data.name ?? 'Hendra Agil'

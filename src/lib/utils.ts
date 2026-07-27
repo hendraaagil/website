@@ -18,6 +18,14 @@ export function getReadingTime(text: string) {
 	return Math.ceil(words / 200) || 1
 }
 
+// build.format is 'file', so paths carry a .html suffix. Strip it (and any
+// trailing slash) so canonical, og tags, and nav active-state use clean paths.
+export function stripHtmlExtension(pathname: string) {
+	return (
+		pathname.replace(/(?:index)?\.html$/, '').replace(/(.+)\/$/, '$1') || '/'
+	)
+}
+
 export function getOpenGraphImageUrl(url: string) {
 	return url.endsWith('/') ? `${url}open-graph.png` : `${url}/open-graph.png`
 }
