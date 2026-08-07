@@ -28,7 +28,8 @@
 			{ "name": "<strong>Steering Wheel:</strong> PXN V900 GEN2" },
 			{ "name": "<strong>Microphone:</strong> Fifine AM8" },
 			{ "name": "<strong>Headphone:</strong> dbE GM500" },
-			{ "name": "<strong>IEM:</strong> KZ EDA Balanced" },
+			{ "name": "<strong>IEM[0]:</strong> Kinera Celest Wyvern" },
+			{ "name": "<strong>IEM[1]:</strong> KZ EDA Balanced" },
 			{ "name": "<strong>TWS:</strong> Tozo Aerosound 3" },
 			{ "name": "<strong>Phone[0]:</strong> Google Pixel 6a" },
 			{ "name": "<strong>Phone[1]:</strong> Realme 9" }
