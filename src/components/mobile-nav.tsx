@@ -25,12 +25,16 @@ export default function MobileNav({ pathname }: { pathname: string }) {
 			</nav>
 
 			{/* Overlay */}
-			{isOpen && (
-				<div
-					className="fixed inset-0 z-10 bg-background/80 backdrop-blur-sm sm:hidden"
-					onClick={() => setIsOpen(false)}
-				/>
-			)}
+			<div
+				className={cn(
+					'fixed inset-0 z-10 bg-background/80 backdrop-blur-sm transition-opacity sm:hidden',
+					{
+						'opacity-100': isOpen,
+						'pointer-events-none opacity-0': !isOpen,
+					},
+				)}
+				onClick={() => setIsOpen(false)}
+			/>
 
 			{/* Menu */}
 			<div
