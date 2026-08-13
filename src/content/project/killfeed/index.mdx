@@ -1,0 +1,43 @@
+---
+position: 13
+category: personal
+thumbnail: ./thumbnail.png
+title: Killfeed
+description: Generate Valorant-style kill feed banners for your clips.
+github: https://github.com/hendraaagil/killfeed
+demo: https://killfeed.hndr.xyz
+---
+
+Generate Valorant-style kill feed banners for your clips — pick agents, weapons or abilities, team colors, headshots and wallbangs, then export as a transparent PNG.
+
+<LinkPreview href="https://killfeed.hndr.xyz" withImage fullImage />
+
+---
+
+## Features
+
+- 🎭 **Agents** - Every playable agent (portraits from valorant-api)
+- 🔫 **Loadout** - Weapons _or_ the killer agent's abilities
+- 🎨 **Team Colors** - Editable teammate/enemy colors (defaults `#67C4A1` / `#F15A4A`)
+- ✨ **Yellow Outline** - Teammate outline with `glow` / `inner` styles
+- 🎯 **Extras** - Headshot, wallbang, and swap (who kills who)
+- 👀 **Live Preview** - Fit-to-width, fixed 72px banner
+- 🖼️ **Export** - One-click transparent PNG with [html-to-image](https://github.com/bubkoo/html-to-image)
+
+---
+
+## Tech Stack
+
+- [React](https://react.dev) - UI Components
+- [TypeScript](https://www.typescriptlang.org) - Type Safety
+- [Vite](https://vite.dev) - Build Tool
+- [Tailwind CSS](https://tailwindcss.com) - Styling
+- [Bun](https://bun.sh) - Runtime & Package Manager
+- [Oxlint](https://oxc.rs) - Linting
+- [valorant-api.com](https://valorant-api.com) - Agent & Weapon Data
+
+---
+
+Agent and weapon data is prebuilt into a JSON file at build time, so there are no runtime API calls. A GitHub Action regenerates and commits it only when the upstream data changes.
+
+Game & assets by [VALORANT](https://playvalorant.com/en-us/), media from [VALORANT Wiki](https://wiki.playvalorant.com/), font [Barlow](https://fonts.google.com/specimen/Barlow). Not affiliated with or endorsed by Riot Games.
