@@ -14,7 +14,7 @@
 		"@astrojs/react": "^6.0.2",
 		"@astrojs/sitemap": "^3.7.3",
 		"@giscus/react": "^3.1.0",
-		"@shikijs/transformers": "^4.4.3",
+		"@shikijs/transformers": "4.1.0",
 		"@tailwindcss/vite": "^4.3.3",
 		"@vercel/og": "^0.11.1",
 		"@yeskunall/astro-umami": "^0.0.9",
@@ -24,6 +24,7 @@
 		"lucide-react": "^1.31.0",
 		"react": "^19.2.8",
 		"react-dom": "^19.2.8",
+		"sharp": "^0.35.3",
 		"tailwind-merge": "^3.6.0",
 		"tailwindcss": "^4.3.3"
 	},
@@ -33,7 +34,6 @@
 		"@types/react-dom": "^19.2.4",
 		"prettier": "^3.9.6",
 		"prettier-plugin-astro": "^0.14.1",
-		"prettier-plugin-tailwindcss": "^0.8.1",
-		"sharp": "^0.35.3"
+		"prettier-plugin-tailwindcss": "^0.8.1"
 	}
 }
