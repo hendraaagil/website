@@ -89,7 +89,36 @@ const post = defineCollection({
 			thumbnail: image(),
 			thumbnailCredit: z.string(),
 			summary: z.string(),
-			tags: z.array(z.string()),
+			tags: z
+				.array(
+					z.enum([
+						// category: exactly one required
+						'story',
+						'engineering',
+						// topic
+						'javascript',
+						'react',
+						'css',
+						'node',
+						'database',
+						'git',
+						'nextjs',
+						'astro',
+						'devops',
+						'homelab',
+						'best-practice',
+						'career',
+						'life',
+					]),
+				)
+				.min(2)
+				.max(3)
+				.refine(
+					(tags) =>
+						tags.filter((t) => t === 'story' || t === 'engineering').length ===
+						1,
+					{ message: 'tags must contain exactly one of: story, engineering' },
+				),
 			createdAt: z.date(),
 			updatedAt: z.date(),
 		}),
