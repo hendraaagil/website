@@ -1,0 +1,37 @@
+name: Notify Discord on new post
+
+on:
+  push:
+    branches: [main]
+    paths: ['src/content/post/**/index.mdx']
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Post new entries to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_ROLE_ID: ${{ vars.DISCORD_ROLE_ID }}
+        run: |
+          set -euo pipefail
+          added=$(git diff --name-only --diff-filter=A ${{ github.event.before }} ${{ github.sha }} -- 'src/content/post/**/index.mdx' || true)
+          [ -z "$added" ] && { echo "no new post"; exit 0; }
+
+          mention=${DISCORD_ROLE_ID:+"<@&$DISCORD_ROLE_ID> "}
+
+          for file in $added; do
+            slug=$(basename "$(dirname "$file")")
+            frontmatter=$(awk 'NR>1 && /^---$/{exit} NR>1' "$file")
+            title=$(printf '%s\n' "$frontmatter" | sed -n 's/^title: *//p' | head -1)
+            summary=$(printf '%s\n' "$frontmatter" | sed -n 's/^summary: *//p' | head -1)
+            url="https://hendraaagil.dev/blog/$slug"
+
+            jq -n --arg m "$mention" --arg t "$title" --arg d "$summary" --arg u "$url" \
+              '{content: "\($m)Ada tulisan yang baru dipublish nih! 🚀\n**\($t)**\n\($d)\n\($u)", allowed_mentions: {parse: ["roles"]}}' \
+              | curl -fsS -X POST -H 'Content-Type: application/json' -d @- "$DISCORD_WEBHOOK_URL"
+          done
