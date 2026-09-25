@@ -4,9 +4,11 @@
 		"avatar": "./avatar.png",
 		"name": "Hendra Agil",
 		"username": "hendraaagil",
+		"email": "hi@hndr.xyz",
+		"cv": "https://drive.google.com/file/d/12RkZgFIDxxUycx5nDAFY73npcAX4WZIu/view?usp=sharing",
 		"headline": "Software Crafter // Frontend Engineer",
 		"summary": "A frontend-focused software engineer with a full-stack mindset and a passion for crafting digital experiences that truly solve problems.",
-		"bio": "I'm <strong>Hendra Agil</strong> — a frontend-focused software engineer with a full-stack mindset and a passion for crafting digital experiences that truly solve problems. Over the past 4+ years, I've taken on founding engineer, product ownership, and team leadership roles across startups, companies, and communities, helping build platforms used by thousands of users. I enjoy building intuitive UIs, integrating AI-powered features, and exploring what's next in the web ecosystem.",
+		"bio": "A frontend-focused software engineer with a full-stack mindset and a passion for crafting digital experiences that truly solve problems. Over the past 4+ years, I've taken on founding engineer, product ownership, and team leadership roles across startups, companies, and communities, helping build platforms used by thousands of users. I enjoy building intuitive UIs, integrating AI-powered features, and exploring what's next in the web ecosystem.",
 		"description": [
 			"👋 Hello! My name is <strong>Hendra Agil Syaputra</strong>, usually called <strong>Hendra</strong> / <strong>Agil</strong>. Born and raised in Karanganyar Regency, Central Java, Indonesia. Graduated from SMKN 2 Karanganyar in 2021 as a Software Engineering student, and currently studying at Binus Online Learning.",
 			"I'm a frontend-focused software engineer with a full-stack mindset — passionate about crafting digital experiences that actually solve problems. My journey started back in 2019 when I first picked up PHP in school, and since then I've gone deeper into JavaScript, Node.js, and React. Over the past 4+ years, I've taken on founding engineer, product ownership, and team leadership roles across companies and communities, building platforms used by thousands of users.",

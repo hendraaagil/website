@@ -1,11 +1,15 @@
 ---
+import { Image } from 'astro:assets'
 import { getCollection, getEntry } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 import PostCard from '@/components/post-card.astro'
+import ProjectCard from '@/components/project-card.astro'
+import SectionHeader from '@/components/section-header.astro'
 import { ChevronRight } from 'lucide-react'
 
 const about = await getEntry('about', 'main')
 const posts = await getCollection('post')
+const projects = await getCollection('project')
 
 const latestPosts = posts
 	.sort(
@@ -14,39 +18,99 @@ const latestPosts = posts
 			new Date(a.data.createdAt).getTime(),
 	)
 	.slice(0, 3)
+
+const latestProjects = projects
+	.sort((a, b) => (b.data.position ?? 999) - (a.data.position ?? 999))
+	.slice(0, 3)
 ---
 
 <RootLayout>
 	<section class="border-b p-3 sm:p-6">
-		<h1 class="text-3xl sm:text-4xl">
-			Hi, I'm {about?.data.name ?? 'there'} 👋
-		</h1>
+		<div class="flex items-center gap-6">
+			{
+				about && (
+					<Image
+						src={about.data.avatar}
+						alt={about.data.name}
+						format="webp"
+						class="hidden size-24 shrink-0 border-2 border-primary object-cover sm:block"
+						transition:name="avatar"
+						loading="eager"
+						fetchpriority="high"
+					/>
+				)
+			}
+			<div>
+				<h1 class="text-3xl sm:text-4xl">
+					Hi, I'm <span class="[font:inherit]" transition:name="name"
+						>{about?.data.name ?? 'there'}</span
+					> 👋
+				</h1>
+				{
+					about?.data.headline && (
+						<p class="mt-1 text-muted-foreground">{about.data.headline}</p>
+					)
+				}
+			</div>
+		</div>
 		{
 			about?.data.bio && (
 				<p
-					class="mt-2 text-pretty text-muted-foreground"
+					class="mt-4 text-pretty text-muted-foreground"
 					set:html={about.data.bio}
 				/>
 			)
 		}
+		{
+			about && (
+				<ul class="mt-4 flex flex-wrap gap-2">
+					<li>
+						<a
+							href={`mailto:${about.data.email}`}
+							class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
+						>
+							Email
+						</a>
+					</li>
+					<li>
+						<a
+							href={about.data.cv}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
+						>
+							View my CV
+						</a>
+					</li>
+					<li>
+						<a
+							href="/about"
+							class="inline-flex items-center px-4 py-2 text-muted-foreground transition-colors hover:text-foreground"
+						>
+							More about me
+							<ChevronRight className="ml-2 size-4 shrink-0" />
+						</a>
+					</li>
+				</ul>
+			)
+		}
 	</section>
 
+	{
+		latestProjects.length > 0 && (
+			<section class="border-b">
+				<SectionHeader title="Latest works" href="/works" />
+				<div class="grid gap-2 p-3 sm:grid-cols-2 sm:gap-3 sm:p-6 lg:grid-cols-3">
+					{latestProjects.map((project) => (
+						<ProjectCard project={project} />
+					))}
+				</div>
+			</section>
+		)
+	}
+
 	<section>
-		<div
-			class="sticky top-14 z-10 flex items-stretch border-b bg-background sm:top-15"
-		>
-			<h2 class="px-3 py-2 text-xl sm:px-6 sm:py-3 sm:text-2xl">
-				Latest posts
-			</h2>
-			<div class="flex-1 border-l diagonal-lines"></div>
-			<a
-				href="/blog"
-				class="flex items-center border-l px-3 text-base text-muted-foreground transition-colors hover:text-foreground sm:px-6"
-			>
-				<span>View all</span>
-				<ChevronRight className="ml-2 size-4 shrink-0 sm:size-5" />
-			</a>
-		</div>
+		<SectionHeader title="Latest posts" href="/blog" />
 		<div class="grid gap-2 p-3 sm:gap-3 sm:p-6">
 			{latestPosts.map((post) => <PostCard post={post} />)}
 		</div>
