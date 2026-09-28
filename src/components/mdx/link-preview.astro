@@ -65,24 +65,20 @@ const image = data?.image || '/placeholder.png'
 		rel="noopener noreferrer"
 		class="block no-underline"
 	>
-		{
-			withImage && (
-				<div class="overflow-hidden">
-					<img
-						src={image}
-						alt={title}
-						class:list={[
-							'w-full',
-							{ 'max-h-24 object-cover sm:max-h-32': !fullImage },
-						]}
-					/>
-				</div>
-			)
-		}
+		{withImage && (
+			<div class="overflow-hidden">
+				<img
+					src={image}
+					alt={title}
+					class:list={[
+						'w-full',
+						{ 'max-h-24 object-cover sm:max-h-32': !fullImage },
+					]}
+				/>
+			</div>
+		)}
 		<div class="px-3 py-2">
-			<p
-				class="line-clamp-1 font-medium underline-offset-2 transition-colors group-hover:text-primary group-hover:underline"
-			>
+			<p class="line-clamp-1 font-medium underline-offset-2 transition-colors group-hover:text-primary group-hover:underline">
 				{title}
 			</p>
 			<p class="line-clamp-3 text-sm text-muted-foreground">{description}</p>

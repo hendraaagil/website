@@ -35,24 +35,20 @@ const years = Object.keys(postsByYear)
 		</p>
 	</section>
 
-	{
-		years.map((year) => (
-			<section class="border-b last:border-b-0">
-				<SectionHeader title={year.toString()} />
-				<div class="grid gap-2 p-3 sm:gap-3 sm:p-6">
-					{postsByYear[year].map((post) => (
-						<PostCard post={post} />
-					))}
-				</div>
-			</section>
-		))
-	}
-
-	{
-		sortedPosts.length === 0 && (
-			<div class="p-3 text-center text-muted-foreground sm:p-6">
-				<p>No posts yet. Check back soon!</p>
+	{years.map((year) => (
+		<section class="border-b last:border-b-0">
+			<SectionHeader title={year.toString()} />
+			<div class="grid gap-2 p-3 sm:gap-3 sm:p-6">
+				{postsByYear[year].map((post) => (
+					<PostCard post={post} />
+				))}
 			</div>
-		)
-	}
+		</section>
+	))}
+
+	{sortedPosts.length === 0 && (
+		<div class="p-3 text-center text-muted-foreground sm:p-6">
+			<p>No posts yet. Check back soon!</p>
+		</div>
+	)}
 </RootLayout>

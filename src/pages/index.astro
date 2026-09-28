@@ -27,98 +27,90 @@ const latestProjects = projects
 <RootLayout>
 	<section class="border-b p-3 sm:p-6">
 		<div class="flex items-center gap-6">
-			{
-				about && (
-					<Image
-						src={about.data.avatar}
-						alt={about.data.firstName}
-						format="webp"
-						class="hidden size-24 shrink-0 border-2 border-primary object-cover sm:block"
-						transition:name="avatar"
-						loading="eager"
-						fetchpriority="high"
-					/>
-				)
-			}
+			{about && (
+				<Image
+					src={about.data.avatar}
+					alt={about.data.firstName}
+					format="webp"
+					class="hidden size-24 shrink-0 border-2 border-primary object-cover sm:block"
+					transition:name="avatar"
+					loading="eager"
+					fetchpriority="high"
+				/>
+			)}
 			<div>
 				<h1 class="text-3xl sm:text-4xl">
-					Hi, I'm <span class="[font:inherit]" transition:name="name"
-						>{about?.data.firstName ?? 'there'}</span
-					> 👋
+					Hi, I'm{' '}
+					<span class="[font:inherit]" transition:name="name">
+						{about?.data.firstName ?? 'there'}
+					</span>{' '}
+					👋
 				</h1>
-				{
-					about?.data.headline && (
-						<p class="mt-1 text-muted-foreground">{about.data.headline}</p>
-					)
-				}
+				{about?.data.headline && (
+					<p class="mt-1 text-muted-foreground">{about.data.headline}</p>
+				)}
 			</div>
 		</div>
-		{
-			about?.data.bio && (
-				<p
-					class="mt-4 text-pretty text-muted-foreground"
-					set:html={about.data.bio}
-				/>
-			)
-		}
-		{
-			about && (
-				<ul class="mt-4 flex flex-wrap gap-2">
-					<li>
-						<a
-							href={`mailto:${about.data.email}`}
-							class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
-						>
-							Email
-						</a>
-					</li>
-					<li>
-						<a
-							href={about.data.cv}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
-						>
-							View my CV
-						</a>
-					</li>
-					<li>
-						<a
-							href="/about"
-							class="inline-flex items-center px-4 py-2 text-muted-foreground transition-colors hover:text-foreground"
-						>
-							More about me
-							<ChevronRight className="ml-2 size-4 shrink-0" />
-						</a>
-					</li>
-				</ul>
-			)
-		}
+		{about?.data.bio && (
+			<p
+				class="mt-4 text-pretty text-muted-foreground"
+				set:html={about.data.bio}
+			/>
+		)}
+		{about && (
+			<ul class="mt-4 flex flex-wrap gap-2">
+				<li>
+					<a
+						href={`mailto:${about.data.email}`}
+						class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
+					>
+						Email
+					</a>
+				</li>
+				<li>
+					<a
+						href={about.data.cv}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
+					>
+						View my CV
+					</a>
+				</li>
+				<li>
+					<a
+						href="/about"
+						class="inline-flex items-center px-4 py-2 text-muted-foreground transition-colors hover:text-foreground"
+					>
+						More about me
+						<ChevronRight className="ml-2 size-4 shrink-0" />
+					</a>
+				</li>
+			</ul>
+		)}
 	</section>
 
-	{
-		latestProjects.length > 0 && (
-			<section class="border-b">
-				<SectionHeader title="Latest works" href="/works" />
-				<div class="grid gap-2 p-3 sm:grid-cols-2 sm:gap-3 sm:p-6 lg:grid-cols-3">
-					{latestProjects.map((project) => (
-						<ProjectCard project={project} />
-					))}
-				</div>
-			</section>
-		)
-	}
+	{latestProjects.length > 0 && (
+		<section class="border-b">
+			<SectionHeader title="Latest works" href="/works" />
+			<div class="grid gap-2 p-3 sm:grid-cols-2 sm:gap-3 sm:p-6 lg:grid-cols-3">
+				{latestProjects.map((project) => (
+					<ProjectCard project={project} />
+				))}
+			</div>
+		</section>
+	)}
 
 	<section>
 		<SectionHeader title="Latest posts" href="/blog" />
 		<div class="grid gap-2 p-3 sm:gap-3 sm:p-6">
-			{latestPosts.map((post) => <PostCard post={post} />)}
+			{latestPosts.map((post) => (
+				<PostCard post={post} />
+			))}
 		</div>
 
-		{
-			latestPosts.length === 0 && (
-				<p class="text-center text-muted-foreground">No posts yet.</p>
-			)
-		}
+		{latestPosts.length === 0 && (
+			<p class="text-center text-muted-foreground">No posts yet.</p>
+		)}
 	</section>
 </RootLayout>

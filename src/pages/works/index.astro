@@ -34,27 +34,23 @@ const projectsByCategory = sortedProjects.reduce(
 		</p>
 	</section>
 
-	{
-		sortedCategories.map(
-			(category) =>
-				projectsByCategory[category.id] && (
-					<section class="border-b last:border-b-0">
-						<SectionHeader title={category.data.name} />
-						<div class="grid gap-2 p-3 sm:grid-cols-2 sm:gap-3 sm:p-6 lg:grid-cols-3">
-							{projectsByCategory[category.id].map((project) => (
-								<ProjectCard project={project} />
-							))}
-						</div>
-					</section>
-				),
-		)
-	}
+	{sortedCategories.map(
+		(category) =>
+			projectsByCategory[category.id] && (
+				<section class="border-b last:border-b-0">
+					<SectionHeader title={category.data.name} />
+					<div class="grid gap-2 p-3 sm:grid-cols-2 sm:gap-3 sm:p-6 lg:grid-cols-3">
+						{projectsByCategory[category.id].map((project) => (
+							<ProjectCard project={project} />
+						))}
+					</div>
+				</section>
+			),
+	)}
 
-	{
-		sortedProjects.length === 0 && (
-			<div class="p-3 text-center text-muted-foreground sm:p-6">
-				<p>No projects yet. Check back soon!</p>
-			</div>
-		)
-	}
+	{sortedProjects.length === 0 && (
+		<div class="p-3 text-center text-muted-foreground sm:p-6">
+			<p>No projects yet. Check back soon!</p>
+		</div>
+	)}
 </RootLayout>

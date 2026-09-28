@@ -28,13 +28,11 @@ const formattedDate = formatDate(createdAt, 'short')
 			{formattedDate}
 		</time>
 		<div class="absolute top-0 right-0 z-20 m-1 flex gap-1">
-			{
-				tags.map((tag) => (
-					<span class="bg-background/50 px-2 py-1 text-xs backdrop-blur-sm">
-						{tag}
-					</span>
-				))
-			}
+			{tags.map((tag) => (
+				<span class="bg-background/50 px-2 py-1 text-xs backdrop-blur-sm">
+					{tag}
+				</span>
+			))}
 		</div>
 		<a
 			href={`/blog/${post.id}`}

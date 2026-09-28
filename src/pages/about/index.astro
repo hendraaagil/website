@@ -47,7 +47,9 @@ const avatar = await getImage({
 			/>
 			<div class="space-y-1">
 				<h1 class="text-3xl sm:text-4xl">
-					<span class="[font:inherit]" transition:name="name">{name}</span>{' '}
+					<span class="[font:inherit]" transition:name="name">
+						{name}
+					</span>{' '}
 					{lastName}
 				</h1>
 				<p class="text-muted-foreground">@{username}</p>
@@ -56,24 +58,24 @@ const avatar = await getImage({
 	</section>
 
 	<section class="space-y-2.5 border-b p-3 sm:p-6">
-		{description.map((paragraph) => <p set:html={paragraph} />)}
+		{description.map((paragraph) => (
+			<p set:html={paragraph} />
+		))}
 	</section>
 
 	<section class="border-b">
 		<SectionHeader title="Skills" />
 		<div class="grid gap-3 p-3 sm:grid-cols-3 sm:p-6">
-			{
-				skills.map((skill) => (
-					<div>
-						<h3 class="mb-1 text-lg font-semibold sm:text-xl">{skill.name}</h3>
-						<ul class="flex flex-wrap gap-2">
-							{skill.items.map((item) => (
-								<Badge as="li">{item}</Badge>
-							))}
-						</ul>
-					</div>
-				))
-			}
+			{skills.map((skill) => (
+				<div>
+					<h3 class="mb-1 text-lg font-semibold sm:text-xl">{skill.name}</h3>
+					<ul class="flex flex-wrap gap-2">
+						{skill.items.map((item) => (
+							<Badge as="li">{item}</Badge>
+						))}
+					</ul>
+				</div>
+			))}
 		</div>
 	</section>
 
@@ -85,20 +87,18 @@ const avatar = await getImage({
 				set:html={social.description}
 			/>
 			<ul class="flex flex-wrap gap-2">
-				{
-					social.links.map((link) => (
-						<li>
-							<a
-								href={link.url}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
-							>
-								{link.name}
-							</a>
-						</li>
-					))
-				}
+				{social.links.map((link) => (
+					<li>
+						<a
+							href={link.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-block border px-4 py-2 transition-colors hover:bg-muted"
+						>
+							{link.name}
+						</a>
+					</li>
+				))}
 			</ul>
 		</div>
 	</section>

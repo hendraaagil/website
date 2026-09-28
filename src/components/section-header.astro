@@ -9,20 +9,16 @@ type Props = {
 const { title, href, linkText = 'View all' } = Astro.props
 ---
 
-<div
-	class="sticky top-14 z-10 flex items-stretch border-b bg-background sm:top-15"
->
+<div class="sticky top-14 z-10 flex items-stretch border-b bg-background sm:top-15">
 	<h2 class="px-3 py-2 text-xl sm:px-6 sm:py-3 sm:text-2xl">{title}</h2>
 	<div class="flex-1 border-l diagonal-lines"></div>
-	{
-		href && (
-			<a
-				href={href}
-				class="flex items-center border-l px-3 text-base text-muted-foreground transition-colors hover:text-foreground sm:px-6"
-			>
-				<span>{linkText}</span>
-				<ChevronRight className="ml-2 size-4 shrink-0 sm:size-5" />
-			</a>
-		)
-	}
+	{href && (
+		<a
+			href={href}
+			class="flex items-center border-l px-3 text-base text-muted-foreground transition-colors hover:text-foreground sm:px-6"
+		>
+			<span>{linkText}</span>
+			<ChevronRight className="ml-2 size-4 shrink-0 sm:size-5" />
+		</a>
+	)}
 </div>

@@ -70,19 +70,15 @@ const thumbnail = await getImage({
 				fetchpriority="high"
 				priority
 			/>
-			{
-				thumbnailCredit && (
-					<figcaption class="py-2 text-xs text-muted-foreground">
-						{thumbnailCredit}
-					</figcaption>
-				)
-			}
+			{thumbnailCredit && (
+				<figcaption class="py-2 text-xs text-muted-foreground">
+					{thumbnailCredit}
+				</figcaption>
+			)}
 		</figure>
 
 		<div class="space-y-3 p-3 sm:p-6">
-			<div
-				class="flex items-center text-sm font-medium text-muted-foreground sm:text-base [&_span]:text-[length:inherit]"
-			>
+			<div class="flex items-center text-sm font-medium text-muted-foreground sm:text-base [&_span]:text-[length:inherit]">
 				<span class="flex items-center gap-2">
 					<span>Published at</span>
 					<time datetime={createdAt.toISOString()}>{formattedDate}</time>
@@ -100,7 +96,9 @@ const thumbnail = await getImage({
 			</p>
 
 			<div class="flex items-center gap-2">
-				{tags.map((tag) => <Badge>{tag}</Badge>)}
+				{tags.map((tag) => (
+					<Badge>{tag}</Badge>
+				))}
 			</div>
 		</div>
 

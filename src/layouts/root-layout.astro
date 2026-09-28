@@ -59,9 +59,11 @@ const isArticle = !!props.metadata?.article
 		/>
 		<meta
 			name="googlebot"
-			content={props.metadata?.noIndex
-				? 'noindex, nofollow'
-				: 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'}
+			content={
+				props.metadata?.noIndex
+					? 'noindex, nofollow'
+					: 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'
+			}
 		/>
 		<link rel="canonical" href={baseUrl} />
 
@@ -88,27 +90,25 @@ const isArticle = !!props.metadata?.article
 		<meta name="twitter:image:width" content="1200" />
 		<meta name="twitter:image:height" content="630" />
 
-		{
-			isArticle && (
-				<>
-					<meta
-						property="article:published_time"
-						content={props.metadata!.article!.publishedTime}
-					/>
-					<meta
-						property="article:modified_time"
-						content={props.metadata!.article!.modifiedTime}
-					/>
-					<meta
-						property="article:author"
-						content={props.metadata!.article!.author}
-					/>
-					{props.metadata!.article!.tags.map((tag) => (
-						<meta property="article:tag" content={tag} />
-					))}
-				</>
-			)
-		}
+		{isArticle && (
+			<>
+				<meta
+					property="article:published_time"
+					content={props.metadata!.article!.publishedTime}
+				/>
+				<meta
+					property="article:modified_time"
+					content={props.metadata!.article!.modifiedTime}
+				/>
+				<meta
+					property="article:author"
+					content={props.metadata!.article!.author}
+				/>
+				{props.metadata!.article!.tags.map((tag) => (
+					<meta property="article:tag" content={tag} />
+				))}
+			</>
+		)}
 
 		<slot name="head" />
 		<Font cssVariable="--font-gabarito" preload />
@@ -119,9 +119,7 @@ const isArticle = !!props.metadata?.article
 		<Navigation />
 		<MobileNav client:media="(max-width: 640px)" pathname={pathname} />
 
-		<main
-			class="relative z-2 mx-auto mb-11.5 min-h-content max-w-5xl flex-1 border-x bg-background sm:mb-18.5"
-		>
+		<main class="relative z-2 mx-auto mb-11.5 min-h-content max-w-5xl flex-1 border-x bg-background sm:mb-18.5">
 			<slot />
 		</main>
 
