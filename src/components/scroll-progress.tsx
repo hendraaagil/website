@@ -30,26 +30,19 @@ export default function ScrollProgress({ targetId }: { targetId: string }) {
 				aria-label="Back to top"
 				onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 				className={cn(
-					'pointer-events-auto relative grid size-12 cursor-pointer place-items-center rounded-full bg-background text-muted-foreground transition-all hover:bg-[color-mix(in_oklab,var(--color-primary)_20%,var(--color-background))] hover:text-foreground',
+					'pointer-events-auto relative grid size-12 cursor-pointer place-items-center bg-background text-muted-foreground transition-all hover:bg-[color-mix(in_oklab,var(--color-primary)_20%,var(--color-background))] hover:text-foreground',
 					isVisible ? 'visible opacity-100' : 'invisible opacity-0',
 				)}
 			>
-				<svg
-					viewBox="0 0 36 36"
-					className="absolute inset-0 size-full -rotate-90"
-				>
-					<circle
-						cx="18"
-						cy="18"
-						r="16"
+				<svg viewBox="0 0 36 36" className="absolute inset-0 size-full">
+					<path
+						d="M18 1H35V35H1V1Z"
 						fill="none"
 						strokeWidth="2"
 						className="stroke-border"
 					/>
-					<circle
-						cx="18"
-						cy="18"
-						r="16"
+					<path
+						d="M18 1H35V35H1V1Z"
 						fill="none"
 						strokeWidth="2"
 						pathLength="100"
