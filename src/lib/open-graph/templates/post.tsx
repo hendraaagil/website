@@ -14,7 +14,7 @@ export default async (postId: string, url: string) => {
 	if (!about) throw new Error('About not found')
 	if (!post) throw new Error('Post not found')
 
-	const { name, headline } = about.data
+	const { firstName: name, headline } = about.data
 	const { title } = post.data
 	const [avatarBuffer, thumbnailBuffer] = await Promise.all([
 		readFile(join(process.cwd(), 'src/data', './avatar.png')),

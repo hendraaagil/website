@@ -2,7 +2,8 @@
 	{
 		"id": "main",
 		"avatar": "./avatar.png",
-		"name": "Hendra Agil",
+		"firstName": "Hendra Agil",
+		"lastName": "Syaputra",
 		"username": "hendraaagil",
 		"email": "hi@hndr.xyz",
 		"cv": "https://drive.google.com/file/d/12RkZgFIDxxUycx5nDAFY73npcAX4WZIu/view?usp=sharing",

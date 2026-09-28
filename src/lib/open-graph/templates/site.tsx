@@ -9,7 +9,7 @@ export default async (title?: string) => {
 	const about = await getEntry('about', 'main')
 	if (!about) throw new Error('About not found')
 
-	const { name, headline } = about.data
+	const { firstName: name, headline } = about.data
 	const avatarBuffer = await readFile(
 		join(process.cwd(), 'src/data', './avatar.png'),
 	)

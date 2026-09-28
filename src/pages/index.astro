@@ -31,7 +31,7 @@ const latestProjects = projects
 				about && (
 					<Image
 						src={about.data.avatar}
-						alt={about.data.name}
+						alt={about.data.firstName}
 						format="webp"
 						class="hidden size-24 shrink-0 border-2 border-primary object-cover sm:block"
 						transition:name="avatar"
@@ -43,7 +43,7 @@ const latestProjects = projects
 			<div>
 				<h1 class="text-3xl sm:text-4xl">
 					Hi, I'm <span class="[font:inherit]" transition:name="name"
-						>{about?.data.name ?? 'there'}</span
+						>{about?.data.firstName ?? 'there'}</span
 					> 👋
 				</h1>
 				{

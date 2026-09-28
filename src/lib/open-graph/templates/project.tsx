@@ -14,7 +14,7 @@ export default async (projectId: string, url: string) => {
 	if (!about) throw new Error('About not found')
 	if (!project) throw new Error('Project not found')
 
-	const { name, headline } = about.data
+	const { firstName: name, headline } = about.data
 	const { title } = project.data
 	const [avatarBuffer, thumbnailBuffer] = await Promise.all([
 		readFile(join(process.cwd(), 'src/data', './avatar.png')),

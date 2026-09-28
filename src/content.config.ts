@@ -33,7 +33,8 @@ const about = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			avatar: image(),
-			name: z.string(),
+			firstName: z.string(),
+			lastName: z.string(),
 			username: z.string(),
 			email: z.string(),
 			cv: z.string(),

@@ -35,10 +35,12 @@ const pathname = cleanUrl.pathname
 const baseUrl = cleanUrl.toString()
 const ogImage = getOpenGraphImageUrl(baseUrl)
 
-const baseTitle = about?.data.name ?? 'Hendra Agil'
+const baseTitle = about?.data.firstName ?? 'Hendra Agil'
 const title = props.metadata?.title
 	? `${props.metadata.title} / ${baseTitle}`
-	: baseTitle
+	: pathname === '/' && about?.data.headline
+		? `${baseTitle} — ${about.data.headline}`
+		: baseTitle
 const description = props.metadata?.description ?? about?.data.summary ?? ''
 const isArticle = !!props.metadata?.article
 ---
