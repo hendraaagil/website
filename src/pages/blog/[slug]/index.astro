@@ -7,6 +7,7 @@ import PostComment from '@/components/post-comment'
 import { mdxComponents } from '@/components/mdx'
 import { formatDate, getReadingTime } from '@/lib/utils'
 import Badge from '@/components/badge'
+import { ChevronRight } from 'lucide-react'
 
 export async function getStaticPaths() {
 	const posts = await getCollection('post')
@@ -28,7 +29,10 @@ const {
 	createdAt,
 	updatedAt,
 } = post.data
-const { Content } = await render(post)
+const { Content, headings } = await render(post)
+const toc = headings.filter(
+	(heading) => heading.depth === 2 || heading.depth === 3,
+)
 
 const readingTime = getReadingTime(post.body ?? '')
 const formattedDate = formatDate(createdAt, 'long')
@@ -104,6 +108,24 @@ const thumbnail = await getImage({
 
 		<hr class="border-border" />
 
+		{toc.length > 0 && (
+			<details class="group border-b">
+				<summary class="flex cursor-pointer list-none items-center gap-2 px-3 py-2 text-base font-medium text-muted-foreground transition-colors hover:text-foreground sm:px-6 sm:py-3 sm:text-lg [&::-webkit-details-marker]:hidden">
+					<ChevronRight className="size-4 shrink-0 transition-transform group-open:rotate-90" />
+					Table of contents
+				</summary>
+				<ol class="space-y-1 pr-3 pb-3 pl-9 sm:pr-6 sm:pb-6 sm:pl-12">
+					{toc.map((heading) => (
+						<li class:list={[heading.depth === 3 && 'pl-4']}>
+							<a href={`#${heading.slug}`} class="underline hover:text-primary">
+								{heading.text}
+							</a>
+						</li>
+					))}
+				</ol>
+			</details>
+		)}
+
 		<section class="p-3 sm:p-6">
 			<Content components={mdxComponents} />
 		</section>
@@ -114,4 +136,5 @@ const thumbnail = await getImage({
 			<PostComment client:load />
 		</section>
 	</article>
+
 </RootLayout>
