@@ -2,12 +2,7 @@
 import { Link } from 'lucide-react'
 
 const content = await Astro.slots.render('default')
-const slug = content
-	.toLowerCase()
-	.replace(/<[^>]*>/g, '')
-	.replace(/[^\w\s-]/g, '')
-	.replace(/\s+/g, '-')
-	.trim()
+const slug = Astro.props.id
 ---
 
 <h2 id={slug} class="group my-3 scroll-mt-20">
