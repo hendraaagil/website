@@ -3,6 +3,7 @@ import { Image, getImage } from 'astro:assets'
 import { getCollection, render } from 'astro:content'
 import RootLayout from '@/layouts/root-layout.astro'
 import PostComment from '@/components/post-comment'
+import ScrollProgress from '@/components/scroll-progress'
 
 import { mdxComponents } from '@/components/mdx'
 import { formatDate, getReadingTime } from '@/lib/utils'
@@ -126,7 +127,7 @@ const thumbnail = await getImage({
 			</details>
 		)}
 
-		<section class="p-3 sm:p-6">
+		<section id="post-content" class="p-3 sm:p-6">
 			<Content components={mdxComponents} />
 		</section>
 
@@ -137,4 +138,5 @@ const thumbnail = await getImage({
 		</section>
 	</article>
 
+	<ScrollProgress targetId="post-content" client:idle />
 </RootLayout>
