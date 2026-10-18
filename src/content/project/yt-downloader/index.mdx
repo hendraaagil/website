@@ -1,0 +1,33 @@
+---
+position: 14
+category: personal
+thumbnail: ./thumbnail.png
+title: YT Downloader
+description: Self-hosted YouTube downloader.
+github: https://github.com/hendraaagil/yt-downloader
+---
+
+Paste YouTube links, pick MP3 or MP4, and pull the files straight from the queue — a self-hosted downloader that runs on your own network.
+
+---
+
+## Features
+
+- 📋 **Paste Links** - One URL per line, queued in a single batch
+- 🎵 **MP3 / MP4** - Audio with embedded metadata + cover art, or video
+- ⚡ **Live Queue** - Job status streamed over SSE, no refresh
+- 🧹 **Auto Cleanup** - Downloads swept after a 12h TTL
+- 🍪 **Cookie Rotation** - Round-robin cookies to dodge bot gates / 429s
+- 🏠 **Self-Hosted** - LAN only, one `docker compose up`
+
+---
+
+## Tech Stack
+
+- [Bun](https://bun.sh) - Runtime & HTTP server
+- [TypeScript](https://www.typescriptlang.org) - Type Safety
+- [React](https://react.dev) - UI Components
+- [Vite](https://vite.dev) - Build Tool
+- [Tailwind CSS](https://tailwindcss.com) - Styling
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) + [FFmpeg](https://ffmpeg.org) - Download & Transcode
+- [Docker](https://www.docker.com) - Packaging & Reverse Proxy
