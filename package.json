@@ -19,7 +19,7 @@
 		"@astrojs/react": "7.1.0",
 		"@astrojs/sitemap": "^3.7.4",
 		"@giscus/react": "^3.1.0",
-		"@shikijs/transformers": "4.1.0",
+		"@shikijs/transformers": "4.5.0",
 		"@tailwindcss/vite": "^4.3.3",
 		"@vercel/og": "^0.11.1",
 		"@yeskunall/astro-umami": "^0.0.9",
