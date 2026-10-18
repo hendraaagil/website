@@ -1,0 +1,36 @@
+---
+---
+
+<div
+	id="page-loading-bar"
+	class="fixed top-0 left-0 z-50 h-0.5 w-0 bg-primary opacity-0 transition-[width,opacity] duration-200 ease-out"
+>
+</div>
+
+<script>
+	let timer: ReturnType<typeof setTimeout>
+
+	// Query fresh each time: ClientRouter replaces the bar node on every swap.
+	const bar = () => document.getElementById('page-loading-bar')
+
+	document.addEventListener('astro:before-preparation', () => {
+		const b = bar()
+		if (!b) return
+		clearTimeout(timer)
+		b.style.opacity = '1'
+		b.style.width = '0'
+		b.offsetWidth // force reflow so the width transition runs
+		b.style.width = '85%'
+	})
+
+	document.addEventListener('astro:page-load', () => {
+		const b = bar()
+		if (!b) return
+		b.style.opacity = '1'
+		b.style.width = '100%'
+		timer = setTimeout(() => {
+			b.style.opacity = '0'
+			b.style.width = '0'
+		}, 200)
+	})
+</script>
